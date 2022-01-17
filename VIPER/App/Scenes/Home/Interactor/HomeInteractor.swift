@@ -10,18 +10,25 @@ import Foundation
 
 class HomeInteractor: HomeInteractorInputProtocol {
     
-    // MARK: Properties
+    // MARK: - Properties
     weak var presenter: HomeInteractorOutputProtocol?
     var localDatamanager: HomeLocalDataManagerInputProtocol?
     var remoteDatamanager: HomeRemoteDataManagerInputProtocol?
     
     // DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER) QUE TIENE QUE TRAER UNOS DATOS
-    func interactorGetData() {
-        remoteDatamanager?.remoteGetData()
+    func interactorGetData(token: String) {
+        remoteDatamanager?.remoteGetData(token: token)
+        //remoteDatamanager?.remoteGetData(token: token) { userpost in }
     }
-
 }
 
+
 extension HomeInteractor: HomeRemoteDataManagerOutputProtocol {
-    // TODO: Implement use case methods
+    
+    
+    // EL INTERACTOR DEBE ENVIARLE LOS DATOS AL PRESENTER BIEN "MASTICADITO"
+    func remoteCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel]) {
+        presenter?.interactorCallBackData(with: homeFeedRenderViewModel)
+    }
+    
 }

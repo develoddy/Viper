@@ -25,11 +25,14 @@ protocol HomePresenterProtocol: AnyObject {
     var interactor: HomeInteractorInputProtocol? { get set }
     var wireFrame: HomeWireFrameProtocol? { get set }
     
+    func presenterNumberOfSections() -> Int
+    
     func viewDidLoad()
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
+    func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel])
 }
 
 protocol HomeInteractorInputProtocol: AnyObject {
@@ -39,7 +42,7 @@ protocol HomeInteractorInputProtocol: AnyObject {
     var remoteDatamanager: HomeRemoteDataManagerInputProtocol? { get set }
     
     // FUNCIÓN QUE PERMITE AL INTERACTOR GESTIONAR DATOS CON LA EJECUCIÓN DE ESTA FUNCIÓN DESDE EL PRESENTER
-    func interactorGetData()
+    func interactorGetData(token: String)
 }
 
 protocol HomeDataManagerInputProtocol: AnyObject {
@@ -49,11 +52,12 @@ protocol HomeDataManagerInputProtocol: AnyObject {
 protocol HomeRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol? { get set }
-    func remoteGetData()
+    func remoteGetData(token: String)
 }
 
 protocol HomeRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
+    func remoteCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel])
 }
 
 protocol HomeLocalDataManagerInputProtocol: AnyObject {

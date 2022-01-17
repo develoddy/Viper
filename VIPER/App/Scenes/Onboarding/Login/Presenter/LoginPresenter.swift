@@ -43,7 +43,7 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
     // SI ES CORRECTO ENTONCES LLAMAMOS AL WIREFRAME PARA CAMBIO DE PANTALLA (TAB BAR CONTOLLER)
     // SI ES INCORRECTO ENTONCES "YA VEREMOS"...
     func interactorCallBackData(success: Bool) {
-        print("LoginPresenter devuelta  Login Success !!! > \(success)")
+        ///print("LoginPresenter devuelta  Login Success !!! > \(success)")
         view?.stopActivity()
         wireFrame?.presentNewTabBarController()
     }

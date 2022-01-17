@@ -23,7 +23,7 @@ class HomeView: UIViewController {
     
     // MARK: - Lifecycle
 
-    // ViewDidLoad
+    // VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +34,7 @@ class HomeView: UIViewController {
         setupView()
     }
     
-    // ViewDidLayoutSubviews
+    // VIEW DID LAYOUT SUB VIEWS
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
@@ -56,7 +56,9 @@ class HomeView: UIViewController {
 // MARK: - A conformance to tableView delegate and datasource protocols
 extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        printContent("HomView Count table")
+        print(presenter?.presenterNumberOfSections() ?? 0)
+        return presenter?.presenterNumberOfSections() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

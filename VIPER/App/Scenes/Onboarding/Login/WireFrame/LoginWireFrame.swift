@@ -42,8 +42,10 @@ class LoginWireFrame: LoginWireFrameProtocol {
     }
     
     
+    
+    // MARK: - SE ENCARGA DE NAVERGAR AL TAB BAR CONTROLLER.
     func presentNewTabBarController() {
-        print("LoginWireFrame devuelta  Login Success - Cambio a tabBarControllER !!!")
+        //print("LoginWireFrame devuelta  Login Success - Cambio a tabBarControllER !!!")
         
         let submodules = (
             home: HomeWireFrame.createHomeModule(),
@@ -57,10 +59,10 @@ class LoginWireFrame: LoginWireFrameProtocol {
         let token = obj?.token
         
         if token != nil {
-            print("LoginWireFrame - Si Hay token")
+            //print("LoginWireFrame - Si Hay token")
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarController)
         } else {
-            print("LoginWireFrame -  No hay token")
+            //print("LoginWireFrame -  No hay token")
         }
         
     }

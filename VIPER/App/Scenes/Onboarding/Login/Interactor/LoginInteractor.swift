@@ -30,6 +30,6 @@ extension LoginInteractor: LoginRemoteDataManagerOutputProtocol {
     // EL INTERACTOR TIENE QUE ENVIAR LOS DATOS AL PRESENTER "MASTICADITO"
     func remoteCallBackData(success: Bool) {
         presenter?.interactorCallBackData(success: success)
-        print("LoginInteractor devuelta Login Success !!! > \(success)")
+        ///print("LoginInteractor devuelta Login Success !!! > \(success)")
     }
 }
