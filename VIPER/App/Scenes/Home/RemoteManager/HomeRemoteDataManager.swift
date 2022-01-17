@@ -12,4 +12,8 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
     
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol?
     
+    func remoteGetData() {
+        // LLAMAR AL SERVICIO Y OBTENER LOS DATOS
+    }
+    
 }

@@ -41,4 +41,28 @@ class LoginWireFrame: LoginWireFrameProtocol {
         return UIStoryboard(name: "LoginView", bundle: Bundle.main)
     }
     
+    
+    func presentNewTabBarController() {
+        print("LoginWireFrame devuelta  Login Success - Cambio a tabBarControllER !!!")
+        
+        let submodules = (
+            home: HomeWireFrame.createHomeModule(),
+            profile: ProfileWireFrame.createProfileModule()
+        )
+        
+        let tabBarController = TabBarModuleBuilder.build(usingSubmodules: submodules)
+        
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        let obj = appDelegate.objUsuarioSesion
+        let token = obj?.token
+        
+        if token != nil {
+            print("LoginWireFrame - Si Hay token")
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarController)
+        } else {
+            print("LoginWireFrame -  No hay token")
+        }
+        
+    }
+    
 }

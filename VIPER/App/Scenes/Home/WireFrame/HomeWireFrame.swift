@@ -12,26 +12,31 @@ import UIKit
 class HomeWireFrame: HomeWireFrameProtocol {
 
     class func createHomeModule() -> UIViewController {
-        let navController = mainStoryboard.instantiateViewController(withIdentifier: "HomeView")
-        if let view = navController.children.first as? HomeView {
+        
+        //let navController = mainStoryboard.instantiateViewController(withIdentifier: "HomeView")
+        let homeView = HomeView()
+        
+        // Esta condicion sirve para saber si el navigation controller tiene mas hijos controladores
+        // if let view = navController.children.first as? HomeView {
+        let viewController = homeView
             let presenter: HomePresenterProtocol & HomeInteractorOutputProtocol = HomePresenter()
             let interactor: HomeInteractorInputProtocol & HomeRemoteDataManagerOutputProtocol = HomeInteractor()
             let localDataManager: HomeLocalDataManagerInputProtocol = HomeLocalDataManager()
             let remoteDataManager: HomeRemoteDataManagerInputProtocol = HomeRemoteDataManager()
             let wireFrame: HomeWireFrameProtocol = HomeWireFrame()
             
-            view.presenter = presenter
-            presenter.view = view
-            presenter.wireFrame = wireFrame
-            presenter.interactor = interactor
-            interactor.presenter = presenter
-            interactor.localDatamanager = localDataManager
-            interactor.remoteDatamanager = remoteDataManager
-            remoteDataManager.remoteRequestHandler = interactor
+            viewController.presenter                = presenter
+            presenter.view                          = viewController
+            presenter.wireFrame                     = wireFrame
+            presenter.interactor                    = interactor
+            interactor.presenter                    = presenter
+            interactor.localDatamanager             = localDataManager
+            interactor.remoteDatamanager            = remoteDataManager
+            remoteDataManager.remoteRequestHandler  = interactor
             
-            return navController
-        }
-        return UIViewController()
+            return viewController
+        //}
+        //return UIViewController()
     }
     
     static var mainStoryboard: UIStoryboard {

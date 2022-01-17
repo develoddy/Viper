@@ -12,11 +12,14 @@ import UIKit
 protocol LoginViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: LoginPresenterProtocol? { get set }
+    func startActivity()
+    func stopActivity()
 }
 
 protocol LoginWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createLoginModule() -> UIViewController
+    func presentNewTabBarController()
 }
 
 protocol LoginPresenterProtocol: AnyObject {
@@ -26,10 +29,12 @@ protocol LoginPresenterProtocol: AnyObject {
     var wireFrame: LoginWireFrameProtocol? { get set }
     
     func viewDidLoad()
+    func showTabBar(email: String, password: String)
 }
 
 protocol LoginInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
+    func interactorCallBackData(success: Bool)
 }
 
 protocol LoginInteractorInputProtocol: AnyObject {

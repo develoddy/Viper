@@ -18,6 +18,13 @@ class ProfileView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
+    }
+    
+    func setupView() {
+        title = "Profile"
+        view.backgroundColor = .systemPink
     }
 }
 

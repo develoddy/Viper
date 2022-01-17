@@ -10,13 +10,60 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
+    
+    // MARK: VALIDAMOS SI EL USUARIO TIENE EL TOKEN O SI NO ESTÁ LOGUEADO
+    // SI TIENE EL TOKEN ENTONCES MOSTRAMOS EL TABBARCONTROLLER
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        //MARK: PROPERTIES
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let appDelegate = AppDelegate()
+        let obj = appDelegate.objUsuarioSesion
+        let token = obj?.token
+        
+        //MARK: VALIDATIONS
+        if token != nil {
+            let submodules = (
+                home: HomeWireFrame.createHomeModule(),
+                profile: ProfileWireFrame.createProfileModule())
+            
+            let window                  = UIWindow(windowScene: windowScene)
+            let tabBarController        = TabBarModuleBuilder.build(usingSubmodules: submodules)
+            window.rootViewController   =  tabBarController
+            self.window                 = window
+            window.makeKeyAndVisible()
+        } else {
+            let window                  = UIWindow(windowScene: windowScene)
+            let loginViewController     = LoginWireFrame.createLoginModule()
+            window.rootViewController   = loginViewController
+            self.window                 = window
+            window.makeKeyAndVisible()
+        }
+        
+        
+        
+        //        if let windowScene = scene as? UIWindowScene {
+        //             let window = UIWindow(windowScene: windowScene)
+        //             let vc = LoginWireFrame.createLoginModule()
+        //             window.rootViewController =  vc
+        //             self.window = window
+        //             window.makeKeyAndVisible()
+        //         }
+        
+        //        if let windowScene = scene as? UIWindowScene {
+        //            let window = UIWindow(windowScene: windowScene)
+        //            let submodules = (
+        //                home: HomeWireFrame.createHomeModule(),
+        //                profile: ProfileWireFrame.createProfileModule()
+        //            )
+        //
+        //            let tabBarController = TabBarModuleBuilder.build(usingSubmodules: submodules)
+        //
+        //             window.rootViewController =  tabBarController
+        //             self.window = window
+        //             window.makeKeyAndVisible()
+        //         }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -47,6 +94,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    
+    //MARK: ROOT VIEWCONTROLLER
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard let window = self.window else { return }
+        window.rootViewController = vc
+        UIView.transition(with: window, duration: 0.8, options: .transitionCurlUp, animations: nil)
+    }
 }
 

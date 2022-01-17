@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-protocol HomeViewProtocol: class {
+protocol HomeViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: HomePresenterProtocol? { get set }
 }
 
-protocol HomeWireFrameProtocol: class {
+protocol HomeWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createHomeModule() -> UIViewController
 }
 
-protocol HomePresenterProtocol: class {
+protocol HomePresenterProtocol: AnyObject {
     // VIEW -> PRESENTER
     var view: HomeViewProtocol? { get set }
     var interactor: HomeInteractorInputProtocol? { get set }
@@ -28,30 +28,34 @@ protocol HomePresenterProtocol: class {
     func viewDidLoad()
 }
 
-protocol HomeInteractorOutputProtocol: class {
-// INTERACTOR -> PRESENTER
+protocol HomeInteractorOutputProtocol: AnyObject {
+    // INTERACTOR -> PRESENTER
 }
 
-protocol HomeInteractorInputProtocol: class {
+protocol HomeInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: HomeInteractorOutputProtocol? { get set }
     var localDatamanager: HomeLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: HomeRemoteDataManagerInputProtocol? { get set }
+    
+    // FUNCIÓN QUE PERMITE AL INTERACTOR GESTIONAR DATOS CON LA EJECUCIÓN DE ESTA FUNCIÓN DESDE EL PRESENTER
+    func interactorGetData()
 }
 
-protocol HomeDataManagerInputProtocol: class {
+protocol HomeDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> DATAMANAGER
 }
 
-protocol HomeRemoteDataManagerInputProtocol: class {
+protocol HomeRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol? { get set }
+    func remoteGetData()
 }
 
-protocol HomeRemoteDataManagerOutputProtocol: class {
+protocol HomeRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
 }
 
-protocol HomeLocalDataManagerInputProtocol: class {
+protocol HomeLocalDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> LOCALDATAMANAGER
 }

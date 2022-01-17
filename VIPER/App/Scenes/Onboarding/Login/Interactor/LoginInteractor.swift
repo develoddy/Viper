@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: INTERACTOR
 class LoginInteractor: LoginInteractorInputProtocol {
     // MARK: Properties
     weak var presenter: LoginInteractorOutputProtocol?
@@ -21,11 +22,14 @@ class LoginInteractor: LoginInteractorInputProtocol {
 }
 
 
-// MARK: LoginRemoteDataManagerOutputProtocol
+// MARK: INTERACTOR OutputProtocol
 extension LoginInteractor: LoginRemoteDataManagerOutputProtocol {
     
+    // VALIDATE LOGIN "TRUE" OR "FALSE"
+    // EL INTERACTOR DEBE ENVIARLE LOS DATOS AL PRESENTER.
+    // EL INTERACTOR TIENE QUE ENVIAR LOS DATOS AL PRESENTER "MASTICADITO"
     func remoteCallBackData(success: Bool) {
-        // EL INTERACTOS DEBE ENVIARLE LOS DATOS AL PRESENTER.
-        print("devuelta LoginInteractor Login Success !!! > \(success)")
+        presenter?.interactorCallBackData(success: success)
+        print("LoginInteractor devuelta Login Success !!! > \(success)")
     }
 }
