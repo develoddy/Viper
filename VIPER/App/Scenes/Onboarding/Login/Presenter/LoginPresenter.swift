@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+// MARK: PRESENTER
 class LoginPresenter  {
     
     // MARK: Properties
@@ -18,13 +20,31 @@ class LoginPresenter  {
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
-    // TODO: implement presenter methods
+
     func viewDidLoad() {
         // DECIRLE AL INTERACTOR QUE QUIERE TRAER UNOS DATOS
-        interactor?.interactorGetData(email: "eddylujann@gmail.com", password: "secret")
+    }
+    
+    // VAMOS A LLAMAR AL WIREFRAME
+    func showTabBar(email: String, password: String) {
+        interactor?.interactorGetData(email: email, password: password)
+        
+        // LOAD ACTIVITY
+        view?.startActivity()
     }
 }
 
+
+
+// MARK: PRESENTER OutputProtocol
 extension LoginPresenter: LoginInteractorOutputProtocol {
-    // TODO: implement interactor output methods
+    
+    // RECIBE UN BOLEANO SI EL USUARIO FUE LOGUEADO CORRECTAMENTE O INCORRECTAMENTE
+    // SI ES CORRECTO ENTONCES LLAMAMOS AL WIREFRAME PARA CAMBIO DE PANTALLA (TAB BAR CONTOLLER)
+    // SI ES INCORRECTO ENTONCES "YA VEREMOS"...
+    func interactorCallBackData(success: Bool) {
+        print("LoginPresenter devuelta  Login Success !!! > \(success)")
+        view?.stopActivity()
+        wireFrame?.presentNewTabBarController()
+    }
 }

@@ -12,16 +12,20 @@ import UIKit
 class ProfileWireFrame: ProfileWireFrameProtocol {
 
     class func createProfileModule() -> UIViewController {
-        let navController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileView")
-        if let view = navController.children.first as? ProfileView {
+        
+        
+        //let navController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileView")
+        //if let view = navController.children.first as? ProfileView {
+        let profileView = ProfileView()
+        let viewController = profileView
             let presenter: ProfilePresenterProtocol & ProfileInteractorOutputProtocol = ProfilePresenter()
             let interactor: ProfileInteractorInputProtocol & ProfileRemoteDataManagerOutputProtocol = ProfileInteractor()
             let localDataManager: ProfileLocalDataManagerInputProtocol = ProfileLocalDataManager()
             let remoteDataManager: ProfileRemoteDataManagerInputProtocol = ProfileRemoteDataManager()
             let wireFrame: ProfileWireFrameProtocol = ProfileWireFrame()
             
-            view.presenter = presenter
-            presenter.view = view
+            viewController.presenter = presenter
+            presenter.view = viewController
             presenter.wireFrame = wireFrame
             presenter.interactor = interactor
             interactor.presenter = presenter
@@ -29,9 +33,9 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
             interactor.remoteDatamanager = remoteDataManager
             remoteDataManager.remoteRequestHandler = interactor
             
-            return navController
-        }
-        return UIViewController()
+            //return navController
+        //}
+        return viewController
     }
     
     static var mainStoryboard: UIStoryboard {
