@@ -8,9 +8,10 @@
 
 import Foundation
 
+// MARK: HOME INTERACTOR
 class HomeInteractor: HomeInteractorInputProtocol {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     weak var presenter: HomeInteractorOutputProtocol?
     var localDatamanager: HomeLocalDataManagerInputProtocol?
     var remoteDatamanager: HomeRemoteDataManagerInputProtocol?
@@ -18,11 +19,11 @@ class HomeInteractor: HomeInteractorInputProtocol {
     // DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER) QUE TIENE QUE TRAER UNOS DATOS
     func interactorGetData(token: String) {
         remoteDatamanager?.remoteGetData(token: token)
-        //remoteDatamanager?.remoteGetData(token: token) { userpost in }
     }
 }
 
 
+// MARK: - OUTPUT REMOTE MANAGER PROTOCOL
 extension HomeInteractor: HomeRemoteDataManagerOutputProtocol {
     
     

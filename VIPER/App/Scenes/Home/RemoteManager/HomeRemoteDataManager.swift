@@ -14,7 +14,6 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol?
     
     // We defined the FakeAPIServiceProtocol in the APIService.swift file.
-    // We also defined a class and make it conform to that protocol.
     let apiService: APIServiceProtocol
     
     // The collection that will contain our fetched data
@@ -28,8 +27,8 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
     
     
     // MARK: - FUNCTIONS
-    // GET DATA
     
+    // GET DATA
     func remoteGetData(token: String) {
         apiService.getUserPost( token: token ) { [ weak self ] ( result ) in
             switch result {
@@ -46,7 +45,8 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
                         footer      : PostRenderViewModel(renderType: .footer(footer: items)))
                     self?.models.append( viewModel )
                 }
-                // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
+                
+                // TODO: ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
                 self?.remoteRequestHandler?.remoteCallBackData(with: self?.models ?? [])
                 
             case .failure(let error):

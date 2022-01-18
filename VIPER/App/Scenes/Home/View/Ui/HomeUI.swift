@@ -20,7 +20,7 @@ class HomeUI: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        configureSpinner()
+        //configureSpinner()
     }
     
     required init?(coder: NSCoder) {
@@ -31,12 +31,12 @@ class HomeUI: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .systemRed
+        backgroundColor = .systemBackground
         self.addSubview(tableView)
         self.addSubview(activityIndicator)
     }
     
     func configureSpinner() {
-        activityIndicator.hidesWhenStopped = false
+        activityIndicator.hidesWhenStopped = true
     }
 }

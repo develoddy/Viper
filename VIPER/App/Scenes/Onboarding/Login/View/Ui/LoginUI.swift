@@ -79,7 +79,7 @@ class LoginUI: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        configureSpinner()
+        //configureSpinner()
     }
     
     required init?(coder: NSCoder) {
