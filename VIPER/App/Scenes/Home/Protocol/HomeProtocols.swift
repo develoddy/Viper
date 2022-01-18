@@ -12,6 +12,10 @@ import UIKit
 protocol HomeViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: HomePresenterProtocol? { get set }
+    
+    func updateUIList()
+    func startActivity()
+    func stopActivity() 
 }
 
 protocol HomeWireFrameProtocol: AnyObject {
@@ -24,10 +28,11 @@ protocol HomePresenterProtocol: AnyObject {
     var view: HomeViewProtocol? { get set }
     var interactor: HomeInteractorInputProtocol? { get set }
     var wireFrame: HomeWireFrameProtocol? { get set }
-    
-    func presenterNumberOfSections() -> Int
-    
+        
     func viewDidLoad()
+    func presenterNumberOfSections() -> Int
+    func numberOfRowsInsection(section: Int) -> Int
+    func cellForRowAt(at index: Int) -> HomeFeedRenderViewModel
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {

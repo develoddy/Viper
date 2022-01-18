@@ -46,7 +46,6 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
                         footer      : PostRenderViewModel(renderType: .footer(footer: items)))
                     self?.models.append( viewModel )
                 }
-                
                 // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
                 self?.remoteRequestHandler?.remoteCallBackData(with: self?.models ?? [])
                 

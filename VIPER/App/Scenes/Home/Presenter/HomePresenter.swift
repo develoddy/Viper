@@ -12,7 +12,6 @@ import Foundation
 class HomePresenter  {
     
     // MARK: Properties
-    // Anexo de union con el Interactor & WireFrame
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
     var wireFrame: HomeWireFrameProtocol?
@@ -21,55 +20,76 @@ class HomePresenter  {
     var token = Token()
     
     // MARK: - Closures
-    // Through these closures, our view model will execute code while some events will occure
-    // They will be set up by the view controller
-    var reloadTableViewClosure : (()->())?
-    var showAlertClosure            : (()->())?
-    var updateLoadingStatusClosure  : (()->())?
     
-    // This will contain info about the picture eventually selectded by the user by tapping an item on the screen
-    var selectedHome: HomeFeedRenderViewModel?
-    
-    // The collection that will contain our fetched data
-    var viewModel: [HomeFeedRenderViewModel] = [HomeFeedRenderViewModel]() {
+    var viewModel: [HomeFeedRenderViewModel] = [] {
         didSet {
-            self.reloadTableViewClosure?()
+            ///self.view?.startActivity()
+            self.view?.updateUIList()
         }
     }
-    
-    // The collection that will contain our fetched data
-    var isLoading: Bool = false {
-        didSet {
-            self.updateLoadingStatusClosure?()
-        }
-    }
-    
 }
 
-// MARK: Extension HomePresenterProtocol >
+
+// MARK: - HOME PRESENT PROTOCOL >
 extension HomePresenter: HomePresenterProtocol {
-    
     
     func viewDidLoad() {
         // TOKEN
         guard let token = token.getUserToken().token else { return }
         
         // DECIRLE AL INTERACTOR QUE QUIERE TRAER UNOS DATOS
-        interactor?.interactorGetData(token: token)
+        view?.startActivity()
+        //DispatchQueue.main.async {
+            self.interactor?.interactorGetData(token: token)
+        //}
     }
     
     func presenterNumberOfSections() -> Int {
-        return viewModel.count
+        self.viewModel.count
+    }
+    
+    func numberOfRowsInsection(section: Int) -> Int {
+//        if self.viewModel.count != 0 {
+//            return self.viewModel.count
+//        }
+//        return 0
+        let count = section
+        let boxes = 7
+        let subSection = count % boxes
+        switch subSection {
+            case 1:  return 1 // Header
+            case 2:  return 1 // Post
+            case 3:  return 1 // Actions
+            case 4:  return 1 // Description
+            case 5:  return 1 // Comments
+            case 6:  return 1 // Footer
+            default:  return 0
+        }
+    }
+    
+    //func cellForRowAt(indexPath: IndexPath) -> HomeFeedRenderViewModel {
+    
+    func cellForRowAt(at index: Int) -> HomeFeedRenderViewModel {
+        return self.viewModel[index]
     }
     
 }
 
-// MARK: Extension HomeInteractorOutputProtocol <
+
+
+// MARK: - HOME INTERACTOR OUT PUT PROTOCOL <
 extension HomePresenter: HomeInteractorOutputProtocol {
     
-    // EL PRESENTER RECIBE EL ARRAY DE OBJETOS QUE ENVIAR EL INTERACTOR
+    // EL PRESENTER RECIBE EL ARRAY DE OBJETOS QUE ENVIA EL INTERACTOR
+    // EL PRESENTER ENVIAR EL ARRAY OBJETO AL VIEW
     func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel]) {
+        //view?.presenterPsuhDataView(receivedData: homeFeedRenderViewModel)
+        
+        
+        view?.stopActivity()
         self.viewModel = homeFeedRenderViewModel
+        
+        //print("self.viewModel")
+        //print(self.viewModel)
     }
-    
 }

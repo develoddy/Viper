@@ -122,7 +122,6 @@ class LoginUI: UIView {
     }
     
     func configureSpinner() {
-        
         activityIndicator.hidesWhenStopped = false
     }
 }
