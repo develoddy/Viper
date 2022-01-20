@@ -29,6 +29,7 @@ class LoginView: UIViewController {
     func setupView() {
         title = "Login"
         view.backgroundColor = .systemBackground
+        
         view.addSubview(loginUI)
         
         // Spinner
@@ -38,12 +39,14 @@ class LoginView: UIViewController {
         // Button Login
         let loginButton = loginUI.loginButton
         loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-        
+        //didTapLoginButton()
     }
     
     // VIEW DID LAYOUT SUB VIEWS
     override func viewDidLayoutSubviews() {
-        loginUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
+        self.loginUI.frame = view.bounds
+        
+        //loginUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
     }
     
     // TAP LOGIN

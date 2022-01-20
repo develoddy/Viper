@@ -135,11 +135,6 @@ extension HomeView: UITableViewDelegate {
 }
 
 
-
-
-
-
-
 // MARK: - EXTENSION
 extension HomeView {
     func configureTableView() {

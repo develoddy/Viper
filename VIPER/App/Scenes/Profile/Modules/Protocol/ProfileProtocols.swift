@@ -12,6 +12,9 @@ import UIKit
 protocol ProfileViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     
+    func updateUI()
+    func startActivity()
+    func stopActivity() 
 }
 
 protocol ProfileWireFrameProtocol: AnyObject {
@@ -25,11 +28,16 @@ protocol ProfilePresenterProtocol: AnyObject {
     var interactor: ProfileInteractorInputProtocol? { get set }
     var wireFrame: ProfileWireFrameProtocol? { get set }
     
-    func viewDidLoad()
+    func viewDidLoad(email: String, token: String)
+    func presenterNumberOfSections() -> Int
+    func numberOfRowsInsection(section: Int) -> Int
+    func cellForRowAt(indexPath: IndexPath) -> Userpost
+    func fetchUsername(indexPath: IndexPath) -> User?
 }
 
 protocol ProfileInteractorOutputProtocol: AnyObject {
-// INTERACTOR -> PRESENTER
+    // INTERACTOR -> PRESENTER
+    func interactorCallBackData(with viewModel: [Userpost])
 }
 
 protocol ProfileInteractorInputProtocol: AnyObject {
@@ -37,6 +45,8 @@ protocol ProfileInteractorInputProtocol: AnyObject {
     var presenter: ProfileInteractorOutputProtocol? { get set }
     var localDatamanager: ProfileLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: ProfileRemoteDataManagerInputProtocol? { get set }
+    
+    func interactorGetData(email: String, token: String)
 }
 
 protocol ProfileDataManagerInputProtocol: AnyObject {
@@ -46,10 +56,12 @@ protocol ProfileDataManagerInputProtocol: AnyObject {
 protocol ProfileRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: ProfileRemoteDataManagerOutputProtocol? { get set }
+    func remoteGetData(email: String, token: String)
 }
 
 protocol ProfileRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
+    func remoteCallBackData(with viewModel: [Userpost], user: User)
 }
 
 protocol ProfileLocalDataManagerInputProtocol: AnyObject {
