@@ -14,20 +14,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     // MARK: VALIDAMOS SI EL USUARIO TIENE EL TOKEN O SI NO ESTÁ LOGUEADO
     // SI TIENE EL TOKEN ENTONCES MOSTRAMOS EL TABBARCONTROLLER
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+    
         //MARK: PROPERTIES
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let appDelegate = AppDelegate()
         let obj = appDelegate.objUsuarioSesion
         let token = obj?.token
-        
+
         //MARK: VALIDATIONS
         if token != nil {
             let submodules = (
                 home: HomeWireFrame.createHomeModule(),
                 profile: ProfileWireFrame.createProfileModule())
-            
+
             let window                  = UIWindow(windowScene: windowScene)
             let tabBarController        = TabBarModuleBuilder.build(usingSubmodules: submodules)
             window.rootViewController   =  tabBarController
@@ -36,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             let window                  = UIWindow(windowScene: windowScene)
             let loginViewController     = LoginWireFrame.createLoginModule()
+            loginViewController.modalPresentationStyle = .fullScreen
             window.rootViewController   = loginViewController
             self.window                 = window
             window.makeKeyAndVisible()

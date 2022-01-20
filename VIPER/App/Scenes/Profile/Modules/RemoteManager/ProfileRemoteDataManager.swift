@@ -30,17 +30,16 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
                 guard let viewModel = listOf.userpost else {
                     return
                 }
-                for items in viewModel {
-                    guard let user = items.userAuthor else { return }
-                    self?.user = user
-                    self?.viewModel.append(items)
-                }
+                //                for items in viewModel {
+                //                    guard let user = items.userAuthor else { return }
+                //                    self?.user = user
+                //                    self?.viewModel.append(items)
+                //                }
                 
-                //self?.viewModel = viewModel
+                self?.viewModel = viewModel
                 
-                guard let user = self?.user else { return }
                 // TODO: ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                self?.remoteRequestHandler?.remoteCallBackData(with: self?.viewModel ?? [], user: user)
+                self?.remoteRequestHandler?.remoteCallBackData(with: self?.viewModel ?? [])
                 
             case .failure(let error):
                 print("Error processing data Profile \(error)")

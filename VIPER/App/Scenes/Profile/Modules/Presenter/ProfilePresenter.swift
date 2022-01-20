@@ -34,10 +34,12 @@ extension ProfilePresenter: ProfilePresenterProtocol {
         self.view?.startActivity()
     }
     
+    // GET NUMBER OF SECTION
     func presenterNumberOfSections() -> Int {
-        return 3 //self.viewModel.count
+        return 3
     }
     
+    // GET NUMBER OF ROWS INSECTION
     func numberOfRowsInsection(section: Int) -> Int {
         if self.viewModel.count != 0 {
             return viewModel.count
@@ -45,15 +47,16 @@ extension ProfilePresenter: ProfilePresenterProtocol {
         return 0
     }
     
-    func cellForRowAt(indexPath: IndexPath) -> Userpost {
+    // GET DATA
+    func showProfileData(indexPath: IndexPath) -> Userpost {
         return viewModel[indexPath.row]
     }
     
-    func fetchUsername(indexPath: IndexPath) -> User? {
-        let user = viewModel[indexPath.row].userAuthor
-        return user
+    // GET USER
+    func username() -> User? {
+        let userpost = self.viewModel.last
+        return userpost?.userAuthor
     }
-    
 }
 
 
@@ -64,7 +67,6 @@ extension ProfilePresenter: ProfileInteractorOutputProtocol {
     func interactorCallBackData(with viewModel: [Userpost]) {
         self.viewModel = viewModel
         view?.stopActivity()
-        //print("Presenter")
-        //print(self.viewModel )
+        //self.view?.displayDataProfile(with: viewModel)
     }
 }

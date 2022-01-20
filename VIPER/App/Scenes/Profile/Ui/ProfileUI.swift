@@ -25,7 +25,7 @@ class ProfileUI : UIView {
     }
     
     func setupView() {
-        backgroundColor = .systemCyan
+        backgroundColor = .systemBackground
         self.addSubview(activityIndicator)
     }
 }

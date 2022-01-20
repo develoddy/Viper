@@ -16,6 +16,7 @@ class ProfileView: UIViewController {
     let collectionView = ProfileCollectionsViews.collectionView()
     var profileUI = ProfileUI()
     var token = Token()
+    //var viewModel: [Userpost] = []
     // var email: String = ""
 
     // MARK: - INIT
@@ -35,12 +36,15 @@ class ProfileView: UIViewController {
         super.viewDidLoad()
         setupView()
         configureActivity()
-        configureCollectionViewHeader()
         configureCollectionView()
-        
+        configureCollectionViewHeader()
         configureDelegates()
-        
-        // MARK: SE LLAMA AL PRESENTER
+
+        loadData()
+    }
+    
+    // SE LLAMA AL PRESENTER
+    func loadData() {
         guard let token = token.getUserToken().token else { return }
         self.presenter?.viewDidLoad(email: "eddylujann@gmail.com", token: token)
     }
@@ -54,8 +58,8 @@ class ProfileView: UIViewController {
     
     // SETUPVIEW
     func setupView() {
-        title = "Profile"
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemBackground
+        self.modalPresentationStyle = .overFullScreen
         view.addSubview(profileUI)
         view.addSubview(collectionView)
     }
@@ -95,37 +99,28 @@ class ProfileView: UIViewController {
 
 //MARK: - UITABLEVIEWS
 
-//MARK: DATASOURCE
-extension ProfileView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// MARK: UICollectionViewDataSource
+extension ProfileView: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        //print(presenter?.presenterNumberOfSections() ?? 0)
-        guard let count = presenter?.presenterNumberOfSections() else {
-            return 0
-        }
-        return count //presenter?.presenterNumberOfSections() ?? 0
+        guard let numberOfSections = self.presenter?.presenterNumberOfSections() else { return 0 }
+        return numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 { return 0 }
         if section == 1 { return 0 }
-       
-        guard let count = presenter?.numberOfRowsInsection(section: section) else {
-            return 0
-        }
-        print(count)
-        return count
+        guard let numberOfRowInsection = self.presenter?.numberOfRowsInsection(section: section) else { return 0 }
+        return numberOfRowInsection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("collection ejecuta")
+        print("collectionView")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
             fatalError("PhotoCollectionViewCell cell not exists")
         }
-        guard let model = presenter?.cellForRowAt(indexPath: indexPath) else {
-            return UICollectionViewCell()
-        }
-        cell.configure(with: model)
+        guard let userpost = self.presenter?.showProfileData(indexPath: indexPath) else { return UICollectionViewCell() }
+        cell.configure(with: userpost)
         return cell
     }
     
@@ -136,38 +131,39 @@ extension ProfileView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
+}
+
+
+
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension ProfileView: UICollectionViewDelegateFlowLayout {
     
     // MARK: Header & Story & Tabs
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        print("collection header ejecuta")
-       
-        
         guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
-        
         switch indexPath.section {
         case 0:
-            
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier:ProfileInfoHeaderCollectionReusableView.identifier,
-                                                                         for: indexPath) as! ProfileInfoHeaderCollectionReusableView
-            //let user = presenter?.fetchUsername(indexPath: indexPath)
-            //print(user)
-            
-            //print(user)
-            //header.configureProfile(with: user)
-            ///header.delegate = delegateHeader
+            let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier:ProfileInfoHeaderCollectionReusableView.identifier,
+                for: indexPath) as! ProfileInfoHeaderCollectionReusableView
+            let user = self.presenter?.username()
+            header.configureProfile(with: user)
+            // header.delegate = delegateHeader
             return header
         case 1:
-            let storyHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                              withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier,
-                                                                              for: indexPath) as! StoryFeaturedCollectionTableViewCell
+            let storyHeader = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier,
+                for: indexPath) as! StoryFeaturedCollectionTableViewCell
             return storyHeader
         case 2:
-            let tabsHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                             withReuseIdentifier: ProfileTabsCollectionReusableView.identifier,
-                                                                             for: indexPath) as! ProfileTabsCollectionReusableView
-            //tabsHeader.delegate = self
+            let tabsHeader = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: ProfileTabsCollectionReusableView.identifier,
+                for: indexPath) as! ProfileTabsCollectionReusableView
+                //t absHeader.delegate = self
             return tabsHeader
         default:
             break
@@ -185,8 +181,7 @@ extension ProfileView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
 
 
 
-
-// MARK: DELEGATE
+// MARK: - UICollectionViewDelegate
 extension ProfileView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
@@ -196,8 +191,18 @@ extension ProfileView: UICollectionViewDelegate {
 
 
 
-// MARK: - PROFILE PROTOCOL
+// MARK:  PROFILE PROTOCOL
 extension ProfileView: ProfileViewProtocol {
+    
+
+    // PRESENTER RETURN US WITH DATA PROFILE RESULT
+    /*func displayDataProfile(with viewModel: [Userpost]) {
+        self.viewModel.append(contentsOf: viewModel)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }*/
+    
     
     func updateUI() {
         DispatchQueue.main.async {

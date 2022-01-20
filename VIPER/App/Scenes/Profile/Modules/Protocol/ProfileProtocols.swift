@@ -11,7 +11,7 @@ import UIKit
 
 protocol ProfileViewProtocol: AnyObject {
     // PRESENTER -> VIEW
-    
+    //func displayDataProfile(with viewModel: [Userpost])
     func updateUI()
     func startActivity()
     func stopActivity() 
@@ -31,8 +31,9 @@ protocol ProfilePresenterProtocol: AnyObject {
     func viewDidLoad(email: String, token: String)
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
-    func cellForRowAt(indexPath: IndexPath) -> Userpost
-    func fetchUsername(indexPath: IndexPath) -> User?
+    func showProfileData(indexPath: IndexPath) -> Userpost
+    // func showUsername(indexPath: IndexPath) -> User?
+    func username() -> User?
 }
 
 protocol ProfileInteractorOutputProtocol: AnyObject {
@@ -61,7 +62,7 @@ protocol ProfileRemoteDataManagerInputProtocol: AnyObject {
 
 protocol ProfileRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func remoteCallBackData(with viewModel: [Userpost], user: User)
+    func remoteCallBackData(with viewModel: [Userpost])
 }
 
 protocol ProfileLocalDataManagerInputProtocol: AnyObject {

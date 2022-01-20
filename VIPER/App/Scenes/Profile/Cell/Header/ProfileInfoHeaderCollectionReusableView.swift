@@ -291,20 +291,21 @@ final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     ///Configure
-    public func configureProfile(with model: User) {
-        guard let image = model.profile?.imageHeader,
-              let username = model.username,
-              let bio = model.profile?.bio else {
+    public func configureProfile(with user: User?) {
+        // Username - Image - Bio
+        guard let username = user?.username,
+              let image = user?.profile?.imageHeader,
+              let bio = user?.profile?.bio else {
             return
         }
         profilePhotoImageView.sd_setImage(with: URL(string: image), completed: nil)
         usernameLabel.setTitle(username, for: .normal)
         biographyLabel.setTitle(bio, for: .normal)
-        
-        ///Buttons Post - Follower - Following.
-        guard let posts = model.count?.posts,
-              let follower = model.count?.followers,
-              let following = model.count?.following else {
+    
+        // Buttons Post - Follower - Following.
+        guard let posts = user?.count?.posts,
+              let follower = user?.count?.followers,
+              let following = user?.count?.following else {
             return
         }
         addTextOnPostButton(posts: posts)
