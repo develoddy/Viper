@@ -16,7 +16,24 @@ class TabBarViewController: UITabBarController {
 
     init(tabs: Tabs) {
         super.init(nibName: nil, bundle: nil)
-        viewControllers = [tabs.home, tabs.profile]
+        
+        UITabBar.appearance().barTintColor = .white
+        UITabBar.appearance().backgroundColor = .systemBackground
+        UITabBar.appearance().isTranslucent = false
+        
+        viewControllers = [tabs.profile, tabs.home]
+        colorNavController()
+    }
+    
+    private func colorNavController() {
+        guard let items = tabBar.items else { return }
+        for item in items {
+            item.imageInsets    =  UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+            let unselectedItem  = [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]
+            let selectedItem    = [NSAttributedString.Key.foregroundColor: Constants.Color.whiteLight]
+            item.setTitleTextAttributes(unselectedItem, for: .normal)
+            item.setTitleTextAttributes(selectedItem, for: .selected)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -25,6 +42,7 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.modalPresentationStyle = .fullScreen
     }
     
 
