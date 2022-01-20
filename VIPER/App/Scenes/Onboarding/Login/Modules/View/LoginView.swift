@@ -33,8 +33,8 @@ class LoginView: UIViewController {
         view.addSubview(loginUI)
         
         // Spinner
-        loginUI.activityIndicator.center = view.center
-        loginUI.activityIndicator.hidesWhenStopped = true
+        //loginUI.activityIndicator.center = view.center
+        //loginUI.activityIndicator.hidesWhenStopped = true
         
         // Button Login
         let loginButton = loginUI.loginButton
@@ -51,6 +51,7 @@ class LoginView: UIViewController {
     
     // TAP LOGIN
     @objc private func didTapLoginButton() {
+        
         guard let email = loginUI.emailText.text,
               let password = loginUI.passwordText.text else {
                   return
@@ -69,13 +70,15 @@ extension LoginView: LoginViewProtocol {
     // ANIMATE ACTIVITY
     func startActivity() {
         DispatchQueue.main.async {
-            self.loginUI.activityIndicator.startAnimating()
+            self.loginUI.loginButton.showLoading()
+            //self.loginUI.activityIndicator.startAnimating()
         }
     }
     
     // STOP ACTIVITY
     func stopActivity() {
-        self.loginUI.activityIndicator.stopAnimating()
-        self.loginUI.activityIndicator.hidesWhenStopped = true
+        //self.loginUI.activityIndicator.stopAnimating()
+        //self.loginUI.activityIndicator.hidesWhenStopped = true
+        self.loginUI.loginButton.hideLoading()
     }
 }

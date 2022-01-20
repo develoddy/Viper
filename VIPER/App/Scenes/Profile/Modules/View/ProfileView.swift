@@ -115,7 +115,6 @@ extension ProfileView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("collectionView")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
             fatalError("PhotoCollectionViewCell cell not exists")
         }
@@ -163,7 +162,7 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
                 ofKind: kind,
                 withReuseIdentifier: ProfileTabsCollectionReusableView.identifier,
                 for: indexPath) as! ProfileTabsCollectionReusableView
-                //t absHeader.delegate = self
+                // tabsHeader.delegate = self
             return tabsHeader
         default:
             break
@@ -194,16 +193,7 @@ extension ProfileView: UICollectionViewDelegate {
 // MARK:  PROFILE PROTOCOL
 extension ProfileView: ProfileViewProtocol {
     
-
-    // PRESENTER RETURN US WITH DATA PROFILE RESULT
-    /*func displayDataProfile(with viewModel: [Userpost]) {
-        self.viewModel.append(contentsOf: viewModel)
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }*/
-    
-    
+    // RELOAD COLLECTION
     func updateUI() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()

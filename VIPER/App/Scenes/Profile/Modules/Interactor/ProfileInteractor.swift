@@ -24,12 +24,12 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
 }
 
 
-// MARK: OUTPUT
+// TODO: OUTPUT
 extension ProfileInteractor: ProfileRemoteDataManagerOutputProtocol {
     
-    // RECIBE DATOS DEL REMOTE DATA MANAGER
+    // TODO: RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER
     func remoteCallBackData(with viewModel: [Userpost]) {
-        // ENVIA LOS DATOS AL PRESENTER
+        // TODO: ENVIA DE VUELTA LOS DATOS AL PRESENTER
         self.presenter?.interactorCallBackData(with: viewModel)
     }
 }

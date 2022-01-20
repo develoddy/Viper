@@ -11,21 +11,20 @@ import UIKit
 // MARK: PRESENTER
 class ProfilePresenter  {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     weak var view: ProfileViewProtocol?
     var interactor: ProfileInteractorInputProtocol?
     var wireFrame: ProfileWireFrameProtocol?
     
-    // MARK: - Closures
+    // MARK: - CLOSURES
     var viewModel: [Userpost] = [] {
         didSet {
             self.view?.updateUI()
         }
     }
-    
 }
 
-// MARK: - INPUT
+// MARK: - INPUT COLLECTION
 extension ProfilePresenter: ProfilePresenterProtocol {
     
     // SE LLAMA AL INTERACTOR
@@ -60,13 +59,12 @@ extension ProfilePresenter: ProfilePresenterProtocol {
 }
 
 
-// MARK: - OUTPUT
+// TODO: - OUTPUT
 extension ProfilePresenter: ProfileInteractorOutputProtocol {
     
-    // RECIBE DATOS DEL INTERACTROR
+    // TODO: RECIBE DE VUELTA LOS DATOS DEL INTERACTROR
     func interactorCallBackData(with viewModel: [Userpost]) {
         self.viewModel = viewModel
         view?.stopActivity()
-        //self.view?.displayDataProfile(with: viewModel)
     }
 }

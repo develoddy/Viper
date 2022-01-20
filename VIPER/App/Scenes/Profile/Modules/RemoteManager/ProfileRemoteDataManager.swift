@@ -30,12 +30,6 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
                 guard let viewModel = listOf.userpost else {
                     return
                 }
-                //                for items in viewModel {
-                //                    guard let user = items.userAuthor else { return }
-                //                    self?.user = user
-                //                    self?.viewModel.append(items)
-                //                }
-                
                 self?.viewModel = viewModel
                 
                 // TODO: ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
