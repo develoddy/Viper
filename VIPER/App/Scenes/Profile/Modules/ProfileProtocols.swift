@@ -19,7 +19,7 @@ protocol ProfileViewProtocol: AnyObject {
 
 protocol ProfileWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createProfileModule() -> UIViewController
+    static func createProfileModule(email: String, name:String, token:String) -> UIViewController
 }
 
 protocol ProfilePresenterProtocol: AnyObject {
@@ -27,13 +27,17 @@ protocol ProfilePresenterProtocol: AnyObject {
     var view: ProfileViewProtocol? { get set }
     var interactor: ProfileInteractorInputProtocol? { get set }
     var wireFrame: ProfileWireFrameProtocol? { get set }
+    var emailReceivedFromHome: String? { get set }
+    var nameReceivedFromHome: String? { get set }
+    var tokenReceivedFromHome: String? { get set }
     
-    func viewDidLoad(email: String, token: String)
+    func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showProfileData(indexPath: IndexPath) -> Userpost
     // func showUsername(indexPath: IndexPath) -> User?
     func username() -> User?
+    
 }
 
 protocol ProfileInteractorOutputProtocol: AnyObject {

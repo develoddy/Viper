@@ -16,7 +16,7 @@ class LoginUI: UIView {
     
     public let headerView : UIView = {
         let headerView = UIView()
-        headerView.backgroundColor = .blue
+        headerView.backgroundColor = Constants.Color.appBlue
         return headerView
     }()
     
@@ -40,16 +40,18 @@ class LoginUI: UIView {
         label.text = "EMAIL"
         label.textAlignment = .left
         label.backgroundColor = .systemBackground
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.textColor = Constants.Color.appBlue
         return label
     }()
     
     public let passwordLabel : UILabel = {
         let label = UILabel()
-        label.text = "Constraseña"
+        label.text = "PASSWORD"
         label.textAlignment = .left
         label.backgroundColor = .systemBackground
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.textColor = Constants.Color.appBlue
         return label
     }()
     
@@ -84,18 +86,11 @@ class LoginUI: UIView {
         return passwordText
     }()
     
-    //    public let loginButton : UIButton = {
-    //        let button = UIButton()
-    //        button.setTitle("Login", for: .normal)
-    //        button.backgroundColor = .blue
-    //        return button
-    //    }()
-    
-    
     public let loginButton : LoadingButton = {
         let button = LoadingButton()
-        button.setTitle("Login", for: .normal)
-        button.backgroundColor = .blue
+        button.setTitle("Log In", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        button.backgroundColor = Constants.Color.appBlue 
         return button
     }()
     
@@ -119,8 +114,8 @@ class LoginUI: UIView {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
         button.setTitle("Create Account", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        button.setTitleColor(Constants.Color.appBlue, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         // button.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
         return button
     }()

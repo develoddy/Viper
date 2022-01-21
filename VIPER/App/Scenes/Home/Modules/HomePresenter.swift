@@ -58,6 +58,10 @@ extension HomePresenter: HomePresenterProtocol {
     func cellForRowAt(at index: Int) -> HomeFeedRenderViewModel {
         return self.viewModel[index]
     }
+    
+    func gotoProfileScreen(email: String, name: String, token: String) {
+        self.wireFrame?.navigateToProfile(from: view!, email: email, name: name, token: token)
+    }
 }
 
 

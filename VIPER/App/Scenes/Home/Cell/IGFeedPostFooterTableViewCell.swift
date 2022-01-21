@@ -21,7 +21,7 @@ class IGFeedPostFooterTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
-        imageView.tintColor = Constants.Color.black
+        imageView.tintColor = .black
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -39,7 +39,7 @@ class IGFeedPostFooterTableViewCell: UITableViewCell {
         let button = UIButton()
         button.setTitle("Add a comment...", for: .normal)
         button.contentHorizontalAlignment = .left
-        button.setTitleColor(Constants.Color.general, for: .normal)
+        button.setTitleColor(Constants.Color.appBlue, for: .normal)
         button.titleLabel?.font = Constants.fontSize.regular
         return button
     }()

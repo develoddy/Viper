@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController {
         UITabBar.appearance().backgroundColor = .systemBackground
         UITabBar.appearance().isTranslucent = false
         
-        viewControllers = [tabs.profile, tabs.home]
+        viewControllers = [tabs.home, tabs.profile]
         colorNavController()
     }
     
@@ -30,7 +30,7 @@ class TabBarViewController: UITabBarController {
         for item in items {
             item.imageInsets    =  UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
             let unselectedItem  = [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]
-            let selectedItem    = [NSAttributedString.Key.foregroundColor: Constants.Color.whiteLight]
+            let selectedItem    = [NSAttributedString.Key.foregroundColor: UIColor.systemGray3]
             item.setTitleTextAttributes(unselectedItem, for: .normal)
             item.setTitleTextAttributes(selectedItem, for: .selected)
         }

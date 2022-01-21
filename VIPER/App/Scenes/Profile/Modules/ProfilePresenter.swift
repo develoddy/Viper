@@ -9,26 +9,30 @@
 import UIKit
 
 // MARK: PRESENTER
-class ProfilePresenter  {
+class ProfilePresenter: ProfilePresenterProtocol  {
     
-    // MARK: - PROPERTIES
+    // MARK: PROPERTIES
     weak var view: ProfileViewProtocol?
     var interactor: ProfileInteractorInputProtocol?
     var wireFrame: ProfileWireFrameProtocol?
+    var emailReceivedFromHome: String?
+    var nameReceivedFromHome: String?
+    var tokenReceivedFromHome: String?
     
-    // MARK: - CLOSURES
+    // MARK: CLOSURES
     var viewModel: [Userpost] = [] {
         didSet {
             self.view?.updateUI()
         }
     }
-}
-
-// MARK: - INPUT COLLECTION
-extension ProfilePresenter: ProfilePresenterProtocol {
     
-    // SE LLAMA AL INTERACTOR
-    func viewDidLoad(email: String, token: String) {
+    
+    // MARK: FUNCTIONS
+    // LOS DATOS QUE LLEGAN DEL MODULO HOMEVIEW SE LO PASAMOS AL INTERACTOR
+    func viewDidLoad() {
+        guard let email = emailReceivedFromHome, let token = tokenReceivedFromHome else {
+            return
+        }
         self.interactor?.interactorGetData(email: email, token: token)
         self.view?.startActivity()
     }
@@ -59,7 +63,7 @@ extension ProfilePresenter: ProfilePresenterProtocol {
 }
 
 
-// TODO: - OUTPUT
+// MARK: - OUTPUT
 extension ProfilePresenter: ProfileInteractorOutputProtocol {
     
     // TODO: RECIBE DE VUELTA LOS DATOS DEL INTERACTROR

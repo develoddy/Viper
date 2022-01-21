@@ -45,8 +45,7 @@ class ProfileView: UIViewController {
     
     // SE LLAMA AL PRESENTER
     func loadData() {
-        guard let token = token.getUserToken().token else { return }
-        self.presenter?.viewDidLoad(email: "eddylujann@gmail.com", token: token)
+        self.presenter?.viewDidLoad()
     }
     
     // VIEWDIDLAYOUTSUBVIEWS

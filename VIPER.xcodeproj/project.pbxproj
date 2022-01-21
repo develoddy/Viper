@@ -229,62 +229,6 @@
 			path = Ui;
 			sourceTree = "<group>";
 		};
-		B31963CB2796D07B00A23628 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D486279464A9006B4CCA /* ProfileView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B31963CC2796D08400A23628 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D482279464A9006B4CCA /* ProfilePresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		B31963CD2796D08A00A23628 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D485279464A9006B4CCA /* ProfileInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		B31963CE2796D09200A23628 /* RemoteManager */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D487279464A9006B4CCA /* ProfileRemoteDataManager.swift */,
-			);
-			path = RemoteManager;
-			sourceTree = "<group>";
-		};
-		B31963CF2796D09B00A23628 /* LocalManager */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D483279464A9006B4CCA /* ProfileLocalDataManager.swift */,
-			);
-			path = LocalManager;
-			sourceTree = "<group>";
-		};
-		B31963D02796D0AE00A23628 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D484279464A9006B4CCA /* ProfileProtocols.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		B31963D12796D0B700A23628 /* Wireframe */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */,
-			);
-			path = Wireframe;
-			sourceTree = "<group>";
-		};
 		B31963DD2796FD1F00A23628 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,13 +242,13 @@
 		B31963E62797F34400A23628 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B31963D12796D0B700A23628 /* Wireframe */,
-				B31963D02796D0AE00A23628 /* Protocol */,
-				B31963CF2796D09B00A23628 /* LocalManager */,
-				B31963CE2796D09200A23628 /* RemoteManager */,
-				B31963CD2796D08A00A23628 /* Interactor */,
-				B31963CC2796D08400A23628 /* Presenter */,
-				B31963CB2796D07B00A23628 /* View */,
+				B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */,
+				B3A4D484279464A9006B4CCA /* ProfileProtocols.swift */,
+				B3A4D483279464A9006B4CCA /* ProfileLocalDataManager.swift */,
+				B3A4D487279464A9006B4CCA /* ProfileRemoteDataManager.swift */,
+				B3A4D485279464A9006B4CCA /* ProfileInteractor.swift */,
+				B3A4D482279464A9006B4CCA /* ProfilePresenter.swift */,
+				B3A4D486279464A9006B4CCA /* ProfileView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -355,13 +299,13 @@
 		B31963F0279884FC00A23628 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B3A4D4432791A722006B4CCA /* WireFrame */,
-				B3A4D43F2791A6C9006B4CCA /* Protocol */,
-				B3A4D43E2791A6BE006B4CCA /* LocalManager */,
-				B3A4D4422791A711006B4CCA /* RemoteManager */,
-				B3A4D4402791A6D2006B4CCA /* Interactor */,
-				B3A4D43D2791A6A8006B4CCA /* Presenter */,
-				B3A4D4412791A6E7006B4CCA /* View */,
+				B3A4D4352791A5FF006B4CCA /* HomeWireFrame.swift */,
+				B3A4D4312791A5FF006B4CCA /* HomeProtocols.swift */,
+				B3A4D4302791A5FF006B4CCA /* HomeLocalDataManager.swift */,
+				B3A4D4342791A5FF006B4CCA /* HomeRemoteDataManager.swift */,
+				B3A4D4322791A5FF006B4CCA /* HomeInteractor.swift */,
+				B3A4D42F2791A5FF006B4CCA /* HomePresenter.swift */,
+				B3A4D4332791A5FF006B4CCA /* HomeView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -450,62 +394,6 @@
 				B31963F0279884FC00A23628 /* Modules */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		B3A4D43D2791A6A8006B4CCA /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D42F2791A5FF006B4CCA /* HomePresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		B3A4D43E2791A6BE006B4CCA /* LocalManager */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4302791A5FF006B4CCA /* HomeLocalDataManager.swift */,
-			);
-			path = LocalManager;
-			sourceTree = "<group>";
-		};
-		B3A4D43F2791A6C9006B4CCA /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4312791A5FF006B4CCA /* HomeProtocols.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		B3A4D4402791A6D2006B4CCA /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4322791A5FF006B4CCA /* HomeInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		B3A4D4412791A6E7006B4CCA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4332791A5FF006B4CCA /* HomeView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B3A4D4422791A711006B4CCA /* RemoteManager */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4342791A5FF006B4CCA /* HomeRemoteDataManager.swift */,
-			);
-			path = RemoteManager;
-			sourceTree = "<group>";
-		};
-		B3A4D4432791A722006B4CCA /* WireFrame */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4352791A5FF006B4CCA /* HomeWireFrame.swift */,
-			);
-			path = WireFrame;
 			sourceTree = "<group>";
 		};
 		B3A4D4442791BF02006B4CCA /* Cell */ = {

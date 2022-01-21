@@ -131,8 +131,39 @@ extension HomeView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension HomeView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let count = indexPath.section
+        let boxes = 7
+        let position = count % boxes == boxes ? count/boxes : ((count - (count % boxes)) / boxes)
+        guard let data = presenter?.cellForRowAt(at: position) else { return }
+        let model: HomeFeedRenderViewModel = data
+        let subSection = count % boxes
+        
+        switch subSection {
+        case 1:
+            switch model.post.renderType {
+            case .primaryContent(provider: let userpost):
+                guard let email = userpost.userAuthor?.email,
+                      let name = userpost.userAuthor?.name,
+                      let token = token.getUserToken().token else {
+                    return
+                }
+                self.presenter?.gotoProfileScreen(email: email, name: name, token: token)
+            default: print("Erro model.post.renderType")
+            }
+        case 2: break // Postimage
+        case 3: break // Action
+        case 4: break // Description
+        case 5: break // General
+        case 6: break // Footer
+        default: print("Error switch Home")
+        }
+        
+    }
 }
+
+
+
 
 
 // MARK: - EXTENSION

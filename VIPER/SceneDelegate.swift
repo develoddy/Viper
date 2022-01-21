@@ -11,10 +11,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    
     // MARK: VALIDAMOS SI EL USUARIO TIENE EL TOKEN O SI NO ESTÁ LOGUEADO
     // SI TIENE EL TOKEN ENTONCES MOSTRAMOS EL TABBARCONTROLLER
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
         //MARK: PROPERTIES
@@ -27,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if token != nil {
             let submodules = (
                 home: HomeWireFrame.createHomeModule(),
-                profile: ProfileWireFrame.createProfileModule())
+                profile: ProfileWireFrame.createProfileModule(email: "", name: "", token: ""))
 
             let window                  = UIWindow(windowScene: windowScene)
             let tabBarController        = TabBarModuleBuilder.build(usingSubmodules: submodules)
@@ -42,30 +40,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window                 = window
             window.makeKeyAndVisible()
         }
-        
-        
-        
-        //        if let windowScene = scene as? UIWindowScene {
-        //             let window = UIWindow(windowScene: windowScene)
-        //             let vc = LoginWireFrame.createLoginModule()
-        //             window.rootViewController =  vc
-        //             self.window = window
-        //             window.makeKeyAndVisible()
-        //         }
-        
-        //        if let windowScene = scene as? UIWindowScene {
-        //            let window = UIWindow(windowScene: windowScene)
-        //            let submodules = (
-        //                home: HomeWireFrame.createHomeModule(),
-        //                profile: ProfileWireFrame.createProfileModule()
-        //            )
-        //
-        //            let tabBarController = TabBarModuleBuilder.build(usingSubmodules: submodules)
-        //
-        //             window.rootViewController =  tabBarController
-        //             self.window = window
-        //             window.makeKeyAndVisible()
-        //         }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -100,9 +74,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     //MARK: ROOT VIEWCONTROLLER
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard let window = self.window else { return }
-        window.rootViewController = vc
-        vc.modalPresentationStyle = .fullScreen
-        UIView.transition(with: window, duration: 0.8, options: .transitionCurlUp, animations: nil)
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.modalPresentationStyle = .fullScreen
+        window.rootViewController?.present(navigationController, animated: true)
+        
+        // window.rootViewController = vc
+        // vc.modalPresentationStyle = .fullScreen
+        // window.rootViewController?.present(vc, animated: true)
+        // window.rootViewController?.present(UINavigationController(rootViewController:navigationController), animated: true)
+        // UIView.transition(with: window, duration: 0.8, options: .transitionCurlUp, animations: nil)
     }
 }
 

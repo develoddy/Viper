@@ -15,6 +15,7 @@ class HomeView: UIViewController {
     var presenter: HomePresenterProtocol?
     var homeUI = HomeUI()
     let cellSpacingHeight: CGFloat = 5
+    var token = Token()
     
     
     // MARK: - LIFECICLY

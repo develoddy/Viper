@@ -166,7 +166,7 @@ class IGFeedPostDescriptionTableViewCell: UITableViewCell {
         for x in 0..<3 {
             let image = UIImageView()
             image.backgroundColor = .systemPink
-            image.tintColor = Constants.Color.black
+            image.tintColor = .black
             image.layer.borderWidth = 2
             image.layer.borderColor = UIColor.white.cgColor
             image.clipsToBounds = true
