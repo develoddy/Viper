@@ -82,6 +82,14 @@
 		B3EF850E279ED25C0076D443 /* CommentsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF850D279ED25C0076D443 /* CommentsUI.swift */; };
 		B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF850F279EE66A0076D443 /* PostCommentsListTableViewCell.swift */; };
 		B3EF8512279EE6DE0076D443 /* CustomHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8511279EE6DE0076D443 /* CustomHeaderTableViewCell.swift */; };
+		B3EF851B279F15050076D443 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8514279F15050076D443 /* SearchPresenter.swift */; };
+		B3EF851C279F15050076D443 /* SearchLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8515279F15050076D443 /* SearchLocalDataManager.swift */; };
+		B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8516279F15050076D443 /* SearchProtocols.swift */; };
+		B3EF851E279F15050076D443 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8517279F15050076D443 /* SearchInteractor.swift */; };
+		B3EF851F279F15050076D443 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8518279F15050076D443 /* SearchView.swift */; };
+		B3EF8520279F15050076D443 /* SearchRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8519279F15050076D443 /* SearchRemoteDataManager.swift */; };
+		B3EF8521279F15050076D443 /* SearchWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF851A279F15050076D443 /* SearchWireFrame.swift */; };
+		B3EF8525279F15940076D443 /* SearchUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8524279F15940076D443 /* SearchUI.swift */; };
 		D598549660E83303FC87F2B3 /* Pods_VIPER_VIPERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E70BF9B390B942AEE1C133A1 /* Pods_VIPER_VIPERUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -186,6 +194,14 @@
 		B3EF850D279ED25C0076D443 /* CommentsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUI.swift; sourceTree = "<group>"; };
 		B3EF850F279EE66A0076D443 /* PostCommentsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentsListTableViewCell.swift; sourceTree = "<group>"; };
 		B3EF8511279EE6DE0076D443 /* CustomHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		B3EF8514279F15050076D443 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		B3EF8515279F15050076D443 /* SearchLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocalDataManager.swift; sourceTree = "<group>"; };
+		B3EF8516279F15050076D443 /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
+		B3EF8517279F15050076D443 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		B3EF8518279F15050076D443 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		B3EF8519279F15050076D443 /* SearchRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3EF851A279F15050076D443 /* SearchWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWireFrame.swift; sourceTree = "<group>"; };
+		B3EF8524279F15940076D443 /* SearchUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUI.swift; sourceTree = "<group>"; };
 		B6D91E06A3B9E3BDF69F9427 /* Pods-VIPER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER.debug.xcconfig"; path = "Target Support Files/Pods-VIPER/Pods-VIPER.debug.xcconfig"; sourceTree = "<group>"; };
 		E70BF9B390B942AEE1C133A1 /* Pods_VIPER_VIPERUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VIPER_VIPERUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66E627C3D62E816471154AC /* Pods-VIPER-VIPERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER-VIPERUITests.debug.xcconfig"; path = "Target Support Files/Pods-VIPER-VIPERUITests/Pods-VIPER-VIPERUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -400,6 +416,7 @@
 		B3A4D42D2791A3EC006B4CCA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B3EF8513279F14DA0076D443 /* Search */,
 				B3A4D47A279410AC006B4CCA /* TabBar */,
 				B3A4D4452792C1DA006B4CCA /* Onboarding */,
 				B3A4D48127946487006B4CCA /* Profile */,
@@ -647,6 +664,29 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		B3EF8513279F14DA0076D443 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF8522279F15740076D443 /* UI */,
+				B3EF8516279F15050076D443 /* SearchProtocols.swift */,
+				B3EF851A279F15050076D443 /* SearchWireFrame.swift */,
+				B3EF8515279F15050076D443 /* SearchLocalDataManager.swift */,
+				B3EF8519279F15050076D443 /* SearchRemoteDataManager.swift */,
+				B3EF8517279F15050076D443 /* SearchInteractor.swift */,
+				B3EF8514279F15050076D443 /* SearchPresenter.swift */,
+				B3EF8518279F15050076D443 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		B3EF8522279F15740076D443 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF8524279F15940076D443 /* SearchUI.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -887,12 +927,14 @@
 			files = (
 				B3A0668E27919A0B00271073 /* ViewController.swift in Sources */,
 				B3A4D4522792C203006B4CCA /* LoginRemoteDataManager.swift in Sources */,
+				B3EF851B279F15050076D443 /* SearchPresenter.swift in Sources */,
 				B3A4D48C279464A9006B4CCA /* ProfileInteractor.swift in Sources */,
 				B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */,
 				B31963DA2796D6E100A23628 /* ProfileCollectionsViews.swift in Sources */,
 				B3A4D4502792C203006B4CCA /* LoginInteractor.swift in Sources */,
 				B3A4D48B279464A9006B4CCA /* ProfileProtocols.swift in Sources */,
 				B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */,
+				B3EF8521279F15050076D443 /* SearchWireFrame.swift in Sources */,
 				B31963BB279630E200A23628 /* HomeUI.swift in Sources */,
 				B3EF8505279ED1D70076D443 /* CommentsView.swift in Sources */,
 				B3A4D489279464A9006B4CCA /* ProfilePresenter.swift in Sources */,
@@ -909,6 +951,7 @@
 				B31963C727963E0700A23628 /* IGFeedPostFooterTableViewCell.swift in Sources */,
 				B31963D82796D11700A23628 /* ProfileUI.swift in Sources */,
 				B3A4D4512792C203006B4CCA /* LoginView.swift in Sources */,
+				B3EF8520279F15050076D443 /* SearchRemoteDataManager.swift in Sources */,
 				B3A4D46B2792C618006B4CCA /* Constants.swift in Sources */,
 				B3A4D48A279464A9006B4CCA /* ProfileLocalDataManager.swift in Sources */,
 				B31963F42799801000A23628 /* LoadingButton.swift in Sources */,
@@ -918,6 +961,7 @@
 				B3A4D470279367EA006B4CCA /* KeyChain.swift in Sources */,
 				B3A4D4372791A5FF006B4CCA /* HomeLocalDataManager.swift in Sources */,
 				B3A4D47627937092006B4CCA /* Token.swift in Sources */,
+				B3EF851F279F15050076D443 /* SearchView.swift in Sources */,
 				B3EF8501279ED1D70076D443 /* CommentsPresenter.swift in Sources */,
 				B3EF850E279ED25C0076D443 /* CommentsUI.swift in Sources */,
 				B3A4D47E27945D37006B4CCA /* TabBarModuleBuilder.swift in Sources */,
@@ -926,6 +970,7 @@
 				B3A4D44D2792C203006B4CCA /* LoginPresenter.swift in Sources */,
 				B31963CA2796CCCC00A23628 /* HomeExtension.swift in Sources */,
 				B3A4D4652792C5B1006B4CCA /* WSApiRest.swift in Sources */,
+				B3EF8525279F15940076D443 /* SearchUI.swift in Sources */,
 				B3EF8512279EE6DE0076D443 /* CustomHeaderTableViewCell.swift in Sources */,
 				B31963C527963DEC00A23628 /* IGFeedPostGeneralTableViewCell.swift in Sources */,
 				B3A4D4382791A5FF006B4CCA /* HomeProtocols.swift in Sources */,
@@ -942,12 +987,15 @@
 				B3A4D44F2792C203006B4CCA /* LoginProtocols.swift in Sources */,
 				B3A4D4392791A5FF006B4CCA /* HomeInteractor.swift in Sources */,
 				B3A4D4672792C5BF006B4CCA /* WSTranslator.swift in Sources */,
+				B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */,
 				B3A4D47327936B8F006B4CCA /* APIService.swift in Sources */,
 				B3A4D43C2791A5FF006B4CCA /* HomeWireFrame.swift in Sources */,
 				B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */,
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
+				B3EF851C279F15050076D443 /* SearchLocalDataManager.swift in Sources */,
 				B3EF8507279ED1D70076D443 /* CommentsWireFrame.swift in Sources */,
+				B3EF851E279F15050076D443 /* SearchInteractor.swift in Sources */,
 				B31963C327963DB800A23628 /* IGFeedPostDescriptionTableViewCell.swift in Sources */,
 				B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,

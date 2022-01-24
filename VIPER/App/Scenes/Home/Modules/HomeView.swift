@@ -122,13 +122,6 @@ extension HomeView: HomeViewProtocol {
 extension HomeView: IGFeedPostActionsTableViewCellProtocol {
     func didTapCommentButton(model: Userpost) {
         print("click comentarios")
-        //        let vc = ListCommentsViewController(model: model)
-        //        vc.title = "Comentarios"
-        //        vc.navigationItem.largeTitleDisplayMode = .never
-        //        navigationController?.pushViewController(vc, animated: true)
-        
-        
         self.presenter?.gotoCommentsScreen(userpost: model)
-        
     }
 }

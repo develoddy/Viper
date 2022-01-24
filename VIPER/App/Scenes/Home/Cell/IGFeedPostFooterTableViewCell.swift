@@ -37,9 +37,9 @@ class IGFeedPostFooterTableViewCell: UITableViewCell {
     
     private let boxTextButton : UIButton = {
         let button = UIButton()
-        button.setTitle("Add a comment...", for: .normal)
+        button.setTitle("Eddy, haz un comentario...", for: .normal)
         button.contentHorizontalAlignment = .left
-        button.setTitleColor(Constants.Color.appBlue, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = Constants.fontSize.regular
         return button
     }()

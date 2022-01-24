@@ -87,8 +87,7 @@ extension HomeView: UITableViewDataSource {
                 case .footer(let footer):
                     let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostFooterTableViewCell.identifier, for: indexPath) as! IGFeedPostFooterTableViewCell
                     cell.configure(with: footer)
-                    //cell.delegate = delegateFooter
-                    ///self.separator(cell: cell)
+                    // cell.delegate = delegateFooter
                     return cell
                 case .comments, .header, .primaryContent, .actions, .descriptions: return UITableViewCell()
                 }
@@ -179,7 +178,7 @@ extension HomeView {
             let button = UIButton(frame: CGRect(x: 10, y: 10, width: 10, height: 0))
             button.setTitle("¡Eddy, dile al mundo lo que piensas!", for: .normal)
             button.contentHorizontalAlignment = .left
-            button.setTitleColor(Constants.Color.appBlue, for: .normal)
+            button.setTitleColor(UIColor.black, for: .normal)
             button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
             button.clipsToBounds = true
             button.layer.masksToBounds = true

@@ -25,7 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if token != nil {
             let submodules = (
                 home: HomeWireFrame.createHomeModule(),
-                profile: ProfileWireFrame.createProfileModule(email: "", name: "", token: ""))
+                profile: ProfileWireFrame.createProfileModule(email: "", name: "", token: ""),
+                search: SearchWireFrame.createSearchModule() )
 
             let window                  = UIWindow(windowScene: windowScene)
             let tabBarController        = TabBarModuleBuilder.build(usingSubmodules: submodules)

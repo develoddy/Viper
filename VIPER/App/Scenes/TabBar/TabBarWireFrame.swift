@@ -13,7 +13,8 @@ class TabBarWireFrame {
     
     typealias Submodules = (
         home: UIViewController,
-        profile: UIViewController
+        profile: UIViewController,
+        search: UIViewController
     )
     
     init(viewController: UIViewController) {
@@ -28,13 +29,16 @@ extension TabBarWireFrame {
     static func tabs(unsingSubmodules submodules: Submodules) -> Tabs {
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 11)
         let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 12)
+        let searchTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "magnifyingglass"), tag: 12)
         
         submodules.home.tabBarItem = homeTabBarItem
         submodules.profile.tabBarItem = profileTabBarItem
+        submodules.search.tabBarItem = searchTabBarItem
         
         return (
             home: submodules.home,
-            profile: submodules.profile
+            profile: submodules.profile,
+            search: submodules.search
         )
     }
 }

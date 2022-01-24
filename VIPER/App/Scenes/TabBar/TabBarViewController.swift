@@ -9,7 +9,8 @@ import UIKit
 
 typealias Tabs = (
     home: UIViewController,
-    profile: UIViewController
+    profile: UIViewController,
+    search: UIViewController
 )
 
 class TabBarViewController: UITabBarController {
@@ -21,7 +22,7 @@ class TabBarViewController: UITabBarController {
         UITabBar.appearance().backgroundColor = .systemBackground
         UITabBar.appearance().isTranslucent = false
         
-        viewControllers = [tabs.home, tabs.profile]
+        viewControllers = [tabs.search tabs.home, tabs.profile]
         colorNavController()
     }
     
