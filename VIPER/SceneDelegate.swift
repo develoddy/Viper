@@ -74,15 +74,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     //MARK: ROOT VIEWCONTROLLER
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard let window = self.window else { return }
+        
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.modalPresentationStyle = .fullScreen
         window.rootViewController?.present(navigationController, animated: true)
         
-        // window.rootViewController = vc
-        // vc.modalPresentationStyle = .fullScreen
-        // window.rootViewController?.present(vc, animated: true)
-        // window.rootViewController?.present(UINavigationController(rootViewController:navigationController), animated: true)
-        // UIView.transition(with: window, duration: 0.8, options: .transitionCurlUp, animations: nil)
+        
+        
+        //        let navigationController = UINavigationController(rootViewController: vc)
+        //        navigationController.modalPresentationStyle = .fullScreen
+        //        //navigationController.navigationItem.title = "Title"
+        //        //navController.tabBarItem.title = "Home View"
+        //        let tabController = UITabBarController()
+        //        tabController.viewControllers = [navigationController
+        //        tabController.modalPresentationStyle = .fullScreen
+        //        window.rootViewController?.present(tabController, animated: true)
     }
 }
 

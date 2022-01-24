@@ -27,8 +27,8 @@ class HomeView: UIViewController {
         configureTableView()
         configureDelegates()
         configureActivity()
-        
-        // COMUNICO A MI VISTA CON EL PRESENTER
+        headerTableView()
+        setupLeftNavItems()
         presenter?.viewDidLoad()
     }
     
@@ -39,9 +39,50 @@ class HomeView: UIViewController {
         homeUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(homeUI)
+    }
+    
+    func headerTableView() {
+        homeUI.tableView.tableHeaderView = createTableHeaderView()
+    }
+
+    func setupLeftNavItems() {
+        // Create the navigation bar
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 50, width: view.width, height: 50))
+        navigationBar.backgroundColor = .white
+        navigationBar.isTranslucent = false
+
+        // Create a navigation item with a title
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Timwider"
+
+        // Create left and right button for navigation item
+        //let leftButton =  UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(xx) )
+        let profileButton = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: nil)
+        
+        let messengerButton = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: nil)
+        let chatButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: nil)
+
+        messengerButton.tintColor = .black
+        chatButton.tintColor = .black
+        profileButton.tintColor = .black
+        
+        // Create two buttons for the navigation item
+        navigationItem.leftBarButtonItem = profileButton
+        navigationItem.rightBarButtonItems = [chatButton, messengerButton]
+
+        // Assign the navigation item to the navigation bar
+        navigationBar.items = [navigationItem]
+        
+        // Make the navigation bar a subview of the current view controller
+        self.view.addSubview(navigationBar)
     }
 }
 
@@ -66,12 +107,28 @@ extension HomeView: HomeViewProtocol {
     }
     
     func stopActivity() {
-        DispatchQueue.main.asyncAfter(deadline: .now()+4) {
+        //DispatchQueue.main.asyncAfter(deadline: .now()+4) {
+        DispatchQueue.main.async {
             self.homeUI.activityIndicator.stopAnimating()
             self.homeUI.activityIndicator.hidesWhenStopped = true
             UIView.animate(withDuration: 0.2, animations: {
                 self.homeUI.tableView.alpha = 1.0
             })
         }
+    }
+}
+
+// MARK: ACTIONS
+extension HomeView: IGFeedPostActionsTableViewCellProtocol {
+    func didTapCommentButton(model: Userpost) {
+        print("click comentarios")
+        //        let vc = ListCommentsViewController(model: model)
+        //        vc.title = "Comentarios"
+        //        vc.navigationItem.largeTitleDisplayMode = .never
+        //        navigationController?.pushViewController(vc, animated: true)
+        
+        
+        self.presenter?.gotoCommentsScreen(userpost: model)
+        
     }
 }

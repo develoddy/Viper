@@ -71,6 +71,17 @@
 		B3A4D48F279464A9006B4CCA /* ProfileWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */; };
 		B3A4D49227958A32006B4CCA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D49127958A31006B4CCA /* Extensions.swift */; };
 		B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D494279596F4006B4CCA /* LoginUI.swift */; };
+		B3EF8501279ED1D70076D443 /* CommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FA279ED1D70076D443 /* CommentsPresenter.swift */; };
+		B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FB279ED1D70076D443 /* CommentsLocalDataManager.swift */; };
+		B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FC279ED1D70076D443 /* CommentsProtocols.swift */; };
+		B3EF8504279ED1D70076D443 /* CommentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FD279ED1D70076D443 /* CommentsInteractor.swift */; };
+		B3EF8505279ED1D70076D443 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FE279ED1D70076D443 /* CommentsView.swift */; };
+		B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FF279ED1D70076D443 /* CommentsRemoteDataManager.swift */; };
+		B3EF8507279ED1D70076D443 /* CommentsWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8500279ED1D70076D443 /* CommentsWireFrame.swift */; };
+		B3EF850C279ED24D0076D443 /* CommentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF850B279ED24D0076D443 /* CommentsExtension.swift */; };
+		B3EF850E279ED25C0076D443 /* CommentsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF850D279ED25C0076D443 /* CommentsUI.swift */; };
+		B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF850F279EE66A0076D443 /* PostCommentsListTableViewCell.swift */; };
+		B3EF8512279EE6DE0076D443 /* CustomHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8511279EE6DE0076D443 /* CustomHeaderTableViewCell.swift */; };
 		D598549660E83303FC87F2B3 /* Pods_VIPER_VIPERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E70BF9B390B942AEE1C133A1 /* Pods_VIPER_VIPERUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +175,17 @@
 		B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWireFrame.swift; sourceTree = "<group>"; };
 		B3A4D49127958A31006B4CCA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B3A4D494279596F4006B4CCA /* LoginUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
+		B3EF84FA279ED1D70076D443 /* CommentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPresenter.swift; sourceTree = "<group>"; };
+		B3EF84FB279ED1D70076D443 /* CommentsLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsLocalDataManager.swift; sourceTree = "<group>"; };
+		B3EF84FC279ED1D70076D443 /* CommentsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsProtocols.swift; sourceTree = "<group>"; };
+		B3EF84FD279ED1D70076D443 /* CommentsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsInteractor.swift; sourceTree = "<group>"; };
+		B3EF84FE279ED1D70076D443 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		B3EF84FF279ED1D70076D443 /* CommentsRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3EF8500279ED1D70076D443 /* CommentsWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsWireFrame.swift; sourceTree = "<group>"; };
+		B3EF850B279ED24D0076D443 /* CommentsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsExtension.swift; sourceTree = "<group>"; };
+		B3EF850D279ED25C0076D443 /* CommentsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUI.swift; sourceTree = "<group>"; };
+		B3EF850F279EE66A0076D443 /* PostCommentsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentsListTableViewCell.swift; sourceTree = "<group>"; };
+		B3EF8511279EE6DE0076D443 /* CustomHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		B6D91E06A3B9E3BDF69F9427 /* Pods-VIPER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER.debug.xcconfig"; path = "Target Support Files/Pods-VIPER/Pods-VIPER.debug.xcconfig"; sourceTree = "<group>"; };
 		E70BF9B390B942AEE1C133A1 /* Pods_VIPER_VIPERUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VIPER_VIPERUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66E627C3D62E816471154AC /* Pods-VIPER-VIPERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER-VIPERUITests.debug.xcconfig"; path = "Target Support Files/Pods-VIPER-VIPERUITests/Pods-VIPER-VIPERUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -389,6 +411,7 @@
 		B3A4D42E2791A404006B4CCA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B3EF84F9279ED1A90076D443 /* Pages */,
 				B31963B9279630CE00A23628 /* Ui */,
 				B3A4D4442791BF02006B4CCA /* Cell */,
 				B31963F0279884FC00A23628 /* Modules */,
@@ -580,6 +603,48 @@
 				B3A4D47127936B6B006B4CCA /* Repository */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		B3EF84F9279ED1A90076D443 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF8508279ED1E80076D443 /* Comments */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		B3EF8508279ED1E80076D443 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF850A279ED22A0076D443 /* Cell */,
+				B3EF8509279ED2220076D443 /* Ui */,
+				B3EF84FC279ED1D70076D443 /* CommentsProtocols.swift */,
+				B3EF8500279ED1D70076D443 /* CommentsWireFrame.swift */,
+				B3EF84FB279ED1D70076D443 /* CommentsLocalDataManager.swift */,
+				B3EF84FF279ED1D70076D443 /* CommentsRemoteDataManager.swift */,
+				B3EF84FD279ED1D70076D443 /* CommentsInteractor.swift */,
+				B3EF84FA279ED1D70076D443 /* CommentsPresenter.swift */,
+				B3EF84FE279ED1D70076D443 /* CommentsView.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		B3EF8509279ED2220076D443 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF850B279ED24D0076D443 /* CommentsExtension.swift */,
+				B3EF850D279ED25C0076D443 /* CommentsUI.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		B3EF850A279ED22A0076D443 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF850F279EE66A0076D443 /* PostCommentsListTableViewCell.swift */,
+				B3EF8511279EE6DE0076D443 /* CustomHeaderTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -827,12 +892,17 @@
 				B31963DA2796D6E100A23628 /* ProfileCollectionsViews.swift in Sources */,
 				B3A4D4502792C203006B4CCA /* LoginInteractor.swift in Sources */,
 				B3A4D48B279464A9006B4CCA /* ProfileProtocols.swift in Sources */,
+				B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */,
 				B31963BB279630E200A23628 /* HomeUI.swift in Sources */,
+				B3EF8505279ED1D70076D443 /* CommentsView.swift in Sources */,
 				B3A4D489279464A9006B4CCA /* ProfilePresenter.swift in Sources */,
+				B3EF850C279ED24D0076D443 /* CommentsExtension.swift in Sources */,
 				B3A4D49227958A32006B4CCA /* Extensions.swift in Sources */,
 				B3A4D48E279464A9006B4CCA /* ProfileRemoteDataManager.swift in Sources */,
 				B3A4D48F279464A9006B4CCA /* ProfileWireFrame.swift in Sources */,
+				B3EF8504279ED1D70076D443 /* CommentsInteractor.swift in Sources */,
 				B31963DF2796FD2A00A23628 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
+				B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */,
 				B31963C127963D5800A23628 /* IGFeedPostTableViewCell.swift in Sources */,
 				B3A4D47C27941201006B4CCA /* TabBarViewController.swift in Sources */,
 				B3A4D4692792C5D1006B4CCA /* WSender.swift in Sources */,
@@ -848,12 +918,15 @@
 				B3A4D470279367EA006B4CCA /* KeyChain.swift in Sources */,
 				B3A4D4372791A5FF006B4CCA /* HomeLocalDataManager.swift in Sources */,
 				B3A4D47627937092006B4CCA /* Token.swift in Sources */,
+				B3EF8501279ED1D70076D443 /* CommentsPresenter.swift in Sources */,
+				B3EF850E279ED25C0076D443 /* CommentsUI.swift in Sources */,
 				B3A4D47E27945D37006B4CCA /* TabBarModuleBuilder.swift in Sources */,
 				B3A4D48027945DA7006B4CCA /* TabBarWireFrame.swift in Sources */,
 				B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */,
 				B3A4D44D2792C203006B4CCA /* LoginPresenter.swift in Sources */,
 				B31963CA2796CCCC00A23628 /* HomeExtension.swift in Sources */,
 				B3A4D4652792C5B1006B4CCA /* WSApiRest.swift in Sources */,
+				B3EF8512279EE6DE0076D443 /* CustomHeaderTableViewCell.swift in Sources */,
 				B31963C527963DEC00A23628 /* IGFeedPostGeneralTableViewCell.swift in Sources */,
 				B3A4D4382791A5FF006B4CCA /* HomeProtocols.swift in Sources */,
 				B3A4D4632792C59B006B4CCA /* BCApiRest.swift in Sources */,
@@ -863,6 +936,7 @@
 				B3A4D43A2791A5FF006B4CCA /* HomeView.swift in Sources */,
 				B3A4D43B2791A5FF006B4CCA /* HomeRemoteDataManager.swift in Sources */,
 				B31963DC2796D91300A23628 /* PhotoCollectionViewCell.swift in Sources */,
+				B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */,
 				B3A4D4362791A5FF006B4CCA /* HomePresenter.swift in Sources */,
 				B3A4D46E2793675B006B4CCA /* Closures.swift in Sources */,
 				B3A4D44F2792C203006B4CCA /* LoginProtocols.swift in Sources */,
@@ -873,10 +947,12 @@
 				B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */,
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
+				B3EF8507279ED1D70076D443 /* CommentsWireFrame.swift in Sources */,
 				B31963C327963DB800A23628 /* IGFeedPostDescriptionTableViewCell.swift in Sources */,
 				B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,
+				B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

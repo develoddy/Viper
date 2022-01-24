@@ -28,7 +28,7 @@ class HomePresenter  {
 
 // MARK: - HOME PRESENT PROTOCOL >
 extension HomePresenter: HomePresenterProtocol {
-    
+
     func viewDidLoad() {
         // DECIRLE AL INTERACTOR QUE QUIERE TRAER UNOS DATOS
         guard let token = token.getUserToken().token else { return }
@@ -59,8 +59,14 @@ extension HomePresenter: HomePresenterProtocol {
         return self.viewModel[index]
     }
     
+    // PRESENTER LLAMA AL WIREFRAME PARA CAMBIAR PANTALLA (PROFILE)
     func gotoProfileScreen(email: String, name: String, token: String) {
         self.wireFrame?.navigateToProfile(from: view!, email: email, name: name, token: token)
+    }
+    
+    // PRESENTER LLAMA AL WIREFRAME PARA CAMBIAR PANTALLA (COMMENTS)
+    func gotoCommentsScreen(userpost: Userpost) {
+        self.wireFrame?.navigateToComments(from: view!, userpost: userpost)
     }
 }
 

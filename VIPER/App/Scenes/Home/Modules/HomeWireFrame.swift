@@ -33,11 +33,19 @@ class HomeWireFrame: HomeWireFrameProtocol {
         return viewController
     }
     
-    
+    // NAVIGATE GOTO PROFILE
     func navigateToProfile(from view: HomeViewProtocol, email: String, name: String, token: String) {
         let newProfileView = ProfileWireFrame.createProfileModule(email: email, name: name, token: token)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newProfileView, animated: true)
+        }
+    }
+    
+    // NAVIGATE GOTO LIST COMMENTS
+    func navigateToComments(from view: HomeViewProtocol, userpost: Userpost) {
+        let newListcommentsView = CommentsWireFrame.createCommentsModule(userpost: userpost)
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(newListcommentsView, animated: true)
         }
     }
 }

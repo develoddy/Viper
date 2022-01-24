@@ -22,6 +22,7 @@ protocol HomeWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createHomeModule() -> UIViewController
     func navigateToProfile(from view: HomeViewProtocol, email: String, name: String, token: String)
+    func navigateToComments(from view: HomeViewProtocol, userpost: Userpost)
 }
 
 protocol HomePresenterProtocol: AnyObject {
@@ -34,7 +35,10 @@ protocol HomePresenterProtocol: AnyObject {
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func cellForRowAt(at index: Int) -> HomeFeedRenderViewModel
+    
+    // CAMBIO DE PANTALLAS
     func gotoProfileScreen(email: String, name: String, token: String)
+    func gotoCommentsScreen(userpost: Userpost)
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {
