@@ -9,7 +9,8 @@ import UIKit
 
 typealias Tabs = (
     home: UIViewController,
-    profile: UIViewController
+    profile: UIViewController,
+    search: UIViewController
 )
 
 class TabBarViewController: UITabBarController {
@@ -21,21 +22,16 @@ class TabBarViewController: UITabBarController {
         UITabBar.appearance().backgroundColor = .systemBackground
         UITabBar.appearance().isTranslucent = false
         
-        viewControllers = [tabs.profile, tabs.home]
-        colorNavController()
+        // SE CREA UN NAVIGATION CONTROLLER PARA CADA UIVIEWCONTROLLER
+        let navSearch = UINavigationController(rootViewController: tabs.search)
+        let navHome = UINavigationController(rootViewController: tabs.home)
+        let navProfile = UINavigationController(rootViewController: tabs.profile)
+        viewControllers = [navSearch, navHome, navProfile]
+        
+        // SE CREA UN UIVIEWCONTROLLER NORMAL
+        // viewControllers = [tabs.search, tabs.home, tabs.profile]
     }
-    
-    private func colorNavController() {
-        guard let items = tabBar.items else { return }
-        for item in items {
-            item.imageInsets    =  UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
-            let unselectedItem  = [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]
-            let selectedItem    = [NSAttributedString.Key.foregroundColor: Constants.Color.whiteLight]
-            item.setTitleTextAttributes(unselectedItem, for: .normal)
-            item.setTitleTextAttributes(selectedItem, for: .selected)
-        }
-    }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -45,6 +41,17 @@ class TabBarViewController: UITabBarController {
         self.modalPresentationStyle = .fullScreen
     }
     
+    //    private func colorNavController() {
+    //        guard let items = tabBar.items else { return }
+    //        for item in items {
+    //            item.imageInsets    =  UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+    //            let unselectedItem  = [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]
+    //            let selectedItem    = [NSAttributedString.Key.foregroundColor: UIColor.systemGray3]
+    //            item.setTitleTextAttributes(unselectedItem, for: .normal)
+    //            item.setTitleTextAttributes(selectedItem, for: .selected)
+    //        }
+    //    }
+    //
 
     /*
     // MARK: - Navigation

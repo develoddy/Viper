@@ -33,24 +33,23 @@ class LoginView: UIViewController {
         view.addSubview(loginUI)
         
         // Spinner
-        loginUI.activityIndicator.center = view.center
-        loginUI.activityIndicator.hidesWhenStopped = true
+        //loginUI.activityIndicator.center = view.center
+        //loginUI.activityIndicator.hidesWhenStopped = true
         
         // Button Login
         let loginButton = loginUI.loginButton
         loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-        //didTapLoginButton()
+        didTapLoginButton()
     }
     
     // VIEW DID LAYOUT SUB VIEWS
     override func viewDidLayoutSubviews() {
         self.loginUI.frame = view.bounds
-        
-        //loginUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
     }
     
     // TAP LOGIN
     @objc private func didTapLoginButton() {
+        
         guard let email = loginUI.emailText.text,
               let password = loginUI.passwordText.text else {
                   return
@@ -69,13 +68,15 @@ extension LoginView: LoginViewProtocol {
     // ANIMATE ACTIVITY
     func startActivity() {
         DispatchQueue.main.async {
-            self.loginUI.activityIndicator.startAnimating()
+            self.loginUI.loginButton.showLoading()
+            //self.loginUI.activityIndicator.startAnimating()
         }
     }
     
     // STOP ACTIVITY
     func stopActivity() {
-        self.loginUI.activityIndicator.stopAnimating()
-        self.loginUI.activityIndicator.hidesWhenStopped = true
+        //self.loginUI.activityIndicator.stopAnimating()
+        //self.loginUI.activityIndicator.hidesWhenStopped = true
+        self.loginUI.loginButton.hideLoading()
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 
-// MARK: - UITableViewDataSource
+// MARK: UITableViewDataSource
 extension HomeView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,9 +52,10 @@ extension HomeView: UITableViewDataSource {
             // ACTION
             case 3:
                 switch model.actions.renderType {
-                case .actions(_):
+                case .actions(let userpost):
                     let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostActionsTableViewCell.identifier, for: indexPath) as! IGFeedPostActionsTableViewCell
-                        //cell.delegate = delegateAction
+                    cell.setCellWithValuesOf(userpost)
+                    cell.delegate = self
                     return cell
                     case .comments, .header, .primaryContent, .descriptions, .footer : return UITableViewCell()
                 }
@@ -86,8 +87,7 @@ extension HomeView: UITableViewDataSource {
                 case .footer(let footer):
                     let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostFooterTableViewCell.identifier, for: indexPath) as! IGFeedPostFooterTableViewCell
                     cell.configure(with: footer)
-                    //cell.delegate = delegateFooter
-                    ///self.separator(cell: cell)
+                    // cell.delegate = delegateFooter
                     return cell
                 case .comments, .header, .primaryContent, .actions, .descriptions: return UITableViewCell()
                 }
@@ -131,7 +131,102 @@ extension HomeView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension HomeView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let count = indexPath.section
+        let boxes = 7
+        let position = count % boxes == boxes ? count/boxes : ((count - (count % boxes)) / boxes)
+        guard let data = presenter?.cellForRowAt(at: position) else { return }
+        let model: HomeFeedRenderViewModel = data
+        let subSection = count % boxes
+        
+        switch subSection {
+        case 1:
+            switch model.post.renderType {
+            case .primaryContent(provider: let userpost):
+                guard let email = userpost.userAuthor?.email,
+                      let name = userpost.userAuthor?.name,
+                      let token = token.getUserToken().token else {
+                    return
+                }
+                self.presenter?.gotoProfileScreen(email: email, name: name, token: token)
+            default: print("Erro model.post.renderType")
+            }
+        case 2: break // Postimage
+        case 3: break // Action
+        case 4: break // Description
+        case 5: break // General
+        case 6: break // Footer
+        default: print("Error switch Home")
+        }
+        
+    }
+}
+
+extension HomeView {
+    
+    // MARK: Header TableView
+    public func createTableHeaderView() -> UIView {
+        
+        let imageView: UIImageView = {
+            let imageView = UIImageView(image: UIImage(systemName: "person.circle"))
+            imageView.tintColor = .black
+            imageView.contentMode = .scaleAspectFit
+            return imageView
+        }()
+        
+        let writePostButton: UIButton = {
+            let button = UIButton(frame: CGRect(x: 10, y: 10, width: 10, height: 0))
+            button.setTitle("¡Eddy, dile al mundo lo que piensas!", for: .normal)
+            button.contentHorizontalAlignment = .left
+            button.setTitleColor(UIColor.black, for: .normal)
+            button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+            button.clipsToBounds = true
+            button.layer.masksToBounds = true
+            //button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
+            return button
+        }()
+        
+        let uploadImageButton: UIButton = {
+            let button = UIButton()
+            button.setImage(UIImage(systemName: "photo.on.rectangle.angled"), for: .normal)
+            button.contentMode = .scaleAspectFit
+            button.tintColor = .white
+            return button
+        }()
+        
+        let separatorView: UIView = {
+            let view = UIView()
+            view.backgroundColor = .systemGray5
+            view.translatesAutoresizingMaskIntoConstraints  = false
+            return view
+        }()
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
+        //headerView.backgroundColor = .systemPink
+        
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 5, y: 10, width:40, height: 40)
+        imageView.layer.cornerRadius = imageView.height/2
+        
+        let viewWidth = UIScreen.main.bounds.size.width
+        let buttonWidth = viewWidth > 500 ? 220.0 : viewWidth/6
+        let labelHeight = headerView.height/2
+        
+        writePostButton.frame = CGRect(x: imageView.right+10, y: 12, width: headerView.width-8-imageView.width-buttonWidth,height: labelHeight)
+        writePostButton.layer.cornerRadius = writePostButton.height/2
+        uploadImageButton.frame = CGRect(x: writePostButton.right+5,y: 12,width: buttonWidth-10,height: labelHeight)
+        
+        //writePostButton.addTarget(self, action: #selector(didTapWritePostButton), for: .touchUpInside)
+        
+        headerView.addSubview(separatorView)
+        headerView.addSubview(imageView)
+        headerView.addSubview(imageView)
+        headerView.addSubview(writePostButton)
+        headerView.addSubview(uploadImageButton)
+        
+        // self.separatorView(separatorView: separatorView, headerView: headerView)
+        return headerView
+    }
 }
 
 

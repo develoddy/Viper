@@ -17,12 +17,25 @@ protocol APIServiceProtocol: AnyObject {
     //func apiPostCaptionUpdate( caption: Caption, idpost: Int, token: String, completion : @escaping ((Result<Operation, Error>)) -> ())
     
     func login(email: String?, password: String?, completion: @escaping (Bool) -> Void)
+    func searchResult(_ objSearch: UserSearchBE, _ token: String?, completion : @escaping ((Result<UserPostData, Error>)) -> ())
 }
 
 
 
 // MARK: APIServiceProtocol
 class APIService: APIServiceProtocol {
+    
+    // SEARCH
+    func searchResult(_ objSearch: UserSearchBE, _ token: String?, completion: @escaping ((Result<UserPostData, Error>)) -> ()) {
+        BCApiRest.search(objSearch, token) {(object) in
+            print("API: success")
+            completion(.success(object))
+        } conCompletionIncorrecto: { (messageError) in
+            print("API: error")
+            completion(.failure(messageError as! Error))
+        }
+    }
+    
     
     // LOGIN
     func login(email: String?, password: String?, completion: @escaping (Bool) -> Void) {

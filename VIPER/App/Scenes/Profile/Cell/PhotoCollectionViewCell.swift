@@ -13,12 +13,12 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "PhotoCollectionViewCell"
     
-    let containerView = UIView(frame: CGRect(x:0,y:0,width:320,height:500))
+    //let containerView = UIView(frame: CGRect(x:0,y:0,width:320,height:500))
     
     private let photoImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill 
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -36,7 +36,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     func setupView() {
-        contentView.backgroundColor = .secondarySystemBackground
+        contentView.backgroundColor = .systemPink
         contentView.layer.cornerRadius = 0
         contentView.layer.masksToBounds = true
         
