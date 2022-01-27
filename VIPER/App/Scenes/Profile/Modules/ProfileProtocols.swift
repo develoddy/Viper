@@ -35,7 +35,6 @@ protocol ProfilePresenterProtocol: AnyObject {
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showProfileData(indexPath: IndexPath) -> Userpost
-    // func showUsername(indexPath: IndexPath) -> User?
     func username() -> User?
     
 }

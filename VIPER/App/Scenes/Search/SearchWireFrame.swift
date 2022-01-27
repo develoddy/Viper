@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SearchWireFrame: SearchWireFrameProtocol {
-
+    
     class func createSearchModule() -> UIViewController {
         
         let searchView = SearchView()
@@ -31,7 +31,11 @@ class SearchWireFrame: SearchWireFrameProtocol {
         remoteDataManager.remoteRequestHandler = interactor
         
         return viewController
-        
     }
     
+    // LLAMAR AL MODULO (SEARCH RESULT)
+    func gotoSearchResultsUpdating(from view: SearchViewProtocol, resultsComtroller: SearchResultView,filter: String) {
+        resultsComtroller.presenter?.filter = filter
+        resultsComtroller.presenter?.viewDidLoad()
+    }
 }

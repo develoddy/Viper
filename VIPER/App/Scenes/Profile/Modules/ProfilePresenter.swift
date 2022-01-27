@@ -11,7 +11,7 @@ import UIKit
 // MARK: PRESENTER
 class ProfilePresenter: ProfilePresenterProtocol  {
     
-    // MARK: PROPERTIES
+    // MARK: - PROPERTIES
     weak var view: ProfileViewProtocol?
     var interactor: ProfileInteractorInputProtocol?
     var wireFrame: ProfileWireFrameProtocol?
@@ -27,7 +27,8 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     }
     
     
-    // MARK: FUNCTIONS
+    // MARK: - FUNCTIONS
+    
     // LOS DATOS QUE LLEGAN DEL MODULO HOMEVIEW SE LO PASAMOS AL INTERACTOR
     func viewDidLoad() {
         guard let email = emailReceivedFromHome, let token = tokenReceivedFromHome else {
@@ -69,6 +70,6 @@ extension ProfilePresenter: ProfileInteractorOutputProtocol {
     // TODO: RECIBE DE VUELTA LOS DATOS DEL INTERACTROR
     func interactorCallBackData(with viewModel: [Userpost]) {
         self.viewModel = viewModel
-        view?.stopActivity()
+        self.view?.stopActivity()
     }
 }

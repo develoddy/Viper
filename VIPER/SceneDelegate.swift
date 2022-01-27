@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appDelegate = AppDelegate()
         let obj = appDelegate.objUsuarioSesion
         let token = obj?.token
+        
 
         //MARK: VALIDATIONS
         if token != nil {
@@ -37,9 +38,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window                  = UIWindow(windowScene: windowScene)
             let loginViewController     = LoginWireFrame.createLoginModule()
             loginViewController.modalPresentationStyle = .fullScreen
-            window.rootViewController   = loginViewController
             self.window                 = window
             window.makeKeyAndVisible()
+            window.rootViewController   = loginViewController
         }
     }
 
@@ -75,21 +76,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     //MARK: ROOT VIEWCONTROLLER
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard let window = self.window else { return }
+        window.rootViewController =  vc
+        self.window = window
+        window.makeKeyAndVisible()
         
-        let navigationController = UINavigationController(rootViewController: vc)
-        navigationController.modalPresentationStyle = .fullScreen
-        window.rootViewController?.present(navigationController, animated: true)
+        /*
+         //   Structure:
+         //                           UINavigationController -> UIViewController
+         //       UITabBarController |
+         //                           UINavigationController -> UIViewController
+        */
         
-        
-        
-        //        let navigationController = UINavigationController(rootViewController: vc)
-        //        navigationController.modalPresentationStyle = .fullScreen
-        //        //navigationController.navigationItem.title = "Title"
-        //        //navController.tabBarItem.title = "Home View"
-        //        let tabController = UITabBarController()
-        //        tabController.viewControllers = [navigationController
-        //        tabController.modalPresentationStyle = .fullScreen
-        //        window.rootViewController?.present(tabController, animated: true)
+        //guard let window = self.window else { return }
+        //let navigationController = UINavigationController(rootViewController: vc)
+        //navigationController.modalPresentationStyle = .fullScreen
+        //window.rootViewController?.present(navigationController, animated: true)
     }
 }
 

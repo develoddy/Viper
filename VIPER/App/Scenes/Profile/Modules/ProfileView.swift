@@ -16,19 +16,7 @@ class ProfileView: UIViewController {
     let collectionView = ProfileCollectionsViews.collectionView()
     var profileUI = ProfileUI()
     var token = Token()
-    //var viewModel: [Userpost] = []
-    // var email: String = ""
-
-    // MARK: - INIT
-    //    init(with email: String) {
-    //        super.init(nibName: nil, bundle: nil)
-    //        self.email = email
-    //    }
-    
-    //    required init?(coder: NSCoder) {
-    //        fatalError("init(coder:) has not been implemented")
-    //    }
-    
+  
     // MARK: - LIFECYCLE
     
     // VIEDDIDLOAD
