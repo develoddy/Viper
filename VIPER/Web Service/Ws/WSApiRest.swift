@@ -127,7 +127,7 @@ class WSApiRest: NSObject {
                           conCompletionCorrecto completionCorrecto: @escaping Closures.userPost    ,
                           error procesoIncorrecto                 : @escaping Closures.MensajeError) -> URLSessionDataTask? {
         let dic : [Any]? = nil ///let dic : [String : Any] = [ "tabs": tabs as Any ]
-        let result = WSender.doGETTokenToURL(conURL       : WSApiRest.CDMWebModelURLBase ,
+        let result = WSender.doPOSTTokenToURL(conURL       : WSApiRest.CDMWebModelURLBase ,
                                              conPath      : _URL_userpost as NSString    ,
                                              conParametros: dic                          ,
                                              conToken     : token ?? ""                  ) { (objRespuesta) in
