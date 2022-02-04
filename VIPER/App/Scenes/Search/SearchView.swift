@@ -88,15 +88,6 @@ extension SearchView: UISearchResultsUpdating, UISearchBarDelegate {
         }
         self.presenter?.searchResultsUpdating(resultsComtroller: resultsComtroller, filter: filter)
         
-        
-        /*guard let resultsComtroller = searchController.searchResultsController as? SearchResultView,
-              let filter = searchController.searchBar.text, !filter.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return
-        }*/
-        
-        /*guard let filter = searchController.searchBar.text, !filter.trimmingCharacters(in: .whitespaces).isEmpty else { return }
-        self.presenter?.searchResultsUpdating(filter: filter)*/
-        
     }
 }
 
@@ -166,6 +157,7 @@ extension SearchView: UICollectionViewDelegateFlowLayout {
 
 extension SearchView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //delegate.itemSelected(indexPath: indexPath)
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print("SEARCH VIEW:::: kdssklsddskjdskjlksdkdskl")
     }
 }

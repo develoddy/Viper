@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: PRESENTER
 class ProfilePresenter: ProfilePresenterProtocol  {
-    
+   
     // MARK: - PROPERTIES
     weak var view: ProfileViewProtocol?
     var interactor: ProfileInteractorInputProtocol?
@@ -60,6 +60,11 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     func username() -> User? {
         let userpost = self.viewModel.last
         return userpost?.userAuthor
+    }
+    
+    // GOTO POST
+    func showPost(userpost: Userpost) {
+        self.wireFrame?.gotoPostScreen(from: view!, userpost: userpost)
     }
 }
 

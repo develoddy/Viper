@@ -10,13 +10,9 @@ import Foundation
 import UIKit
 
 class SearchResultWireFrame: SearchResultWireFrameProtocol {
-    
+   
 
     class func createSearchResultModule(filter: String) -> UIViewController {
-        
-        print("SOY EL WIREFRAME DE SEARCH RESULT Y ME HA VENIDO DESDE EL MODULO SEARCH: ")
-        print(filter)
-        
         let searchResultView = SearchResultView()
         let viewController = searchResultView
         let presenter: SearchResultPresenterProtocol & SearchResultInteractorOutputProtocol = SearchResultPresenter()
@@ -38,5 +34,13 @@ class SearchResultWireFrame: SearchResultWireFrameProtocol {
         remoteDataManager.remoteRequestHandler  = interactor
         
         return viewController
+    }
+    
+    
+    func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Userpost) {
+        let newPostView = PostWireFrame.createPostModule(userpost: userpost)
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(newPostView, animated: true)
+        }
     }
 }

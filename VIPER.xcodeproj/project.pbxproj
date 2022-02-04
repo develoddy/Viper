@@ -28,6 +28,14 @@
 		B31963EC279881D000A23628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31963EB279881D000A23628 /* LaunchScreen.storyboard */; };
 		B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F127995BD500A23628 /* TextFieldWithPadding.swift */; };
 		B31963F42799801000A23628 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F32799801000A23628 /* LoadingButton.swift */; };
+		B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E527AD4B61006EFACD /* PostPresenter.swift */; };
+		B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */; };
+		B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E727AD4B61006EFACD /* PostProtocols.swift */; };
+		B34804EF27AD4B61006EFACD /* PostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E827AD4B61006EFACD /* PostInteractor.swift */; };
+		B34804F027AD4B61006EFACD /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E927AD4B61006EFACD /* PostView.swift */; };
+		B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */; };
+		B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EB27AD4B61006EFACD /* PostWireFrame.swift */; };
+		B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804F427AD4C0D006EFACD /* PostUI.swift */; };
 		B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668927919A0B00271073 /* AppDelegate.swift */; };
 		B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668B27919A0B00271073 /* SceneDelegate.swift */; };
 		B3A0668E27919A0B00271073 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668D27919A0B00271073 /* ViewController.swift */; };
@@ -146,6 +154,14 @@
 		B31963EB279881D000A23628 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B31963F127995BD500A23628 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		B31963F32799801000A23628 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		B34804E527AD4B61006EFACD /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
+		B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocalDataManager.swift; sourceTree = "<group>"; };
+		B34804E727AD4B61006EFACD /* PostProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProtocols.swift; sourceTree = "<group>"; };
+		B34804E827AD4B61006EFACD /* PostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInteractor.swift; sourceTree = "<group>"; };
+		B34804E927AD4B61006EFACD /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemoteDataManager.swift; sourceTree = "<group>"; };
+		B34804EB27AD4B61006EFACD /* PostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWireFrame.swift; sourceTree = "<group>"; };
+		B34804F427AD4C0D006EFACD /* PostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUI.swift; sourceTree = "<group>"; };
 		B3A0668627919A0B00271073 /* VIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A0668927919A0B00271073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A0668B27919A0B00271073 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -366,6 +382,29 @@
 				B3A4D4332791A5FF006B4CCA /* HomeView.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		B34804E427AD4B48006EFACD /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B34804F327AD4BF0006EFACD /* UI */,
+				B34804E727AD4B61006EFACD /* PostProtocols.swift */,
+				B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */,
+				B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */,
+				B34804EB27AD4B61006EFACD /* PostWireFrame.swift */,
+				B34804E827AD4B61006EFACD /* PostInteractor.swift */,
+				B34804E527AD4B61006EFACD /* PostPresenter.swift */,
+				B34804E927AD4B61006EFACD /* PostView.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		B34804F327AD4BF0006EFACD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B34804F427AD4C0D006EFACD /* PostUI.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		B3A0667D27919A0B00271073 = {
@@ -711,6 +750,7 @@
 		B3EF852A279FEAAF0076D443 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				B34804E427AD4B48006EFACD /* Post */,
 				B3EF8508279ED1E80076D443 /* Comments */,
 				B3EF8539279FEAE50076D443 /* SearchResult */,
 			);
@@ -990,6 +1030,7 @@
 				B3A0668E27919A0B00271073 /* ViewController.swift in Sources */,
 				B3A4D4522792C203006B4CCA /* LoginRemoteDataManager.swift in Sources */,
 				B3EF851B279F15050076D443 /* SearchPresenter.swift in Sources */,
+				B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */,
 				B3A4D48C279464A9006B4CCA /* ProfileInteractor.swift in Sources */,
 				B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */,
 				B3EF8537279FEADF0076D443 /* SearchResultRemoteDataManager.swift in Sources */,
@@ -1010,10 +1051,12 @@
 				B3EF8504279ED1D70076D443 /* CommentsInteractor.swift in Sources */,
 				B3EF8528279F54A80076D443 /* SearchCollectionsViews.swift in Sources */,
 				B3EF8532279FEADF0076D443 /* SearchResultPresenter.swift in Sources */,
+				B34804EF27AD4B61006EFACD /* PostInteractor.swift in Sources */,
 				B3EF8538279FEADF0076D443 /* SearchResultWireFrame.swift in Sources */,
 				B31963DF2796FD2A00A23628 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
 				B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */,
 				B31963C127963D5800A23628 /* IGFeedPostTableViewCell.swift in Sources */,
+				B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */,
 				B3A4D47C27941201006B4CCA /* TabBarViewController.swift in Sources */,
 				B3A4D4692792C5D1006B4CCA /* WSender.swift in Sources */,
 				B31963C727963E0700A23628 /* IGFeedPostFooterTableViewCell.swift in Sources */,
@@ -1048,18 +1091,22 @@
 				B3A4D45E2792C525006B4CCA /* Model.swift in Sources */,
 				B3EF8536279FEADF0076D443 /* SearchResultView.swift in Sources */,
 				B31963BF2796393A00A23628 /* IGFeedPostHeaderTableViewCell.swift in Sources */,
+				B34804F027AD4B61006EFACD /* PostView.swift in Sources */,
 				B3A4D43A2791A5FF006B4CCA /* HomeView.swift in Sources */,
 				B3A4D43B2791A5FF006B4CCA /* HomeRemoteDataManager.swift in Sources */,
 				B31963DC2796D91300A23628 /* PhotoCollectionViewCell.swift in Sources */,
 				B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */,
 				B3A4D4362791A5FF006B4CCA /* HomePresenter.swift in Sources */,
 				B3A4D46E2793675B006B4CCA /* Closures.swift in Sources */,
+				B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */,
 				B3A4D44F2792C203006B4CCA /* LoginProtocols.swift in Sources */,
 				B3A4D4392791A5FF006B4CCA /* HomeInteractor.swift in Sources */,
 				B3A4D4672792C5BF006B4CCA /* WSTranslator.swift in Sources */,
 				B3EF8534279FEADF0076D443 /* SearchResultProtocols.swift in Sources */,
+				B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */,
 				B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */,
 				B3A4D47327936B8F006B4CCA /* APIService.swift in Sources */,
+				B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */,
 				B3A4D43C2791A5FF006B4CCA /* HomeWireFrame.swift in Sources */,
 				B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */,
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
@@ -1071,6 +1118,7 @@
 				B31963C327963DB800A23628 /* IGFeedPostDescriptionTableViewCell.swift in Sources */,
 				B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,
+				B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,
 				B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */,
 			);

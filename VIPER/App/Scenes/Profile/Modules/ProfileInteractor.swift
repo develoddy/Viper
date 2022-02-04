@@ -15,11 +15,18 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     weak var presenter: ProfileInteractorOutputProtocol?
     var localDatamanager: ProfileLocalDataManagerInputProtocol?
     var remoteDatamanager: ProfileRemoteDataManagerInputProtocol?
-    
+    var token = Token()
     
     // MARK: LLAMAMOS AL REMOTE MANAGER
     func interactorGetData(email: String, token: String) {
-        self.remoteDatamanager?.remoteGetData(email: email, token: token)
+        
+        if email.isEmpty {
+            guard let _token = self.token.getUserToken().token,
+                  let _email = self.token.getUserToken().usertoken?.email else { return }
+            self.remoteDatamanager?.remoteGetData(email: _email, token: _token)
+        } else {
+            self.remoteDatamanager?.remoteGetData(email: email, token: token)
+        }
     }
 }
 

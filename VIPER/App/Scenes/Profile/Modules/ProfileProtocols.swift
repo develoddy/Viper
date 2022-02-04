@@ -20,6 +20,7 @@ protocol ProfileViewProtocol: AnyObject {
 protocol ProfileWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createProfileModule(email: String, name:String, token:String) -> UIViewController
+    func gotoPostScreen(from view: ProfileViewProtocol, userpost: Userpost)
 }
 
 protocol ProfilePresenterProtocol: AnyObject {
@@ -30,12 +31,12 @@ protocol ProfilePresenterProtocol: AnyObject {
     var emailReceivedFromHome: String? { get set }
     var nameReceivedFromHome: String? { get set }
     var tokenReceivedFromHome: String? { get set }
-    
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showProfileData(indexPath: IndexPath) -> Userpost
     func username() -> User?
+    func showPost(userpost: Userpost)
     
 }
 
@@ -49,7 +50,6 @@ protocol ProfileInteractorInputProtocol: AnyObject {
     var presenter: ProfileInteractorOutputProtocol? { get set }
     var localDatamanager: ProfileLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: ProfileRemoteDataManagerInputProtocol? { get set }
-    
     func interactorGetData(email: String, token: String)
 }
 

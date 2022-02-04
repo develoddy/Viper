@@ -15,14 +15,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // SI TIENE EL TOKEN ENTONCES MOSTRAMOS EL TABBARCONTROLLER
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
-        //MARK: PROPERTIES
+        // MARK: PROPERTIES
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let appDelegate = AppDelegate()
         let obj = appDelegate.objUsuarioSesion
         let token = obj?.token
         
 
-        //MARK: VALIDATIONS
+        // MARK: VALIDATIONS
         if token != nil {
             let submodules = (
                 home: HomeWireFrame.createHomeModule(),
@@ -79,18 +79,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController =  vc
         self.window = window
         window.makeKeyAndVisible()
-        
-        /*
-         //   Structure:
-         //                           UINavigationController -> UIViewController
-         //       UITabBarController |
-         //                           UINavigationController -> UIViewController
-        */
-        
-        //guard let window = self.window else { return }
-        //let navigationController = UINavigationController(rootViewController: vc)
-        //navigationController.modalPresentationStyle = .fullScreen
-        //window.rootViewController?.present(navigationController, animated: true)
     }
 }
 

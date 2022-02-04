@@ -22,13 +22,12 @@ class ProfileView: UIViewController {
     // VIEDDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         setupView()
         configureActivity()
         configureCollectionView()
         configureCollectionViewHeader()
         configureDelegates()
-
-        loadData()
     }
     
     // SE LLAMA AL PRESENTER
@@ -84,9 +83,8 @@ class ProfileView: UIViewController {
 
 
 
-//MARK: - UITABLEVIEWS
+// MARK: - UIABLEVIEW DATASOURCE
 
-// MARK: UICollectionViewDataSource
 extension ProfileView: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -122,7 +120,8 @@ extension ProfileView: UICollectionViewDataSource {
 
 
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - UIABLEVIEW FLOW LAYOUT
+
 extension ProfileView: UICollectionViewDelegateFlowLayout {
     
     // MARK: Header & Story & Tabs
@@ -167,11 +166,14 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
 
 
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UIABLEVIEW DELEGATE
+
 extension ProfileView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        ///delegate.itemSelected(indexPath: indexPath)
+        // SE LLAMA AL PRESENTER
+        guard let userPost = self.presenter?.showProfileData(indexPath: indexPath) else { return }
+        self.presenter?.showPost(userpost: userPost)
     }
 }
 

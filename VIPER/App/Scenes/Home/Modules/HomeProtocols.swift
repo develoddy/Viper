@@ -30,7 +30,6 @@ protocol HomePresenterProtocol: AnyObject {
     var view: HomeViewProtocol? { get set }
     var interactor: HomeInteractorInputProtocol? { get set }
     var wireFrame: HomeWireFrameProtocol? { get set }
-        
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int

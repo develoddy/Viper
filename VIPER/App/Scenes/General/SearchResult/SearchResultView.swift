@@ -115,8 +115,15 @@ extension SearchResultView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("kdssklsddskjdskjlksdkdskl")
+        
+        // SE LLAMA AL PRESENTER
+        //guard let userPost = self.presenter?.showProfileData(indexPath: indexPath) else { return }
+        //self.presenter?.showPost(userpost: userPost)
+    }
 }
 
 extension SearchResultView: UITableViewDelegate {
-    //
 }
