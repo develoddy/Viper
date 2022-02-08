@@ -28,6 +28,14 @@
 		B31963EC279881D000A23628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31963EB279881D000A23628 /* LaunchScreen.storyboard */; };
 		B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F127995BD500A23628 /* TextFieldWithPadding.swift */; };
 		B31963F42799801000A23628 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F32799801000A23628 /* LoadingButton.swift */; };
+		B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E527AD4B61006EFACD /* PostPresenter.swift */; };
+		B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */; };
+		B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E727AD4B61006EFACD /* PostProtocols.swift */; };
+		B34804EF27AD4B61006EFACD /* PostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E827AD4B61006EFACD /* PostInteractor.swift */; };
+		B34804F027AD4B61006EFACD /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E927AD4B61006EFACD /* PostView.swift */; };
+		B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */; };
+		B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EB27AD4B61006EFACD /* PostWireFrame.swift */; };
+		B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804F427AD4C0D006EFACD /* PostUI.swift */; };
 		B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668927919A0B00271073 /* AppDelegate.swift */; };
 		B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668B27919A0B00271073 /* SceneDelegate.swift */; };
 		B3A0668E27919A0B00271073 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668D27919A0B00271073 /* ViewController.swift */; };
@@ -50,10 +58,6 @@
 		B3A4D4522792C203006B4CCA /* LoginRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D44B2792C203006B4CCA /* LoginRemoteDataManager.swift */; };
 		B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D44C2792C203006B4CCA /* LoginWireFrame.swift */; };
 		B3A4D45E2792C525006B4CCA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D45D2792C525006B4CCA /* Model.swift */; };
-		B3A4D4632792C59B006B4CCA /* BCApiRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D4622792C59B006B4CCA /* BCApiRest.swift */; };
-		B3A4D4652792C5B1006B4CCA /* WSApiRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D4642792C5B1006B4CCA /* WSApiRest.swift */; };
-		B3A4D4672792C5BF006B4CCA /* WSTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D4662792C5BF006B4CCA /* WSTranslator.swift */; };
-		B3A4D4692792C5D1006B4CCA /* WSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D4682792C5D1006B4CCA /* WSender.swift */; };
 		B3A4D46B2792C618006B4CCA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D46A2792C618006B4CCA /* Constants.swift */; };
 		B3A4D46E2793675B006B4CCA /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D46D2793675B006B4CCA /* Closures.swift */; };
 		B3A4D470279367EA006B4CCA /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D46F279367EA006B4CCA /* KeyChain.swift */; };
@@ -71,6 +75,16 @@
 		B3A4D48F279464A9006B4CCA /* ProfileWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */; };
 		B3A4D49227958A32006B4CCA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D49127958A31006B4CCA /* Extensions.swift */; };
 		B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D494279596F4006B4CCA /* LoginUI.swift */; };
+		B3B5677127B2559600CC123A /* BCApiRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677027B2559600CC123A /* BCApiRest.swift */; };
+		B3B5677527B255E000CC123A /* WSApiRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677427B255E000CC123A /* WSApiRest.swift */; };
+		B3B5677727B255FC00CC123A /* WSTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677627B255FC00CC123A /* WSTranslator.swift */; };
+		B3B5677927B2561800CC123A /* WSenderSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677827B2561800CC123A /* WSenderSimple.swift */; };
+		B3B5677B27B295E900CC123A /* WSenderCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677A27B295E900CC123A /* WSenderCookie.swift */; };
+		B3B5677D27B2960800CC123A /* WSenderToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677C27B2960800CC123A /* WSenderToken.swift */; };
+		B3B5677F27B298B600CC123A /* ResponseInJSONWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677E27B298B600CC123A /* ResponseInJSONWithData.swift */; };
+		B3B5678127B299BA00CC123A /* HeadersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5678027B299BA00CC123A /* HeadersRequest.swift */; };
+		B3DB819E27AE54C40007138F /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB819D27AE54C30007138F /* APICaller.swift */; };
+		B3DB81A127AE58D50007138F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB81A027AE58D50007138F /* AuthManager.swift */; };
 		B3EF8501279ED1D70076D443 /* CommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FA279ED1D70076D443 /* CommentsPresenter.swift */; };
 		B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FB279ED1D70076D443 /* CommentsLocalDataManager.swift */; };
 		B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FC279ED1D70076D443 /* CommentsProtocols.swift */; };
@@ -146,6 +160,14 @@
 		B31963EB279881D000A23628 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B31963F127995BD500A23628 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		B31963F32799801000A23628 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		B34804E527AD4B61006EFACD /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
+		B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocalDataManager.swift; sourceTree = "<group>"; };
+		B34804E727AD4B61006EFACD /* PostProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProtocols.swift; sourceTree = "<group>"; };
+		B34804E827AD4B61006EFACD /* PostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInteractor.swift; sourceTree = "<group>"; };
+		B34804E927AD4B61006EFACD /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemoteDataManager.swift; sourceTree = "<group>"; };
+		B34804EB27AD4B61006EFACD /* PostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWireFrame.swift; sourceTree = "<group>"; };
+		B34804F427AD4C0D006EFACD /* PostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUI.swift; sourceTree = "<group>"; };
 		B3A0668627919A0B00271073 /* VIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A0668927919A0B00271073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A0668B27919A0B00271073 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,10 +194,6 @@
 		B3A4D44B2792C203006B4CCA /* LoginRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRemoteDataManager.swift; sourceTree = "<group>"; };
 		B3A4D44C2792C203006B4CCA /* LoginWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireFrame.swift; sourceTree = "<group>"; };
 		B3A4D45D2792C525006B4CCA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		B3A4D4622792C59B006B4CCA /* BCApiRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCApiRest.swift; sourceTree = "<group>"; };
-		B3A4D4642792C5B1006B4CCA /* WSApiRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSApiRest.swift; sourceTree = "<group>"; };
-		B3A4D4662792C5BF006B4CCA /* WSTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTranslator.swift; sourceTree = "<group>"; };
-		B3A4D4682792C5D1006B4CCA /* WSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSender.swift; sourceTree = "<group>"; };
 		B3A4D46A2792C618006B4CCA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B3A4D46D2793675B006B4CCA /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 		B3A4D46F279367EA006B4CCA /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
@@ -193,6 +211,16 @@
 		B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWireFrame.swift; sourceTree = "<group>"; };
 		B3A4D49127958A31006B4CCA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B3A4D494279596F4006B4CCA /* LoginUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
+		B3B5677027B2559600CC123A /* BCApiRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCApiRest.swift; sourceTree = "<group>"; };
+		B3B5677427B255E000CC123A /* WSApiRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSApiRest.swift; sourceTree = "<group>"; };
+		B3B5677627B255FC00CC123A /* WSTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTranslator.swift; sourceTree = "<group>"; };
+		B3B5677827B2561800CC123A /* WSenderSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSenderSimple.swift; sourceTree = "<group>"; };
+		B3B5677A27B295E900CC123A /* WSenderCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSenderCookie.swift; sourceTree = "<group>"; };
+		B3B5677C27B2960800CC123A /* WSenderToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSenderToken.swift; sourceTree = "<group>"; };
+		B3B5677E27B298B600CC123A /* ResponseInJSONWithData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInJSONWithData.swift; sourceTree = "<group>"; };
+		B3B5678027B299BA00CC123A /* HeadersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadersRequest.swift; sourceTree = "<group>"; };
+		B3DB819D27AE54C30007138F /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		B3DB81A027AE58D50007138F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		B3EF84FA279ED1D70076D443 /* CommentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPresenter.swift; sourceTree = "<group>"; };
 		B3EF84FB279ED1D70076D443 /* CommentsLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsLocalDataManager.swift; sourceTree = "<group>"; };
 		B3EF84FC279ED1D70076D443 /* CommentsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsProtocols.swift; sourceTree = "<group>"; };
@@ -368,6 +396,29 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		B34804E427AD4B48006EFACD /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B34804F327AD4BF0006EFACD /* UI */,
+				B34804E727AD4B61006EFACD /* PostProtocols.swift */,
+				B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */,
+				B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */,
+				B34804EB27AD4B61006EFACD /* PostWireFrame.swift */,
+				B34804E827AD4B61006EFACD /* PostInteractor.swift */,
+				B34804E527AD4B61006EFACD /* PostPresenter.swift */,
+				B34804E927AD4B61006EFACD /* PostView.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		B34804F327AD4BF0006EFACD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B34804F427AD4C0D006EFACD /* PostUI.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		B3A0667D27919A0B00271073 = {
 			isa = PBXGroup;
 			children = (
@@ -394,8 +445,9 @@
 		B3A0668827919A0B00271073 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				B3B5676F27B2557800CC123A /* WebService */,
 				B3A4D42C2791A3E4006B4CCA /* App */,
-				B3A4D45F2792C53E006B4CCA /* Web Service */,
+				B3DB819C27AE54840007138F /* ApiRest */,
 				B3A0668927919A0B00271073 /* AppDelegate.swift */,
 				B3A0668B27919A0B00271073 /* SceneDelegate.swift */,
 				B3A0668D27919A0B00271073 /* ViewController.swift */,
@@ -541,33 +593,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B3A4D45F2792C53E006B4CCA /* Web Service */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4602792C554006B4CCA /* Bc */,
-				B3A4D4612792C562006B4CCA /* Ws */,
-			);
-			path = "Web Service";
-			sourceTree = "<group>";
-		};
-		B3A4D4602792C554006B4CCA /* Bc */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4622792C59B006B4CCA /* BCApiRest.swift */,
-			);
-			path = Bc;
-			sourceTree = "<group>";
-		};
-		B3A4D4612792C562006B4CCA /* Ws */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4642792C5B1006B4CCA /* WSApiRest.swift */,
-				B3A4D4662792C5BF006B4CCA /* WSTranslator.swift */,
-				B3A4D4682792C5D1006B4CCA /* WSender.swift */,
-			);
-			path = Ws;
-			sourceTree = "<group>";
-		};
 		B3A4D46C27936749006B4CCA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,10 +661,58 @@
 		B3A4D4902794689F006B4CCA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B3DB819F27AE58B50007138F /* Managers */,
 				B3A4D46C27936749006B4CCA /* Resources */,
 				B3A4D47127936B6B006B4CCA /* Repository */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		B3B5676F27B2557800CC123A /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5677227B255B600CC123A /* BC */,
+				B3B5677327B255C300CC123A /* WS */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		B3B5677227B255B600CC123A /* BC */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5677027B2559600CC123A /* BCApiRest.swift */,
+			);
+			path = BC;
+			sourceTree = "<group>";
+		};
+		B3B5677327B255C300CC123A /* WS */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5677427B255E000CC123A /* WSApiRest.swift */,
+				B3B5677627B255FC00CC123A /* WSTranslator.swift */,
+				B3B5677827B2561800CC123A /* WSenderSimple.swift */,
+				B3B5677C27B2960800CC123A /* WSenderToken.swift */,
+				B3B5677A27B295E900CC123A /* WSenderCookie.swift */,
+				B3B5677E27B298B600CC123A /* ResponseInJSONWithData.swift */,
+				B3B5678027B299BA00CC123A /* HeadersRequest.swift */,
+			);
+			path = WS;
+			sourceTree = "<group>";
+		};
+		B3DB819C27AE54840007138F /* ApiRest */ = {
+			isa = PBXGroup;
+			children = (
+				B3DB819D27AE54C30007138F /* APICaller.swift */,
+			);
+			path = ApiRest;
+			sourceTree = "<group>";
+		};
+		B3DB819F27AE58B50007138F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B3DB81A027AE58D50007138F /* AuthManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		B3EF8508279ED1E80076D443 /* Comments */ = {
@@ -711,6 +784,7 @@
 		B3EF852A279FEAAF0076D443 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				B34804E427AD4B48006EFACD /* Post */,
 				B3EF8508279ED1E80076D443 /* Comments */,
 				B3EF8539279FEAE50076D443 /* SearchResult */,
 			);
@@ -990,12 +1064,14 @@
 				B3A0668E27919A0B00271073 /* ViewController.swift in Sources */,
 				B3A4D4522792C203006B4CCA /* LoginRemoteDataManager.swift in Sources */,
 				B3EF851B279F15050076D443 /* SearchPresenter.swift in Sources */,
+				B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */,
 				B3A4D48C279464A9006B4CCA /* ProfileInteractor.swift in Sources */,
 				B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */,
 				B3EF8537279FEADF0076D443 /* SearchResultRemoteDataManager.swift in Sources */,
 				B31963DA2796D6E100A23628 /* ProfileCollectionsViews.swift in Sources */,
 				B3A4D4502792C203006B4CCA /* LoginInteractor.swift in Sources */,
 				B3A4D48B279464A9006B4CCA /* ProfileProtocols.swift in Sources */,
+				B3B5677527B255E000CC123A /* WSApiRest.swift in Sources */,
 				B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */,
 				B3EF8521279F15050076D443 /* SearchWireFrame.swift in Sources */,
 				B31963BB279630E200A23628 /* HomeUI.swift in Sources */,
@@ -1009,13 +1085,16 @@
 				B3A4D48F279464A9006B4CCA /* ProfileWireFrame.swift in Sources */,
 				B3EF8504279ED1D70076D443 /* CommentsInteractor.swift in Sources */,
 				B3EF8528279F54A80076D443 /* SearchCollectionsViews.swift in Sources */,
+				B3B5678127B299BA00CC123A /* HeadersRequest.swift in Sources */,
 				B3EF8532279FEADF0076D443 /* SearchResultPresenter.swift in Sources */,
+				B34804EF27AD4B61006EFACD /* PostInteractor.swift in Sources */,
+				B3DB81A127AE58D50007138F /* AuthManager.swift in Sources */,
 				B3EF8538279FEADF0076D443 /* SearchResultWireFrame.swift in Sources */,
 				B31963DF2796FD2A00A23628 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
 				B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */,
 				B31963C127963D5800A23628 /* IGFeedPostTableViewCell.swift in Sources */,
+				B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */,
 				B3A4D47C27941201006B4CCA /* TabBarViewController.swift in Sources */,
-				B3A4D4692792C5D1006B4CCA /* WSender.swift in Sources */,
 				B31963C727963E0700A23628 /* IGFeedPostFooterTableViewCell.swift in Sources */,
 				B31963D82796D11700A23628 /* ProfileUI.swift in Sources */,
 				B3A4D4512792C203006B4CCA /* LoginView.swift in Sources */,
@@ -1037,40 +1116,49 @@
 				B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */,
 				B3A4D44D2792C203006B4CCA /* LoginPresenter.swift in Sources */,
 				B31963CA2796CCCC00A23628 /* HomeExtension.swift in Sources */,
-				B3A4D4652792C5B1006B4CCA /* WSApiRest.swift in Sources */,
+				B3B5677D27B2960800CC123A /* WSenderToken.swift in Sources */,
 				B3EF8525279F15940076D443 /* SearchUI.swift in Sources */,
 				B3EF8512279EE6DE0076D443 /* CustomHeaderTableViewCell.swift in Sources */,
 				B31963C527963DEC00A23628 /* IGFeedPostGeneralTableViewCell.swift in Sources */,
 				B3A4D4382791A5FF006B4CCA /* HomeProtocols.swift in Sources */,
-				B3A4D4632792C59B006B4CCA /* BCApiRest.swift in Sources */,
 				B3EF8535279FEADF0076D443 /* SearchResultInteractor.swift in Sources */,
+				B3B5677B27B295E900CC123A /* WSenderCookie.swift in Sources */,
 				B31963D62796D10600A23628 /* ProfileExtension.swift in Sources */,
 				B3A4D45E2792C525006B4CCA /* Model.swift in Sources */,
 				B3EF8536279FEADF0076D443 /* SearchResultView.swift in Sources */,
 				B31963BF2796393A00A23628 /* IGFeedPostHeaderTableViewCell.swift in Sources */,
+				B3B5677F27B298B600CC123A /* ResponseInJSONWithData.swift in Sources */,
+				B34804F027AD4B61006EFACD /* PostView.swift in Sources */,
+				B3B5677927B2561800CC123A /* WSenderSimple.swift in Sources */,
 				B3A4D43A2791A5FF006B4CCA /* HomeView.swift in Sources */,
 				B3A4D43B2791A5FF006B4CCA /* HomeRemoteDataManager.swift in Sources */,
 				B31963DC2796D91300A23628 /* PhotoCollectionViewCell.swift in Sources */,
 				B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */,
 				B3A4D4362791A5FF006B4CCA /* HomePresenter.swift in Sources */,
 				B3A4D46E2793675B006B4CCA /* Closures.swift in Sources */,
+				B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */,
 				B3A4D44F2792C203006B4CCA /* LoginProtocols.swift in Sources */,
 				B3A4D4392791A5FF006B4CCA /* HomeInteractor.swift in Sources */,
-				B3A4D4672792C5BF006B4CCA /* WSTranslator.swift in Sources */,
 				B3EF8534279FEADF0076D443 /* SearchResultProtocols.swift in Sources */,
+				B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */,
 				B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */,
 				B3A4D47327936B8F006B4CCA /* APIService.swift in Sources */,
+				B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */,
 				B3A4D43C2791A5FF006B4CCA /* HomeWireFrame.swift in Sources */,
 				B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */,
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
+				B3DB819E27AE54C40007138F /* APICaller.swift in Sources */,
 				B3EF8533279FEADF0076D443 /* SearchResultLocalDataManager.swift in Sources */,
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
 				B3EF851C279F15050076D443 /* SearchLocalDataManager.swift in Sources */,
 				B3EF8507279ED1D70076D443 /* CommentsWireFrame.swift in Sources */,
+				B3B5677127B2559600CC123A /* BCApiRest.swift in Sources */,
+				B3B5677727B255FC00CC123A /* WSTranslator.swift in Sources */,
 				B3EF851E279F15050076D443 /* SearchInteractor.swift in Sources */,
 				B31963C327963DB800A23628 /* IGFeedPostDescriptionTableViewCell.swift in Sources */,
 				B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,
+				B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,
 				B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */,
 			);
@@ -1236,8 +1324,14 @@
 				DEVELOPMENT_TEAM = 34LBG6P59G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VIPER/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access so l can see you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow access so l can location";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please allow access so I can record you";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access so I can record you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1264,8 +1358,14 @@
 				DEVELOPMENT_TEAM = 34LBG6P59G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VIPER/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access so l can see you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow access so l can location";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please allow access so I can record you";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access so I can record you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

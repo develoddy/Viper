@@ -30,8 +30,6 @@ class HomeView: UIViewController {
         headerTableView()
         setupLeftNavItems()
         presenter?.viewDidLoad()
-        
-        
     }
     
     // VIEW DID LAYOUT SUB VIEWS

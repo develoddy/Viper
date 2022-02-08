@@ -1,14 +1,15 @@
 //
-//  HomeUI.swift
+//  PostUI.swift
 //  VIPER
 //
-//  Created by Eddy Donald Chinchay Lujan on 18/1/22.
+//  Created by Eddy Donald Chinchay Lujan on 4/2/22.
 //
 
 import UIKit
 
-class HomeUI: UIView {
+class PostUI: UIView {
     
+    // MARK: PROPERTIES
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     public let tableView: UITableView = {
@@ -16,7 +17,7 @@ class HomeUI: UIView {
         return tableView
     }()
     
-    // MARK: - Init
+    // MARK: - INIT
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -26,6 +27,7 @@ class HomeUI: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: FUNCTIONS
     override func layoutSubviews() {
     }
     
@@ -38,4 +40,5 @@ class HomeUI: UIView {
     func configureSpinner() {
         activityIndicator.hidesWhenStopped = true
     }
+
 }

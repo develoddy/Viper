@@ -39,7 +39,7 @@ class LoginView: UIViewController {
         // Button Login
         let loginButton = loginUI.loginButton
         loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-        didTapLoginButton()
+        //didTapLoginButton()
     }
     
     // VIEW DID LAYOUT SUB VIEWS
@@ -50,10 +50,10 @@ class LoginView: UIViewController {
     // TAP LOGIN
     @objc private func didTapLoginButton() {
         
-        guard let email = loginUI.emailText.text,
-              let password = loginUI.passwordText.text else {
-                  return
-              }
+        guard let email = loginUI.emailText.text, let password = loginUI.passwordText.text else { return }
+        
+        print("VIEW")
+        print("\(email) y \(password)")
         // LLAMAMOS AL PRESENTER ENVIDANDOLE EL EMAIL & PASSWORD
         presenter?.showTabBar(email: email, password: password)
     }

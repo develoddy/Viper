@@ -26,7 +26,9 @@ extension LoginPresenter: LoginPresenterProtocol {
     }
     
     // VAMOS A LLAMAR AL WIREFRAME
-    func showTabBar(email: String, password: String) {
+    func showTabBar(email: String?, password: String?) {
+        print("PRESENTER")
+        print("\(email ?? "EMAI0") y \(password ?? "PASS0")")
         interactor?.interactorGetData(email: email, password: password)
         
         // LOAD ACTIVITY

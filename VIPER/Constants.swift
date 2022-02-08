@@ -35,7 +35,9 @@ struct Constants {
     }
     
     struct  ApiRoutes {
-        static let login = "http://127.0.0.1:8000"
+        //static let domain = "http://127.0.0.1:8000"
+        //static let domain = "https://82.98.178.183:8080"
+        static let domain = "https://develoddy.com"
     }
     
     struct Method {
@@ -70,10 +72,6 @@ struct Constants {
     struct storyCollections {
         static let createStory = "createStory"
         static let collections = "collections"
-    }
-    
-    struct Spinner {
-        static let spinner = "http://127.0.0.1:8000/storage/app-new-publish/EddyLujan/images/spinner.gif"
     }
     
 }

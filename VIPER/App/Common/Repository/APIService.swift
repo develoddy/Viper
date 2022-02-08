@@ -20,8 +20,6 @@ protocol APIServiceProtocol: AnyObject {
     func searchResult(_ objSearch: UserSearchBE, _ token: String?, completion : @escaping ((Result<UserPostData, Error>)) -> ())
 }
 
-
-
 // MARK: APIServiceProtocol
 class APIService: APIServiceProtocol {
     
@@ -36,12 +34,13 @@ class APIService: APIServiceProtocol {
         }
     }
     
-    
     // LOGIN
     func login(email: String?, password: String?, completion: @escaping (Bool) -> Void) {
         BCApiRest.logIn( email:email, password:password ) { (objUsuario) in
             completion(true)
+            print("Login True")
         } conCompletionIncorrecto: { (mensajeError) in
+            print("Login False")
             completion(false)
         }
     }
@@ -63,6 +62,4 @@ class APIService: APIServiceProtocol {
             completion(.failure( messageError as! Error ) )
         }
     }
-    
-    
 }

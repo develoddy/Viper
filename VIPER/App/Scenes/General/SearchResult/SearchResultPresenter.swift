@@ -10,7 +10,6 @@ import Foundation
 
 class SearchResultPresenter: SearchResultPresenterProtocol  {
     
-    
     // MARK: - PROPERTIES
     weak var view: SearchResultViewProtocol?
     var interactor: SearchResultInteractorInputProtocol?
@@ -41,6 +40,10 @@ class SearchResultPresenter: SearchResultPresenterProtocol  {
     
     func viewModelIsEmpty() -> Bool {
         return self.viewModel.isEmpty
+    }
+    
+    func showPost(userpost: Userpost) {
+        self.wireFrame?.gotoPostScreen(from: view!, userpost: userpost)
     }
 }
 
