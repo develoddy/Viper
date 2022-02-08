@@ -1,8 +1,8 @@
 //
-//  ProfileBC.swift
-//  SwiftNetwork
+//  BCApiRest.swift
+//  VIPER
 //
-//  Created by Eddy Donald Chinchay Lujan on 18/5/21.
+//  Created by Eddy Donald Chinchay Lujan on 8/2/22.
 //
 
 import UIKit
@@ -22,26 +22,24 @@ class BCApiRest: NSObject {
     }
     
     //MARK: Start session
-    @discardableResult class func logIn(email                                       : String?,
-                                        password                                    : String?,
-                                        conCompletionCorrecto completioCorrecto     : @escaping Closures.Login        ,
-                                        conCompletionIncorrecto completionIncorrecto: @escaping Closures.MensajeError ) -> URLSessionDataTask? {
-        if email?.count == 0 {
-            completionIncorrecto("You need enter your email")
-            return nil
-        }
-        if password?.count == 0 {
-            completionIncorrecto("You need enter your password")
-            return nil
-        }
-            
-        return WSApiRest.iniciarSesion( email:email,
-                                        password: password,
-                                        conCompletionCorrecto: { ( objUser ) in
-            BCApiRest.guardarSesion( deUsuario: objUser )
-            completioCorrecto( objUser )
-        }, error: { ( mensajeError ) in
-            completionIncorrecto( mensajeError )
+    @discardableResult class func logIn(
+        email: String?,
+        password: String?,
+        conCompletionCorrecto completioCorrecto: @escaping Closures.Login,
+        conCompletionIncorrecto completionIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
+            if email?.count == 0 {
+                completionIncorrecto("You need enter your email")
+                return nil
+            }
+            if password?.count == 0 {
+                completionIncorrecto("You need enter your password")
+                return nil
+            }
+        return WSApiRest.iniciarSesion(email:email, password: password, conCompletionCorrecto: {(objUser) in
+            BCApiRest.guardarSesion(deUsuario: objUser)
+            completioCorrecto(objUser)
+        }, error: {(mensajeError) in
+            completionIncorrecto(mensajeError)
         })
     }
     

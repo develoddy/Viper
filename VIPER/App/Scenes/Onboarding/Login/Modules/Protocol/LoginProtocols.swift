@@ -29,7 +29,7 @@ protocol LoginPresenterProtocol: AnyObject {
     var wireFrame: LoginWireFrameProtocol? { get set }
     
     func viewDidLoad()
-    func showTabBar(email: String, password: String)
+    func showTabBar(email: String?, password: String?)
 }
 
 protocol LoginInteractorOutputProtocol: AnyObject {

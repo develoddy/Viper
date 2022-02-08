@@ -117,7 +117,7 @@ extension SearchResultView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("kdssklsddskjdskjlksdkdskl")
+        print("SearchResult View: kdssklsddskjdskjlksdkdskl")
         
         // SE LLAMA AL PRESENTER
         //guard let userPost = self.presenter?.showProfileData(indexPath: indexPath) else { return }

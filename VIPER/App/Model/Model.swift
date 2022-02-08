@@ -324,7 +324,7 @@ struct ResponseTokenBE: Codable {
     let usertoken: Usertoken?
 
     enum CodingKeys: String, CodingKey {
-        case token
+        case token 
         case tokenType = "token_type"
         case expiresIn = "expires_in"
         case usertoken
@@ -347,6 +347,8 @@ struct Usertoken: Codable {
         case updatedAt = "updated_at"
     }
 }
+
+// 91 651 06 58
 
 // MARK: - UserBE
 class UserBE: NSObject, NSCoding {

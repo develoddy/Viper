@@ -17,6 +17,8 @@ class LoginInteractor: LoginInteractorInputProtocol {
     
     func interactorGetData(email: String?, password: String?) {
         // DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER) QUE TIENE QUE TRAER UNOS DATOS
+        print("INTERACTOR")
+        print("\(email ?? "EMAI0") y \(password ?? "PASS0")")
         remoteDatamanager?.remoteGetData(email: email, password: password)
     }
 }

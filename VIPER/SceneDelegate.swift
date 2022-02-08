@@ -14,13 +14,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: VALIDAMOS SI EL USUARIO TIENE EL TOKEN O SI NO ESTÁ LOGUEADO
     // SI TIENE EL TOKEN ENTONCES MOSTRAMOS EL TABBARCONTROLLER
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+      
     
         // MARK: PROPERTIES
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let appDelegate = AppDelegate()
         let obj = appDelegate.objUsuarioSesion
         let token = obj?.token
-        
 
         // MARK: VALIDATIONS
         if token != nil {
@@ -42,6 +42,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
             window.rootViewController   = loginViewController
         }
+        
+        
+        
+        // Otra Forma de verificar login con token
+        //        guard let windowScene = (scene as? UIWindowScene) else { return }
+        //        if AuthManager.share.isSignedIn {
+        //            let submodules = (
+        //                home: HomeWireFrame.createHomeModule(),
+        //                profile: ProfileWireFrame.createProfileModule(email: "", name: "", token: ""),
+        //                search: SearchWireFrame.createSearchModule() )
+        //            let window                  = UIWindow(windowScene: windowScene)
+        //            let tabBarController        = TabBarModuleBuilder.build(usingSubmodules: submodules)
+        //            window.rootViewController   =  tabBarController
+        //            self.window                 = window
+        //            window.makeKeyAndVisible()
+        //        } else {
+        //            print("else no hay token SceneDelegate")
+        //            let window                  = UIWindow(windowScene: windowScene)
+        //            let loginViewController     = LoginWireFrame.createLoginModule()
+        //            loginViewController.modalPresentationStyle = .fullScreen
+        //            self.window                 = window
+        //            window.makeKeyAndVisible()
+        //            window.rootViewController   = loginViewController
+        //        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
