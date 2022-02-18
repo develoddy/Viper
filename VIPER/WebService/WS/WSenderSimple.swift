@@ -39,6 +39,8 @@ class WSenderSimple: NSObject {
         }
         request.httpMethod = Constants.Method.httpPost
         let postDataTask = sesion.dataTask(with: request as URLRequest) {(data, response, error) in
+            // Debuggin Error ApiRest
+            ResponseInJSONWithData.reponseAPI(data: data, response: response, error: error)
             DispatchQueue.main.async(execute: {
                 let objRespuesta = ResponseInJSONWithData.getServiceResponse(
                     paraData: data,

@@ -9,7 +9,8 @@ import Foundation
 
 class ResponseInJSONWithData: NSObject {
     
-    //MARK: - TRATADO DE RESPUESTA DEL BACKEND.
+    //MARK: TRATADO DE RESPUESTA DEL BACKEND.
+    
     class func detResponseInJSONWithData(_ data : Data) -> Any? {
         do {
             return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as Any
@@ -24,9 +25,9 @@ class ResponseInJSONWithData: NSObject {
             respuesta = self.detResponseInJSONWithData(data!)
         }
         
-        //        print("======== RESPUES DEL SERVER ========")
-        //        print(respuesta ?? "")
-        //        print("======== / RESPUES DEL SERVER ========")
+        //         print("======== RESPUES DEL SERVER ========")
+        //         print(respuesta ?? "")
+        //         print("======== / RESPUES DEL SERVER ========")
         let urlResponse = response as? HTTPURLResponse
         let headerFields : NSDictionary? = urlResponse?.allHeaderFields as NSDictionary?
         let objResponse = WebResponse()
@@ -38,5 +39,22 @@ class ResponseInJSONWithData: NSObject {
         objResponse.token              = headerFields?["_token"] as? NSString
         objResponse.cookie             = headerFields?["_token"] as? NSString
         return objResponse
+    }
+    
+    class func reponseAPI(data: Data?, response: URLResponse?, error: Error?) {
+            if let error = error {
+                fatalError("Network error: " + error.localizedDescription )
+            }
+            guard let response = response as? HTTPURLResponse else {
+                fatalError("Not a HTTP response")
+            }
+            guard response.statusCode >= 200, response.statusCode < 300 else {
+                fatalError("Invalid HTTP status code: \(response.statusCode)")
+            }
+            guard let data = data else {
+                print("No data : \(error?.localizedDescription ?? "Unknown error").")
+                return
+            }
+            print("SUCCESS DATA: \(data)")
     }
 }

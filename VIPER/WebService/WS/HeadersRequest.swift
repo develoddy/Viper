@@ -9,9 +9,8 @@ import Foundation
 
 class HeadersRequest: NSObject {
     
-    /* ============================================================================== */
-    // MARK: -           CONFIGURATIONS HEADERS.
-    /* ============================================================================== */
+    // MARK: CONFIGURATIONS HEADERS
+
     class func createHeaderRequest() -> NSDictionary {
         let diccionarioHeader = NSMutableDictionary()
         diccionarioHeader.setObject("application/json", forKey: "Content-Type" as NSCopying)
@@ -36,5 +35,4 @@ class HeadersRequest: NSObject {
         diccionarioHeader.setObject("Bearer \(aToken)", forKey: "Authorization" as NSCopying)
         return diccionarioHeader
     }
-    
 }

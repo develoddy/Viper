@@ -66,4 +66,3 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         photoImageView.sd_setImage(with: URL(string: url), completed: nil)
     }
 }
-

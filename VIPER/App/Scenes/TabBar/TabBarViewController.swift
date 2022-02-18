@@ -26,7 +26,7 @@ class TabBarViewController: UITabBarController {
         let navSearch = UINavigationController(rootViewController: tabs.search)
         let navHome = UINavigationController(rootViewController: tabs.home)
         let navProfile = UINavigationController(rootViewController: tabs.profile)
-        viewControllers = [navProfile, navSearch, navHome]
+        viewControllers = [navHome, navProfile, navSearch]
         
         // SE CREA UN UIVIEWCONTROLLER NORMAL
         // viewControllers = [tabs.search, tabs.home, tabs.profile]

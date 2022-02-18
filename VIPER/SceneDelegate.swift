@@ -15,6 +15,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // SI TIENE EL TOKEN ENTONCES MOSTRAMOS EL TABBARCONTROLLER
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
       
+        /*
+        if let windowScene = scene as? UIWindowScene {
+             let window = UIWindow(windowScene: windowScene)
+             let vc = ViewController()
+             window.rootViewController =  vc
+             self.window = window
+             window.makeKeyAndVisible()
+         }*/
+        
     
         // MARK: PROPERTIES
         guard let windowScene = (scene as? UIWindowScene) else { return }

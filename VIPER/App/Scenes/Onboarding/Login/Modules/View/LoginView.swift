@@ -6,7 +6,6 @@
 //  
 //
 
-import Foundation
 import UIKit
 
 
@@ -27,19 +26,11 @@ class LoginView: UIViewController {
     
     // SETUPVIEW
     func setupView() {
-        title = "Login"
         view.backgroundColor = .systemBackground
-        
         view.addSubview(loginUI)
-        
-        // Spinner
-        //loginUI.activityIndicator.center = view.center
-        //loginUI.activityIndicator.hidesWhenStopped = true
-        
-        // Button Login
         let loginButton = loginUI.loginButton
         loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-        //didTapLoginButton()
+        didTapLoginButton()
     }
     
     // VIEW DID LAYOUT SUB VIEWS
@@ -49,11 +40,7 @@ class LoginView: UIViewController {
     
     // TAP LOGIN
     @objc private func didTapLoginButton() {
-        
         guard let email = loginUI.emailText.text, let password = loginUI.passwordText.text else { return }
-        
-        print("VIEW")
-        print("\(email) y \(password)")
         // LLAMAMOS AL PRESENTER ENVIDANDOLE EL EMAIL & PASSWORD
         presenter?.showTabBar(email: email, password: password)
     }
@@ -69,14 +56,11 @@ extension LoginView: LoginViewProtocol {
     func startActivity() {
         DispatchQueue.main.async {
             self.loginUI.loginButton.showLoading()
-            //self.loginUI.activityIndicator.startAnimating()
         }
     }
     
     // STOP ACTIVITY
     func stopActivity() {
-        //self.loginUI.activityIndicator.stopAnimating()
-        //self.loginUI.activityIndicator.hidesWhenStopped = true
         self.loginUI.loginButton.hideLoading()
     }
 }

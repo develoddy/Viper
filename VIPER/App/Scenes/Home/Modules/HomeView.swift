@@ -23,13 +23,14 @@ class HomeView: UIViewController {
     // VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         setupView()
         configureTableView()
         configureDelegates()
         configureActivity()
         headerTableView()
         setupLeftNavItems()
-        presenter?.viewDidLoad()
+        
     }
     
     // VIEW DID LAYOUT SUB VIEWS
@@ -39,20 +40,29 @@ class HomeView: UIViewController {
         homeUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
     }
     
+    // WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
     
+    // LLAMA AL PRESENTER
+    func loadData() {
+        presenter?.viewDidLoad()
+    }
+    
+    // SETUP VIEW
     func setupView() {
         view.backgroundColor = .clear
         view.addSubview(homeUI)
     }
     
+    // TABLE HEADER
     func headerTableView() {
         homeUI.tableView.tableHeaderView = createTableHeaderView()
     }
     
+    // NAV ITEMS
     func setupLeftNavItems() {
         self.navigationItem.title = "Secondary"
     }

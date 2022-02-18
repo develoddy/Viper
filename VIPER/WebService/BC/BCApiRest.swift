@@ -7,10 +7,9 @@
 
 import UIKit
 
-// MARK: BCApiRest -> WSApiRest
 class BCApiRest: NSObject {
     
-    //MARK: Close session
+    // MARK: CLOSE SESSION
     @discardableResult class func logOut(_ token                                     : String?                          ,
                                          conCompletionCorrecto completioCorrecto     : @escaping Closures.LogOut        ,
                                          conCompletionIncorrecto completionIncorrecto: @escaping Closures.MensajeError  ) -> URLSessionDataTask? {
@@ -21,7 +20,7 @@ class BCApiRest: NSObject {
         })
     }
     
-    //MARK: Start session
+    // MARK: START SESSION
     @discardableResult class func logIn(
         email: String?,
         password: String?,
@@ -44,7 +43,7 @@ class BCApiRest: NSObject {
     }
     
     
-    //MARK: signIn
+    // MARK:  SIGNIN
     @discardableResult class func signIn(_ objUser                                   : UserBE                          ,
                                          conCompletionCorrecto completioCorrecto     : @escaping Closures.Login        ,
                                          conCompletionIncorrecto completionIncorrecto: @escaping Closures.MensajeError ) -> URLSessionDataTask? {
@@ -74,7 +73,7 @@ class BCApiRest: NSObject {
         })
     }
     
-    //MARK: Guardar session
+    // MARK: SAVE SESSION
     class func guardarSesion(deUsuario objUsuario : ResponseTokenBE) -> Void {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         do {
@@ -87,10 +86,10 @@ class BCApiRest: NSObject {
         }
     }
     
-    // MARK: USERPOST.
-    /// Vamos a llamar al backend para traer los datos de la base de datos.
-    /// Esta funcion recibe por parametros el token
-    /// Return object userpost o de lo contrario un mensaje de error.
+    // MARK: USERPOST
+    // Vamos a llamar al backend para traer los datos de la base de datos.
+    // Esta funcion recibe por parametros el token
+    // Return object userpost o de lo contrario un mensaje de error.
     @discardableResult class
     public func apiUserPostBC(_ token                                     : String?                         ,
                               conCompletionCorrecto completioCorrecto     : @escaping Closures.userPost     ,
@@ -104,10 +103,10 @@ class BCApiRest: NSObject {
         return result
     }
     
-    //MARK: PROFILE.
-    /// Vamos a llamar al backend para traer los datos de la base de datos.
-    /// Esta funcion recibe por parametros el objeto userSearch y el token
-    /// Return object userpost o de lo contrario un mensaje de error.
+    //MARK: PROFILE
+    // Vamos a llamar al backend para traer los datos de la base de datos.
+    // Esta funcion recibe por parametros el objeto userSearch y el token
+    // Return object userpost o de lo contrario un mensaje de error.
     @discardableResult class func profile(_ email: String,
                                           _ token: String?,
                                           conCompletionCorrecto completioCorrecto: @escaping Closures.userPost,
@@ -127,10 +126,10 @@ class BCApiRest: NSObject {
     }
     
     
-    //MARK: LIKE.
-    /// Vamos a llamar al backend para insertar o eliminar un like..
-    /// Esta funcion recibe por parametros idpost, idUser
-    /// Return messager.
+    // MARK: LIKE
+    // Vamos a llamar al backend para insertar o eliminar un like..
+    // Esta funcion recibe por parametros idpost, idUser
+    // Return messager.
     @discardableResult class func like(_ type_id: Int,
                                        _ ref_id: Int,
                                        _ users_id: Int,
@@ -151,10 +150,10 @@ class BCApiRest: NSObject {
         return resultSearch
     }
     
-    //MARK: EXPLORE.
-    /// Vamos a llamar al backend para traer los datos de la base de datos.
-    /// Esta funcion recibe por parametros el objeto userSearch y el token
-    /// Return object userpost o de lo contrario un mensaje de error.
+    // MARK: EXPLORE.
+    // Vamos a llamar al backend para traer los datos de la base de datos.
+    // Esta funcion recibe por parametros el objeto userSearch y el token
+    // Return object userpost o de lo contrario un mensaje de error.
     @discardableResult class func search(_ objSearch: UserSearchBE,
                                          _ token: String?,
                                          conCompletionCorrecto completioCorrecto: @escaping Closures.userPost,

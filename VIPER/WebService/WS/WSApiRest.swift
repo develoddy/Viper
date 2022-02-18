@@ -67,7 +67,7 @@ class WSApiRest: NSObject {
                                          conPath: _URL_login as NSString,
                                          conParametros: dic) {(objRespuesta) in
             let diccionarioRespuesta = objRespuesta.respuestaJSON as? NSDictionary
-            let arrayRespuesta = diccionarioRespuesta!["error"]
+            let arrayRespuesta = diccionarioRespuesta?["error"]
             let mensajeError = WSApiRest.obtenerMensajeDeError(paraData: diccionarioRespuesta)
             if arrayRespuesta == nil {
                 if diccionarioRespuesta != nil && diccionarioRespuesta!.count != 0 {
@@ -129,7 +129,7 @@ class WSApiRest: NSObject {
                           conCompletionCorrecto completionCorrecto: @escaping Closures.userPost    ,
                           error procesoIncorrecto                 : @escaping Closures.MensajeError) -> URLSessionDataTask? {
         let dic : [Any]? = nil
-        let result = WSenderToken.doGETTokenToURL(conURL: WSApiRest.CDMWebModelURLBase,
+        let result = WSenderToken.doPOSTTokenToURL(conURL: WSApiRest.CDMWebModelURLBase,
                                                   conPath: _URL_userpost as NSString,
                                                   conParametros: dic,
                                                   conToken: token ?? "") {(objRespuesta) in
@@ -139,7 +139,7 @@ class WSApiRest: NSObject {
             if arrayRespuesta == nil {
                 if diccionarioRespuesta != nil && diccionarioRespuesta!.count != 0 {
                     guard let diccionarioRespuesta = diccionarioRespuesta else { return }
-                    WSTranslator.translateResponseUserPostBE(diccionarioRespuesta) { ( result ) in
+                    WSTranslator.translateResponseUserPostBE(diccionarioRespuesta) {(result ) in
                         switch result {
                         case .success(let userPost): completionCorrecto(userPost)
                         case .failure(let error): print(error.localizedDescription)

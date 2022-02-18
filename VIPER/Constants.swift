@@ -34,10 +34,16 @@ struct Constants {
         static let buttonOkAlert = "User successfully registered"
     }
     
-    struct  ApiRoutes {
+    struct ApiRoutes {
         //static let domain = "http://127.0.0.1:8000"
-        //static let domain = "https://82.98.178.183:8080"
         static let domain = "https://develoddy.com"
+    }
+    
+    struct headerImage {
+        static let forHTTPHeaderFieldContenType = "Content-Type"
+        static let valueContentType = "image/jpeg"
+        static let forHTTPHeaderFieldUserAgent = "User-agent"
+        static let valueUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36"
     }
     
     struct Method {
@@ -73,6 +79,4 @@ struct Constants {
         static let createStory = "createStory"
         static let collections = "collections"
     }
-    
 }
-

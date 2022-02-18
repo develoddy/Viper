@@ -26,10 +26,8 @@ class APIService: APIServiceProtocol {
     // SEARCH
     func searchResult(_ objSearch: UserSearchBE, _ token: String?, completion: @escaping ((Result<UserPostData, Error>)) -> ()) {
         BCApiRest.search(objSearch, token) {(object) in
-            print("API: success")
             completion(.success(object))
         } conCompletionIncorrecto: { (messageError) in
-            print("API: error")
             completion(.failure(messageError as! Error))
         }
     }
@@ -38,9 +36,7 @@ class APIService: APIServiceProtocol {
     func login(email: String?, password: String?, completion: @escaping (Bool) -> Void) {
         BCApiRest.logIn( email:email, password:password ) { (objUsuario) in
             completion(true)
-            print("Login True")
         } conCompletionIncorrecto: { (mensajeError) in
-            print("Login False")
             completion(false)
         }
     }

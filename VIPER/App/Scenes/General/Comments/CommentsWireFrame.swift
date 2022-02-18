@@ -10,13 +10,7 @@ import Foundation
 import UIKit
 
 class CommentsWireFrame: CommentsWireFrameProtocol {
-    
-
     class func createCommentsModule(userpost: Userpost?) -> UIViewController {
-        
-//        print("Soy el wir frame de comments y el modulo me ha mandado: ")
-//        print(userpost)
-        
         let commentsView = CommentsView()
         let viewController = commentsView
         let presenter: CommentsPresenterProtocol & CommentsInteractorOutputProtocol = CommentsPresenter()
@@ -40,5 +34,4 @@ class CommentsWireFrame: CommentsWireFrameProtocol {
             
         return viewController
     }
-
 }
