@@ -89,11 +89,12 @@ class ProfileView: UIViewController {
         }
 }
 
+
 // MARK: - UIABLEVIEW DATASOURCE
 
 extension ProfileView: UICollectionViewDataSource {
 
-        func numberOfSections(in collectionView: UICollectionView) -> Int {
+        func numberOfSections( in collectionView: UICollectionView ) -> Int {
                 guard let numberOfSections = self.presenter?.presenterNumberOfSections() else { return 0 }
                 return numberOfSections
         }
@@ -105,14 +106,15 @@ extension ProfileView: UICollectionViewDataSource {
             return numberOfRowInsection
         }
 
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
+        func collectionView( _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath ) -> UICollectionViewCell {
+            guard let cell = collectionView.dequeueReusableCell( withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath ) as? PhotoCollectionViewCell else {
                 fatalError("PhotoCollectionViewCell cell not exists")
             }
             guard let post = self.presenter?.showPostsData(indexPath: indexPath) else {
                 fatalError("error post")
             }
-            cell.configure(with: post)
+            
+            cell.setCellWithValuesOf(with: post)
             //if self.presenter!.showPostsData().count != 0 {
                 //print(self.presenter!.showPostsData())
                 //cell.configure(with: self.presenter!.showPostsData())

@@ -63,10 +63,20 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // CONFIGURE
-    public func configure(with model: Post?) {
-        guard let image = model?.images?[0].title else { return }
-        let url = "http://localhost:3800/api/posts/get-image-post/" + image
-        photoImageView.sd_setImage(with: URL(string: url), completed: nil)
+    // SETUP VALUES
+    public func setCellWithValuesOf( with model: Post? ) {
+        guard let image = model?.images?[0].title else {
+            return
+        }
+        updateUI(image: image)
+    }
+    
+    // UPDATE VIEW
+    func updateUI( image: String ) {
+        let url = Constants.ApiRoutes.domain + "/api/posts/get-image-post/" + image
+        photoImageView.sd_setImage(
+            with: URL(string: url),
+            completed: nil
+        )
     }
 }

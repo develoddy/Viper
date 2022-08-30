@@ -21,6 +21,11 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
     // MARK: LLAMAMOS AL REMOTE MANAGER
     func interactorGetData(id: Int, token: String) {
         
+        /*
+         - ---------- LLAMAR AL REMOTEDATAMANAGER ------------
+         - EN ESTE PUNTO ES DECISIVO PORQUE SEGUN EL USUARIO SI ELIJE
+         - ENTRARAL PERFIL DESDEL EL HOME O DESDE TAB MANAGER.
+         */
         if token.isEmpty {
             guard let id = self.token.getUserToken().user?.id else { return }
             guard let token = self.token.getUserToken().success else { return }
@@ -30,6 +35,10 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
         }
     }
     
+    /*
+     - ---------- LLAMAR AL REMOTEDATAMANAGER ------------
+     - EN ESTE PUNTO SE OBTIENE LOS CONTADORES DE SEGUIDORES, PUBLICACIONES, ETC.
+     */
     func interactorGetCounter(id: Int, token: String) {
         if token.isEmpty {
             guard let id = self.token.getUserToken().user?.id else { return }
@@ -40,6 +49,10 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
         }
     }
     
+    /*
+     - ---------- LLAMAR AL REMOTEDATAMANAGER ------------
+     - EN ESTE PUNTO SE OBTIENE LAS PUBLICACIONES.
+     */
     func interactorGetPosts(id: Int, page: Int, token: String) {
         if token.isEmpty {
             guard let id = self.token.getUserToken().user?.id else { return }
@@ -54,24 +67,34 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
 }
 
 
-// TODO: OUTPUT
+// MARK: - OUTPUT
+
 extension ProfileInteractor: ProfileRemoteDataManagerOutputProtocol {
-  
-    // RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER
-    func remoteCallBackData(with viewModel: [User]) {
-        // ENVIA DE VUELTA LOS DATOS AL PRESENTER
-        self.presenter?.interactorCallBackData(with: viewModel)
+    /*
+     - ---------- LLAMAR AL PRESENTER ------------
+     - RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER.
+     - EN ESTE PUNTO SE ENVIA LOS DATOS AL PRESENTER.
+     */
+    func remoteCallBackData(with viewModel: [ User ]) {
+        self.presenter?.interactorCallBackData( with: viewModel )
     }
     
-    // RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER
-    func remoteCallBackTasts(with viewModel: [ResCounter]) {
-        // ENVIA DE VUELTA LOS DATOS AL PRESENTER
-        self.presenter?.interactorCallBackTasts(with: viewModel)
+    /*
+     - ---------- LLAMAR AL PRESENTER ------------
+     - RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER.
+     - EN ESTE PUNTO SE ENVIA LOS DATOS AL PRESENTER.
+     */
+    func remoteCallBackTasts(with viewModel: [ ResCounter ]) {
+        self.presenter?.interactorCallBackTasts( with: viewModel )
     }
     
-    // RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER
-    func remoteCallBackPosts(with viewModel: [Post]) {
-        self.presenter?.interactorCallBackPosts(with: viewModel)
+    /*
+     - ---------- LLAMAR AL PRESENTER ------------
+     - RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER.
+     - EN ESTE PUNTO SE ENVIA LOS DATOS AL PRESENTER.
+     */
+    func remoteCallBackPosts( with viewModel: [ Post ] ) {
+        self.presenter?.interactorCallBackPosts( with: viewModel )
     }
     
     

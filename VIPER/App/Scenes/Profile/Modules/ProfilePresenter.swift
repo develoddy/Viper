@@ -115,7 +115,7 @@ extension ProfilePresenter: ProfileInteractorOutputProtocol {
     }
     
     // RECIBE DE VUELTA LOS DATOS DE LOS COUNTER EL USUARIO
-    func interactorCallBackPosts(with viewModel: [Post]) {
+    func interactorCallBackPosts( with viewModel: [ Post ] ) {
         self.viewModelPost = viewModel
         
         self.view?.stopActivity()
