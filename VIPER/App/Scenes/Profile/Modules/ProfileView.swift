@@ -141,14 +141,14 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
                 guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
                 switch indexPath.section {
                 case 0:
-                        let header =
-                                collectionView.dequeueReusableSupplementaryView(
-                                        ofKind: kind,
-                                        withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier,
-                                        for: indexPath) as! ProfileInfoHeaderCollectionReusableView
+                        let header = collectionView.dequeueReusableSupplementaryView(
+                            ofKind: kind,
+                            withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier,
+                            for: indexPath ) as! ProfileInfoHeaderCollectionReusableView
+                    
                         let user = self.presenter?.username()
                         if user != nil {
-                                header.configureProfile(with: user)
+                            header.configureProfile(with: user)
                         }
 
                         let tasts = self.presenter?.tasts()
@@ -159,19 +159,17 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
                         // header.delegate = delegateHeader
                         return header
                 case 1:
-                        let storyHeader =
-                                collectionView.dequeueReusableSupplementaryView(
-                                        ofKind: kind,
-                                        withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier,
-                                        for: indexPath) as! StoryFeaturedCollectionTableViewCell
+                        let storyHeader = collectionView.dequeueReusableSupplementaryView(
+                            ofKind: kind,
+                            withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier,
+                            for: indexPath ) as! StoryFeaturedCollectionTableViewCell
                         return storyHeader
                 case 2:
-                        let tabsHeader =
-                                collectionView.dequeueReusableSupplementaryView(
-                                        ofKind: kind,
-                                        withReuseIdentifier: ProfileTabsCollectionReusableView.identifier,
-                                        for: indexPath) as! ProfileTabsCollectionReusableView
-                        // tabsHeader.delegate = self
+                        let tabsHeader = collectionView.dequeueReusableSupplementaryView(
+                            ofKind: kind,
+                            withReuseIdentifier: ProfileTabsCollectionReusableView.identifier,
+                            for: indexPath) as! ProfileTabsCollectionReusableView
+                            // tabsHeader.delegate = self
                         return tabsHeader
                 default:
                         break

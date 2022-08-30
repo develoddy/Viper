@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SearchResultPresenter: SearchResultPresenterProtocol  {
     
@@ -42,10 +43,10 @@ class SearchResultPresenter: SearchResultPresenterProtocol  {
         return self.viewModel.isEmpty
     }
     
+    // SE LLAMA AL WIREGRAME
     func showPost(user: User) {
-        print("Presenter")
-        print(user)
-        //self.wireFrame?.gotoPostScreen(from: view!, userpost: userpost)
+        guard let id = user.id, let name = user.name, let token = token.getUserToken().success else { return }
+        self.wireFrame?.navigateToProfile(from: view!, id: id, name: name, token: token)
     }
 }
 

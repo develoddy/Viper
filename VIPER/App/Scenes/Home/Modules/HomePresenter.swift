@@ -77,7 +77,6 @@ extension HomePresenter: HomePresenterProtocol {
      - PRESENTER LLAMA AL WIREFRAME PARA CAMBIAR PANTALLA (PROFILE)
      */
     func gotoProfileScreen(id: Int, name: String, token: String) {
-        print("Cambiar de pantalla...")
         self.wireFrame?.navigateToProfile(from: view!, id: id, name: name, token: token)
     }
     

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// func navigateToProfile(from view: HomeViewProtocol, id: Int, name: String, token: String)
 protocol SearchResultViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: SearchResultPresenterProtocol? { get set }
@@ -20,7 +21,8 @@ protocol SearchResultViewProtocol: AnyObject {
 protocol SearchResultWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createSearchResultModule(filter: String) -> UIViewController
-    func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Post)
+    //func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Post)
+    func navigateToProfile(from view: SearchResultViewProtocol, id: Int, name: String, token: String)
 }
 
 protocol SearchResultPresenterProtocol: AnyObject {

@@ -16,7 +16,7 @@ class SearchResultUI: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
-        tableView.isHidden = true
+        tableView.isHidden = false
         return tableView
     }()
 
@@ -31,8 +31,7 @@ class SearchResultUI: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
+   
     // MARK: - FUNCTIONS
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -40,7 +39,7 @@ class SearchResultUI: UIView {
     }
     
     func setupView() {
-        self.backgroundColor = .systemPink
+        self.backgroundColor = .systemBackground
         self.addSubview(tableView)
         self.addSubview(activityIndicator)
     }

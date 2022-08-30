@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 class SearchResultWireFrame: SearchResultWireFrameProtocol {
-   
-
+    
     class func createSearchResultModule(filter: String) -> UIViewController {
         let searchResultView = SearchResultView()
         let viewController = searchResultView
@@ -35,12 +34,15 @@ class SearchResultWireFrame: SearchResultWireFrameProtocol {
         
         return viewController
     }
+        
     
-    
-    func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Post) {
-        let newPostView = PostWireFrame.createPostModule(post: userpost)
+    func navigateToProfile(from view: SearchResultViewProtocol, id: Int, name: String, token: String) {
+        
+        let newProfileView = ProfileWireFrame.createProfileModule(id: id, name: name, token: token)
+       
         if let sourceView = view as? UIViewController {
-            sourceView.navigationController?.pushViewController(newPostView, animated: true)
+           //sourceView.navigationController?.pushViewController(newProfileView, animated: true)
+            sourceView.present(newProfileView, animated: true)
         }
     }
 }

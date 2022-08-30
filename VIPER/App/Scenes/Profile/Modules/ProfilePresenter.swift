@@ -50,6 +50,10 @@ class ProfilePresenter: ProfilePresenterProtocol  {
             return
         }
         
+        print("profile-presenter: ")
+        print(id)
+        print(token)
+        
         self.interactor?.interactorGetData(id: id, token: token)
         self.interactor?.interactorGetCounter(id: id, token: token)
         self.interactor?.interactorGetPosts(id: id, page: 0, token: token)
@@ -63,11 +67,6 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     
     // GET NUMBER OF ROWS INSECTION
     func numberOfRowsInsection(section: Int) -> Int {
-        /*if self.viewModel.count != 0 {
-            return viewModel.count
-        }
-        return 0*/
-        
         if self.viewModelPost.count != 0 {
             return viewModelPost.count
         }

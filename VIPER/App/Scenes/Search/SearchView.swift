@@ -60,10 +60,12 @@ class SearchView: UIViewController {
     
     // DELEGATES
     func delegates() {
-        self.searchUI.collectionView.delegate = self
-        self.searchUI.collectionView.dataSource = self
+        //self.searchUI.collectionView.delegate = self
+        //self.searchUI.collectionView.dataSource = self
         
-        self.searchController.searchResultsUpdater = self
+        self.searchController.searchResultsUpdater =  self
+        //self.searchController.hidesNavigationBarDuringPresentation = false
+        //self.searchController.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = self.searchController
         
     }
@@ -136,9 +138,6 @@ extension SearchView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
-        //guard let userpost = self.presenter?.showUserpostData(indexPath: indexPath) else { return UICollectionViewCell() }
-        //cell.configure(with: userpost)
-        
         return cell
     }
 }

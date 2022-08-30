@@ -51,11 +51,10 @@ class SearchResultViewTableViewCell: UITableViewCell {
     
     private let arrowImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "arrowshape.turn.up.right.fill") // arrow.forward
+        imageView.image = UIImage(systemName: "arrow.forward.circle") // arrow.forward
         imageView.tintColor = .black
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = UIColor.white
         return imageView
     }()
     
@@ -116,16 +115,17 @@ class SearchResultViewTableViewCell: UITableViewCell {
             y: (contentView.height-buttonHeight)/2,
             width: contentView.height-40,
             height: contentView.height-40)
-        //arrowImage.backgroundColor = .red
+//        arrowImage.tintColor = .red
         arrowImage.layer.cornerRadius = superView.height/5
     }
     
     public func configure(with model: User ) {
+        
         guard let image = model.profile?.imageHeader else {return}
         guard let username = model.username else { return }
         guard let name = model.name else { return }
         
-        let url = "http://localhost:3800/api/users/get-image-user/" + image
+        let url = Constants.ApiRoutes.domain + "/api/users/get-image-user/" + image
         profileImageView.sd_setImage(with: URL(string: url), completed: nil)
         usernameLabel.text = username
         fullNameLabel.text = name

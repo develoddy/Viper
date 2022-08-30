@@ -12,7 +12,7 @@ import UIKit
 class ProfileWireFrame: ProfileWireFrameProtocol {
     
     static func createProfileModule(id: Int, name: String, token: String) -> UIViewController {
-        
+
         let profileView = ProfileView()
         let viewController = profileView
         let presenter: ProfilePresenterProtocol & ProfileInteractorOutputProtocol = ProfilePresenter()

@@ -29,8 +29,8 @@ class StoryFeaturedCollectionTableViewCell: UICollectionReusableView {
         super.init(frame: frame)
         
         collectionView.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.identifier)
-        //collectionView.delegate = self
-        //collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         addSubview(collectionView)
     }
     
@@ -48,20 +48,20 @@ class StoryFeaturedCollectionTableViewCell: UICollectionReusableView {
     }*/
 }
 
-//extension StoryFeaturedCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    /*func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.count
+extension StoryFeaturedCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8 //model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let story = self.model[indexPath.row]
+        //let story = self.model[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.identifier, for: indexPath) as! StoryCollectionViewCell
-        cell.configure(model: story)
+        //cell.configure(model: story)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/5, height: collectionView.frame.width/5)
-    }*/
-//}
+    }
+}
 
