@@ -14,18 +14,22 @@ class WSApiRest: NSObject {
     static let CDMWebModelURLBase : NSString = Constants.ApiRoutes.domain as NSString
     
     // MARK: URLS
-    static let _URL_logout      = "api/auth/logout"
-    static let _URL_login       = "api/auth/login"
-    static let _URL_signup      = "api/auth/signup"
-    static let _URL_userpost    = "api/auth/home/userpost"
-    static let _URL_profile     = "api/auth/home/profile"
-    static let _URL_explore     = "api/auth/home/explore"
-    static let _URL_like        = "api/auth/likes/insert"
-    static let _URL_liked       = "api/auth/likes/liked"
-    static let _URL_caption     = "api/auth/post/updateCaption"
+    //static let _URL_logout      = "api//logout"
+    //static let _URL_login       = "api/auth/login"
+    //static let _URL_signup      = "api/signup"
+    static let _URL_userpost    = "api/posts/"
+    static let _URL_profile     = "api/users/one/"
+//    static let _URL_profile     = "api/home/profile"
+//    static let _URL_explore     = "api/home/explore"
+//    static let _URL_like        = "api/likes/insert"
+//    static let _URL_liked       = "api/likes/liked"
+//    static let _URL_caption     = "api/post/updateCaption"
+    
+    // NUEVO A API - NODEJS
+    static let _URL_login       = "api/users/login"
 
     // MARK: LOGOUT
-    @discardableResult
+    /*@discardableResult
     class func sesionSignOut(_ token: String,
                              conCompletionCorrecto completionCorrecto: @escaping Closures.LogOut,
                              error procesoIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
@@ -46,33 +50,37 @@ class WSApiRest: NSObject {
                    procesoIncorrecto(mensajeErrorFinal)
             }
         }
-    }
+    }*/
     
     // MARK: LOGIN
     @discardableResult
-    class func iniciarSesion(email: String?,
-                             password: String?,
-                             conCompletionCorrecto completionCorrecto : @escaping Closures.Login,
-                             error procesoIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
-        guard let email = email, let password = password else {
-            return nil
-        }
-
+    class func login(
+        email: String?,
+        password: String?,
+        conCompletionCorrecto completionCorrecto : @escaping Closures.Login,
+        error procesoIncorrecto: @escaping Closures.MessageError ) -> URLSessionDataTask? {
+        
+        guard let email = email, let password = password else { return nil}
         let dic : [String : Any] = [
             "email": email,
             "password": password,
             "typedevice": 1,
             "tokendevice": "Se debe enviar el token push del dispositivo"]
-        return WSenderSimple.doPOSTToURL(conURL: self.CDMWebModelURLBase,
-                                         conPath: _URL_login as NSString,
-                                         conParametros: dic) {(objRespuesta) in
+        
+        // LLAMADA AL POST TO URL
+        return WSenderSimple.doPOSTToURL(
+            conURL: self.CDMWebModelURLBase,
+            conPath: _URL_login as NSString,
+            conParametros: dic) {(objRespuesta) in
+                
             let diccionarioRespuesta = objRespuesta.respuestaJSON as? NSDictionary
             let arrayRespuesta = diccionarioRespuesta?["error"]
             let mensajeError = WSApiRest.obtenerMensajeDeError(paraData: diccionarioRespuesta)
             if arrayRespuesta == nil {
                 if diccionarioRespuesta != nil && diccionarioRespuesta!.count != 0 {
                     guard let diccionarioRespuesta = diccionarioRespuesta else { return }
-                    WSTranslator.translateResponseTokenBE(diccionarioRespuesta) {(result) in
+                    
+                    WSTranslator.translateResponseTokenBE( diccionarioRespuesta ) { ( result ) in
                         switch result {
                             case .success(let userPost): completionCorrecto(userPost)
                             case .failure(let error): print(error.localizedDescription)
@@ -80,18 +88,19 @@ class WSApiRest: NSObject {
                     }
                 }
             } else if arrayRespuesta as! String == Constants.Error.unauthorized {
-                let mensajeErrorFinal = (diccionarioRespuesta != nil && diccionarioRespuesta?.count == 0) ? Constants.LogInError.logInInvalidte : mensajeError
-                   procesoIncorrecto(mensajeErrorFinal)
+                let mensajeErrorFinal = ( diccionarioRespuesta != nil && diccionarioRespuesta?.count == 0 ) ? Constants.LogInError.logInInvalidte: mensajeError
+                procesoIncorrecto( mensajeErrorFinal )
             }
         }
     }
     
     
+    /*
     // MARK: SIGN IN
     @discardableResult
     class func sesionSignIn(_ objUser: UserBE,
                             conCompletionCorrecto completionCorrecto: @escaping Closures.Login,
-                            error procesoIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
+                            error procesoIncorrecto: @escaping Closures.MessageError) -> URLSessionDataTask? {
         let dic : [String : Any] = [
             "name": objUser.name!,
             "username": objUser.username!,
@@ -121,15 +130,16 @@ class WSApiRest: NSObject {
                    procesoIncorrecto(mensajeErrorFinal)
             }
         }
-    }
+    }*/
 
     // MARK: USERPOST A CALL IS MDADE TO THE BACKEND.
     @discardableResult class
     func startApiUserPost(_ token                                 : String?                        ,
                           conCompletionCorrecto completionCorrecto: @escaping Closures.userPost    ,
-                          error procesoIncorrecto                 : @escaping Closures.MensajeError) -> URLSessionDataTask? {
+                          error procesoIncorrecto                 : @escaping Closures.MessageError) -> URLSessionDataTask? {
         let dic : [Any]? = nil
-        let result = WSenderToken.doPOSTTokenToURL(conURL: WSApiRest.CDMWebModelURLBase,
+        
+        let result = WSenderToken.doGETTokenToURL(conURL: WSApiRest.CDMWebModelURLBase,
                                                   conPath: _URL_userpost as NSString,
                                                   conParametros: dic,
                                                   conToken: token ?? "") {(objRespuesta) in
@@ -139,7 +149,7 @@ class WSApiRest: NSObject {
             if arrayRespuesta == nil {
                 if diccionarioRespuesta != nil && diccionarioRespuesta!.count != 0 {
                     guard let diccionarioRespuesta = diccionarioRespuesta else { return }
-                    WSTranslator.translateResponseUserPostBE(diccionarioRespuesta) {(result ) in
+                    WSTranslator.translateResponseUserPostBE(diccionarioRespuesta) { ( result ) in
                         switch result {
                         case .success(let userPost): completionCorrecto(userPost)
                         case .failure(let error): print(error.localizedDescription)
@@ -156,18 +166,20 @@ class WSApiRest: NSObject {
     
     
     // MARK: PROFILE A CALL IS MDADE TO THE BACKEND
-    @discardableResult class func startProfile(_ email: String                         ,
-                                               _ token: String?                        ,
-                                               conCompletionCorrecto completionCorrecto: @escaping Closures.userPost,
-                                               error procesoIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
-        let dic : [String : Any] = [
-            "email": email,
+    @discardableResult class func startProfile(_ id: Int,
+                                               _ token: String?,
+                                               conCompletionCorrecto completionCorrecto: @escaping Closures.userFollow,
+                                               error procesoIncorrecto: @escaping Closures.MessageError) -> URLSessionDataTask? {
+        /*let dic : [String : Any] = [
+            "id": id,
             "typedevice": 1,
-            "tokendevice": "Se debe enviar el token push del dispositivo"]
-        let resultSearch = WSenderToken.doPOSTTokenToURL(conURL: self.CDMWebModelURLBase,
-                                                         conPath: _URL_profile as NSString,
+            "tokendevice": "Se debe enviar el token push del dispositivo"]*/
+        let dic : [String : Any] = ["userId": id]
+        let resultSearch = WSenderToken.doGETTokenToURL(conURL: self.CDMWebModelURLBase,
+                                                         conPath: (_URL_profile +  "\(id)" ) as NSString,
                                                          conParametros: dic,
                                                          conToken: token ?? "") {(objRespuesta) in
+            
             let diccionarioRespuesta = objRespuesta.respuestaJSON as? NSDictionary
             let arrayRespuesta       = diccionarioRespuesta?["error"]
             let mensajeError         = WSApiRest.obtenerMensajeDeError(paraData: diccionarioRespuesta)
@@ -176,7 +188,7 @@ class WSApiRest: NSObject {
                     guard let diccionarioRespuesta = diccionarioRespuesta else { return }
                     WSTranslator.translateResponseProfileBE(diccionarioRespuesta) { ( result ) in
                         switch result {
-                        case .success(let userPost): completionCorrecto(userPost)
+                        case .success(let userFollow): completionCorrecto(userFollow)
                         case .failure(let error): print(error.localizedDescription)
                         }
                     }
@@ -191,13 +203,13 @@ class WSApiRest: NSObject {
     
     
     // MARK: LIKES A CALL IS MDADE TO THE BACKEND
-    @discardableResult class func startLike(_ type_id: Int,
+    /*@discardableResult class func startLike(_ type_id: Int,
                                             _ ref_id: Int,
                                             _ users_id: Int,
                                             _ isLiked: Bool,
                                             _ token: String?,
-                                            conCompletionCorrecto completionCorrecto : @escaping Closures.message,
-                                            error procesoIncorrecto                  : @escaping Closures.MensajeError) -> URLSessionDataTask? {
+                                            conCompletionCorrecto completionCorrecto : @escaping Closures.Message,
+                                            error procesoIncorrecto                  : @escaping Closures.MessageError) -> URLSessionDataTask? {
         let dic : [String : Any] = [
             "type_id": type_id,
             "ref_id": ref_id,
@@ -235,7 +247,7 @@ class WSApiRest: NSObject {
     @discardableResult class func startSearch(_ objSearch: UserSearchBE,
                                               _ token: String?,
                                               conCompletionCorrecto completionCorrecto : @escaping Closures.userPost,
-                                              error procesoIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
+                                              error procesoIncorrecto: @escaping Closures.MessageError) -> URLSessionDataTask? {
         let dic : [String : Any] = [
             "name": objSearch.name ?? "",
             "typedevice": 1,
@@ -269,8 +281,8 @@ class WSApiRest: NSObject {
     @discardableResult class func startLiked(_ ref_id: Int,
                                              _ users_id: Int,
                                              _ token: String?,
-                                             conCompletionCorrecto completionCorrecto: @escaping Closures.message,
-                                             error procesoIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
+                                             conCompletionCorrecto completionCorrecto: @escaping Closures.Message,
+                                             error procesoIncorrecto: @escaping Closures.MessageError) -> URLSessionDataTask? {
         let dic : [String : Any] = [
             "ref_id": ref_id,
             "users_id": users_id,
@@ -307,8 +319,8 @@ class WSApiRest: NSObject {
     @discardableResult class func startPostCaptionUpdate(_ caption: Caption,
                                                          _ idpost: Int,
                                                          _ token: String?,
-                                                         conCompletionCorrecto completionCorrecto: @escaping Closures.message,
-                                                         error procesoIncorrecto: @escaping Closures.MensajeError) -> URLSessionDataTask? {
+                                                         conCompletionCorrecto completionCorrecto: @escaping Closures.Message,
+                                                         error procesoIncorrecto: @escaping Closures.MessageError) -> URLSessionDataTask? {
         let dic : [String : Any] = [
             "content": caption.content ?? "",
             "typedevice": 1 ,
@@ -337,7 +349,7 @@ class WSApiRest: NSObject {
         }
         return resultSearch
     }
-    
+     */
     
     
     
@@ -352,4 +364,6 @@ class WSApiRest: NSObject {
         }
         return mensajeError
     }
+     
+   
 }

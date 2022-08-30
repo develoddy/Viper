@@ -51,7 +51,7 @@ class SearchResultViewTableViewCell: UITableViewCell {
     
     private let arrowImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "arrowshape.turn.up.right.fill") ///arrow.forward
+        imageView.image = UIImage(systemName: "arrowshape.turn.up.right.fill") // arrow.forward
         imageView.tintColor = .black
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -95,7 +95,6 @@ class SearchResultViewTableViewCell: UITableViewCell {
             height: contentView.height-15)
         profileImageView.layer.cornerRadius = profileImageView.height/2
         
-        
         let size: CGFloat = 30
         let labelHeight = contentView.height/3
         //usernameLabel.backgroundColor = .green
@@ -121,18 +120,13 @@ class SearchResultViewTableViewCell: UITableViewCell {
         arrowImage.layer.cornerRadius = superView.height/5
     }
     
-    public func configure(with model: Userpost ) {
+    public func configure(with model: User ) {
+        guard let image = model.profile?.imageHeader else {return}
+        guard let username = model.username else { return }
+        guard let name = model.name else { return }
         
-        /*guard let image = model.profile?.imageHeader else { return }
-        profileImageView.sd_setImage(with: URL(string: image), completed: nil)
-        usernameLabel.text = model.username
-        fullNameLabel.text = model.name*/
-        
-        guard let image = model.userAuthor?.profile?.imageHeader else { return}
-        guard let username = model.userAuthor?.username else { return }
-        guard let name = model.userAuthor?.name else { return }
-        
-        profileImageView.sd_setImage(with: URL(string: image), completed: nil)
+        let url = "http://localhost:3800/api/users/get-image-user/" + image
+        profileImageView.sd_setImage(with: URL(string: url), completed: nil)
         usernameLabel.text = username
         fullNameLabel.text = name
     }

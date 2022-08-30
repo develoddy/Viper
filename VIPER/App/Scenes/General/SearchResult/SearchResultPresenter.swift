@@ -15,8 +15,9 @@ class SearchResultPresenter: SearchResultPresenterProtocol  {
     var interactor: SearchResultInteractorInputProtocol?
     var wireFrame: SearchResultWireFrameProtocol?
     var filter: String?
+    var delegate: SearchResultPresenter?
     var token = Token()
-    var viewModel: [Userpost] = [] {
+    var viewModel: [User] = [] {
         didSet {
             self.view?.updateUI()
         }
@@ -24,7 +25,7 @@ class SearchResultPresenter: SearchResultPresenterProtocol  {
     
     // TODO: FUNCTIONS
     func viewDidLoad() {
-        guard let filter = filter, let token = token.getUserToken().token else { return }
+        guard let filter = filter, let token = token.getUserToken().success else { return }
         self.interactor?.interactorGetData(token: token, filter: filter)
         self.view?.startActivity()
     }
@@ -33,17 +34,18 @@ class SearchResultPresenter: SearchResultPresenterProtocol  {
         self.viewModel.count
     }
     
-    func showProfileData(indexPath: IndexPath) -> Userpost {
+    func showProfileData(indexPath: IndexPath) -> User {
         return self.viewModel[indexPath.row]
     }
-    
     
     func viewModelIsEmpty() -> Bool {
         return self.viewModel.isEmpty
     }
     
-    func showPost(userpost: Userpost) {
-        self.wireFrame?.gotoPostScreen(from: view!, userpost: userpost)
+    func showPost(user: User) {
+        print("Presenter")
+        print(user)
+        //self.wireFrame?.gotoPostScreen(from: view!, userpost: userpost)
     }
 }
 
@@ -53,8 +55,8 @@ class SearchResultPresenter: SearchResultPresenterProtocol  {
 extension SearchResultPresenter: SearchResultInteractorOutputProtocol {
     
     // TODO: RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER
-    func interactorCallBackData(userpost: [Userpost]) {
-        self.viewModel = userpost
+    func interactorCallBackData(user: [User]) {
+        self.viewModel = user
         self.view?.stopActivity()
     }
 }

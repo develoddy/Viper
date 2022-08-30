@@ -63,7 +63,6 @@ class SearchView: UIViewController {
         self.searchUI.collectionView.delegate = self
         self.searchUI.collectionView.dataSource = self
         
-        
         self.searchController.searchResultsUpdater = self
         self.navigationItem.searchController = self.searchController
         
@@ -124,10 +123,6 @@ extension SearchView: SearchViewProtocol {
 
 
 
-
-
-
-
 // MARK: - UICOLLECTIONS
 extension SearchView: UICollectionViewDataSource {
     
@@ -141,14 +136,11 @@ extension SearchView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
-        guard let userpost = self.presenter?.showUserpostData(indexPath: indexPath) else { return UICollectionViewCell() }
-        cell.configure(with: userpost)
+        //guard let userpost = self.presenter?.showUserpostData(indexPath: indexPath) else { return UICollectionViewCell() }
+        //cell.configure(with: userpost)
+        
         return cell
     }
-    
-   
-    
-    
 }
 
 extension SearchView: UICollectionViewDelegateFlowLayout {
@@ -158,6 +150,6 @@ extension SearchView: UICollectionViewDelegateFlowLayout {
 extension SearchView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("SEARCH VIEW:::: kdssklsddskjdskjlksdkdskl")
+        print("SEARCH VIEW:::: kdssklsddskjdskjlksdkdskl.....")
     }
 }

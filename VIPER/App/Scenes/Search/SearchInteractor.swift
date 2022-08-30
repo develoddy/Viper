@@ -31,7 +31,7 @@ extension SearchInteractor: SearchRemoteDataManagerOutputProtocol {
     // MARK: FUNCTIONS
     
     // LLAMAR AL PRESENTER PARA DE VOLVER LOS DATOS
-    func remoteCallBackData(userpost: [Userpost]) {
+    func remoteCallBackData(userpost: [Post]) {
         self.presenter?.interactorCallBackData(userpost: userpost)
     }
 }

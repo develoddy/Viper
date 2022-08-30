@@ -103,23 +103,22 @@ extension CommentsView: UITableViewDataSource {
     // RETURN NUMBERS OF ROWS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.presenter?.numberOfRowsInsection(section: section) ?? 0
+        //return 0
     }
     
     // SHOW DATA CELL
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostCommentsListTableViewCell.identifier, for: indexPath) as! PostCommentsListTableViewCell
         guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { return UITableViewCell() }
-        cell.configure(with: comment.user?.name ?? "", with: comment.content ?? "")
+        cell.setCellWithValuesOf(with: comment)
         return cell
     }
     
     // SHOW DATA HEADER
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomHeaderTableViewCell.identifier) as! CustomHeaderTableViewCell
-        let userpost = self.presenter?.showHeaderCommentData(section: section)
-        guard let username = userpost?.userAuthor?.username,
-              let caption = userpost?.content else { return UIView() }
-        cell.configure(with: username, with: caption)
+        let post = self.presenter?.showHeaderCommentData(section: section)
+        cell.setCellWithValuesOf(with: post)
         return cell
     }
     

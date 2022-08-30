@@ -15,6 +15,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     //let containerView = UIView(frame: CGRect(x:0,y:0,width:320,height:500))
     
+    var array_images: [Image] = []
+    
     private let photoImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -60,9 +62,11 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         label.text = nil
     }
     
-    public func configure(with model: Userpost) {
-        /* http://127.0.0.1:8000/storage/app-new-publish/EddyLujan/images/eddy01.jpeg */
-        guard let url = model.postImage?[0].image?.src else { return }
+    
+    // CONFIGURE
+    public func configure(with model: Post?) {
+        guard let image = model?.images?[0].title else { return }
+        let url = "http://localhost:3800/api/posts/get-image-post/" + image
         photoImageView.sd_setImage(with: URL(string: url), completed: nil)
     }
 }

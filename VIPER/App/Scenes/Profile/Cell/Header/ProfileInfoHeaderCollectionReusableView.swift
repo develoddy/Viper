@@ -290,54 +290,36 @@ final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         profilePhotoImageView.sd_setImage(with: URL(string: ""), completed: nil)
     }
     
-    ///Configure
+    // Configure
     public func configureProfile(with user: User?) {
-        // Username - Image - Bio
+        
         guard let username = user?.username,
               let image = user?.profile?.imageHeader,
               let bio = user?.profile?.bio else {
             return
         }
-        profilePhotoImageView.sd_setImage(with: URL(string: image), completed: nil)
+        
+     
+        let url = "http://localhost:3800/api/users/get-image-user/" + image
+        profilePhotoImageView.sd_setImage(with: URL(string: url), completed: nil)
         usernameLabel.setTitle(username, for: .normal)
         biographyLabel.setTitle(bio, for: .normal)
-    
-        // Buttons Post - Follower - Following.
-        guard let posts = user?.count?.posts,
-              let follower = user?.count?.followers,
-              let following = user?.count?.following else {
-            return
-        }
-        addTextOnPostButton(posts: posts)
-        addTextOnFollowersButton(follower: follower)
-        addTextOnFollowingButton(following: following)
-        
         layoutsProfile()
     }
     
-    ///Configure
-    public func configureUser(with model: User) {
-        guard let image = model.profile?.imageHeader,
-              let username = model.username,
-              let bio = model.profile?.bio else {
+    
+    public func setCellWithValuesTastsOf(_ modelTast: ResCounter?) {
+        guard let following = modelTast?.following, let followed = modelTast?.followed, let posts = modelTast?.posts else {
             return
         }
-        profilePhotoImageView.sd_setImage(with: URL(string: image), completed: nil)
-        usernameLabel.setTitle(username, for: .normal)
-        biographyLabel.setTitle(bio, for: .normal)
         
-        ///Buttons Post - Follower - Following.
-        guard let posts = model.count?.posts,
-              let follower = model.count?.followers,
-              let following = model.count?.following else {
-            return
-        }
-        addTextOnPostButton(posts: posts)
-        addTextOnFollowersButton(follower: follower)
         addTextOnFollowingButton(following: following)
-        
-        layoutsUser()
+        addTextOnFollowersButton(follower: followed)
+        addTextOnPostButton(posts: posts)
     }
+    
+    //private func updateUI(username: String, content: String) {
+ 
     
     
     

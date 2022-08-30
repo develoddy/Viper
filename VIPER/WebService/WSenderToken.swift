@@ -24,8 +24,8 @@ class WSenderToken: NSObject {
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8;", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("PostmanRuntime/7.29.0", forHTTPHeaderField: "User-Agent")
-        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36", forHTTPHeaderField: "User-agent")
+        //request.addValue("PostmanRuntime/7.29.0", forHTTPHeaderField: "User-Agent")
+        //request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36", forHTTPHeaderField: "User-agent")
         if parametros != nil {
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parametros!, options: JSONSerialization.WritingOptions.prettyPrinted)
@@ -58,7 +58,7 @@ class WSenderToken: NSObject {
         let request = NSMutableURLRequest(url: urlServicio!)
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("PostmanRuntime/7.29.0", forHTTPHeaderField: "User-Agent")
+        //request.addValue("PostmanRuntime/7.29.0", forHTTPHeaderField: "User-Agent")
         if parametros != nil {
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parametros!, options: JSONSerialization.WritingOptions.prettyPrinted)

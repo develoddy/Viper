@@ -16,7 +16,7 @@ protocol CommentsViewProtocol: AnyObject {
 
 protocol CommentsWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createCommentsModule(userpost: Userpost?) -> UIViewController
+    static func createCommentsModule(userpost: Post?) -> UIViewController
 }
 
 protocol CommentsPresenterProtocol: AnyObject {
@@ -25,13 +25,13 @@ protocol CommentsPresenterProtocol: AnyObject {
     var interactor: CommentsInteractorInputProtocol? { get set }
     var wireFrame: CommentsWireFrameProtocol? { get set }
     
-    var userpostReceivedFromHome: Userpost? { get set }
+    var userpostReceivedFromHome: Post? { get set }
     
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showCommentsData(indexPath: IndexPath) -> Comment
-    func showHeaderCommentData(section: Int) -> Userpost
+    func showHeaderCommentData(section: Int) -> Post
 }
 
 protocol CommentsInteractorOutputProtocol: AnyObject {

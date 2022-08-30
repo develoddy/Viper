@@ -13,7 +13,8 @@ class APICaller {
     
     private init() {}
     
-    func login(token: String?, password: String?, completion: @escaping (Result<ResponseTokenBE, Error>) -> Void) {
+    //func login(token: String?, password: String?, completion: @escaping (Result<ResponseTokenBE, Error>) -> Void) {
+    func login(token: String?, password: String?, completion: @escaping (Result<LoginToken, Error>) -> Void) {
      
     }
     

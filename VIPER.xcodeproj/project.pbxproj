@@ -28,6 +28,7 @@
 		B31963EC279881D000A23628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31963EB279881D000A23628 /* LaunchScreen.storyboard */; };
 		B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F127995BD500A23628 /* TextFieldWithPadding.swift */; };
 		B31963F42799801000A23628 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F32799801000A23628 /* LoadingButton.swift */; };
+		B341B00628208EFD009FA4A9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B341B00528208EFD009FA4A9 /* Alert.swift */; };
 		B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E527AD4B61006EFACD /* PostPresenter.swift */; };
 		B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */; };
 		B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E727AD4B61006EFACD /* PostProtocols.swift */; };
@@ -160,6 +161,7 @@
 		B31963EB279881D000A23628 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B31963F127995BD500A23628 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		B31963F32799801000A23628 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		B341B00528208EFD009FA4A9 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B34804E527AD4B61006EFACD /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
 		B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocalDataManager.swift; sourceTree = "<group>"; };
 		B34804E727AD4B61006EFACD /* PostProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProtocols.swift; sourceTree = "<group>"; };
@@ -362,14 +364,13 @@
 		B31963ED2798849B00A23628 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B3A4D47427936DCE006B4CCA /* Entity */,
-				B3A4D45B2792C303006B4CCA /* WireFrame */,
-				B3A4D45A2792C2F7006B4CCA /* Protocol */,
-				B3A4D4562792C2C4006B4CCA /* LocalManager */,
-				B3A4D4572792C2D6006B4CCA /* RemoteManager */,
-				B3A4D4592792C2E9006B4CCA /* Interactor */,
-				B3A4D4552792C2BA006B4CCA /* Presenter */,
-				B3A4D4542792C2AF006B4CCA /* View */,
+				B3A4D44A2792C203006B4CCA /* LoginView.swift */,
+				B3A4D4462792C203006B4CCA /* LoginPresenter.swift */,
+				B3A4D4492792C203006B4CCA /* LoginInteractor.swift */,
+				B3A4D44B2792C203006B4CCA /* LoginRemoteDataManager.swift */,
+				B3A4D4472792C203006B4CCA /* LoginLocalDataManager.swift */,
+				B3A4D4482792C203006B4CCA /* LoginProtocols.swift */,
+				B3A4D44C2792C203006B4CCA /* LoginWireFrame.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -394,6 +395,25 @@
 				B3A4D4332791A5FF006B4CCA /* HomeView.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		B33B345128BCF767007203B4 /* RES */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5678027B299BA00CC123A /* HeadersRequest.swift */,
+				B3B5677E27B298B600CC123A /* ResponseInJSONWithData.swift */,
+			);
+			name = RES;
+			sourceTree = "<group>";
+		};
+		B33B345228BCF78F007203B4 /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5677827B2561800CC123A /* WSenderSimple.swift */,
+				B3B5677C27B2960800CC123A /* WSenderToken.swift */,
+				B3B5677A27B295E900CC123A /* WSenderCookie.swift */,
+			);
+			name = URL;
 			sourceTree = "<group>";
 		};
 		B34804E427AD4B48006EFACD /* Post */ = {
@@ -529,62 +549,6 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		B3A4D4542792C2AF006B4CCA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D44A2792C203006B4CCA /* LoginView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B3A4D4552792C2BA006B4CCA /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4462792C203006B4CCA /* LoginPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		B3A4D4562792C2C4006B4CCA /* LocalManager */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4472792C203006B4CCA /* LoginLocalDataManager.swift */,
-			);
-			path = LocalManager;
-			sourceTree = "<group>";
-		};
-		B3A4D4572792C2D6006B4CCA /* RemoteManager */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D44B2792C203006B4CCA /* LoginRemoteDataManager.swift */,
-			);
-			path = RemoteManager;
-			sourceTree = "<group>";
-		};
-		B3A4D4592792C2E9006B4CCA /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4492792C203006B4CCA /* LoginInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		B3A4D45A2792C2F7006B4CCA /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D4482792C203006B4CCA /* LoginProtocols.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		B3A4D45B2792C303006B4CCA /* WireFrame */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D44C2792C203006B4CCA /* LoginWireFrame.swift */,
-			);
-			path = WireFrame;
-			sourceTree = "<group>";
-		};
 		B3A4D45C2792C50C006B4CCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,6 +566,7 @@
 				B3A4D49127958A31006B4CCA /* Extensions.swift */,
 				B31963F127995BD500A23628 /* TextFieldWithPadding.swift */,
 				B31963F32799801000A23628 /* LoadingButton.swift */,
+				B341B00528208EFD009FA4A9 /* Alert.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -612,13 +577,6 @@
 				B3A4D47227936B8F006B4CCA /* APIService.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		B3A4D47427936DCE006B4CCA /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		B3A4D47727937565006B4CCA /* Login */ = {
@@ -671,6 +629,8 @@
 		B3B5676F27B2557800CC123A /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				B33B345228BCF78F007203B4 /* URL */,
+				B33B345128BCF767007203B4 /* RES */,
 				B3B5677227B255B600CC123A /* BC */,
 				B3B5677327B255C300CC123A /* WS */,
 			);
@@ -690,11 +650,6 @@
 			children = (
 				B3B5677427B255E000CC123A /* WSApiRest.swift */,
 				B3B5677627B255FC00CC123A /* WSTranslator.swift */,
-				B3B5677827B2561800CC123A /* WSenderSimple.swift */,
-				B3B5677C27B2960800CC123A /* WSenderToken.swift */,
-				B3B5677A27B295E900CC123A /* WSenderCookie.swift */,
-				B3B5677E27B298B600CC123A /* ResponseInJSONWithData.swift */,
-				B3B5678027B299BA00CC123A /* HeadersRequest.swift */,
 			);
 			path = WS;
 			sourceTree = "<group>";
@@ -1067,6 +1022,7 @@
 				B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */,
 				B3A4D48C279464A9006B4CCA /* ProfileInteractor.swift in Sources */,
 				B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */,
+				B341B00628208EFD009FA4A9 /* Alert.swift in Sources */,
 				B3EF8537279FEADF0076D443 /* SearchResultRemoteDataManager.swift in Sources */,
 				B31963DA2796D6E100A23628 /* ProfileCollectionsViews.swift in Sources */,
 				B3A4D4502792C203006B4CCA /* LoginInteractor.swift in Sources */,

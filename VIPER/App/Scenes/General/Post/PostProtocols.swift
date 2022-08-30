@@ -16,7 +16,7 @@ protocol PostViewProtocol: AnyObject {
 
 protocol PostWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createPostModule(userpost: Userpost) -> UIViewController
+    static func createPostModule(post: Post) -> UIViewController
 }
 
 protocol PostPresenterProtocol: AnyObject {
@@ -24,7 +24,7 @@ protocol PostPresenterProtocol: AnyObject {
     var view: PostViewProtocol? { get set }
     var interactor: PostInteractorInputProtocol? { get set }
     var wireFrame: PostWireFrameProtocol? { get set }
-    var userpostReceivedFromProfile: Userpost? { get set }
+    var userpostReceivedFromProfile: Post? { get set }
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
@@ -41,7 +41,7 @@ protocol PostInteractorInputProtocol: AnyObject {
     var presenter: PostInteractorOutputProtocol? { get set }
     var localDatamanager: PostLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: PostRemoteDataManagerInputProtocol? { get set }
-    func interactorGetData(userpost: Userpost) 
+    func interactorGetData(userpost: Post) 
 }
 
 protocol PostDataManagerInputProtocol: AnyObject {

@@ -1,11 +1,5 @@
-//
-//  CustomHeaderTableViewCell.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//
-
 import UIKit
+import SDWebImage
 
 class CustomHeaderTableViewCell: UITableViewCell {
 
@@ -80,11 +74,11 @@ class CustomHeaderTableViewCell: UITableViewCell {
     }
     
     private func joinText(username:String, description:String) -> NSMutableAttributedString {
-        ///Username
+        // Username
         let boldText  = username + " "
         let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
-        ///Commentario
+        // Commentario
         let normalText = description
         let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: CGFloat(14))]
         let normalString = NSMutableAttributedString(string:normalText, attributes:attrs2)
@@ -92,12 +86,19 @@ class CustomHeaderTableViewCell: UITableViewCell {
         return attributedString
     }
     
-    public func configure(with username: String, with caption: String) {
-        let username = username
-        let comment = caption
-        
-        let attributedString = joinText(username: username, description: comment)
+    // SETUP POSTS VALUES.
+    public func setCellWithValuesOf(with post: Post?) {
+        guard let username = post?.user?.username, let content = post?.content, let image = post?.user?.profile?.imageHeader else {
+            return
+        }
+        updateUI(username: username, content: content, image: image)
+    }
+    
+    // UPDATE TE UI VIEWS.
+    func updateUI(username: String, content: String, image: String) {
+        let attributedString = joinText(username: username, description: content)
         commentlabel.attributedText = attributedString
-        userImageView.image = UIImage(systemName: "person.crop.circle")
+        let url = Constants.ApiRoutes.domain + "/api/users/get-image-user/" + image
+        userImageView.sd_setImage(with: URL(string: url), completed: nil)
     }
 }

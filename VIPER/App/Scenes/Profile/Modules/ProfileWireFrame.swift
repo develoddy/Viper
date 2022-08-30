@@ -11,8 +11,8 @@ import UIKit
 
 class ProfileWireFrame: ProfileWireFrameProtocol {
     
-    static func createProfileModule(email: String, name: String, token: String) -> UIViewController {
-  
+    static func createProfileModule(id: Int, name: String, token: String) -> UIViewController {
+        
         let profileView = ProfileView()
         let viewController = profileView
         let presenter: ProfilePresenterProtocol & ProfileInteractorOutputProtocol = ProfilePresenter()
@@ -27,7 +27,7 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
         presenter.interactor = interactor
         
         // DATOS QUE RECIBE DEL MODULO HOMEVIEW
-        presenter.emailReceivedFromHome = email
+        presenter.idReceivedFromHome = id
         presenter.nameReceivedFromHome = name
         presenter.tokenReceivedFromHome = token 
         
@@ -40,8 +40,8 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
     }
     
     // GOTO POST
-    func gotoPostScreen(from view: ProfileViewProtocol, userpost: Userpost) {
-        let newPostView = PostWireFrame.createPostModule(userpost: userpost)
+    func gotoPostScreen(from view: ProfileViewProtocol, post: Post) {
+        let newPostView = PostWireFrame.createPostModule(post: post)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newPostView, animated: true)
         }

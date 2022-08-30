@@ -25,7 +25,7 @@ class SearchRemoteDataManager:SearchRemoteDataManagerInputProtocol {
     
     // LLAMAR AL API REST
     func remoteGetData(token: String) {
-        apiService.getUserPost(token: token) { [ weak self ] ( result ) in
+        /*apiService.getUserPost(token: token) { [ weak self ] ( result ) in
             switch result {
             case .success( let listOf ):
                 guard let userpost = listOf.userpost else {
@@ -36,6 +36,6 @@ class SearchRemoteDataManager:SearchRemoteDataManagerInputProtocol {
             case .failure(let error):
                 print("Error processing data Profile \(error)")
             }
-        }
+        }*/
     }
 }

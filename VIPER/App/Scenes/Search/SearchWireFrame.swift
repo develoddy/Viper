@@ -34,8 +34,16 @@ class SearchWireFrame: SearchWireFrameProtocol {
     }
     
     // LLAMAR AL MODULO (SEARCH RESULT)
-    func gotoSearchResultsUpdating(from view: SearchViewProtocol, resultsComtroller: SearchResultView,filter: String) {
+    func gotoSearchResultsUpdating(from view: SearchViewProtocol, resultsComtroller: SearchResultView, filter: String) {
+        
         resultsComtroller.presenter?.filter = filter
         resultsComtroller.presenter?.viewDidLoad()
+        
+      
+        /*let newSearchResultView = SearchResultWireFrame.createSearchResultModule(filter: filter)
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(newSearchResultView, animated: true)
+        }*/
+        
     }
 }

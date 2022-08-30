@@ -21,7 +21,7 @@ class LoginView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        //presenter?.viewDidLoad()
+        presenter?.viewDidLoad()
     }
     
     // SETUPVIEW
@@ -42,14 +42,15 @@ class LoginView: UIViewController {
     @objc private func didTapLoginButton() {
         guard let email = loginUI.emailText.text, let password = loginUI.passwordText.text else { return }
         // LLAMAMOS AL PRESENTER ENVIDANDOLE EL EMAIL & PASSWORD
-        presenter?.showTabBar(email: email, password: password)
+        presenter?.showTabBar( email: email, password: password )
     }
 }
 
 
 
 // MARK: - OUTPUT LOGIN VIEW PROTOCOL
-/// LA VISTA ES LLAMADO DESDE EL PRESENTER
+
+// LA VISTA ES LLAMADO DESDE EL PRESENTER.
 extension LoginView: LoginViewProtocol {
     
     // ANIMATE ACTIVITY

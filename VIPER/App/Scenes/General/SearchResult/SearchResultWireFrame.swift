@@ -37,8 +37,8 @@ class SearchResultWireFrame: SearchResultWireFrameProtocol {
     }
     
     
-    func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Userpost) {
-        let newPostView = PostWireFrame.createPostModule(userpost: userpost)
+    func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Post) {
+        let newPostView = PostWireFrame.createPostModule(post: userpost)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newPostView, animated: true)
         }

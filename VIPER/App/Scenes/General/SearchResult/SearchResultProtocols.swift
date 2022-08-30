@@ -20,7 +20,7 @@ protocol SearchResultViewProtocol: AnyObject {
 protocol SearchResultWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createSearchResultModule(filter: String) -> UIViewController
-    func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Userpost)
+    func gotoPostScreen(from view: SearchResultViewProtocol, userpost: Post)
 }
 
 protocol SearchResultPresenterProtocol: AnyObject {
@@ -28,17 +28,17 @@ protocol SearchResultPresenterProtocol: AnyObject {
     var view: SearchResultViewProtocol? { get set }
     var interactor: SearchResultInteractorInputProtocol? { get set }
     var wireFrame: SearchResultWireFrameProtocol? { get set }
-    var filter: String? { get set } 
+    var filter: String? { get set }
     func viewDidLoad()
     func numberOfRowsInsection(section: Int) -> Int
-    func showProfileData(indexPath: IndexPath) -> Userpost
+    func showProfileData(indexPath: IndexPath) -> User
     func viewModelIsEmpty() -> Bool
-    func showPost(userpost: Userpost)
+    func showPost(user: User)
 }
 
 protocol SearchResultInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
-    func interactorCallBackData(userpost: [Userpost])
+    func interactorCallBackData(user: [User])
 }
 
 protocol SearchResultInteractorInputProtocol: AnyObject {
@@ -57,12 +57,13 @@ protocol SearchResultRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: SearchResultRemoteDataManagerOutputProtocol? { get set }
     // func remoteGetData(token:String, filter: String)
-    func remoteGetData(token:String, filter: UserSearchBE)
+    func remoteGetData(token:String, filter: String)
 }
 
 protocol SearchResultRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func remoteCallBackData(userpost: [Userpost])
+    //func remoteCallBackData(userpost: [Userpost])
+    func remoteCallBackData(user: [User])
 }
 
 protocol SearchResultLocalDataManagerInputProtocol: AnyObject {

@@ -20,14 +20,15 @@ class LoginWireFrame: LoginWireFrameProtocol {
         let remoteDataManager: LoginRemoteDataManagerInputProtocol = LoginRemoteDataManager()
         let wireFrame: LoginWireFrameProtocol = LoginWireFrame()
         
-        viewController.presenter = presenter
-        presenter.view = viewController
-        presenter.wireFrame = wireFrame
-        presenter.interactor = interactor
-        interactor.presenter = presenter
-        interactor.localDatamanager = localDataManager
-        interactor.remoteDatamanager = remoteDataManager
-        remoteDataManager.remoteRequestHandler = interactor
+        viewController.presenter                = presenter
+        presenter.view                          = viewController
+        presenter.wireFrame                     = wireFrame
+        presenter.interactor                    = interactor
+        interactor.presenter                    = presenter
+        interactor.localDatamanager             = localDataManager
+        interactor.remoteDatamanager            = remoteDataManager
+        remoteDataManager.remoteRequestHandler  = interactor
+        
         return viewController
     }
     
@@ -36,18 +37,17 @@ class LoginWireFrame: LoginWireFrameProtocol {
         
         let submodules = (
             home: HomeWireFrame.createHomeModule(),
-            profile: ProfileWireFrame.createProfileModule(email: "", name: "", token: ""),
+            profile: ProfileWireFrame.createProfileModule( id: 0, name: "", token: "" ),
             search: SearchWireFrame.createSearchModule())
         
-        let tabBarController = TabBarModuleBuilder.build(usingSubmodules: submodules)
+        let tabBarController = TabBarModuleBuilder.build( usingSubmodules: submodules )
         
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        let obj = appDelegate.objUsuarioSesion
-        let token = obj?.token
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let obj         = appDelegate.loginSession
+        let token       = obj?.success
         
         if token != nil {
-            //print("LoginWireFrame - Si Hay token")
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarController)
+            ( UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate )?.changeRootViewController( tabBarController )
         } else {
             //print("LoginWireFrame -  No hay token")
         }

@@ -58,7 +58,7 @@ class LoginUI: UIView {
     public let emailText : TextFieldWithPadding = {
         let emailText = TextFieldWithPadding()
         emailText.placeholder = "Username or Email"
-        emailText.text = "eddylujann@gmail.com"
+        emailText.text = "eddylujan@gmail.com"
         emailText.returnKeyType = .next
         emailText.leftViewMode = .always
         emailText.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class HomeWireFrame: HomeWireFrameProtocol {
+
     
     class func createHomeModule() -> UIViewController {
         
@@ -34,15 +35,15 @@ class HomeWireFrame: HomeWireFrameProtocol {
     }
     
     // NAVIGATE GOTO PROFILE
-    func navigateToProfile(from view: HomeViewProtocol, email: String, name: String, token: String) {
-        let newProfileView = ProfileWireFrame.createProfileModule(email: email, name: name, token: token)
+    func navigateToProfile(from view: HomeViewProtocol, id: Int, name: String, token: String) {
+        let newProfileView = ProfileWireFrame.createProfileModule(id: id, name: name, token: token)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newProfileView, animated: true)
         }
     }
     
     // NAVIGATE GOTO LIST COMMENTS
-    func navigateToComments(from view: HomeViewProtocol, userpost: Userpost) {
+    func navigateToComments(from view: HomeViewProtocol, userpost: Post) {
         let newListcommentsView = CommentsWireFrame.createCommentsModule(userpost: userpost)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newListcommentsView, animated: true)

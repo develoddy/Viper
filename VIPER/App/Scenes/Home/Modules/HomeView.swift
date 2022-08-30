@@ -46,7 +46,10 @@ class HomeView: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    // LLAMA AL PRESENTER
+    /*
+     - ------------ LLAMAR AL PRESENTER -------------
+     - SE INCIALIZA LLAMANDO AL PRESENTER.
+    */
     func loadData() {
         presenter?.viewDidLoad()
     }
@@ -66,37 +69,6 @@ class HomeView: UIViewController {
     func setupLeftNavItems() {
         self.navigationItem.title = "Secondary"
     }
-
-    //    func setupLeftNavItems() {
-    //        // Create the navigation bar
-    //        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.width, height: 50))
-    //        navigationBar.backgroundColor = .blue
-    //        //navigationBar.isTranslucent = false
-    //
-    //        // Create a navigation item with a title
-    //        let navigationItem = UINavigationItem()
-    //        navigationItem.title = "Timwider"
-    //
-    //        // Create left and right button for navigation item
-    //        //let leftButton =  UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(xx) )
-    //        let profileButton = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: nil)
-    //        let messengerButton = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: nil)
-    //        let chatButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: nil)
-    //
-    //        messengerButton.tintColor = .black
-    //        chatButton.tintColor = .black
-    //        profileButton.tintColor = .black
-    //
-    //        // Create two buttons for the navigation item
-    //        navigationItem.leftBarButtonItem = profileButton
-    //        navigationItem.rightBarButtonItems = [chatButton, messengerButton]
-    //
-    //        // Assign the navigation item to the navigation bar
-    //        navigationBar.items = [navigationItem]
-    //
-    //        // Make the navigation bar a subview of the current view controller
-    //        self.view.addSubview(navigationBar)
-    //    }
 }
 
 
@@ -131,10 +103,17 @@ extension HomeView: HomeViewProtocol {
     }
 }
 
-// MARK: ACTIONS
+// MARK: ACCION DE BOTIENES (LIKE, COMMENT, SHARE)
 extension HomeView: IGFeedPostActionsTableViewCellProtocol {
-    func didTapCommentButton(model: Userpost) {
+    func didTapCommentButton(model: Post) {
         print("click comentarios")
+        self.presenter?.gotoCommentsScreen(userpost: model)
+    }
+}
+
+// MARK: CAMBIAR A LA PANTALLA DE COMENTATIOS
+extension HomeView: IGFeedPostDescriptionTableViewCellProtocol {
+    func didTapComments(model: Post) {
         self.presenter?.gotoCommentsScreen(userpost: model)
     }
 }

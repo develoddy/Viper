@@ -17,7 +17,7 @@ class SearchPresenter {
     var wireFrame: SearchWireFrameProtocol?
     var token = Token()
     
-    var viewModel: [Userpost] = [] {
+    var viewModel: [Post] = [] {
         didSet {
             self.view?.updateUI()
         }
@@ -31,10 +31,10 @@ extension SearchPresenter: SearchPresenterProtocol {
     // TODO: -  FUNCTIONS
     
     func viewDidLoad() {
-        guard let token = token.getUserToken().token else { return }
+        //guard let token = token.getUserToken().success else { return }
         // LLAMAR AL INTERACTOR
-        self.interactor?.interactorGetData(token: token)
-        self.view?.startActivity()
+        //self.interactor?.interactorGetData(token: token)
+        //self.view?.startActivity()
     }
     
     // GET NUMBER OF SECTION
@@ -51,7 +51,7 @@ extension SearchPresenter: SearchPresenterProtocol {
     }
     
     // GET DATA
-    func showUserpostData(indexPath: IndexPath) -> Userpost {
+    func showUserpostData(indexPath: IndexPath) -> Post {
         return self.viewModel[indexPath.row]
     }
     
@@ -70,7 +70,7 @@ extension SearchPresenter: SearchInteractorOutputProtocol {
     // MARK: FUNCTIONS
     
     // EL PRESENTER RECIBE LOS DATOS DEL INTERACTOR
-    func interactorCallBackData(userpost: [Userpost]) {
+    func interactorCallBackData(userpost: [Post]) {
         self.viewModel = userpost
         view?.stopActivity()
     }

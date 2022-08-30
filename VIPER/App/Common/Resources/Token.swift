@@ -11,9 +11,9 @@ class Token {
     
     static let shared = Token()
     
-    public func getUserToken() -> ResponseTokenBE {
+    public func getUserToken() -> LoginToken {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        guard let token = appDelegate.objUsuarioSesion else {
+        guard let token = appDelegate.loginSession else {
             return getUserToken()
         }
         return token

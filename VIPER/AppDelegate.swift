@@ -11,7 +11,8 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
         
-    var objUsuarioSesion : ResponseTokenBE?
+    //var objUsuarioSesion : ResponseTokenBE?
+    var loginSession: LoginToken?
     
     var window: UIWindow?
 

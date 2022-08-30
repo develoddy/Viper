@@ -9,7 +9,7 @@
 import Foundation
 
 enum UserPostViewModelRenderType {
-    case primaryContent(posts: Userpost)
+    case primaryContent(posts: Post)
 }
 
 struct UserPostViewModelRenderViewModel {
@@ -22,13 +22,13 @@ class CommentsPresenter : CommentsPresenterProtocol {
     weak var view: CommentsViewProtocol?
     var interactor: CommentsInteractorInputProtocol?
     var wireFrame: CommentsWireFrameProtocol?
-    var userpostReceivedFromHome: Userpost?
+    var userpostReceivedFromHome: Post?
     private var renderModels = [UserPostViewModelRenderViewModel]()
     
     // MEDIANTE EL WIREFRAME RECIBIMOS LOS DATOS QUE NOS ENVIA EL MODULO HOME (ACTION - COMMENTS)
     func viewDidLoad() {
-        guard let UserPostViewModelModel = self.userpostReceivedFromHome else { return }
-        renderModels.append(UserPostViewModelRenderViewModel(renderType: .primaryContent(posts: UserPostViewModelModel)))
+        guard let userPostViewModelModel = self.userpostReceivedFromHome else { return }
+        renderModels.append(UserPostViewModelRenderViewModel(renderType: .primaryContent(posts: userPostViewModelModel)))
     }
     
     // GET NUMBER OF SECTION
@@ -56,7 +56,7 @@ class CommentsPresenter : CommentsPresenterProtocol {
         }
     }
     
-    func showHeaderCommentData(section: Int) -> Userpost {
+    func showHeaderCommentData(section: Int) -> Post {
         let model = renderModels[section]
         switch model.renderType {
         case .primaryContent(let post):

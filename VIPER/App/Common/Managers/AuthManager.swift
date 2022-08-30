@@ -19,7 +19,7 @@ final class AuthManager {
             objUser.password = password*/
             
             ///Call to API
-            BCApiRest.logIn( email:email, password:password ) { (objUsuario) in
+            BCApiRest.login( email:email, password:password ) { (objUsuario) in
                 completion(true)
             } conCompletionIncorrecto: { (mensajeError) in
                 completion(false)

@@ -140,13 +140,20 @@ class PostCommentsListTableViewCell: UITableViewCell {
         return attributedString
     }
     
-    public func configure(with username: String, with model: String) {
+    public func setCellWithValuesOf( with comment: Comment ) {
         
-        let username = username
-        let comment = model
+        guard let username = comment.user?.username, let content = comment.content, let image = comment.user?.profile?.imageHeader else {
+            return
+        }
+        updateUI(username: username, comment: content, image: image)
         
+    }
+    
+    func updateUI( username: String, comment: String, image: String ) {
         let attributedString = joinText(username: username, description: comment)
         commentlabel.attributedText = attributedString
-        userImageView.image = UIImage(systemName: "person.crop.circle")
+        let url = Constants.ApiRoutes.domain + "/api/users/get-image-user/" + image
+        userImageView.sd_setImage(with: URL(string: url), completed: nil)
+        //userImageView.image = UIImage(systemName: "person.crop.circle")
     }
 }

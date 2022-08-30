@@ -64,7 +64,7 @@ import UIKit
 protocol IGFeedPostActionsTableViewCellProtocol: AnyObject {
     //func didTapLikeButton(_ sender: UIButton, model: Userpost)
     //func didTapCommentButton(model: UserpostViewModel)
-    func didTapCommentButton(model: Userpost)
+    func didTapCommentButton(model: Post)
     //func didTapSendButton()
 }
 
@@ -78,7 +78,7 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
     
     public var delegate: IGFeedPostActionsTableViewCellProtocol?
     
-    private var model: Userpost?
+    private var model: Post?
     
     private var isLiked = false
     
@@ -184,12 +184,12 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
     
     
     // Setup userpost values
-    public func setCellWithValuesOf(_ model: Userpost) {
+    public func setCellWithValuesOf(_ model: Post) {
         updateUI(post: model)
     }
     
     // Update the UI Views
-    private func updateUI(post: Userpost) {
+    private func updateUI(post: Post) {
         self.model = post
     }
     

@@ -32,13 +32,13 @@ protocol SearchPresenterProtocol: AnyObject {
     func viewDidLoad()
     func numberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
-    func showUserpostData(indexPath: IndexPath) -> Userpost
+    func showUserpostData(indexPath: IndexPath) -> Post
     func searchResultsUpdating(resultsComtroller: SearchResultView, filter: String)
 }
 
 protocol SearchInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
-    func interactorCallBackData(userpost: [Userpost])
+    func interactorCallBackData(userpost: [Post])
 }
 
 protocol SearchInteractorInputProtocol: AnyObject {
@@ -61,7 +61,7 @@ protocol SearchRemoteDataManagerInputProtocol: AnyObject {
 
 protocol SearchRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func remoteCallBackData(userpost: [Userpost])
+    func remoteCallBackData(userpost: [Post])
 }
 
 protocol SearchLocalDataManagerInputProtocol: AnyObject {

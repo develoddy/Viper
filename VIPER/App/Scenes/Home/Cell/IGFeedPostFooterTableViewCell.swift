@@ -15,7 +15,7 @@ class IGFeedPostFooterTableViewCell: UITableViewCell {
     
     //public var delegate: IGFeedPostFooterTableViewCellProtocol?
     
-    private var model: Userpost?
+    private var model: Post?
     
     private let profilePhotoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -92,9 +92,27 @@ class IGFeedPostFooterTableViewCell: UITableViewCell {
             height: size)
     }
     
-    public func configure(with post: Userpost) {
-        profilePhotoImageView.sd_setImage(with: URL(string: post.userAuthor?.profile?.imageHeader ?? ""), completed: nil)
+    public func configure(with post: Post) {
+        //profilePhotoImageView.sd_setImage(with: URL(string: post.userAuthor?.profile?.imageHeader ?? ""), completed: nil)
+        //profilePhotoImageView.sd_setImage(with: URL(string: post.user?.profile?.imageHeader ?? ""), completed: nil)
         model = post
+        
+        let image = post.user?.profile?.imageHeader ?? ""
+        let url = "http://localhost:3800/api/users/get-image-user/"+image
+        var urlRequest = URLRequest(url: URL(string: url)!)
+        urlRequest.httpMethod = Constants.Method.httpGet
+        urlRequest.setValue(Constants.headerImage.valueContentType, forHTTPHeaderField: Constants.headerImage.forHTTPHeaderFieldContenType)
+        urlRequest.setValue(Constants.headerImage.valueUserAgent, forHTTPHeaderField: Constants.headerImage.forHTTPHeaderFieldUserAgent)
+        let dataTask = URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    self?.profilePhotoImageView.image = UIImage(data: data!)
+                }
+            } else {
+                print("FAILL URL ERROR.....: \(error!.localizedDescription)")
+            }
+        }
+        dataTask.resume()
     }
     
     override func prepareForReuse() {

@@ -13,7 +13,7 @@ class StoryFeaturedCollectionTableViewCell: UICollectionReusableView {
     
     private let collectionView: UICollectionView
     
-    private var model = [Storyfeatured]()
+    //private var model = [Storyfeatured]()
     
     override init(frame: CGRect) {
         
@@ -29,8 +29,8 @@ class StoryFeaturedCollectionTableViewCell: UICollectionReusableView {
         super.init(frame: frame)
         
         collectionView.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        //collectionView.delegate = self
+        //collectionView.dataSource = self
         addSubview(collectionView)
     }
     
@@ -42,14 +42,14 @@ class StoryFeaturedCollectionTableViewCell: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(model: [Storyfeatured])  {
+    /*public func configure(model: [Storyfeatured])  {
         self.model = model
         DispatchQueue.main.async{ self.collectionView.reloadData()}
-    }
+    }*/
 }
 
-extension StoryFeaturedCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//extension StoryFeaturedCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    /*func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.count
     }
     
@@ -62,10 +62,6 @@ extension StoryFeaturedCollectionTableViewCell: UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/5, height: collectionView.frame.width/5)
-    }
-    
-    /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
     }*/
-}
+//}
 

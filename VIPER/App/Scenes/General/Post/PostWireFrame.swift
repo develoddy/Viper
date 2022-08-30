@@ -11,7 +11,7 @@ import UIKit
 
 class PostWireFrame: PostWireFrameProtocol {
 
-    class func createPostModule(userpost: Userpost) -> UIViewController {
+    class func createPostModule(post: Post) -> UIViewController {
         let navController = PostView()
         let viewController = navController
         let presenter: PostPresenterProtocol & PostInteractorOutputProtocol = PostPresenter()
@@ -24,7 +24,7 @@ class PostWireFrame: PostWireFrameProtocol {
         presenter.view = viewController
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
-        presenter.userpostReceivedFromProfile = userpost
+        presenter.userpostReceivedFromProfile = post
         
         interactor.presenter = presenter
         interactor.localDatamanager = localDataManager

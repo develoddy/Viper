@@ -69,7 +69,6 @@ extension SearchResultView: SearchResultViewProtocol {
             guard let isEmpty = self.presenter?.viewModelIsEmpty() else { return }
             self.searchResultUI.tableView.reloadData()
             self.searchResultUI.tableView.isHidden =  isEmpty // models.isEmpty
-            
         }
     }
     
@@ -99,7 +98,7 @@ extension SearchResultView: SearchResultViewProtocol {
 
 // MARK: - TABLE VIEW
 
-extension SearchResultView: UITableViewDataSource {
+extension SearchResultView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.presenter?.numberOfRowsInsection(section: section) ?? 0
@@ -107,8 +106,8 @@ extension SearchResultView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultViewTableViewCell.identifier, for: indexPath) as! SearchResultViewTableViewCell
-        guard let userpost = self.presenter?.showProfileData(indexPath: indexPath) else { return UITableViewCell() }
-        cell.configure(with: userpost)
+        guard let user = self.presenter?.showProfileData(indexPath: indexPath) else { return UITableViewCell() }
+        cell.configure(with: user)
         return cell
     }
     
@@ -117,13 +116,14 @@ extension SearchResultView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("SearchResult View: kdssklsddskjdskjlksdkdskl")
+        
+        print("click showPost::: ")
         
         // SE LLAMA AL PRESENTER
-        //guard let userPost = self.presenter?.showProfileData(indexPath: indexPath) else { return }
-        //self.presenter?.showPost(userpost: userPost)
+        guard let user = self.presenter?.showProfileData(indexPath: indexPath) else { return }
+        self.presenter?.showPost(user: user)
     }
+    
 }
 
-extension SearchResultView: UITableViewDelegate {
-}
+//extension SearchResultView: UITableViewDelegate {}

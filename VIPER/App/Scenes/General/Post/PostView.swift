@@ -84,10 +84,10 @@ extension PostView: UITableViewDataSource {
         case .actions(_):
             let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostActionsTableViewCell.identifier, for: indexPath) as! IGFeedPostActionsTableViewCell
             return cell
-        case .comments(let comments):
+        case .comments(_/*let comments*/):
             let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostGeneralTableViewCell.identifier, for: indexPath) as! IGFeedPostGeneralTableViewCell
-            let count = comments.count
-            cell.configure(with: count)
+            //let count = comments.count
+            //cell.configure(with: count)
             return cell
         case .primaryContent(let post):
             let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostTableViewCell.identifier, for: indexPath) as! IGFeedPostTableViewCell
@@ -98,10 +98,10 @@ extension PostView: UITableViewDataSource {
             cell.configure(with: post)
             // cell.delegate = self
             return cell
-        case .descriptions(let post):
+        case .descriptions(_/*let post*/):
             let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostDescriptionTableViewCell.identifier, for: indexPath) as! IGFeedPostDescriptionTableViewCell
-            cell.configure(with: post)
-            // cell.delegate = self
+            //cell.configure(with: post)
+            //cell.delegate = self
             return cell
         case .footer(let footer):
             let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostFooterTableViewCell.identifier, for: indexPath) as! IGFeedPostFooterTableViewCell

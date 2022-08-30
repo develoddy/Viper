@@ -28,14 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // MARK: PROPERTIES
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let appDelegate = AppDelegate()
-        let obj = appDelegate.objUsuarioSesion
-        let token = obj?.token
+        let obj = appDelegate.loginSession
+        let token = obj?.success
 
         // MARK: VALIDATIONS
         if token != nil {
             let submodules = (
                 home: HomeWireFrame.createHomeModule(),
-                profile: ProfileWireFrame.createProfileModule(email: "", name: "", token: ""),
+                profile: ProfileWireFrame.createProfileModule(id: 0, name: "", token: ""),
                 search: SearchWireFrame.createSearchModule() )
 
             let window                  = UIWindow(windowScene: windowScene)

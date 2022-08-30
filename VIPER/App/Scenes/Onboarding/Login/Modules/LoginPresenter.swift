@@ -25,8 +25,13 @@ extension LoginPresenter: LoginPresenterProtocol {
         // DECIRLE AL INTERACTOR QUE QUIERE TRAER UNOS DATOS
     }
     
-    // VAMOS A LLAMAR AL WIREFRAME
-    func showTabBar(email: String?, password: String?) {
+
+    /*
+     - ----------- LLAMAR AL INTERACTOR --------------
+     - VAMOS A LLAMAR AL INTERACTOS PANSANDOLE
+     - EL NOMBRE DE USUARIO Y CONTRASEÑA.
+     */
+    func showTabBar( email: String?, password: String? ) {
         interactor?.interactorGetData(email: email, password: password)
         view?.startActivity()
     }
@@ -37,11 +42,13 @@ extension LoginPresenter: LoginPresenterProtocol {
 // MARK: PRESENTER OutputProtocol
 extension LoginPresenter: LoginInteractorOutputProtocol {
     
-    // RECIBE UN BOLEANO SI EL USUARIO FUE LOGUEADO CORRECTAMENTE O INCORRECTAMENTE
-    // SI ES CORRECTO ENTONCES LLAMAMOS AL WIREFRAME PARA CAMBIO DE PANTALLA (TAB BAR CONTOLLER)
-    // SI ES INCORRECTO ENTONCES "YA VEREMOS"...
+    /*
+     - ----------- INTERACTOR CALL BACK DATA --------------
+     - RECIBE UN BOLEANO SI EL USUARIO FUE LOGUEADO CORRECTAMENTE O INCORRECTAMENTE
+     - SI ES CORRECTO ENTONCES LLAMAMOS AL WIREFRAME PARA CAMBIO DE PANTALLA (TAB BAR CONTOLLER)
+     - SI ES INCORRECTO ENTONCES "YA VEREMOS"...
+     */
     func interactorCallBackData(success: Bool) {
-        ///print("LoginPresenter devuelta  Login Success !!! > \(success)")
         view?.stopActivity()
         wireFrame?.presentNewTabBarController()
     }

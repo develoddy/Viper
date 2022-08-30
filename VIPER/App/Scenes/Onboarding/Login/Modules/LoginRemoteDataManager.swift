@@ -19,10 +19,13 @@ class LoginRemoteDataManager:LoginRemoteDataManagerInputProtocol {
         self.apiService = apiService
     }
     
-    // LLAMAR AL SERVICIO Y OBTENER LOS DATOS
-    func remoteGetData(email: String?, password: String?) {
-        apiService.login(email: email, password: password) { success in
-           self.remoteRequestHandler?.remoteCallBackData(success: success)
+    // LLAMAR AL SERVICIO Y OBTENER LOS DATOS.
+    func remoteGetData(
+        email: String?,
+        password: String?
+    ) {
+        apiService.login( email: email, password: password ) { success in
+           self.remoteRequestHandler?.remoteCallBackData( success: success )
         }
     }
 }

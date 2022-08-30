@@ -15,9 +15,14 @@ class LoginInteractor: LoginInteractorInputProtocol {
     var localDatamanager: LoginLocalDataManagerInputProtocol?
     var remoteDatamanager: LoginRemoteDataManagerInputProtocol?
     
-    func interactorGetData(email: String?, password: String?) {
-        // DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER) QUE TIENE QUE TRAER UNOS DATOS
-        remoteDatamanager?.remoteGetData(email: email, password: password)
+    func interactorGetData(
+        email: String?,
+        password: String?
+    ) {
+        // DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER) QUE TIENE QUE TRAER UNOS DATOS.
+        remoteDatamanager?.remoteGetData(
+            email: email,
+            password: password )
     }
 }
 

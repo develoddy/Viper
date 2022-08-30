@@ -56,7 +56,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(model: Storyfeatured) {
+    /*public func configure(model: Storyfeatured) {
         ///Recive las images que iran pintadas en el sototy featured
         guard let image = model.src else {
             return
@@ -66,6 +66,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
         }
         storybutton.sd_setImage(with: URL(string: image), for: .normal, completed: nil)
         usernameLabel.text = title
-    }
+    }*/
 }
 

@@ -16,22 +16,20 @@ class SearchResultInteractor: SearchResultInteractorInputProtocol {
     var remoteDatamanager: SearchResultRemoteDataManagerInputProtocol?
     
     func interactorGetData(token:String, filter: String) {
-        let objecFilter = UserSearchBE()
-        objecFilter.name = filter
-        
-        if filter == "" {
-            print("IF: El searc está vacio")
+        if filter.isEmpty {
+            print("El filter está vacio...")
         } else {
-            self.remoteDatamanager?.remoteGetData(token: token, filter: objecFilter)
+            self.remoteDatamanager?.remoteGetData(token: token, filter: filter)
         }
     }
 }
 
 // TODO: OUTPUT
 extension SearchResultInteractor: SearchResultRemoteDataManagerOutputProtocol {
-    
     // TODO: RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER
-    func remoteCallBackData(userpost: [Userpost]) {
-        self.presenter?.interactorCallBackData(userpost: userpost)
+    func remoteCallBackData(user: [User]) {
+        self.presenter?.interactorCallBackData(user: user)
     }
+    
+
 }

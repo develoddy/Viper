@@ -1,10 +1,3 @@
-//
-//  IGFeedPostGeneralTableViewCell.swift
-//  SwiftNetwork
-//
-//  Created by Eddy Donald Chinchay Lujan on 14/4/21.
-//
-
 import UIKit
 
 /// Comments
@@ -13,16 +6,16 @@ class IGFeedPostGeneralTableViewCell: UITableViewCell {
     
     static let identifier = "IGFeedPostGeneralTableViewCell"
 
-    private let hourLabel: UILabel = {
+    private let commentTextlabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 10, weight: .regular)
-        label.textColor = .black
+        label.textColor = .label
+        label.numberOfLines = 1
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(hourLabel)
+        contentView.addSubview(commentTextlabel)
     }
     
     required init?(coder: NSCoder) {
@@ -31,19 +24,51 @@ class IGFeedPostGeneralTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let labelTextCommentSize = hourLabel.sizeThatFits(frame.size)
-        hourLabel.frame = CGRect(x: 15,y: 9,width: contentView.width-5,height: labelTextCommentSize.height).integral
+        
+        //let titleLabelSize = titleLabel.sizeThatFits(frame.size)
+        //titleLabel.frame = CGRect(x: 15,y: 5,width: contentView.width-5,height: titleLabelSize.height).integral
+        
+        let size = contentView.height-4
+        let labelHeight = contentView.height/2
+        commentTextlabel.frame = CGRect(
+             x: 15,
+             y: 10,
+             width: contentView.width-(size*2)-15,
+             height: labelHeight)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        hourLabel.text = nil
     }
     
-    //public func configure(with model: Comment)  {
-    public func configure(with count: Int) {
-        hourLabel.text = "HACE 12 HORAS"
+    // SETUP COMMENTS VALUES.
+    public func setCellWithValuesOf( with comment: Comment ) {
+        guard let username = comment.user?.username, let content = comment.content else {
+            return
+        }
+        updateUI( username: username, content: content )
     }
     
+    // UPDATE TE UI VIEWS.
+    private func updateUI( username: String, content: String) {
+        
+        let attributedString = joinText(
+            username: username,
+            description: content )
+        commentTextlabel.attributedText = attributedString
+    }
+    
+    // JOIN TEXT
+    private func joinText(username:String, description:String) -> NSMutableAttributedString {
+        let boldText  = username + " "
+        let attrs = [NSAttributedString.Key.font : Constants.fontSize.semibold ]
+        let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
+        
+        let normalText = description
+        let attrs2 = [NSAttributedString.Key.font : Constants.fontSize.regular ]
+        let normalString = NSMutableAttributedString(string:normalText, attributes:attrs2)
+        attributedString.append(normalString)
+        return attributedString
+    }
 }
 

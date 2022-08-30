@@ -36,7 +36,11 @@ struct Constants {
     
     struct ApiRoutes {
         //static let domain = "http://127.0.0.1:8000"
-        static let domain = "https://develoddy.com"
+        //static let domain = "https://develoddy.com"
+        //static let domain = "https://develoddy.com/laravelfront"
+        //static let domain   = "http://127.0.0.1:3800"
+        static let domain   = "http://localhost:3800"
+        
     }
     
     struct headerImage {
