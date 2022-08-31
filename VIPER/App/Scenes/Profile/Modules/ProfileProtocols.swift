@@ -21,6 +21,7 @@ protocol ProfileWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createProfileModule(id: Int, name:String, token:String) -> UIViewController
     func gotoPostScreen(from view: ProfileViewProtocol, post: Post)
+    func navigateToEditProfile(from view: ProfileViewProtocol, model: User?)
 }
 
 protocol ProfilePresenterProtocol: AnyObject {
@@ -29,7 +30,6 @@ protocol ProfilePresenterProtocol: AnyObject {
     var interactor: ProfileInteractorInputProtocol? { get set }
     var wireFrame: ProfileWireFrameProtocol? { get set }
     var idReceivedFromHome: Int? {get set}
-    //var emailReceivedFromHome: String? { get set }
     var nameReceivedFromHome: String? { get set }
     var tokenReceivedFromHome: String? { get set }
     func viewDidLoad()
@@ -39,6 +39,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func username() -> User?
     func tasts() -> ResCounter? 
     func showPost(post: Post)
+    func gotoEitProfileScreen(model: User?)
     
 }
 

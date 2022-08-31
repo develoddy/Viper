@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ProfileWireFrame: ProfileWireFrameProtocol {
+   
     
     static func createProfileModule(id: Int, name: String, token: String) -> UIViewController {
 
@@ -46,4 +47,16 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
             sourceView.navigationController?.pushViewController(newPostView, animated: true)
         }
     }
+    
+    func navigateToEditProfile(from view: ProfileViewProtocol, model: User?) {
+        
+        let newEditProfileView = EditProfileWireFrame.createEditProfileModule(model: model)
+        if let sourceView = view as? UIViewController {
+            //sourceView.navigationController?.present(newEditProfileView, animated: true)
+            sourceView.present( UINavigationController(rootViewController: newEditProfileView ), animated: true )
+            //sourceView.present(newEditProfileView, animated: true)
+            //sourceView.navigationController?.pushViewController(newEditProfileView, animated: true)
+        }
+    }
+    
 }

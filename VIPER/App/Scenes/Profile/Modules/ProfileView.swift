@@ -156,7 +156,7 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
                                 header.setCellWithValuesTastsOf(tasts)
                         }
 
-                        // header.delegate = delegateHeader
+                        header.delegate = self
                         return header
                 case 1:
                         let storyHeader = collectionView.dequeueReusableSupplementaryView(
@@ -203,34 +203,46 @@ extension ProfileView: ProfileViewProtocol {
 
         // RELOAD COLLECTION
         func updateUI() {
-                DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
 
         // START ACTIVITY
         func startActivity() {
-                DispatchQueue.main.async {
-                        self.profileUI.activityIndicator.startAnimating()
-                        UIView.animate(
-                                withDuration: 0.2,
-                                animations: {
-                                        self.collectionView.alpha = 0.0
-                                })
-                }
+            DispatchQueue.main.async {
+                self.profileUI.activityIndicator.startAnimating()
+                UIView.animate(
+                    withDuration: 0.2,
+                    animations: {
+                        self.collectionView.alpha = 0.0
+                    })
+            }
         }
 
         // STOP ACTIVITY
         func stopActivity() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.profileUI.activityIndicator.stopAnimating()
-                        self.profileUI.activityIndicator.hidesWhenStopped = true
-                        UIView.animate(
-                                withDuration: 0.2,
-                                animations: {
-                                        self.collectionView.alpha = 1.0
-                                })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.profileUI.activityIndicator.stopAnimating()
+                self.profileUI.activityIndicator.hidesWhenStopped = true
+                UIView.animate(
+                    withDuration: 0.2,
+                    animations: {
+                        self.collectionView.alpha = 1.0
+                    })
                 }
         }
+}
+
+
+// MARK: - PRTOCOLS EDITPROFILEVIEWCONTROLLER
+
+extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
+    func didTapEditProfileButton( _header: ProfileInfoHeaderCollectionReusableView ) {
+        // VAMOS A CREAR EL MODULO EDITPROFILEVIEWCONTROLLER
+        //print("ProfileView - didTapEditProfileButton : ")
+        //print(_header.model)
+        self.presenter?.gotoEitProfileScreen(model: _header.model)
+    }
 }
 

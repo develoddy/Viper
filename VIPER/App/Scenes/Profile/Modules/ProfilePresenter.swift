@@ -13,12 +13,15 @@ class ProfilePresenter: ProfilePresenterProtocol  {
    
     // MARK:  PROPERTIES
     weak var view: ProfileViewProtocol?
+    
     var interactor: ProfileInteractorInputProtocol?
+    
     var wireFrame: ProfileWireFrameProtocol?
     
     var idReceivedFromHome: Int?
-    //var emailReceivedFromHome: String?
+    
     var nameReceivedFromHome: String?
+    
     var tokenReceivedFromHome: String?
     
     // MARK: CLOSURES
@@ -41,23 +44,17 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     }
     
     
-    // MARK: - FUNCTIONS
+    // MARK: FUNCTIONS
     
     // LOS DATOS QUE LLEGAN DEL MODULO HOMEVIEW SE LO PASAMOS AL INTERACTOR
     func viewDidLoad() {
-        
         guard let id = idReceivedFromHome, let token = tokenReceivedFromHome else {
             return
         }
-        
-        print("profile-presenter: ")
-        print(id)
-        print(token)
-        
         self.interactor?.interactorGetData(id: id, token: token)
         self.interactor?.interactorGetCounter(id: id, token: token)
         self.interactor?.interactorGetPosts(id: id, page: 0, token: token)
-        self.view?.startActivity()
+        // self.view?.startActivity()
     }
     
     // GET NUMBER OF SECTION
@@ -74,9 +71,7 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     }
     
     // GET DATA
-    //func showProfileData(indexPath: IndexPath) -> Post {
     func showPostsData(indexPath: IndexPath) -> Post? {
-        //return viewModel[indexPath.row]
         return viewModelPost[indexPath.row]
     }
     
@@ -86,6 +81,7 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         return userpost
     }
     
+    // GETS TAST
     func tasts() -> ResCounter? {
         let tasts = self.viewModelTasts.last
         return tasts
@@ -94,6 +90,11 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     // GOTO POST
     func showPost(post: Post) {
         self.wireFrame?.gotoPostScreen(from: view!, post: post)
+    }
+    
+    // LLAMAR AL WIREFRAME
+    func gotoEitProfileScreen(model: User?) {
+        self.wireFrame?.navigateToEditProfile(from: view!, model: model )
     }
 }
 
@@ -116,8 +117,6 @@ extension ProfilePresenter: ProfileInteractorOutputProtocol {
     // RECIBE DE VUELTA LOS DATOS DE LOS COUNTER EL USUARIO
     func interactorCallBackPosts( with viewModel: [ Post ] ) {
         self.viewModelPost = viewModel
-        
-        self.view?.stopActivity()
+        // self.view?.stopActivity()
     }
-    
 }

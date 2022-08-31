@@ -33,17 +33,15 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
             switch result {
             case .success(let listOf):
                 
-                /*
-                 - SE OBTIENE LAS PUBLICACIONES
-                 */
+                // SE OBTIENE LAS PUBLICACIONES
                 guard let posts = listOf.resPostImages?.posts else {
                     return
                 }
                 
                 /*
-                 - ------------- RECORRER LAS PUBLICACIONES -------------
-                 - EN ESTE PUNTO SE RECORRE TODAS LAS PUBLICACIONES Y
-                 - GUARDANDO LOS DATOS EN UN MODELO
+                 * ------------- RECORRER LAS PUBLICACIONES -------------
+                 * EN ESTE PUNTO SE RECORRE TODAS LAS PUBLICACIONES Y
+                 * GUARDANDO LOS DATOS EN UN MODELO
                  */
                 for items in posts {
                     
@@ -76,9 +74,9 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
                 }
                 
                 /*
-                 - ------------- ENVIAR DATOS AL INTERACTOR -------------
-                 - EN ESTE PUNTO DE DEVUELVE LOS DATOS PASANDOLE
-                 - AL INTERACTOR.
+                 * ------------- ENVIAR DATOS AL INTERACTOR -------------
+                 * EN ESTE PUNTO DE DEVUELVE LOS DATOS PASANDOLE
+                 * AL INTERACTOR.
                  */
                 self?.remoteRequestHandler?.remoteCallBackData( with: models )
                 

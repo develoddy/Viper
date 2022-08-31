@@ -37,6 +37,8 @@
 		B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */; };
 		B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EB27AD4B61006EFACD /* PostWireFrame.swift */; };
 		B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804F427AD4C0D006EFACD /* PostUI.swift */; };
+		B37AD64328BF42CB0019167E /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64228BF42CB0019167E /* FormTableViewCell.swift */; };
+		B37AD64628BF5F060019167E /* EditProfileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64528BF5F060019167E /* EditProfileAdapter.swift */; };
 		B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668927919A0B00271073 /* AppDelegate.swift */; };
 		B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668B27919A0B00271073 /* SceneDelegate.swift */; };
 		B3A0668E27919A0B00271073 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668D27919A0B00271073 /* ViewController.swift */; };
@@ -86,6 +88,14 @@
 		B3B5678127B299BA00CC123A /* HeadersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5678027B299BA00CC123A /* HeadersRequest.swift */; };
 		B3DB819E27AE54C40007138F /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB819D27AE54C30007138F /* APICaller.swift */; };
 		B3DB81A127AE58D50007138F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB81A027AE58D50007138F /* AuthManager.swift */; };
+		B3EA7A6A28BE78D000C78FC6 /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A6328BE78D000C78FC6 /* EditProfilePresenter.swift */; };
+		B3EA7A6B28BE78D000C78FC6 /* EditProfileLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A6428BE78D000C78FC6 /* EditProfileLocalDataManager.swift */; };
+		B3EA7A6C28BE78D000C78FC6 /* EditProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A6528BE78D000C78FC6 /* EditProfileProtocols.swift */; };
+		B3EA7A6D28BE78D000C78FC6 /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A6628BE78D000C78FC6 /* EditProfileInteractor.swift */; };
+		B3EA7A6E28BE78D000C78FC6 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A6728BE78D000C78FC6 /* EditProfileView.swift */; };
+		B3EA7A6F28BE78D000C78FC6 /* EditProfileRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A6828BE78D000C78FC6 /* EditProfileRemoteDataManager.swift */; };
+		B3EA7A7028BE78D000C78FC6 /* EditProfileWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A6928BE78D000C78FC6 /* EditProfileWireFrame.swift */; };
+		B3EA7A7628BE7A3200C78FC6 /* EditProfileUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA7A7528BE7A3200C78FC6 /* EditProfileUI.swift */; };
 		B3EF8501279ED1D70076D443 /* CommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FA279ED1D70076D443 /* CommentsPresenter.swift */; };
 		B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FB279ED1D70076D443 /* CommentsLocalDataManager.swift */; };
 		B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF84FC279ED1D70076D443 /* CommentsProtocols.swift */; };
@@ -170,6 +180,8 @@
 		B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemoteDataManager.swift; sourceTree = "<group>"; };
 		B34804EB27AD4B61006EFACD /* PostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWireFrame.swift; sourceTree = "<group>"; };
 		B34804F427AD4C0D006EFACD /* PostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUI.swift; sourceTree = "<group>"; };
+		B37AD64228BF42CB0019167E /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
+		B37AD64528BF5F060019167E /* EditProfileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileAdapter.swift; sourceTree = "<group>"; };
 		B3A0668627919A0B00271073 /* VIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A0668927919A0B00271073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A0668B27919A0B00271073 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +235,14 @@
 		B3B5678027B299BA00CC123A /* HeadersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadersRequest.swift; sourceTree = "<group>"; };
 		B3DB819D27AE54C30007138F /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		B3DB81A027AE58D50007138F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		B3EA7A6328BE78D000C78FC6 /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		B3EA7A6428BE78D000C78FC6 /* EditProfileLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileLocalDataManager.swift; sourceTree = "<group>"; };
+		B3EA7A6528BE78D000C78FC6 /* EditProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileProtocols.swift; sourceTree = "<group>"; };
+		B3EA7A6628BE78D000C78FC6 /* EditProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
+		B3EA7A6728BE78D000C78FC6 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		B3EA7A6828BE78D000C78FC6 /* EditProfileRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3EA7A6928BE78D000C78FC6 /* EditProfileWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileWireFrame.swift; sourceTree = "<group>"; };
+		B3EA7A7528BE7A3200C78FC6 /* EditProfileUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileUI.swift; sourceTree = "<group>"; };
 		B3EF84FA279ED1D70076D443 /* CommentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPresenter.swift; sourceTree = "<group>"; };
 		B3EF84FB279ED1D70076D443 /* CommentsLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsLocalDataManager.swift; sourceTree = "<group>"; };
 		B3EF84FC279ED1D70076D443 /* CommentsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsProtocols.swift; sourceTree = "<group>"; };
@@ -437,6 +457,22 @@
 				B34804F427AD4C0D006EFACD /* PostUI.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		B37AD64428BF42D40019167E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				B37AD64228BF42CB0019167E /* FormTableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		B37AD64728BF5F0C0019167E /* adapter */ = {
+			isa = PBXGroup;
+			children = (
+				B37AD64528BF5F060019167E /* EditProfileAdapter.swift */,
+			);
+			path = adapter;
 			sourceTree = "<group>";
 		};
 		B3A0667D27919A0B00271073 = {
@@ -670,6 +706,31 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		B3EA7A7328BE798400C78FC6 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				B3EA7A6528BE78D000C78FC6 /* EditProfileProtocols.swift */,
+				B3EA7A6928BE78D000C78FC6 /* EditProfileWireFrame.swift */,
+				B3EA7A6428BE78D000C78FC6 /* EditProfileLocalDataManager.swift */,
+				B3EA7A6828BE78D000C78FC6 /* EditProfileRemoteDataManager.swift */,
+				B3EA7A6628BE78D000C78FC6 /* EditProfileInteractor.swift */,
+				B3EA7A6328BE78D000C78FC6 /* EditProfilePresenter.swift */,
+				B3EA7A6728BE78D000C78FC6 /* EditProfileView.swift */,
+				B3EA7A7728BE7A3600C78FC6 /* ui */,
+				B37AD64428BF42D40019167E /* cell */,
+				B37AD64728BF5F0C0019167E /* adapter */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		B3EA7A7728BE7A3600C78FC6 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3EA7A7528BE7A3200C78FC6 /* EditProfileUI.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 		B3EF8508279ED1E80076D443 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,6 +800,7 @@
 		B3EF852A279FEAAF0076D443 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				B3EA7A7328BE798400C78FC6 /* EditProfile */,
 				B34804E427AD4B48006EFACD /* Post */,
 				B3EF8508279ED1E80076D443 /* Comments */,
 				B3EF8539279FEAE50076D443 /* SearchResult */,
@@ -1021,6 +1083,7 @@
 				B3EF851B279F15050076D443 /* SearchPresenter.swift in Sources */,
 				B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */,
 				B3A4D48C279464A9006B4CCA /* ProfileInteractor.swift in Sources */,
+				B3EA7A6B28BE78D000C78FC6 /* EditProfileLocalDataManager.swift in Sources */,
 				B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */,
 				B341B00628208EFD009FA4A9 /* Alert.swift in Sources */,
 				B3EF8537279FEADF0076D443 /* SearchResultRemoteDataManager.swift in Sources */,
@@ -1033,6 +1096,7 @@
 				B31963BB279630E200A23628 /* HomeUI.swift in Sources */,
 				B3EF8505279ED1D70076D443 /* CommentsView.swift in Sources */,
 				B3EF853C279FEBFF0076D443 /* SearchResultUI.swift in Sources */,
+				B3EA7A7028BE78D000C78FC6 /* EditProfileWireFrame.swift in Sources */,
 				B3A4D489279464A9006B4CCA /* ProfilePresenter.swift in Sources */,
 				B3EF850C279ED24D0076D443 /* CommentsExtension.swift in Sources */,
 				B3A4D49227958A32006B4CCA /* Extensions.swift in Sources */,
@@ -1050,15 +1114,19 @@
 				B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */,
 				B31963C127963D5800A23628 /* IGFeedPostTableViewCell.swift in Sources */,
 				B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */,
+				B3EA7A7628BE7A3200C78FC6 /* EditProfileUI.swift in Sources */,
 				B3A4D47C27941201006B4CCA /* TabBarViewController.swift in Sources */,
 				B31963C727963E0700A23628 /* IGFeedPostFooterTableViewCell.swift in Sources */,
 				B31963D82796D11700A23628 /* ProfileUI.swift in Sources */,
 				B3A4D4512792C203006B4CCA /* LoginView.swift in Sources */,
 				B3EF8520279F15050076D443 /* SearchRemoteDataManager.swift in Sources */,
+				B3EA7A6D28BE78D000C78FC6 /* EditProfileInteractor.swift in Sources */,
 				B3A4D46B2792C618006B4CCA /* Constants.swift in Sources */,
+				B3EA7A6C28BE78D000C78FC6 /* EditProfileProtocols.swift in Sources */,
 				B3A4D48A279464A9006B4CCA /* ProfileLocalDataManager.swift in Sources */,
 				B31963F42799801000A23628 /* LoadingButton.swift in Sources */,
 				B31963E12796FD8200A23628 /* StoryFeaturedCollectionTableViewCell.swift in Sources */,
+				B3EA7A6E28BE78D000C78FC6 /* EditProfileView.swift in Sources */,
 				B31963E32796FDAB00A23628 /* StoryCollectionViewCell.swift in Sources */,
 				B3A4D48D279464A9006B4CCA /* ProfileView.swift in Sources */,
 				B3A4D470279367EA006B4CCA /* KeyChain.swift in Sources */,
@@ -1079,6 +1147,7 @@
 				B3A4D4382791A5FF006B4CCA /* HomeProtocols.swift in Sources */,
 				B3EF8535279FEADF0076D443 /* SearchResultInteractor.swift in Sources */,
 				B3B5677B27B295E900CC123A /* WSenderCookie.swift in Sources */,
+				B37AD64628BF5F060019167E /* EditProfileAdapter.swift in Sources */,
 				B31963D62796D10600A23628 /* ProfileExtension.swift in Sources */,
 				B3A4D45E2792C525006B4CCA /* Model.swift in Sources */,
 				B3EF8536279FEADF0076D443 /* SearchResultView.swift in Sources */,
@@ -1108,11 +1177,14 @@
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
 				B3EF851C279F15050076D443 /* SearchLocalDataManager.swift in Sources */,
 				B3EF8507279ED1D70076D443 /* CommentsWireFrame.swift in Sources */,
+				B3EA7A6A28BE78D000C78FC6 /* EditProfilePresenter.swift in Sources */,
 				B3B5677127B2559600CC123A /* BCApiRest.swift in Sources */,
 				B3B5677727B255FC00CC123A /* WSTranslator.swift in Sources */,
 				B3EF851E279F15050076D443 /* SearchInteractor.swift in Sources */,
 				B31963C327963DB800A23628 /* IGFeedPostDescriptionTableViewCell.swift in Sources */,
+				B37AD64328BF42CB0019167E /* FormTableViewCell.swift in Sources */,
 				B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */,
+				B3EA7A6F28BE78D000C78FC6 /* EditProfileRemoteDataManager.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,
 				B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,

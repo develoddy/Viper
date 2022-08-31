@@ -7,27 +7,30 @@
 
 import UIKit
 
-/*
-protocol ProfileInfoHeaderCollectionReusableViewDelegate {
-    func profileHeaderDidTapPostButton( _header:  ProfileInfoHeaderCollectionReusableView)
-    func profileHeaderDidTapFollowersButton( _header:  ProfileInfoHeaderCollectionReusableView)
-    func profileHeaderDidTapFollowingButton( _header:  ProfileInfoHeaderCollectionReusableView)
-    func profileHeaderDidTapEditProfileButton( _header:  ProfileInfoHeaderCollectionReusableView)
-    func profileWritePostDidTapEditProfileButton( _post:  ProfileInfoHeaderCollectionReusableView)
+
+protocol ProfileInfoHeaderCollectionReusableViewProtocol {
+//    func profileHeaderDidTapPostButton( _header:  ProfileInfoHeaderCollectionReusableView)
+//    func profileHeaderDidTapFollowersButton( _header:  ProfileInfoHeaderCollectionReusableView)
+//    func profileHeaderDidTapFollowingButton( _header:  ProfileInfoHeaderCollectionReusableView)
+    func didTapEditProfileButton( _header:  ProfileInfoHeaderCollectionReusableView)
+//    func profileWritePostDidTapEditProfileButton( _post:  ProfileInfoHeaderCollectionReusableView)
 }
-*/
+
+
 final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     var stackView = UIStackView()
     
     static let identifier = "ProfileInfoHeaderCollectionReusableView"
     
-    //public var delegate: ProfileReusableViewProtocol?
+    public var delegate: ProfileInfoHeaderCollectionReusableViewProtocol?
     
     let gradient = CAGradientLayer()
     
+    var model: User?
+    
     ///Profile image
-    private let profilePhotoImageView : UIImageView = {
+    public let profilePhotoImageView : UIImageView = {
         //let imageView = UIImageView(image: UIImage(named: "eddy"))
         let imageView = UIImageView()
         imageView.tintColor = .black
@@ -148,7 +151,7 @@ final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     //        followersCountButton.addTarget(self, action: #selector(didTapFollowerButton), for: .touchUpInside)
     //        followingCountButton.addTarget(self, action: #selector(didTapFollowingButton), for: .touchUpInside)
     //        postButton.addTarget(self, action: #selector(didTapPostsButton), for: .touchUpInside)
-    //        editProfileButton.addTarget(self, action: #selector(didTapEditProfileButton), for: .touchUpInside)
+        editProfileButton.addTarget(self, action: #selector(didTapEditProfileButton), for: .touchUpInside)
     }
     
     
@@ -292,7 +295,7 @@ final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     // Configure
     public func configureProfile(with user: User?) {
-        
+        self.model = user
         guard let username = user?.username,
               let image = user?.profile?.imageHeader,
               let bio = user?.profile?.bio else {
@@ -333,9 +336,9 @@ final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     //    @objc private func didTapPostsButton() {
     //        delegate?.didTapPostButton(_header: self)
     //    }
-    //    @objc private func didTapEditProfileButton() {
-    //        delegate?.didTapEditProfileButton(_header: self)
-    //    }
+        @objc private func didTapEditProfileButton() {
+            delegate?.didTapEditProfileButton(_header: self)
+        }
     //    @objc private func didTapWritePostButton() {
     //        delegate?.didTapEditProfileButton(_post: self)
     //    }
