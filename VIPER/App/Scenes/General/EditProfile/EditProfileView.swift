@@ -16,8 +16,10 @@ class EditProfileView: UIViewController {
         super.viewDidLoad()
         loadData()
         setupView()
+        configureNavigationItem()
         configureTableView()
         configureDelegates()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,6 +37,21 @@ class EditProfileView: UIViewController {
     func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(editProfileUI)
+    }
+    
+    private func configureNavigationItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(didTapCancel))
+    }
+    
+    // ACCION BUTTONS
+    @objc func didTapSave() {
+        // Save info to database
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didTapCancel() {
+        dismiss(animated: true, completion: nil)
     }
     
     // CONFIGURE TABLEVIEW
@@ -81,7 +98,7 @@ extension EditProfileView: UITableViewDataSource {
         guard section == 1 else {
             return nil
         }
-        return "Private Information"
+        return "Información privada"
     }
     
     // HEIGHT CELL LIST COMMENTS
@@ -152,7 +169,6 @@ extension EditProfileView: UITableViewDataSource {
 // MARK: - UITABLE VIEW DELEGATE
 extension EditProfileView: UITableViewDelegate {
 
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

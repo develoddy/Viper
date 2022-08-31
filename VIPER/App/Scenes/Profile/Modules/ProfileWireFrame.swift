@@ -49,14 +49,16 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
     }
     
     func navigateToEditProfile(from view: ProfileViewProtocol, model: User?) {
-        
+ 
         let newEditProfileView = EditProfileWireFrame.createEditProfileModule(model: model)
+        newEditProfileView.title = "Editar Perfil"
+        
         if let sourceView = view as? UIViewController {
-            //sourceView.navigationController?.present(newEditProfileView, animated: true)
-            sourceView.present( UINavigationController(rootViewController: newEditProfileView ), animated: true )
-            //sourceView.present(newEditProfileView, animated: true)
-            //sourceView.navigationController?.pushViewController(newEditProfileView, animated: true)
+            let navigationController = UINavigationController( rootViewController: newEditProfileView )
+            navigationController.modalPresentationStyle = .fullScreen
+            navigationController.navigationItem.largeTitleDisplayMode = .never
+            sourceView.present( navigationController, animated: true )
+            // sourceView.present( UINavigationController( rootViewController: newEditProfileView ), animated: true )
         }
     }
-    
 }
