@@ -7,20 +7,22 @@
 //
 import Foundation
 class PostPresenter: PostPresenterProtocol {
+    
     // MARK: PROPERTIES
     weak var view: PostViewProtocol?
     var interactor: PostInteractorInputProtocol?
     var wireFrame: PostWireFrameProtocol?
     var userpostReceivedFromProfile: Post?
     private var renderModels = [PostRenderViewModel]()
+    
     // MARK: FUNCTION
     func viewDidLoad() {
-        // SE RECIBE EL OBJECTO POST QUE VIENE DEL MODULO PROFILE
+        
+        // SE RECIBE EL OBJECTO POST QUE VIENE DEL MODULO PROFILEVIEW O SEARCHVIEW
         guard let post = userpostReceivedFromProfile else {
             return
         }
-        print("postPresenter: ")
-        print(post)
+        
         // SE LLAMA AL INTERACTOR
         self.interactor?.interactorGetData(userpost: post)
     }
@@ -30,7 +32,13 @@ class PostPresenter: PostPresenterProtocol {
     }
 
     func numberOfRowsInsection(section: Int) -> Int {
-        switch renderModels[section].renderType {
+        
+        //let model: PostRenderViewModel
+        //let count = section
+        //let position = count % 7 == 0 ? count / 7 : ((count - (count % 7)) / 7)
+        //model = self.renderModels[position]
+        
+        switch renderModels[ section ].renderType {
             case .actions(_): return 1
             case .comments(_): return 1
             case .primaryContent(_): return 1
@@ -53,4 +61,3 @@ extension PostPresenter: PostInteractorOutputProtocol {
     }
 
 }
-

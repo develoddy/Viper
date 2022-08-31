@@ -70,12 +70,17 @@ class IGFeedPostDescriptionTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = .blue
+        setupView()
+    }
+    
+    func setupView() {
         contentView.addSubview(profileImagesLikes)
-        contentView.addSubview(likeCount)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(commentCount)
         contentView.addSubview(labelTextComment)
-        contentView.addSubview(viewImage)
+        //contentView.addSubview(viewImage)
+        //contentView.addSubview(likeCount)
         commentCount.addTarget(self, action: #selector(didTapCommetns), for: .touchUpInside)
     }
     
@@ -86,7 +91,7 @@ class IGFeedPostDescriptionTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let imageSize = 60
+        /*let imageSize = 60
         viewImage.frame = CGRect(
             x: 15,
             y: 0,
@@ -98,16 +103,16 @@ class IGFeedPostDescriptionTableViewCell: UITableViewCell {
             x: viewImage.right+5,
             y: 2,
             width: totalLikeLabellSize.width,
-            height: 25)
+            height: 25)*/
         
         descriptionLabel.frame = CGRect(
-            x: 15,
-            y: likeCount.bottom,
+            x: 10,
+            y: 5,//likeCount.bottom,
             width: contentView.width-20,
             height: 40)
         
         commentCount.frame = CGRect(
-            x: 15,
+            x: 10,
             y: descriptionLabel.bottom+5,
             width: contentView.width-20,
             height: 10 )

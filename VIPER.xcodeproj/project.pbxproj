@@ -39,6 +39,13 @@
 		B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804F427AD4C0D006EFACD /* PostUI.swift */; };
 		B37AD64328BF42CB0019167E /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64228BF42CB0019167E /* FormTableViewCell.swift */; };
 		B37AD64628BF5F060019167E /* EditProfileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64528BF5F060019167E /* EditProfileAdapter.swift */; };
+		B37AD64F28BF8CA30019167E /* ListPeoplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64828BF8CA30019167E /* ListPeoplePresenter.swift */; };
+		B37AD65028BF8CA30019167E /* ListPeopleLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64928BF8CA30019167E /* ListPeopleLocalDataManager.swift */; };
+		B37AD65128BF8CA30019167E /* ListPeopleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64A28BF8CA30019167E /* ListPeopleProtocols.swift */; };
+		B37AD65228BF8CA30019167E /* ListPeopleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64B28BF8CA30019167E /* ListPeopleInteractor.swift */; };
+		B37AD65328BF8CA30019167E /* ListPeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64C28BF8CA30019167E /* ListPeopleView.swift */; };
+		B37AD65428BF8CA30019167E /* ListPeopleRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64D28BF8CA30019167E /* ListPeopleRemoteDataManager.swift */; };
+		B37AD65528BF8CA30019167E /* ListPeopleWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64E28BF8CA30019167E /* ListPeopleWireFrame.swift */; };
 		B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668927919A0B00271073 /* AppDelegate.swift */; };
 		B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668B27919A0B00271073 /* SceneDelegate.swift */; };
 		B3A0668E27919A0B00271073 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0668D27919A0B00271073 /* ViewController.swift */; };
@@ -182,6 +189,13 @@
 		B34804F427AD4C0D006EFACD /* PostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUI.swift; sourceTree = "<group>"; };
 		B37AD64228BF42CB0019167E /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
 		B37AD64528BF5F060019167E /* EditProfileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileAdapter.swift; sourceTree = "<group>"; };
+		B37AD64828BF8CA30019167E /* ListPeoplePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeoplePresenter.swift; sourceTree = "<group>"; };
+		B37AD64928BF8CA30019167E /* ListPeopleLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleLocalDataManager.swift; sourceTree = "<group>"; };
+		B37AD64A28BF8CA30019167E /* ListPeopleProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleProtocols.swift; sourceTree = "<group>"; };
+		B37AD64B28BF8CA30019167E /* ListPeopleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleInteractor.swift; sourceTree = "<group>"; };
+		B37AD64C28BF8CA30019167E /* ListPeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleView.swift; sourceTree = "<group>"; };
+		B37AD64D28BF8CA30019167E /* ListPeopleRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleRemoteDataManager.swift; sourceTree = "<group>"; };
+		B37AD64E28BF8CA30019167E /* ListPeopleWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleWireFrame.swift; sourceTree = "<group>"; };
 		B3A0668627919A0B00271073 /* VIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A0668927919A0B00271073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A0668B27919A0B00271073 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -473,6 +487,20 @@
 				B37AD64528BF5F060019167E /* EditProfileAdapter.swift */,
 			);
 			path = adapter;
+			sourceTree = "<group>";
+		};
+		B37AD65628BF8CEA0019167E /* ListPeople */ = {
+			isa = PBXGroup;
+			children = (
+				B37AD64A28BF8CA30019167E /* ListPeopleProtocols.swift */,
+				B37AD64E28BF8CA30019167E /* ListPeopleWireFrame.swift */,
+				B37AD64D28BF8CA30019167E /* ListPeopleRemoteDataManager.swift */,
+				B37AD64928BF8CA30019167E /* ListPeopleLocalDataManager.swift */,
+				B37AD64B28BF8CA30019167E /* ListPeopleInteractor.swift */,
+				B37AD64828BF8CA30019167E /* ListPeoplePresenter.swift */,
+				B37AD64C28BF8CA30019167E /* ListPeopleView.swift */,
+			);
+			path = ListPeople;
 			sourceTree = "<group>";
 		};
 		B3A0667D27919A0B00271073 = {
@@ -804,6 +832,7 @@
 				B34804E427AD4B48006EFACD /* Post */,
 				B3EF8508279ED1E80076D443 /* Comments */,
 				B3EF8539279FEAE50076D443 /* SearchResult */,
+				B37AD65628BF8CEA0019167E /* ListPeople */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -1155,10 +1184,12 @@
 				B3B5677F27B298B600CC123A /* ResponseInJSONWithData.swift in Sources */,
 				B34804F027AD4B61006EFACD /* PostView.swift in Sources */,
 				B3B5677927B2561800CC123A /* WSenderSimple.swift in Sources */,
+				B37AD65028BF8CA30019167E /* ListPeopleLocalDataManager.swift in Sources */,
 				B3A4D43A2791A5FF006B4CCA /* HomeView.swift in Sources */,
 				B3A4D43B2791A5FF006B4CCA /* HomeRemoteDataManager.swift in Sources */,
 				B31963DC2796D91300A23628 /* PhotoCollectionViewCell.swift in Sources */,
 				B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */,
+				B37AD65128BF8CA30019167E /* ListPeopleProtocols.swift in Sources */,
 				B3A4D4362791A5FF006B4CCA /* HomePresenter.swift in Sources */,
 				B3A4D46E2793675B006B4CCA /* Closures.swift in Sources */,
 				B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */,
@@ -1167,12 +1198,14 @@
 				B3EF8534279FEADF0076D443 /* SearchResultProtocols.swift in Sources */,
 				B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */,
 				B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */,
+				B37AD65328BF8CA30019167E /* ListPeopleView.swift in Sources */,
 				B3A4D47327936B8F006B4CCA /* APIService.swift in Sources */,
 				B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */,
 				B3A4D43C2791A5FF006B4CCA /* HomeWireFrame.swift in Sources */,
 				B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */,
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
 				B3DB819E27AE54C40007138F /* APICaller.swift in Sources */,
+				B37AD65228BF8CA30019167E /* ListPeopleInteractor.swift in Sources */,
 				B3EF8533279FEADF0076D443 /* SearchResultLocalDataManager.swift in Sources */,
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
 				B3EF851C279F15050076D443 /* SearchLocalDataManager.swift in Sources */,
@@ -1186,7 +1219,10 @@
 				B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */,
 				B3EA7A6F28BE78D000C78FC6 /* EditProfileRemoteDataManager.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,
+				B37AD65428BF8CA30019167E /* ListPeopleRemoteDataManager.swift in Sources */,
 				B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */,
+				B37AD64F28BF8CA30019167E /* ListPeoplePresenter.swift in Sources */,
+				B37AD65528BF8CA30019167E /* ListPeopleWireFrame.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,
 				B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */,
 			);

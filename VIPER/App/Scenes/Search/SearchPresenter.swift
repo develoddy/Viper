@@ -31,9 +31,10 @@ extension SearchPresenter: SearchPresenterProtocol {
     // TODO: -  FUNCTIONS
     
     func viewDidLoad() {
-        //guard let token = token.getUserToken().success else { return }
-        // LLAMAR AL INTERACTOR
-        //self.interactor?.interactorGetData(token: token)
+        guard let token = token.getUserToken().success else { return }
+        
+        //LLAMAR AL INTERACTOR
+        self.interactor?.interactorGetData(token: token)
         //self.view?.startActivity()
     }
     
@@ -59,6 +60,15 @@ extension SearchPresenter: SearchPresenterProtocol {
     func searchResultsUpdating(resultsComtroller: SearchResultView, filter: String) {
         // LLAMAR AL WIREFRAME
         self.wireFrame?.gotoSearchResultsUpdating(from: self.view!, resultsComtroller: resultsComtroller, filter: filter)
+    }
+    
+    /*
+     func showPost(post: Post) {
+         self.wireFrame?.gotoPostScreen(from: view!, post: post)
+     }
+     */
+    func gotoPostScreen(post: Post?) {
+        self.wireFrame?.navigateToPost(from: view!, post: post)
     }
 }
 

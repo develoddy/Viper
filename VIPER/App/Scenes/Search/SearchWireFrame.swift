@@ -11,6 +11,7 @@ import UIKit
 
 class SearchWireFrame: SearchWireFrameProtocol {
     
+    
     class func createSearchModule() -> UIViewController {
         
         let searchView = SearchView()
@@ -35,15 +36,17 @@ class SearchWireFrame: SearchWireFrameProtocol {
     
     // LLAMAR AL MODULO (SEARCH RESULT)
     func gotoSearchResultsUpdating(from view: SearchViewProtocol, resultsComtroller: SearchResultView, filter: String) {
-        
         resultsComtroller.presenter?.filter = filter
         resultsComtroller.presenter?.viewDidLoad()
-        
-      
-        /*let newSearchResultView = SearchResultWireFrame.createSearchResultModule(filter: filter)
+    }
+    
+    // LLAMAR AL MODULO POST
+    func navigateToPost(from view: SearchViewProtocol, post: Post?) {
+        guard let post = post else { return }
+        let newPostView = PostWireFrame.createPostModule(post: post)
         if let sourceView = view as? UIViewController {
-            sourceView.navigationController?.pushViewController(newSearchResultView, animated: true)
-        }*/
-        
+            newPostView.title = "Explorar"
+            sourceView.navigationController?.pushViewController(newPostView, animated: true)
+        }
     }
 }

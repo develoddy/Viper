@@ -28,6 +28,7 @@ extension HomeView: UITableViewDataSource {
         let model: HomeFeedRenderViewModel = data
         let subSection = count % boxes
         switch subSection {
+            
             // HEADER
             case 1:
             switch model.header.renderType {
@@ -38,6 +39,7 @@ extension HomeView: UITableViewDataSource {
                 // cell.delegate = self
                 case .comments, .actions, .primaryContent, .descriptions, .footer: return UITableViewCell()
             }
+            
             // POST
             case 2:
             switch model.post.renderType {
@@ -47,6 +49,7 @@ extension HomeView: UITableViewDataSource {
                 cell.configure(with: post)
                 case .comments, .actions, .header, .descriptions, .footer: return UITableViewCell()
             }
+            
             // ACTION
             case 3:
             switch model.actions.renderType {
@@ -57,6 +60,7 @@ extension HomeView: UITableViewDataSource {
                 cell.delegate = self
                 case .comments, .header, .primaryContent, .descriptions, .footer: return UITableViewCell()
             }
+            
             // DESCRIPTION
             case 4:
             switch model.descriptions.renderType {
@@ -73,12 +77,11 @@ extension HomeView: UITableViewDataSource {
             switch model.comments.renderType {
                 case .comments( let comments ):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostGeneralTableViewCell.identifier, for: indexPath) as! IGFeedPostGeneralTableViewCell
-                
                 let comment = comments[indexPath.row]
                 cell.setCellWithValuesOf(with: comment)
-               
                 case .header, .actions, .primaryContent, .descriptions, .footer: return UITableViewCell()
             }
+            
             // FOOTER
             case 6:
             switch model.footer.renderType {
@@ -89,6 +92,7 @@ extension HomeView: UITableViewDataSource {
                 // cell.delegate = delegateFooter
                 case .comments, .header, .primaryContent, .actions, .descriptions: return UITableViewCell()
             }
+            
             // DEFAULT
             default: print("Error switch Home")
         }
@@ -102,7 +106,7 @@ extension HomeView: UITableViewDataSource {
         switch subSection {
             case 1: return 70  // Header
             case 2: return tableView.width  // Post
-            case 3: return 50  // Actions
+            case 3: return 40  // Actions
             case 4: return 85  // Description
             case 5: return 30  // Comment
             case 6: return 60  // Footer

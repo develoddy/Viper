@@ -11,7 +11,6 @@ import UIKit
 
 protocol ProfileViewProtocol: AnyObject {
     // PRESENTER -> VIEW
-    //func displayDataProfile(with viewModel: [Userpost])
     func updateUI()
     func startActivity()
     func stopActivity() 

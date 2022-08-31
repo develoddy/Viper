@@ -36,7 +36,8 @@ class SearchUI: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.collectionView.frame = self.bounds
-        //self.navigationBar.frame = CGRect(x: 0, y: 0, width: self.width, height: 100)
+        self.collectionView.backgroundColor = .systemBackground
+        //self.collectionView.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height)
     }
     
     func setupView() {

@@ -77,7 +77,8 @@ class IGFeedPostFooterTableViewCell: UITableViewCell {
             y: 5,
             width: 40,
             height: 40)
-        profilePhotoImageView.layer.cornerRadius = size/3
+        
+        profilePhotoImageView.layer.cornerRadius = profilePhotoImageView.height / 2
         
         boxTextButton.frame = CGRect(
             x: profilePhotoImageView.right+5,

@@ -1,23 +1,24 @@
-//
-//  ProfileView.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 16/1/22.
-//
-//
-
 import Foundation
 import UIKit
+
+
+enum FollowState {
+    case following // indicates the current user is following the other user
+    case not_following // indicates the current user is NOT following the other user
+}
+
+struct UserRelationship {
+    let username: String
+    let namm: String
+    let type: FollowState
+}
 
 class ProfileView: UIViewController {
 
         // MARK:  PROPERTIES
         var presenter: ProfilePresenterProtocol?
-
         let collectionView = ProfileCollectionsViews.collectionView()
-
         var profileUI = ProfileUI()
-
         var token = Token()
 
         // MARK:  LIFECYCLE
@@ -84,8 +85,8 @@ class ProfileView: UIViewController {
 
         // DELEGATES
         func configureDelegates() {
-                self.collectionView.delegate = self
-                self.collectionView.dataSource = self
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
         }
 }
 
@@ -181,61 +182,73 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
         }
 }
 
-// MARK: - UIABLEVIEW DELEGATE
 
+// MARK:  UIABLEVIEW DELEGATE
 extension ProfileView: UICollectionViewDelegate {
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             collectionView.deselectItem(at: indexPath, animated: true)
-            // SE LLAMA AL PRESENTER
-            
+            // LLAMAR AL PRESENTER.
             guard let post = self.presenter?.showPostsData(indexPath: indexPath) else { return }
             print(post)
             self.presenter?.showPost(post: post)
         }
 }
 
+
 // MARK:  PROFILE PROTOCOL
 extension ProfileView: ProfileViewProtocol {
+    // RELOAD COLLECTION
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
 
-        // RELOAD COLLECTION
-        func updateUI() {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+    // START ACTIVITY
+    func startActivity() {
+        DispatchQueue.main.async {
+            self.profileUI.activityIndicator.startAnimating()
+            UIView.animate(
+                withDuration: 0.2,
+                animations: {
+                    self.collectionView.alpha = 0.0
+                })
+        }
+    }
+
+    // STOP ACTIVITY
+    func stopActivity() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.profileUI.activityIndicator.stopAnimating()
+            self.profileUI.activityIndicator.hidesWhenStopped = true
+            UIView.animate(
+                withDuration: 0.2,
+                animations: {
+                    self.collectionView.alpha = 1.0
+                })
             }
-        }
-
-        // START ACTIVITY
-        func startActivity() {
-            DispatchQueue.main.async {
-                self.profileUI.activityIndicator.startAnimating()
-                UIView.animate(
-                    withDuration: 0.2,
-                    animations: {
-                        self.collectionView.alpha = 0.0
-                    })
-            }
-        }
-
-        // STOP ACTIVITY
-        func stopActivity() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.profileUI.activityIndicator.stopAnimating()
-                self.profileUI.activityIndicator.hidesWhenStopped = true
-                UIView.animate(
-                    withDuration: 0.2,
-                    animations: {
-                        self.collectionView.alpha = 1.0
-                    })
-                }
-        }
+    }
 }
 
 
-// MARK: - PRTOCOLS EDITPROFILEVIEWCONTROLLER
+// MARK:  PRTOCOLS EDITPROFILEVIEWCONTROLLER
 
 extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     func didTapFollowersButton(_header: ProfileInfoHeaderCollectionReusableView) {
         print("click... didTapFollowersButton")
+        
+        /*var mockData = [UserRelationship]()
+        for x in 0..<10 {
+            mockData.append(UserRelationship(
+                username: "@joer",
+                namm: "Joe Smith",
+                type: x % 2 == 0 ? .following: .not_following))
+        }*/
+        
+        //let vc = ListViewController(data: mockData)
+        //vc.title = "Follower"
+        //vc.navigationItem.largeTitleDisplayMode = .never
+        //navigationController?.pushViewController(vc, animated: true)
     }
     
     func didTapFollowingButton(_header: ProfileInfoHeaderCollectionReusableView) {

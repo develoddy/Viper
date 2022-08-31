@@ -21,6 +21,7 @@ protocol SearchWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createSearchModule() -> UIViewController
     func gotoSearchResultsUpdating(from view: SearchViewProtocol, resultsComtroller: SearchResultView, filter: String)
+    func navigateToPost(from view: SearchViewProtocol, post: Post?)
 }
 
 protocol SearchPresenterProtocol: AnyObject {
@@ -34,6 +35,7 @@ protocol SearchPresenterProtocol: AnyObject {
     func numberOfRowsInsection(section: Int) -> Int
     func showUserpostData(indexPath: IndexPath) -> Post
     func searchResultsUpdating(resultsComtroller: SearchResultView, filter: String)
+    func gotoPostScreen(post: Post?)
 }
 
 protocol SearchInteractorOutputProtocol: AnyObject {

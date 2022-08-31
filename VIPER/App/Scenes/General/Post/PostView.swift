@@ -79,35 +79,44 @@ extension PostView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let model = self.presenter?.cellForRowAt(at: indexPath) else { return UITableViewCell() }
+        
+        guard let model = self.presenter?.cellForRowAt( at: indexPath ) else {
+            return UITableViewCell()
+        }
+        
         switch model.renderType {
-        case .actions(_):
-            let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostActionsTableViewCell.identifier, for: indexPath) as! IGFeedPostActionsTableViewCell
-            return cell
-        case .comments(_/*let comments*/):
-            let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostGeneralTableViewCell.identifier, for: indexPath) as! IGFeedPostGeneralTableViewCell
-            //let count = comments.count
-            //cell.configure(with: count)
-            return cell
-        case .primaryContent(let post):
-            let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostTableViewCell.identifier, for: indexPath) as! IGFeedPostTableViewCell
-            cell.configure(with: post)
-            return cell
-        case .header(let post):
-              let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostHeaderTableViewCell.identifier,for: indexPath) as! IGFeedPostHeaderTableViewCell
-            cell.configure(with: post)
-            // cell.delegate = self
-            return cell
-        case .descriptions(_/*let post*/):
-            let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostDescriptionTableViewCell.identifier, for: indexPath) as! IGFeedPostDescriptionTableViewCell
-            //cell.configure(with: post)
-            //cell.delegate = self
-            return cell
-        case .footer(let footer):
-            let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostFooterTableViewCell.identifier, for: indexPath) as! IGFeedPostFooterTableViewCell
-            cell.configure(with: footer)
-            // cell.delegate = self
-            return cell
+            case .actions(_):
+                let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostActionsTableViewCell.identifier, for: indexPath) as! IGFeedPostActionsTableViewCell
+                return cell
+            
+            case .comments(let comments):
+                let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostGeneralTableViewCell.identifier, for: indexPath) as! IGFeedPostGeneralTableViewCell
+                let comment = comments[indexPath.row]
+                cell.setCellWithValuesOf(with: comment)
+                return cell
+            
+            case .primaryContent(let post):
+                let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostTableViewCell.identifier, for: indexPath) as! IGFeedPostTableViewCell
+                cell.configure(with: post)
+                return cell
+            
+            case .header(let post):
+                let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostHeaderTableViewCell.identifier,for: indexPath) as! IGFeedPostHeaderTableViewCell
+                cell.configure(with: post)
+                // cell.delegate = self
+                return cell
+            
+            case .descriptions(let post):
+                let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostDescriptionTableViewCell.identifier, for: indexPath) as! IGFeedPostDescriptionTableViewCell
+                cell.setCellWithValuesOf(post)
+                //cell.delegate = self
+                return cell
+            
+            case .footer(let footer):
+                let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostFooterTableViewCell.identifier, for: indexPath) as! IGFeedPostFooterTableViewCell
+                cell.configure(with: footer)
+                // cell.delegate = self
+                return cell
         }
         
     }
@@ -122,8 +131,8 @@ extension PostView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let model = self.presenter?.cellForRowAt(at: indexPath) else { return CGFloat() }
             switch model.renderType {
-            case .actions(_)        : return 60 // ACTION
-            case .comments(_)       : return 25 // COMMENT
+            case .actions(_)        : return 40 // ACTION
+            case .comments(_)       : return 30 // COMMENT
             case .primaryContent(_) : return tableView.width // POST
             case .header(_)         : return 70 // HEADER
             case .descriptions(_)   : return 85 // DESCRIPTION

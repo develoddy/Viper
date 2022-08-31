@@ -32,6 +32,7 @@ class SearchView: UIViewController {
         delegates()
         configureActivity()
         
+        
     }
     
     // LOAD DATA
@@ -60,8 +61,8 @@ class SearchView: UIViewController {
     
     // DELEGATES
     func delegates() {
-        //self.searchUI.collectionView.delegate = self
-        //self.searchUI.collectionView.dataSource = self
+        self.searchUI.collectionView.delegate = self
+        self.searchUI.collectionView.dataSource = self
         
         self.searchController.searchResultsUpdater =  self
         //self.searchController.hidesNavigationBarDuringPresentation = false
@@ -138,6 +139,8 @@ extension SearchView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
+        let post = self.presenter?.showUserpostData(indexPath: indexPath)
+        cell.setCellWithValuesOf(with: post)
         return cell
     }
 }
@@ -149,6 +152,11 @@ extension SearchView: UICollectionViewDelegateFlowLayout {
 extension SearchView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("SEARCH VIEW:::: kdssklsddskjdskjlksdkdskl.....")
+        
+        // LLAMAR AL PRESENTER.
+        guard let post = self.presenter?.showUserpostData(indexPath: indexPath) else {
+            return
+        }
+        self.presenter?.gotoPostScreen(post: post)
     }
 }
