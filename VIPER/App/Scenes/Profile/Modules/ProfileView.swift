@@ -113,13 +113,7 @@ extension ProfileView: UICollectionViewDataSource {
             guard let post = self.presenter?.showPostsData(indexPath: indexPath) else {
                 fatalError("error post")
             }
-            
             cell.setCellWithValuesOf(with: post)
-            //if self.presenter!.showPostsData().count != 0 {
-                //print(self.presenter!.showPostsData())
-                //cell.configure(with: self.presenter!.showPostsData())
-            //}
-            
             return cell
         }
 
@@ -131,6 +125,8 @@ extension ProfileView: UICollectionViewDataSource {
             return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         }
 }
+
+
 
 // MARK: - UIABLEVIEW FLOW LAYOUT
 
@@ -238,6 +234,14 @@ extension ProfileView: ProfileViewProtocol {
 // MARK: - PRTOCOLS EDITPROFILEVIEWCONTROLLER
 
 extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
+    func didTapFollowersButton(_header: ProfileInfoHeaderCollectionReusableView) {
+        print("click... didTapFollowersButton")
+    }
+    
+    func didTapFollowingButton(_header: ProfileInfoHeaderCollectionReusableView) {
+        print("click... didTapFollowingButton")
+    }
+    
     func didTapEditProfileButton( _header: ProfileInfoHeaderCollectionReusableView ) {
         // VAMOS A CREAR EL MODULO EDITPROFILEVIEWCONTROLLER
         //print("ProfileView - didTapEditProfileButton : ")
