@@ -115,7 +115,6 @@ class SearchResultViewTableViewCell: UITableViewCell {
             y: (contentView.height-buttonHeight)/2,
             width: contentView.height-40,
             height: contentView.height-40)
-//        arrowImage.tintColor = .red
         arrowImage.layer.cornerRadius = superView.height/5
     }
     

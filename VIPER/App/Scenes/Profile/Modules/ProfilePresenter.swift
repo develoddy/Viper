@@ -13,16 +13,12 @@ class ProfilePresenter: ProfilePresenterProtocol  {
    
     // MARK:  PROPERTIES
     weak var view: ProfileViewProtocol?
-    
     var interactor: ProfileInteractorInputProtocol?
-    
     var wireFrame: ProfileWireFrameProtocol?
-    
     var idReceivedFromHome: Int?
-    
     var nameReceivedFromHome: String?
-    
     var tokenReceivedFromHome: String?
+    var token = Token()
     
     // MARK: CLOSURES
     var viewModelPost: [Post] = [] {
@@ -43,6 +39,8 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         }
     }
     
+    var viewModelFollows: [Follow] = []
+    
     
     // MARK: FUNCTIONS
     
@@ -54,6 +52,7 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.interactor?.interactorGetData(id: id, token: token)
         self.interactor?.interactorGetCounter(id: id, token: token)
         self.interactor?.interactorGetPosts(id: id, page: 0, token: token)
+        self.interactor?.interactorGetFollowing(page: 0, token: token)
         // self.view?.startActivity()
     }
     
@@ -92,9 +91,20 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.wireFrame?.gotoPostScreen(from: view!, post: post)
     }
     
+    // SHOW DATA FOLLOWING
+    func showFollowin() -> [Follow] {
+        return self.viewModelFollows
+    }
+    
     // LLAMAR AL WIREFRAME
     func gotoEitProfileScreen(model: User?) {
         self.wireFrame?.navigateToEditProfile(from: view!, model: model )
+    }
+    
+    // LLAMAR AL WIREFRAME
+    func gotoListPeopleScreen(following: [Follow]?) {
+        guard let following = following else { return }
+        self.wireFrame?.gotoListPeopleScreen(following: following, from: view!, token: token.getUserToken())
     }
 }
 
@@ -102,21 +112,38 @@ class ProfilePresenter: ProfilePresenterProtocol  {
 // MARK: - OUTPUT
 extension ProfilePresenter: ProfileInteractorOutputProtocol {
     
-    // RECIBE DE VUELTA LOS DATOS DEL INTERACTROR
+    /*
+     * RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
+     * EN ESTE PUNTO SE GUARDA LOS DATOS DEL PERFIL EN EL MODELO VIEWMODEL.
+     */
     func interactorCallBackData(with viewModel: [User]) {
         self.viewModel = viewModel
         self.view?.stopActivity()
     }
     
-    // RECIBE DE VUELTA LOS DATOS DE LOS COUNTER EL USUARIO
+    /*
+     * RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
+     * EN ESTE PUNTO SE GUARDA LOS CONTADORES EN EL MODELO VIEWMODELTASTS.
+     */
     func interactorCallBackTasts(with viewModel: [ResCounter]) {
         self.viewModelTasts = viewModel
         self.view?.stopActivity()
     }
     
-    // RECIBE DE VUELTA LOS DATOS DE LOS COUNTER EL USUARIO
+    /*
+     * RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
+     * EN ESTE PUNTO SE GUARDA LAS PUBLICACIONES EN EL MODELO VIEWMODELPOST.
+     */
     func interactorCallBackPosts( with viewModel: [ Post ] ) {
         self.viewModelPost = viewModel
         // self.view?.stopActivity()
+    }
+    
+    /*
+     * RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
+     * EN ESTE PUNTO SE GUARDA LOS FOLLOWING EN EL MODELO VIEWMODELFOLLOWS.
+     */
+    func interactorCallBackFollowing(with viewModel: [Follow]) {
+        self.viewModelFollows = viewModel
     }
 }

@@ -114,14 +114,11 @@ class BCApiRest: NSObject {
      * @param email, token
      * @return Object
      */
-    @discardableResult class func profile(_ id: Int,
+    /*@discardableResult class func profile(_ id: Int,
                                           _ token: String?,
                                           conCompletionCorrecto completioCorrecto: @escaping Closures.userFollow,
                                           conCompletionIncorrecto completionIncorrecto : @escaping Closures.MessageError) -> URLSessionDataTask? {
-        /*if id.count == 0 {
-            completionIncorrecto("You need enter your name")
-            return nil
-        }*/
+
 
         let resultSearch = WSApiRest.startProfile(id, token!, conCompletionCorrecto: { (objExplore) in
             completioCorrecto(objExplore)
@@ -130,7 +127,7 @@ class BCApiRest: NSObject {
         })
 
         return resultSearch
-    }
+    }*/
 //
 //
 //    // MARK: LIKE

@@ -73,7 +73,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     // UPDATE VIEW
     func updateUI( image: String ) {
-        photoImageView.backgroundColor = .blue
+        photoImageView.backgroundColor = .systemBackground
         let url = Constants.ApiRoutes.domain + "/api/posts/get-image-post/" + image
         photoImageView.sd_setImage(
             with: URL(string: url),

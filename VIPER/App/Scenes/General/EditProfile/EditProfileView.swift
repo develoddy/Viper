@@ -5,21 +5,14 @@ import UIKit
 
 class EditProfileView: UIViewController {
 
-    // MARK: Properties
+    // MARK: PROPERTIES
     var presenter: EditProfilePresenterProtocol?
-    
     var editProfileUI = EditProfileUI()
 
-    // MARK: Lifecycle
-
+    // TODO: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        setupView()
-        configureNavigationItem()
-        configureTableView()
-        configureDelegates()
-        
+        self.initMethods()
     }
     
     override func viewDidLayoutSubviews() {
@@ -28,7 +21,16 @@ class EditProfileView: UIViewController {
         self.editProfileUI.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
     }
     
-    // SE LLAMA AL PRESENTER
+    // INIT METHODS
+    private func initMethods() {
+        self.loadData()
+        self.setupView()
+        self.configureNavigationItem()
+        self.configureTableView()
+        self.configureDelegates()
+    }
+    
+    // LLAMAR AL PRESENTER
     func loadData() {
         self.presenter?.viewDidLoad()
     }
@@ -37,6 +39,18 @@ class EditProfileView: UIViewController {
     func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(editProfileUI)
+    }
+    
+    // CONFIGURE TABLEVIEW
+    func configureTableView()  {
+        editProfileUI.tableView.register(FormTableViewCell.self, forCellReuseIdentifier: FormTableViewCell.identifier)
+    }
+    
+    // DELEGATES
+    func configureDelegates() {
+        editProfileUI.tableView.delegate = self
+        editProfileUI.tableView.dataSource = self
+        editProfileUI.tableView.tableHeaderView = createTableHeaderView()
     }
     
     private func configureNavigationItem() {
@@ -52,18 +66,6 @@ class EditProfileView: UIViewController {
     
     @objc func didTapCancel() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    // CONFIGURE TABLEVIEW
-    func configureTableView()  {
-        editProfileUI.tableView.register(FormTableViewCell.self, forCellReuseIdentifier: FormTableViewCell.identifier)
-    }
-    
-    // DELEGATES
-    func configureDelegates() {
-        editProfileUI.tableView.delegate = self
-        editProfileUI.tableView.dataSource = self
-        editProfileUI.tableView.tableHeaderView = createTableHeaderView()
     }
 }
 
@@ -83,7 +85,7 @@ extension EditProfileView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  self.presenter?.numberOfRowsInsection(section: section) ?? 0
+        return self.presenter?.numberOfRowsInsection(section: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

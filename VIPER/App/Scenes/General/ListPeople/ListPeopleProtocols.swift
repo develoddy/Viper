@@ -12,11 +12,12 @@ import UIKit
 protocol ListPeopleViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: ListPeoplePresenterProtocol? { get set }
+    func updateUI()
 }
 
 protocol ListPeopleWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createListPeopleModule() -> UIViewController
+    static func createListPeopleModule(following: [Follow], token: LoginToken? ) -> UIViewController
 }
 
 protocol ListPeoplePresenterProtocol: AnyObject {
@@ -24,12 +25,17 @@ protocol ListPeoplePresenterProtocol: AnyObject {
     var view: ListPeopleViewProtocol? { get set }
     var interactor: ListPeopleInteractorInputProtocol? { get set }
     var wireFrame: ListPeopleWireFrameProtocol? { get set }
+    func numberOfSections() -> Int
+    func numberOfRowsInsection(section: Int) -> Int
+    func cellForRowAt(at indexPath: IndexPath) -> UserRelationship
     
     func viewDidLoad()
+    var followingReceivedFromProfile: [Follow]  { get set }
+    var loginTokenReceivedFromProfile: LoginToken? { get set }
 }
 
 protocol ListPeopleInteractorOutputProtocol: AnyObject {
-// INTERACTOR -> PRESENTER
+    // INTERACTOR -> PRESENTER
 }
 
 protocol ListPeopleInteractorInputProtocol: AnyObject {

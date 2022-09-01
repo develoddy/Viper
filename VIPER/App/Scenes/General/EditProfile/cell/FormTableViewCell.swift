@@ -14,9 +14,7 @@ class FormTableViewCell: UITableViewCell {
     
     // PROPERTIES.
     static let identifier = "FormTableViewCell"
-    
     private var model: EditProfileFormModel?
-    
     public var delegate: FormTableViewCellProtocol?
     
     // ELEMENTS.

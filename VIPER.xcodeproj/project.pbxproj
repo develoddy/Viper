@@ -37,6 +37,8 @@
 		B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */; };
 		B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EB27AD4B61006EFACD /* PostWireFrame.swift */; };
 		B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804F427AD4C0D006EFACD /* PostUI.swift */; };
+		B36C2A7728C0B56200624B8E /* ListPeopleUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C2A7628C0B56200624B8E /* ListPeopleUI.swift */; };
+		B36C2A7A28C0B79A00624B8E /* UserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C2A7928C0B79A00624B8E /* UserFollowTableViewCell.swift */; };
 		B37AD64328BF42CB0019167E /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64228BF42CB0019167E /* FormTableViewCell.swift */; };
 		B37AD64628BF5F060019167E /* EditProfileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64528BF5F060019167E /* EditProfileAdapter.swift */; };
 		B37AD64F28BF8CA30019167E /* ListPeoplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64828BF8CA30019167E /* ListPeoplePresenter.swift */; };
@@ -187,6 +189,8 @@
 		B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemoteDataManager.swift; sourceTree = "<group>"; };
 		B34804EB27AD4B61006EFACD /* PostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWireFrame.swift; sourceTree = "<group>"; };
 		B34804F427AD4C0D006EFACD /* PostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUI.swift; sourceTree = "<group>"; };
+		B36C2A7628C0B56200624B8E /* ListPeopleUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleUI.swift; sourceTree = "<group>"; };
+		B36C2A7928C0B79A00624B8E /* UserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowTableViewCell.swift; sourceTree = "<group>"; };
 		B37AD64228BF42CB0019167E /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
 		B37AD64528BF5F060019167E /* EditProfileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileAdapter.swift; sourceTree = "<group>"; };
 		B37AD64828BF8CA30019167E /* ListPeoplePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeoplePresenter.swift; sourceTree = "<group>"; };
@@ -473,6 +477,22 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		B36C2A7828C0B56600624B8E /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				B36C2A7628C0B56200624B8E /* ListPeopleUI.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		B36C2A7B28C0B79D00624B8E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				B36C2A7928C0B79A00624B8E /* UserFollowTableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		B37AD64428BF42D40019167E /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +519,8 @@
 				B37AD64B28BF8CA30019167E /* ListPeopleInteractor.swift */,
 				B37AD64828BF8CA30019167E /* ListPeoplePresenter.swift */,
 				B37AD64C28BF8CA30019167E /* ListPeopleView.swift */,
+				B36C2A7828C0B56600624B8E /* ui */,
+				B36C2A7B28C0B79D00624B8E /* cell */,
 			);
 			path = ListPeople;
 			sourceTree = "<group>";
@@ -1152,6 +1174,7 @@
 				B3EA7A6D28BE78D000C78FC6 /* EditProfileInteractor.swift in Sources */,
 				B3A4D46B2792C618006B4CCA /* Constants.swift in Sources */,
 				B3EA7A6C28BE78D000C78FC6 /* EditProfileProtocols.swift in Sources */,
+				B36C2A7A28C0B79A00624B8E /* UserFollowTableViewCell.swift in Sources */,
 				B3A4D48A279464A9006B4CCA /* ProfileLocalDataManager.swift in Sources */,
 				B31963F42799801000A23628 /* LoadingButton.swift in Sources */,
 				B31963E12796FD8200A23628 /* StoryFeaturedCollectionTableViewCell.swift in Sources */,
@@ -1208,6 +1231,7 @@
 				B37AD65228BF8CA30019167E /* ListPeopleInteractor.swift in Sources */,
 				B3EF8533279FEADF0076D443 /* SearchResultLocalDataManager.swift in Sources */,
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
+				B36C2A7728C0B56200624B8E /* ListPeopleUI.swift in Sources */,
 				B3EF851C279F15050076D443 /* SearchLocalDataManager.swift in Sources */,
 				B3EF8507279ED1D70076D443 /* CommentsWireFrame.swift in Sources */,
 				B3EA7A6A28BE78D000C78FC6 /* EditProfilePresenter.swift in Sources */,

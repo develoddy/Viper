@@ -21,6 +21,7 @@ protocol ProfileWireFrameProtocol: AnyObject {
     static func createProfileModule(id: Int, name:String, token:String) -> UIViewController
     func gotoPostScreen(from view: ProfileViewProtocol, post: Post)
     func navigateToEditProfile(from view: ProfileViewProtocol, model: User?)
+    func gotoListPeopleScreen(following: [Follow], from view: ProfileViewProtocol, token: LoginToken?)
 }
 
 protocol ProfilePresenterProtocol: AnyObject {
@@ -36,17 +37,11 @@ protocol ProfilePresenterProtocol: AnyObject {
     func numberOfRowsInsection(section: Int) -> Int
     func showPostsData(indexPath: IndexPath) -> Post?
     func username() -> User?
-    func tasts() -> ResCounter? 
+    func tasts() -> ResCounter?
     func showPost(post: Post)
+    func showFollowin() -> [Follow]
     func gotoEitProfileScreen(model: User?)
-    
-}
-
-protocol ProfileInteractorOutputProtocol: AnyObject {
-    // INTERACTOR -> PRESENTER
-    func interactorCallBackData(with viewModel: [User])
-    func interactorCallBackTasts(with viewModel: [ResCounter])
-    func interactorCallBackPosts(with viewModel: [Post])
+    func gotoListPeopleScreen(following: [Follow]?)
 }
 
 protocol ProfileInteractorInputProtocol: AnyObject {
@@ -57,6 +52,15 @@ protocol ProfileInteractorInputProtocol: AnyObject {
     func interactorGetData(id: Int, token: String)
     func interactorGetCounter(id: Int, token: String)
     func interactorGetPosts(id: Int, page: Int, token: String)
+    func interactorGetFollowing(page: Int, token: String)
+}
+
+protocol ProfileInteractorOutputProtocol: AnyObject {
+    // INTERACTOR -> PRESENTER
+    func interactorCallBackData(with viewModel: [User])
+    func interactorCallBackTasts(with viewModel: [ResCounter])
+    func interactorCallBackPosts(with viewModel: [Post])
+    func interactorCallBackFollowing(with viewModel: [Follow])
 }
 
 protocol ProfileDataManagerInputProtocol: AnyObject {
@@ -69,6 +73,7 @@ protocol ProfileRemoteDataManagerInputProtocol: AnyObject {
     func remoteGetData(id: Int, token: String)
     func remoteGetCounter(id: Int, token: String)
     func remoteGetPosts(id: Int, page: Int, token: String)
+    func remoteGetFollowing(page: Int, token: String)
 }
 
 protocol ProfileRemoteDataManagerOutputProtocol: AnyObject {
@@ -76,6 +81,7 @@ protocol ProfileRemoteDataManagerOutputProtocol: AnyObject {
     func remoteCallBackData(with viewModel: [User])
     func remoteCallBackTasts(with viewModel: [ResCounter])
     func remoteCallBackPosts(with viewModel: [Post])
+    func remoteCallBackFollowing(with viewModel: [Follow])
 }
 
 protocol ProfileLocalDataManagerInputProtocol: AnyObject {

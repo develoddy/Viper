@@ -32,23 +32,23 @@ class WSTranslator: NSObject {
      * @param
      * @return Object Codable
      */
-    class func translateResponseProfileBE(_ objDic: NSDictionary, completion: @escaping ((Result<ResUF, Error>)) -> Void) {
-        var userFollow: ResUF?
-        do {
-            let jsonData:NSData = try JSONSerialization.data(withJSONObject: objDic, options: JSONSerialization.WritingOptions.prettyPrinted) as NSData
-            guard let jsonString = String(data: jsonData as Data, encoding: String.Encoding.utf8) else { return }
-            guard let json = jsonString.data(using: .utf8) else { return }
-            
-            userFollow = try JSONDecoder().decode(ResUF.self, from: json)
-            if let userPost = userFollow {
-                completion(.success(userPost))
-            } else {
-                completion(.failure(Error.self as! Error))
-            }
-        } catch {
-            print("TRANSLATOR: ERROR SERVE & SWIFT DISCREPANCIA PROPERTIES (translateResponseProfileBE)")
-        }
-    }
+//    class func translateResponseProfileBE(_ objDic: NSDictionary, completion: @escaping ((Result<ResUF, Error>)) -> Void) {
+//        var userFollow: ResUF?
+//        do {
+//            let jsonData:NSData = try JSONSerialization.data(withJSONObject: objDic, options: JSONSerialization.WritingOptions.prettyPrinted) as NSData
+//            guard let jsonString = String(data: jsonData as Data, encoding: String.Encoding.utf8) else { return }
+//            guard let json = jsonString.data(using: .utf8) else { return }
+//            
+//            userFollow = try JSONDecoder().decode(ResUF.self, from: json)
+//            if let userPost = userFollow {
+//                completion(.success(userPost))
+//            } else {
+//                completion(.failure(Error.self as! Error))
+//            }
+//        } catch {
+//            print("TRANSLATOR: ERROR SERVE & SWIFT DISCREPANCIA PROPERTIES (translateResponseProfileBE)")
+//        }
+//    }
     
     // MARK: PROFILE TRANSLATOR RESPONSE
     // Convert Object dicctionary a Json Codable Explore

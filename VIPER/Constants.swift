@@ -8,6 +8,11 @@
 import  UIKit
 struct Constants {
     
+    struct LoginData {
+        static let username = "eddylujan@gmail.com"
+        static let password = "secret"
+    }
+    
     struct SignUpAlertMessage {
         static let title = "Mensaje"
         static let mensaje = "Se ha detectado que algunos de los campos están vacío. Rellenadlos por favor."
@@ -35,12 +40,7 @@ struct Constants {
     }
     
     struct ApiRoutes {
-        //static let domain = "http://127.0.0.1:8000"
-        //static let domain = "https://develoddy.com"
-        //static let domain = "https://develoddy.com/laravelfront"
-        //static let domain   = "http://127.0.0.1:3800"
         static let domain   = "http://localhost:3800"
-        
     }
     
     struct headerImage {

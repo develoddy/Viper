@@ -10,18 +10,13 @@ import Foundation
 
 // MARK: REMOTE DATA MANAGER
 class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
-
+    
     // MARK: PROPERTIES
     var remoteRequestHandler: ProfileRemoteDataManagerOutputProtocol?
-    
     let apiService: APIServiceProtocol
-    
     var viewModelPost: [Post] = []
-    
     var viewModel: [User] = []
-    
     var viewModelTasts: [ResCounter] = []
-    //var user: User?
     
     
     // MARK:  CONSTRUCTOR
@@ -31,27 +26,42 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
     
     
     /*
-     - ----------- PERFIL ------------
-     - EN ESTE PUNTO SE OBTIENE LOS DATOS DEL PERFIL.
+     * ----------- PERFIL ------------
+     * EN ESTE PUNTO SE OBTIENE LOS DATOS DEL PERFIL (HEADER).
      */
     func remoteGetData(id: Int, token: String) {
-        self.apiService.getProfile( id: id, token: token ) { result in
-            switch result {
-                case .success( let data ):
-                    guard let viewModel = data.user else { return }
+        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/users/one/\(id)" ) else {
+            return
+        }
+        
+        var request = URLRequest( url: url )
+        request.httpMethod = Constants.Method.httpGet
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
+            if let data = data {
+                do {
+                    let tasks = try decoder.decode( ResUser.self, from: data )
+                    guard let viewModel = tasks.user else {
+                        return
+                    }
                     self.viewModel.append( viewModel )
                     // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
                     self.remoteRequestHandler?.remoteCallBackData( with: self.viewModel )
-                case .failure( let error ):
-                    print("error preccesing data Profile \(error)")
+                } catch {
+                    print("error preccesing data Profile")
                 }
+            }
         }
+        task.resume()
     }
     
     
     /*
-     - ----------- COUNTER ------------
-     - EN ESTE PUNTO SE OBTIENE LOS DATOS DEL PERFIL.
+     * ----------- COUNTER ------------
+     * EN ESTE PUNTO SE OBTIENE LOS DATOS DE LOS
+     * CONTADORES DE PUBLICACIÓN, SEFGUIDORES Y SIGUIENDO.
      */
     func remoteGetCounter(id: Int, token: String) {
         guard let url = URL( string: Constants.ApiRoutes.domain + "/api/users/counters/one/\(id)" ) else {
@@ -80,8 +90,9 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
     
     
     /*
-     - ----------- POST USER ------------
-     - EN ESTE PUNTO SE OBTIENE LOS DATOS DEL POST USER.
+     * ----------- POST USER ------------
+     * EN ESTE PUNTO SE OBTIENE LOS DATOS DE
+     * LAS PUBLICACIONES (GRID IMAGENES).
      */
     func remoteGetPosts(id: Int, page: Int, token: String) {
         guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/user/\(id)/\(page)" ) else {
@@ -112,34 +123,34 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    func remoteGetData(id: Int, token: String) {
-//        apiService.getProfile(id: id, token: token) { [ weak self ] ( result ) in
-//            switch result {
-//            case .success( let listOf ):
-//                guard let viewModel = listOf.user else {
-//                    return
-//                }
-//                //self?.viewModel = viewModel
-//                self?.viewModel.append(viewModel)
-//                // TODO: ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-//                self?.remoteRequestHandler?.remoteCallBackData(with: self?.viewModel ?? [])
-//
-//            case .failure(let error):
-//                print("Error processing data Profile \(error)")
-//            }
-//        }
-//    }
-    
+    /*
+     * ----------- FOLLOWING ------------
+     * EN ESTE PUNTO SE OBTIENE A LA GENTE QUE SEGUIMOS.
+     */
+    func remoteGetFollowing(page: Int, token: String) {
+        
+        guard let url = URL(string: Constants.ApiRoutes.domain + "/api/follows/following/\(page)") else {
+            return
+        }
+        var request = URLRequest( url: url )
+        request.httpMethod = Constants.Method.httpGet
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
+            if let data = data {
+                do {
+                    let tasks = try decoder.decode( ResFollows.self, from: data )
+                    guard let following = tasks.follows else {
+                        return
+                    }
+                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
+                    self.remoteRequestHandler?.remoteCallBackFollowing(with: following)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        task.resume()
+    }
 }

@@ -24,9 +24,7 @@ class SearchResultWireFrame: SearchResultWireFrameProtocol {
         presenter.view                          = viewController
         presenter.wireFrame                     = wireFrame
         presenter.interactor                    = interactor
-        
         presenter.filter                        = filter
-        
         interactor.presenter                    = presenter
         interactor.localDatamanager             = localDataManager
         interactor.remoteDatamanager            = remoteDataManager
@@ -39,10 +37,16 @@ class SearchResultWireFrame: SearchResultWireFrameProtocol {
     func navigateToProfile(from view: SearchResultViewProtocol, id: Int, name: String, token: String) {
         
         let newProfileView = ProfileWireFrame.createProfileModule(id: id, name: name, token: token)
+        newProfileView.title = "ProfileWireFrame"
        
         if let sourceView = view as? UIViewController {
            //sourceView.navigationController?.pushViewController(newProfileView, animated: true)
-            sourceView.present(newProfileView, animated: true)
+            //sourceView.present(newProfileView, animated: true)
+            
+            //let navigationController = UINavigationController( rootViewController: newProfileView )
+            //navigationController.modalPresentationStyle = .fullScreen
+            //sourceView.present( navigationController, animated: true )
+            sourceView.navigationController?.pushViewController(newProfileView, animated: true)
         }
     }
 }

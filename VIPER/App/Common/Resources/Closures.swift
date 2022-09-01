@@ -20,5 +20,5 @@ class Closures: NSObject {
     typealias Message = (_ message: Operation ) -> Void
     
     typealias userPost = (_ userPost: ResPosts) -> Void
-    typealias userFollow = (_ userFollow: ResUF) -> Void
+    //typealias userFollow = (_ userFollow: ResUF) -> Void
 }

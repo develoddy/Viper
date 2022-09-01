@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class ProfileWireFrame: ProfileWireFrameProtocol {
-   
     
     static func createProfileModule(id: Int, name: String, token: String) -> UIViewController {
 
@@ -40,7 +39,8 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
         return viewController
     }
     
-    // GOTO POST
+
+    // GOTO NAVIGATION TO POST SCREEN.
     func gotoPostScreen(from view: ProfileViewProtocol, post: Post) {
         let newPostView = PostWireFrame.createPostModule(post: post)
         if let sourceView = view as? UIViewController {
@@ -48,6 +48,7 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
         }
     }
     
+    // GOTO NAVIGATION TO EDIT PROFILE.
     func navigateToEditProfile(from view: ProfileViewProtocol, model: User?) {
  
         let newEditProfileView = EditProfileWireFrame.createEditProfileModule(model: model)
@@ -59,6 +60,15 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
             navigationController.navigationItem.largeTitleDisplayMode = .never
             sourceView.present( navigationController, animated: true )
             // sourceView.present( UINavigationController( rootViewController: newEditProfileView ), animated: true )
+        }
+    }
+    
+    // GOTO NAVIGATION TO LIST PEOPLE SCREEN.
+    func gotoListPeopleScreen(following: [Follow], from view: ProfileViewProtocol, token: LoginToken?) {
+        let newListPeople = ListPeopleWireFrame.createListPeopleModule( following: following, token: token )
+        newListPeople.title = token?.user?.name
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(newListPeople, animated: true)
         }
     }
 }

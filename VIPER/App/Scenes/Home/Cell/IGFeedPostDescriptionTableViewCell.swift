@@ -59,7 +59,7 @@ class IGFeedPostDescriptionTableViewCell: UITableViewCell {
     
     private let labelTextComment: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
+        label.backgroundColor = .systemBackground
         return label
     }()
     
@@ -70,7 +70,7 @@ class IGFeedPostDescriptionTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .blue
+        contentView.backgroundColor = .systemBackground
         setupView()
     }
     

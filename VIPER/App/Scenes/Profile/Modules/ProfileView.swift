@@ -2,17 +2,6 @@ import Foundation
 import UIKit
 
 
-enum FollowState {
-    case following // indicates the current user is following the other user
-    case not_following // indicates the current user is NOT following the other user
-}
-
-struct UserRelationship {
-    let username: String
-    let namm: String
-    let type: FollowState
-}
-
 class ProfileView: UIViewController {
 
         // MARK:  PROPERTIES
@@ -235,30 +224,16 @@ extension ProfileView: ProfileViewProtocol {
 
 extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     func didTapFollowersButton(_header: ProfileInfoHeaderCollectionReusableView) {
-        print("click... didTapFollowersButton")
-        
-        /*var mockData = [UserRelationship]()
-        for x in 0..<10 {
-            mockData.append(UserRelationship(
-                username: "@joer",
-                namm: "Joe Smith",
-                type: x % 2 == 0 ? .following: .not_following))
-        }*/
-        
-        //let vc = ListViewController(data: mockData)
-        //vc.title = "Follower"
-        //vc.navigationItem.largeTitleDisplayMode = .never
-        //navigationController?.pushViewController(vc, animated: true)
     }
     
     func didTapFollowingButton(_header: ProfileInfoHeaderCollectionReusableView) {
-        print("click... didTapFollowingButton")
+        let following = self.presenter?.showFollowin()
+        self.presenter?.gotoListPeopleScreen(following: following)   
     }
     
     func didTapEditProfileButton( _header: ProfileInfoHeaderCollectionReusableView ) {
-        // VAMOS A CREAR EL MODULO EDITPROFILEVIEWCONTROLLER
-        //print("ProfileView - didTapEditProfileButton : ")
-        //print(_header.model)
+        
+        // LLAMAR AL PRESENTER
         self.presenter?.gotoEitProfileScreen(model: _header.model)
     }
 }

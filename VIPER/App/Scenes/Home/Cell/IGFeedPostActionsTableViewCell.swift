@@ -132,7 +132,7 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .systemBackground
         setupView()
     }
     

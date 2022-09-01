@@ -166,14 +166,11 @@ class WSApiRest: NSObject {
     
     
     // MARK: PROFILE A CALL IS MDADE TO THE BACKEND
-    @discardableResult class func startProfile(_ id: Int,
+    /*@discardableResult class func startProfile(_ id: Int,
                                                _ token: String?,
                                                conCompletionCorrecto completionCorrecto: @escaping Closures.userFollow,
                                                error procesoIncorrecto: @escaping Closures.MessageError) -> URLSessionDataTask? {
-        /*let dic : [String : Any] = [
-            "id": id,
-            "typedevice": 1,
-            "tokendevice": "Se debe enviar el token push del dispositivo"]*/
+
         let dic : [String : Any] = ["userId": id]
         let resultSearch = WSenderToken.doGETTokenToURL(conURL: self.CDMWebModelURLBase,
                                                          conPath: (_URL_profile +  "\(id)" ) as NSString,
@@ -199,7 +196,7 @@ class WSApiRest: NSObject {
             }
         }
         return resultSearch
-    }
+    }*/
     
     
     // MARK: LIKES A CALL IS MDADE TO THE BACKEND
