@@ -124,20 +124,22 @@ class IGFeedPostDescriptionTableViewCell: UITableViewCell {
     
     // SETUP POSTS VALUES.
     public func setCellWithValuesOf( _ model: Post ) {
-        
         self.model = model
         
-        guard let name = model.user?.name, let content = model.content else {
+        guard let username = model.user?.username, let content = model.content else {
+            print("FalltaError: Propiedades no tienes valor.")
             return
         }
-        updateUI( username: name, content: content)
+        
+        
+        updateUI( username: username, content: content)
         
         // COMMENT COUNT
         guard let commentTotal = model.comments?.count else { return  }
         commentCount.setTitle("Ver los \(commentTotal) comentarios", for: .normal)
     }
     
-   
+    
     // UPDATE TE UI VIEWS.
     private func updateUI( username: String, content: String) {
         let authorName = joinTextCaption( username: username, description: content )

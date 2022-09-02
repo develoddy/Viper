@@ -41,6 +41,7 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     // LOS DATOS QUE LLEGAN DEL MODULO HOMEVIEW SE LO PASAMOS AL INTERACTOR
     func viewDidLoad() {
         guard let id = idReceivedFromHome, let token = tokenReceivedFromHome else {
+            print("Profile Presenter viewDidLoad() - Error en properties")
             return
         }
         self.interactor?.interactorGetData(id: id, token: token)
@@ -82,8 +83,8 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         return tasts
     }
     
-    // GOTO POST
-    func showPost(post: Post) {
+    // LLAMAR AL WIREFRAME.
+    func gotoPostScreen(post: Post?) {
         self.wireFrame?.gotoPostScreen(from: view!, post: post)
     }
     

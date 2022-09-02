@@ -19,7 +19,7 @@ protocol ProfileViewProtocol: AnyObject {
 protocol ProfileWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createProfileModule(id: Int, name:String, token:String) -> UIViewController
-    func gotoPostScreen(from view: ProfileViewProtocol, post: Post)
+    func gotoPostScreen(from view: ProfileViewProtocol, post: Post?)
     func navigateToEditProfile(from view: ProfileViewProtocol, model: User?)
     func gotoListPeopleScreen(following: [Follow], from view: ProfileViewProtocol, token: LoginToken?)
 }
@@ -38,7 +38,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func showPostsData(indexPath: IndexPath) -> Post?
     func username() -> User?
     func tasts() -> ResCounter?
-    func showPost(post: Post)
+    func gotoPostScreen(post: Post?)
     func showFollowin() -> [Follow]
     func showFollowers() -> [Follow]
     func gotoEitProfileScreen(model: User?)

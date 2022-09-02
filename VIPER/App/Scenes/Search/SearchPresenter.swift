@@ -62,11 +62,7 @@ extension SearchPresenter: SearchPresenterProtocol {
         self.wireFrame?.gotoSearchResultsUpdating(from: self.view!, resultsComtroller: resultsComtroller, filter: filter)
     }
     
-    /*
-     func showPost(post: Post) {
-         self.wireFrame?.gotoPostScreen(from: view!, post: post)
-     }
-     */
+    // LLAMAR AL WIREFRAME.
     func gotoPostScreen(post: Post?) {
         self.wireFrame?.navigateToPost(from: view!, post: post)
     }

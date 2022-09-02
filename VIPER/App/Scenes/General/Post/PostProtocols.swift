@@ -16,7 +16,7 @@ protocol PostViewProtocol: AnyObject {
 
 protocol PostWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createPostModule(post: Post) -> UIViewController
+    static func createPostModule(post: Post?) -> UIViewController
 }
 
 protocol PostPresenterProtocol: AnyObject {

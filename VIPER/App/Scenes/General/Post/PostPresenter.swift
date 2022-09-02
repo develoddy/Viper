@@ -18,8 +18,10 @@ class PostPresenter: PostPresenterProtocol {
     // MARK: FUNCTION
     func viewDidLoad() {
         
+        
         // SE RECIBE EL OBJECTO POST QUE VIENE DEL MODULO PROFILEVIEW O SEARCHVIEW
         guard let post = userpostReceivedFromProfile else {
+            print("Post Presenter: Post vacio")
             return
         }
         
@@ -32,12 +34,6 @@ class PostPresenter: PostPresenterProtocol {
     }
 
     func numberOfRowsInsection(section: Int) -> Int {
-        
-        //let model: PostRenderViewModel
-        //let count = section
-        //let position = count % 7 == 0 ? count / 7 : ((count - (count % 7)) / 7)
-        //model = self.renderModels[position]
-        
         switch renderModels[ section ].renderType {
             case .actions(_): return 1
             case .comments(_): return 1

@@ -106,7 +106,6 @@ extension HomeView: HomeViewProtocol {
 // MARK: ACCION DE BOTIENES (LIKE, COMMENT, SHARE)
 extension HomeView: IGFeedPostActionsTableViewCellProtocol {
     func didTapCommentButton(model: Post) {
-        print("click comentarios")
         self.presenter?.gotoCommentsScreen(userpost: model)
     }
 }

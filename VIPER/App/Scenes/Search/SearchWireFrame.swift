@@ -42,7 +42,9 @@ class SearchWireFrame: SearchWireFrameProtocol {
     
     // LLAMAR AL MODULO POST
     func navigateToPost(from view: SearchViewProtocol, post: Post?) {
-        guard let post = post else { return }
+        guard let post = post else {
+            return
+        }
         let newPostView = PostWireFrame.createPostModule(post: post)
         if let sourceView = view as? UIViewController {
             newPostView.title = "Explorar"

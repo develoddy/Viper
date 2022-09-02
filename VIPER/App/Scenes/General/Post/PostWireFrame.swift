@@ -11,9 +11,11 @@ import UIKit
 
 class PostWireFrame: PostWireFrameProtocol {
 
-    class func createPostModule(post: Post) -> UIViewController {
-        let navController = PostView()
-        let viewController = navController
+    class func createPostModule(post: Post?) -> UIViewController {
+        
+        
+        let postView = PostView()
+        let viewController = postView
         let presenter: PostPresenterProtocol & PostInteractorOutputProtocol = PostPresenter()
         let interactor: PostInteractorInputProtocol & PostRemoteDataManagerOutputProtocol = PostInteractor()
         let localDataManager: PostLocalDataManagerInputProtocol = PostLocalDataManager()
@@ -31,6 +33,6 @@ class PostWireFrame: PostWireFrameProtocol {
         interactor.remoteDatamanager = remoteDataManager
         remoteDataManager.remoteRequestHandler = interactor
             
-        return navController
+        return viewController
     }
 }

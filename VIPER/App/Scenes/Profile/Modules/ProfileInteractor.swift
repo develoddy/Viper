@@ -122,11 +122,11 @@ extension ProfileInteractor: ProfileRemoteDataManagerOutputProtocol {
      * RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER.
      * EN ESTE PUNTO SE ENVIA LOS DATOS (FOLLOWING) AL PRESENTER.
      */
-    func remoteCallBackFollowing(with viewModel: [Follow]) {
+    func remoteCallBackFollowing(with viewModel: [ Follow ] ) {
         self.presenter?.interactorCallBackFollowing(with: viewModel)
     }
     
-    func remoteCallBackFollowers(with viewModel: [Follow]) {
+    func remoteCallBackFollowers(with viewModel:  [Follow ] ) {
         self.presenter?.interactorCallBackFollowers(with: viewModel)
     }
 }

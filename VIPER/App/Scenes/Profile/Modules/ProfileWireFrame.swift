@@ -41,7 +41,10 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
     
 
     // GOTO NAVIGATION TO POST SCREEN.
-    func gotoPostScreen(from view: ProfileViewProtocol, post: Post) {
+    func gotoPostScreen(from view: ProfileViewProtocol, post: Post?) {
+//        guard let post = post  else {
+//            return
+//        }
         let newPostView = PostWireFrame.createPostModule(post: post)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newPostView, animated: true)

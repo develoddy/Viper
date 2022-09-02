@@ -19,9 +19,7 @@ class PostInteractor: PostInteractorInputProtocol {
     
     // MARK: FUNCTION
     func interactorGetData(userpost: Post) {
-        /*guard let comments = userpost.comments else {
-            return
-        }*/
+        
         renderModels.append(PostRenderViewModel(renderType: .header(provider: userpost)))
         renderModels.append(PostRenderViewModel(renderType: .primaryContent(provider: userpost)))
         renderModels.append(PostRenderViewModel(renderType: .actions(provider: userpost)))

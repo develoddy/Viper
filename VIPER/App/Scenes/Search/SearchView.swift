@@ -152,11 +152,7 @@ extension SearchView: UICollectionViewDelegateFlowLayout {
 extension SearchView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
         // LLAMAR AL PRESENTER.
-        guard let post = self.presenter?.showUserpostData(indexPath: indexPath) else {
-            return
-        }
-        self.presenter?.gotoPostScreen(post: post)
+        self.presenter?.gotoPostScreen(post: self.presenter?.showUserpostData(indexPath: indexPath))
     }
 }

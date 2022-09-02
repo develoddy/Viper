@@ -116,12 +116,18 @@ extension ProfileView: UICollectionViewDataSource {
         }
 }
 
+// MARK:  UIABLEVIEW DELEGATE
+extension ProfileView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        // LLAMAR AL PRESENTER.
+        self.presenter?.gotoPostScreen(post: self.presenter?.showPostsData(indexPath: indexPath))
+    }
+}
 
 
-// MARK: - UIABLEVIEW FLOW LAYOUT
-
+// MARK:  UIABLEVIEW FLOW LAYOUT
 extension ProfileView: UICollectionViewDelegateFlowLayout {
-
         // MARK: Header & Story & Tabs
         func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
                 guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
@@ -139,7 +145,7 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
 
                         let tasts = self.presenter?.tasts()
                         if tasts != nil {
-                                header.setCellWithValuesTastsOf(tasts)
+                            header.setCellWithValuesTastsOf(tasts)
                         }
 
                         header.delegate = self
@@ -147,8 +153,7 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
                 case 1:
                         let storyHeader = collectionView.dequeueReusableSupplementaryView(
                             ofKind: kind,
-                            withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier,
-                            for: indexPath ) as! StoryFeaturedCollectionTableViewCell
+                            withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier, for: indexPath ) as! StoryFeaturedCollectionTableViewCell
                         return storyHeader
                 case 2:
                         let tabsHeader = collectionView.dequeueReusableSupplementaryView(
@@ -172,19 +177,7 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
 }
 
 
-// MARK:  UIABLEVIEW DELEGATE
-extension ProfileView: UICollectionViewDelegate {
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            // LLAMAR AL PRESENTER.
-            guard let post = self.presenter?.showPostsData(indexPath: indexPath) else { return }
-            print(post)
-            self.presenter?.showPost(post: post)
-        }
-}
-
-
-// MARK:  PROFILE PROTOCOL
+// MARK: - PROFILE PROTOCOL
 extension ProfileView: ProfileViewProtocol {
     // RELOAD COLLECTION
     func updateUI() {
@@ -220,8 +213,7 @@ extension ProfileView: ProfileViewProtocol {
 }
 
 
-// MARK:  PRTOCOLS EDITPROFILEVIEWCONTROLLER
-
+// MARK: - PRTOCOLS EDITPROFILEVIEWCONTROLLER
 extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     
     // ---------- LLAMAR AL PRESENTER -----------
