@@ -223,16 +223,28 @@ extension ProfileView: ProfileViewProtocol {
 // MARK:  PRTOCOLS EDITPROFILEVIEWCONTROLLER
 
 extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
+    
+    // ---------- LLAMAR AL PRESENTER -----------
+    // SE PRETENDE NAVEGAR A OTRO MODULO (LISTPEOPLE)
+    // QUEREMOS LISTAR A LOS QUE QUE ME SIGUEN.
     func didTapFollowersButton(_header: ProfileInfoHeaderCollectionReusableView) {
+        let follower = self.presenter?.showFollowers()
+        self.presenter?.gotoListPeopleScreen(following: follower)
     }
     
+    // ---------- LLAMAR AL PRESENTER -----------
+    // SE PRETENDE NAVEGAR A OTRO MODULO (LISTPEOPLE)
+    // QUEREMOS LISTAR A LOS QUE YO SIGO.
     func didTapFollowingButton(_header: ProfileInfoHeaderCollectionReusableView) {
+        
         let following = self.presenter?.showFollowin()
         self.presenter?.gotoListPeopleScreen(following: following)   
     }
     
+    // ---------- LLAMAR AL PRESENTER -----------
+    // SE PRETENDE NAVEGAR A OTRO MODULO (EDIT PROFILE)
+    // QUEREMOS EDITAR NUESTRA INFORMACIÓN DE PERFIL.
     func didTapEditProfileButton( _header: ProfileInfoHeaderCollectionReusableView ) {
-        
         // LLAMAR AL PRESENTER
         self.presenter?.gotoEitProfileScreen(model: _header.model)
     }

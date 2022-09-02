@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: INPUT
 class ProfileInteractor: ProfileInteractorInputProtocol {
-    
+   
     // MARK: - PROPERTIES
     weak var presenter: ProfileInteractorOutputProtocol?
     var localDatamanager: ProfileLocalDataManagerInputProtocol?
@@ -23,7 +23,7 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
         /*
          - ---------- LLAMAR AL REMOTEDATAMANAGER ------------
          - EN ESTE PUNTO ES DECISIVO PORQUE SEGUN EL USUARIO SI ELIJE
-         - ENTRARAL PERFIL DESDEL EL HOME O DESDE TAB MANAGER.
+         - ENTRARAR AL PERFIL DESDEL EL HOME O DESDE EL TAB MANAGER.
          */
         if token.isEmpty {
             guard let id = self.token.getUserToken().user?.id else { return }
@@ -76,13 +76,20 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
         }
     }
     
+    func interactorGetFollowers(page: Int, token: String) {
+        if token.isEmpty {
+            guard let token = self.token.getUserToken().success else { return }
+            self.remoteDatamanager?.remoteGetFollowers(page: page, token: token)
+        } else {
+            self.remoteDatamanager?.remoteGetFollowers(page: page, token: token)
+        }
+    }
 }
 
 
 // MARK: - OUTPUT
 
 extension ProfileInteractor: ProfileRemoteDataManagerOutputProtocol {
-    
     /*
      * ---------- LLAMAR AL PRESENTER ------------
      * RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER.
@@ -119,4 +126,7 @@ extension ProfileInteractor: ProfileRemoteDataManagerOutputProtocol {
         self.presenter?.interactorCallBackFollowing(with: viewModel)
     }
     
+    func remoteCallBackFollowers(with viewModel: [Follow]) {
+        self.presenter?.interactorCallBackFollowers(with: viewModel)
+    }
 }

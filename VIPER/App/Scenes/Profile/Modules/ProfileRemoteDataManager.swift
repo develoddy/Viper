@@ -153,4 +153,31 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
         }
         task.resume()
     }
+    
+    func remoteGetFollowers(page: Int, token: String) {
+        
+        guard let url = URL(string: Constants.ApiRoutes.domain + "/api/follows/followed/\(page)") else {
+            return
+        }
+        var request = URLRequest( url: url )
+        request.httpMethod = Constants.Method.httpGet
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
+            if let data = data {
+                do {
+                    let tasks = try decoder.decode( ResFollows.self, from: data )
+                    guard let follower = tasks.follows else {
+                        return
+                    }
+                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
+                    self.remoteRequestHandler?.remoteCallBackFollowers(with: follower)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        task.resume()
+    }
 }
