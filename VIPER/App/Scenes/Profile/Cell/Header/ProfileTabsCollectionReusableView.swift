@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol ProfileTabsCollectionReusableViewDelegate: AnyObject {
+protocol ProfileTabsCollectionReusableViewProtocol: AnyObject {
     func didTapGridButtonTab()
     func didTapTaggedButtonTab()
 }
 
 class ProfileTabsCollectionReusableView:  UICollectionReusableView {
     
-    static let identifier = "ProfileTabsCollectionReusableView"
+    static let identifier = "ProfileTabsCollectionReusableViewProtocol"
     
-    //public var delegate: ProfileTabsCollectionReusableViewDelegate?
+    public var delegate: ProfileTabsCollectionReusableViewProtocol?
     
     private let gridButton: UIButton = {
         let button  = UIButton()
@@ -35,15 +35,23 @@ class ProfileTabsCollectionReusableView:  UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemBackground
-        addSubview(gridButton)
-        addSubview(taggedButton)
-        gridButton.addTarget(self, action: #selector(didTapGridButton), for: .touchUpInside)
-        taggedButton.addTarget(self, action: #selector(didTapTaggedButton), for: .touchUpInside)
+        setupView()
+        acctionButtons()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupView() {
+        backgroundColor = .systemBackground
+        addSubview(gridButton)
+        addSubview(taggedButton)
+    }
+    
+    func acctionButtons() {
+        gridButton.addTarget(self, action: #selector(didTapGridButton), for: .touchUpInside)
+        taggedButton.addTarget(self, action: #selector(didTapTaggedButton), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
@@ -63,13 +71,13 @@ class ProfileTabsCollectionReusableView:  UICollectionReusableView {
     @objc private func didTapGridButton() {
         gridButton.tintColor = .black
         taggedButton.tintColor = .lightGray
-        //delegate?.didTapGridButtonTab()
+        delegate?.didTapGridButtonTab()
     }
     
     @objc private func didTapTaggedButton() {
         taggedButton.tintColor = .black
         gridButton.tintColor = .lightGray
-        //delegate?.didTapTaggedButtonTab()
+        delegate?.didTapTaggedButtonTab()
     }
 }
 

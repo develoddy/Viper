@@ -14,25 +14,25 @@ typealias Tabs = (
 )
 
 class TabBarViewController: UITabBarController {
-
-    init(tabs: Tabs) {
+    init( tabs: Tabs ) {
         super.init(nibName: nil, bundle: nil)
-        
-        UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().backgroundColor = .systemBackground
-        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().barTintColor      = .white
+        UITabBar.appearance().backgroundColor   = .systemBackground
+        UITabBar.appearance().isTranslucent     = false
         
         // SE CREA UN NAVIGATION CONTROLLER PARA CADA UIVIEWCONTROLLER
-        let navSearch = UINavigationController(rootViewController: tabs.search)
-        let navHome = UINavigationController(rootViewController: tabs.home)
-        let navProfile = UINavigationController(rootViewController: tabs.profile)
-        viewControllers = [navHome, navProfile, navSearch]
+        let navSearch   = UINavigationController( rootViewController: tabs.search   )
+        let navHome     = UINavigationController( rootViewController: tabs.home     )
+        let navProfile  = UINavigationController( rootViewController: tabs.profile  )
         
-        // SE CREA UN UIVIEWCONTROLLER NORMAL
-        // viewControllers = [tabs.search, tabs.home, tabs.profile]
+        viewControllers = [
+            navProfile  ,
+            navHome     ,
+            navSearch   ]
+        
     }
 
-    required init?(coder: NSCoder) {
+    required init?( coder: NSCoder ) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -52,15 +52,4 @@ class TabBarViewController: UITabBarController {
     //        }
     //    }
     //
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

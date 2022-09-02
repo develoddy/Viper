@@ -43,6 +43,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func showFollowers() -> [Follow]
     func gotoEitProfileScreen(model: User?)
     func gotoListPeopleScreen(following: [Follow]?)
+    func resetPost()
 }
 
 protocol ProfileInteractorInputProtocol: AnyObject {

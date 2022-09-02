@@ -17,23 +17,29 @@ class TabBarWireFrame {
         search: UIViewController
     )
     
-    init(viewController: UIViewController) {
+    init( viewController: UIViewController ) {
         self.viewController = viewController
     }
 }
 
-
-
 extension TabBarWireFrame {
-    
     static func tabs(unsingSubmodules submodules: Submodules) -> Tabs {
-        let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 11)
-        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 12)
-        let searchTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "magnifyingglass"), tag: 12)
+        let homeTabBarItem      = UITabBarItem(
+            title: "Inicio",
+            image: UIImage(systemName: "house"),
+            tag: 11)
+        let profileTabBarItem   = UITabBarItem(
+            title: "Perfil",
+            image: UIImage(systemName: "person"),
+            tag: 12)
+        let searchTabBarItem    = UITabBarItem(
+            title: "Buscar",
+            image: UIImage(systemName: "magnifyingglass"),
+            tag: 12)
         
-        submodules.home.tabBarItem = homeTabBarItem
-        submodules.profile.tabBarItem = profileTabBarItem
-        submodules.search.tabBarItem = searchTabBarItem
+        submodules.home.tabBarItem      = homeTabBarItem
+        submodules.profile.tabBarItem   = profileTabBarItem
+        submodules.search.tabBarItem    = searchTabBarItem
         
         return (
             home: submodules.home,

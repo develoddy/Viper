@@ -88,25 +88,30 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.wireFrame?.gotoPostScreen(from: view!, post: post)
     }
     
-    // SHOW DATA FOLLOWING
+    // SHOW DATA FOLLOWING.
     func showFollowin() -> [Follow] {
         return self.viewModelFollows
     }
     
-    // SHOW DATA FOLLOWER
+    // SHOW DATA FOLLOWER.
     func showFollowers() -> [Follow] {
         return self.viewModelFollowers
     }
     
-    // LLAMAR AL WIREFRAME
+    // LLAMAR AL WIREFRAME.
     func gotoEitProfileScreen(model: User?) {
         self.wireFrame?.navigateToEditProfile(from: view!, model: model )
     }
     
-    // LLAMAR AL WIREFRAME
+    // LLAMAR AL WIREFRAME.
     func gotoListPeopleScreen(following: [Follow]?) {
         guard let following = following else { return }
         self.wireFrame?.gotoListPeopleScreen(following: following, from: view!, token: token.getUserToken())
+    }
+    
+    // RESETEAR EL ARRAY DE MODDEL POST.
+    func resetPost() {
+        self.viewModelPost = []
     }
 }
 

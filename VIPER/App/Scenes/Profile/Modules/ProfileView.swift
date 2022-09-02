@@ -160,7 +160,7 @@ extension ProfileView: UICollectionViewDelegateFlowLayout {
                             ofKind: kind,
                             withReuseIdentifier: ProfileTabsCollectionReusableView.identifier,
                             for: indexPath) as! ProfileTabsCollectionReusableView
-                            // tabsHeader.delegate = self
+                            tabsHeader.delegate = self
                         return tabsHeader
                 default:
                         break
@@ -239,6 +239,25 @@ extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     func didTapEditProfileButton( _header: ProfileInfoHeaderCollectionReusableView ) {
         // LLAMAR AL PRESENTER
         self.presenter?.gotoEitProfileScreen(model: _header.model)
+    }
+}
+
+
+
+
+// TODO: - PROTOCOLS PROFILE TABS COLLECTIONS REUSABLE VIEW
+// ACCION DE BOTONES EN EL TAB.
+extension ProfileView: ProfileTabsCollectionReusableViewProtocol {
+    
+    func didTapGridButtonTab() {
+        self.presenter?.viewDidLoad()
+    }
+    
+    func didTapTaggedButtonTab() {
+        self.presenter?.resetPost()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }
 
