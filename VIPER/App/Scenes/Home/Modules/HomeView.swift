@@ -23,14 +23,7 @@ class HomeView: UIViewController {
     // VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        setupView()
-        configureTableView()
-        configureDelegates()
-        configureActivity()
-        headerTableView()
-        setupLeftNavItems()
-        
+        initMethods()
     }
     
     // VIEW DID LAYOUT SUB VIEWS
@@ -46,10 +39,17 @@ class HomeView: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    /*
-     - ------------ LLAMAR AL PRESENTER -------------
-     - SE INCIALIZA LLAMANDO AL PRESENTER.
-    */
+    func initMethods() {
+        loadData()
+        setupView()
+        configureTableView()
+        configureDelegates()
+        configureActivity()
+        headerTableView()
+        setupLeftNavItems()
+    }
+    
+    // LLAMAR AL PRESENTER.
     func loadData() {
         presenter?.viewDidLoad()
     }
@@ -103,7 +103,7 @@ extension HomeView: HomeViewProtocol {
     }
 }
 
-// MARK: ACCION DE BOTIENES (LIKE, COMMENT, SHARE)
+// MARK: ACCION DE BOTONES (LIKE, COMMENT, SHARE)
 extension HomeView: IGFeedPostActionsTableViewCellProtocol {
     func didTapCommentButton(model: Post) {
         self.presenter?.gotoCommentsScreen(userpost: model)

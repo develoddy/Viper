@@ -4,79 +4,99 @@ import UIKit
 
 class ProfileView: UIViewController {
 
-        // MARK:  PROPERTIES
-        var presenter: ProfilePresenterProtocol?
-        let collectionView = ProfileCollectionsViews.collectionView()
-        var profileUI = ProfileUI()
-        var token = Token()
+    // MARK:  PROPERTIES
+    var presenter: ProfilePresenterProtocol?
+    let collectionView = ProfileCollectionsViews.collectionView()
+    var profileUI = ProfileUI()
+    var token = Token()
 
-        // MARK:  LIFECYCLE
+    // MARK:  LIFECYCLE
 
-        // VIEDDIDLOAD
-        override func viewDidLoad() {
-                super.viewDidLoad()
-                loadData()
-                setupView()
-                configureActivity()
-                configureCollectionView()
-                configureCollectionViewHeader()
-                configureDelegates()
-        }
+    // VIEDDIDLOAD
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initMethods()
+    }
 
-        // SE LLAMA AL PRESENTER
-        func loadData() {
-                self.presenter?.viewDidLoad()
-        }
+    func initMethods() {
+        loadData()
+        setupView()
+        configureActivity()
+        configureCollectionView()
+        configureCollectionViewHeader()
+        configureDelegates()
+        configureNavigationItem()
+    }
+    
+    // SE LLAMA AL PRESENTER
+    func loadData() {
+            self.presenter?.viewDidLoad()
+    }
 
-        // VIEWDIDLAYOUTSUBVIEWS
-        override func viewDidLayoutSubviews() {
-                super.viewDidLayoutSubviews()
-                self.collectionView.frame = view.bounds
-                self.profileUI.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
-        }
+    // VIEWDIDLAYOUTSUBVIEWS
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.collectionView.frame = view.bounds
+        self.profileUI.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
+    }
 
-        // SETUPVIEW
-        func setupView() {
-                view.backgroundColor = .systemBackground
-                self.modalPresentationStyle = .overFullScreen
-                view.addSubview(profileUI)
-                view.addSubview(collectionView)
-        }
+    // SETUPVIEW
+    func setupView() {
+        view.backgroundColor = .systemBackground
+        self.modalPresentationStyle = .overFullScreen
+        view.addSubview(profileUI)
+        view.addSubview(collectionView)
+    }
 
-        // ACTIVITY
-        func configureActivity() {
-                profileUI.activityIndicator.center = view.center
-                profileUI.activityIndicator.hidesWhenStopped = false
-        }
+    // ACTIVITY
+    func configureActivity() {
+        profileUI.activityIndicator.center = view.center
+        profileUI.activityIndicator.hidesWhenStopped = false
+    }
 
-        // COLLECTION
-        func configureCollectionView() {
-                collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
-        }
+    // COLLECTION
+    func configureCollectionView() {
+        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+    }
 
-        // COLLECTION HEADER
-        func configureCollectionViewHeader() {
-                collectionView.register(
-                        StoryFeaturedCollectionTableViewCell.self,
-                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                        withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier)
+    // COLLECTION HEADER
+    func configureCollectionViewHeader() {
+        collectionView.register(
+                StoryFeaturedCollectionTableViewCell.self,
+                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier)
 
-                collectionView.register(
-                        ProfileInfoHeaderCollectionReusableView.self,
-                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                        withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier)
+        collectionView.register(
+                ProfileInfoHeaderCollectionReusableView.self,
+                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier)
 
-                collectionView.register(
-                        ProfileTabsCollectionReusableView.self,
-                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                        withReuseIdentifier: ProfileTabsCollectionReusableView.identifier)
-        }
+        collectionView.register(
+                ProfileTabsCollectionReusableView.self,
+                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: ProfileTabsCollectionReusableView.identifier)
+    }
 
-        // DELEGATES
-        func configureDelegates() {
-            self.collectionView.delegate = self
-            self.collectionView.dataSource = self
-        }
+    // DELEGATES
+    func configureDelegates() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+    }
+
+    func configureNavigationItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(didTapCancel))
+    }
+    
+    // ACCION BUTTONS
+    @objc func didTapSave() {
+        // Save info to database
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didTapCancel() {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 

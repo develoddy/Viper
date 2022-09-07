@@ -18,16 +18,21 @@ class CommentsView: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        registerTableView()
-        delegates()
-        loadData()
+        initMethods()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         commentsUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
         commentsUI.tableView.frame = view.bounds
+    }
+    
+    func initMethods() {
+        setupView()
+        registerTableView()
+        delegates()
+        loadData()
+        configurationButtonComment()
     }
     
     // VIEW -> PRESENTER
@@ -41,6 +46,30 @@ class CommentsView: UIViewController {
         self.commentsUI.tableView.backgroundColor = .systemBackground
         self.view.addSubview(commentsUI)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    func configurationButtonComment() {
+        var configuration = UIButton.Configuration.filled()
+        configuration = UIButton.Configuration.plain()
+        configuration.title = "Public"
+        configuration.baseBackgroundColor = .systemBackground
+        configuration.cornerStyle = .capsule
+        configuration.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+        let button = UIButton(configuration: configuration, primaryAction: UIAction(handler: { action in
+            self.didTapComment()
+        }))
+        self.commentsUI.typingCommentText.rightView = button
+        self.commentsUI.typingCommentText.rightViewMode = .always
+    }
+    
+    // LLAMAR AL PRESENTER.
+    func didTapComment() {
+        // CommentPost
+        debugPrint("Download Button tapped!")
+        guard let textComment = self.commentsUI.typingCommentText.text else {
+            return
+        }
+        self.presenter?.insertComment(textComment: textComment)
     }
     
     // REGISTER TABLEVIEW
@@ -57,17 +86,26 @@ class CommentsView: UIViewController {
     }
     
     // KEYBOARD
-    @objc private func handleKeyboardNotification(notification: NSNotification) {
-        if let userInfo: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+    @objc private func handleKeyboardNotification( notification: NSNotification ) {
+        if let userInfo: NSValue = notification.userInfo?[ UIResponder.keyboardFrameEndUserInfoKey ] as? NSValue {
             let keyboardFrame = userInfo.cgRectValue
             let isKeyBoardShowing = notification.name == UIResponder.keyboardWillShowNotification
-            commentsUI.bottomConstraint?.constant = isKeyBoardShowing ? -keyboardFrame.height : 0
-            UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            
+            commentsUI.bottomConstraint?.constant = isKeyBoardShowing ? -keyboardFrame.height+100 : 0
+            UIView.animate( withDuration: 0,
+                            delay: 0,
+                            options: UIView.AnimationOptions.curveEaseOut,
+                            animations: {
                 self.view.layoutIfNeeded()
-            }, completion: {(completed) in
-                guard let renderCount = self.presenter?.presenterNumberOfSections() else { return }
-                let indexPath = NSIndexPath(item: renderCount-1, section: 0)
-                self.commentsUI.tableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+            }, completion: { ( completed ) in
+                guard let renderCount = self.presenter?.presenterNumberOfSections() else {
+                    return
+                }
+                
+                let indexPath = NSIndexPath( item: renderCount - 1, section: 0 )
+                self.commentsUI.tableView.scrollToRow( at: indexPath as IndexPath,
+                                                       at: .bottom,
+                                                       animated: true )
             })
         }
     }
@@ -87,6 +125,14 @@ extension CommentsView: UITextFieldDelegate {
 
 // MARK: - COMMENTS VIEW PROTOCOLS
 extension CommentsView: CommentsViewProtocol {
+    
+    // RELOAD UPDATE TABLEVIEW
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.commentsUI.tableView.reloadData()
+        }
+    }
+    
     // TODO: implement view output methods
 }
 
@@ -130,6 +176,14 @@ extension CommentsView: UITableViewDataSource {
     // HEIGHT HEADER TABLEVIEW
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100.0
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (self.commentsUI.tableView.height-100-scrollView.frame.size.height ) {
+            // LLAMAR AL PRESENTER
+            //self.presenter?.fetchMoreData()
+        }
     }
 }
 

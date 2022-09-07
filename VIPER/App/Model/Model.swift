@@ -37,10 +37,10 @@ struct ResPostImages: Codable {
 // MARK: - Post
 struct Post: Codable {
     let id: Int?
-    let content, createdAt: String?
+    var content, createdAt: String?
     let user: User?
     let images: [Image]?
-    let comments: [Comment]?
+    var comments: [Comment]?
 
     enum CodingKeys: String, CodingKey {
         case id, content
@@ -62,6 +62,28 @@ struct Comment: Codable {
         case content, user
     }
 }
+
+// MARK: - CommentPost
+struct CommentPost: Codable {
+    let typeID, refID, user_id: Int?
+    let content: String?
+    let commentID: Int?
+    let createdAt, updatedAt: String?
+    let postID, userID: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case typeID = "type_id"
+        case refID = "ref_id"
+        case user_id = "user_id"
+        case content
+        case commentID = "comment_id"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case postID = "postId"
+        case userID = "userId"
+    }
+}
+
 
 // MARK: - User
 struct User: Codable {

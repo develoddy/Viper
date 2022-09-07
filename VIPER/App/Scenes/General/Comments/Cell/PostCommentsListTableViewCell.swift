@@ -64,16 +64,28 @@ class PostCommentsListTableViewCell: UITableViewCell {
         return button
     }()
     
+    private let viewMoreButton: UIButton = {
+        let viewMoreButton = UIButton()
+        let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .thin)
+        let image = UIImage(systemName: "plus.circle", withConfiguration: config)
+        viewMoreButton.setImage(image, for: .normal)
+        return viewMoreButton
+    }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+    
+    func setupView() {
         contentView.addSubview(userImageView)
         contentView.addSubview(commentlabel)
         contentView.addSubview(likeButton)
         contentView.addSubview(timeToPostCommentLabel)
         contentView.addSubview(replyToCommentLabel)
         contentView.addSubview(countLikesLabel)
-        
+        // -- contentView.addSubview(viewMoreButton)
     }
     
     required init?(coder: NSCoder) {
@@ -124,6 +136,14 @@ class PostCommentsListTableViewCell: UITableViewCell {
             y: commentlabel.bottom,
             width: contentView.width-8-userImageView.width-buttonSubLabelWidth,
             height: labelHeight-10)
+        
+        viewMoreButton.frame = CGRect(
+            x: contentView.width/2.5,
+            y: commentlabel.bottom+5,
+            width: 50,
+            height: 50)
+        viewMoreButton.layer.cornerRadius = viewMoreButton.height/2
+        // userImageView.layer.cornerRadius = userImageView.height/2.0
     }
     
     

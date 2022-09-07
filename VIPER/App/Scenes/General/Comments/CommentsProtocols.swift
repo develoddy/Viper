@@ -12,6 +12,7 @@ import UIKit
 protocol CommentsViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: CommentsPresenterProtocol? { get set }
+    func updateUI()
 }
 
 protocol CommentsWireFrameProtocol: AnyObject {
@@ -32,10 +33,13 @@ protocol CommentsPresenterProtocol: AnyObject {
     func numberOfRowsInsection(section: Int) -> Int
     func showCommentsData(indexPath: IndexPath) -> Comment
     func showHeaderCommentData(section: Int) -> Post
+    func insertComment(textComment: String)
+    func fetchMoreData()
 }
 
 protocol CommentsInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
+    func interactorCallBackData(with comment: [Comment])
 }
 
 protocol CommentsInteractorInputProtocol: AnyObject {
@@ -43,6 +47,7 @@ protocol CommentsInteractorInputProtocol: AnyObject {
     var presenter: CommentsInteractorOutputProtocol? { get set }
     var localDatamanager: CommentsLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: CommentsRemoteDataManagerInputProtocol? { get set }
+    func interactorSetComment(pagination: Bool, commentPost: CommentPost?, token: String )
 }
 
 protocol CommentsDataManagerInputProtocol: AnyObject {
@@ -52,10 +57,14 @@ protocol CommentsDataManagerInputProtocol: AnyObject {
 protocol CommentsRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: CommentsRemoteDataManagerOutputProtocol? { get set }
+    func remoteSetComment(pagination: Bool, commentPost: CommentPost?, token: String )
+    var isPagination : Bool  { get set }
 }
 
 protocol CommentsRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
+    func remoteCallBackData(with comment: [Comment])
+    
 }
 
 protocol CommentsLocalDataManagerInputProtocol: AnyObject {

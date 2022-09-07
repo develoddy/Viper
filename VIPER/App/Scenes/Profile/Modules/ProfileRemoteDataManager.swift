@@ -33,7 +33,6 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
         guard let url = URL( string: Constants.ApiRoutes.domain + "/api/users/one/\(id)" ) else {
             return
         }
-        
         var request = URLRequest( url: url )
         request.httpMethod = Constants.Method.httpGet
         request.setValue("Application/json", forHTTPHeaderField: "Content-Type")

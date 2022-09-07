@@ -1,10 +1,6 @@
-//
-//  HomeExtension.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 18/1/22.
-//
+
 import UIKit
+
 // MARK: UITableViewDataSource
 extension HomeView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -104,12 +100,12 @@ extension HomeView: UITableViewDataSource {
         let section = 7
         let subSection = indexPath.section % section
         switch subSection {
-            case 1: return 70  // Header
-            case 2: return tableView.width  // Post
-            case 3: return 40  // Actions
-            case 4: return 85  // Description
-            case 5: return 30  // Comment
-            case 6: return 60  // Footer
+            case 1: return 70  // HEADER
+            case 2: return tableView.width  // POST
+            case 3: return 40  // ACTION
+            case 4: return 85  // DESCRIPTION
+            case 5: return 30  // COMMENT
+            case 6: return 60  // FOOTER
             default: return 0
         }
     }
@@ -125,9 +121,9 @@ extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return cellSpacingHeight
     }
-
 }
-// MARK: - UITableViewDelegate
+
+
 extension HomeView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let count = indexPath.section
@@ -154,10 +150,10 @@ extension HomeView: UITableViewDelegate {
             default: print("Error switch Home")
         }
     }
-
 }
+
+
 extension HomeView {
-    // MARK: Header TableView
     public func createTableHeaderView() -> UIView {
         let imageView: UIImageView = {
             let imageView = UIImageView(image: UIImage(systemName: "person.circle"))
@@ -173,7 +169,6 @@ extension HomeView {
             button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
             button.clipsToBounds = true
             button.layer.masksToBounds = true
-            //button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
             return button
         }()
         let uploadImageButton: UIButton = {
@@ -190,7 +185,6 @@ extension HomeView {
             return view
         }()
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
-        //headerView.backgroundColor = .systemPink
         imageView.contentMode = .scaleAspectFit
         imageView.frame = CGRect(x: 5, y: 10, width: 40, height: 40)
         imageView.layer.cornerRadius = imageView.height / 2
@@ -209,12 +203,11 @@ extension HomeView {
         headerView.addSubview(imageView)
         headerView.addSubview(writePostButton)
         headerView.addSubview(uploadImageButton)
-        // self.separatorView(separatorView: separatorView, headerView: headerView)
         return headerView
     }
-
 }
-// MARK: - EXTENSION
+
+
 extension HomeView {
     func configureTableView() {
         homeUI.tableView.register(
@@ -241,11 +234,7 @@ extension HomeView {
     }
 
     func configureActivity() {
-        // SPINNER
         homeUI.activityIndicator.center = view.center
         homeUI.activityIndicator.hidesWhenStopped = false
     }
-
 }
-
-

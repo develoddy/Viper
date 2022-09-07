@@ -13,8 +13,12 @@ class IGFeedPostGeneralTableViewCell: UITableViewCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init( style: UITableViewCell.CellStyle, reuseIdentifier: String? ) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+    
+    func setupView() {
         contentView.addSubview(commentTextlabel)
     }
     
@@ -24,9 +28,6 @@ class IGFeedPostGeneralTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        //let titleLabelSize = titleLabel.sizeThatFits(frame.size)
-        //titleLabel.frame = CGRect(x: 15,y: 5,width: contentView.width-5,height: titleLabelSize.height).integral
         
         let size = contentView.height-4
         let labelHeight = contentView.height/2
@@ -43,15 +44,15 @@ class IGFeedPostGeneralTableViewCell: UITableViewCell {
     
     // SETUP COMMENTS VALUES.
     public func setCellWithValuesOf( with comment: Comment ) {
-        guard let username = comment.user?.username, let content = comment.content else {
+        guard let username = comment.user?.username,
+              let content = comment.content else {
             return
         }
         updateUI( username: username, content: content )
     }
     
-    // UPDATE TE UI VIEWS.
+    // UPDATE THE UI VIEWS.
     private func updateUI( username: String, content: String) {
-        
         let attributedString = joinText(
             username: username,
             description: content )
@@ -71,4 +72,3 @@ class IGFeedPostGeneralTableViewCell: UITableViewCell {
         return attributedString
     }
 }
-
