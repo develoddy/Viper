@@ -58,6 +58,7 @@ class HomeView: UIViewController {
     func setupView() {
         view.backgroundColor = .clear
         view.addSubview(homeUI)
+        homeUI.tableView.allowsSelection = false
     }
     
     // TABLE HEADER

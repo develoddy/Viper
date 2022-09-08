@@ -1,6 +1,5 @@
 import Foundation
 
-
 enum UserPostViewModelRenderType {
     case comments(comments: [Comment])
 }
@@ -27,16 +26,12 @@ class CommentsPresenter : CommentsPresenterProtocol {
         }
     }
     
-
-    // MEDIANTE EL WIREFRAME RECIBIMOS LOS DATOS QUE NOS ENVIA EL MODULO HOME (ACTION - COMMENTS)
     func viewDidLoad() {
-        /*guard let comment = self.userpostReceivedFromHome?.comments else {
-            return
-        }
-        renderModels = comment*/
         guard let idPost = self.userpostReceivedFromHome?.id, let token = token.getUserToken().success else {
             return
         }
+        
+        // LLAMAR AL INTERACTOR.
         self.interactor?.interactorReadByComment(idPost: idPost, pagination: 0, token: token)
         self.view?.startActivity()
     }
@@ -47,7 +42,7 @@ class CommentsPresenter : CommentsPresenterProtocol {
        
     }
     
-    // GET NUMBER OF ROWS INSECTION
+    // GET NUMBER OF ROWS INSECTION.
     func numberOfRowsInsection(section: Int) -> Int {
         return self.renderModels.count > 0 ? self.renderModels.count : self.renderModels.count
     }
@@ -57,37 +52,15 @@ class CommentsPresenter : CommentsPresenterProtocol {
         return self.renderModels[indexPath.row]
     }
     
-    // BORRAR COMENTARIO.
-    func deleteRow(indexPath: IndexPath) {
-        guard let id = self.renderModels[indexPath.row].id,
-              let token = token.getUserToken().success else {
-            return
-        }
-
-        self.interactor?.interactorDeleteComment(id: id, token: token)
-        self.renderModels.remove(at: indexPath.row)
-    }
-    
-    // EDITAR COMENTARIO.
-    func updateComment(indexPath: IndexPath, content: String) {
-        guard let postId = self.renderModels[indexPath.row].postId,
-              let idComment = self.renderModels[indexPath.row].id,
-              let token = token.getUserToken().success else {
-            return
-        }
-        self.interactor?.interactorUpdateComment(idPost: postId, idComment: idComment, content: content, token: token)
-        self.renderModels[indexPath.row].content = content
-    }
-    
     // SHOW DATA HEADER.
-    func showHeaderCommentData(section: Int) -> Post {
+    func showHeaderCommentData() -> Post {
         guard let userPostViewModelModel = self.userpostReceivedFromHome else {
             fatalError("Error showCommentsData")
         }
         return userPostViewModelModel
     }
     
-    // INSERT COMMENT
+    // CREATE COMENTARIO
     func insertComment( textComment: String ) {
         self.commentPost = CommentPost(
             typeID: 0,
@@ -106,6 +79,28 @@ class CommentsPresenter : CommentsPresenterProtocol {
         
         // LLAMAR AL INTERACTOR
         self.interactor?.interactorSetComment(pagination: false, commentPost: self.commentPost, token: token)
+    }
+    
+    // UPDATE COMENTARIO.
+    func updateComment(indexPath: IndexPath, content: String) {
+        guard let postId = self.renderModels[indexPath.row].postId,
+              let idComment = self.renderModels[indexPath.row].id,
+              let token = token.getUserToken().success else {
+            return
+        }
+        self.interactor?.interactorUpdateComment(idPost: postId, idComment: idComment, content: content, token: token)
+        self.renderModels[indexPath.row].content = content
+    }
+    
+    // BORRAR COMENTARIO.
+    func deleteRow(indexPath: IndexPath) {
+        guard let id = self.renderModels[indexPath.row].id,
+              let token = token.getUserToken().success else {
+            return
+        }
+
+        self.interactor?.interactorDeleteComment(id: id, token: token)
+        self.renderModels.remove(at: indexPath.row)
     }
     
     // FETCH MORE DATA.

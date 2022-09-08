@@ -1,10 +1,3 @@
-//
-//  CommentsView.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//  
-//
 
 import Foundation
 import UIKit
@@ -25,7 +18,6 @@ class CommentsView: UIViewController {
         super.viewDidLayoutSubviews()
         commentsUI.tableView.frame = view.bounds
         commentsUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
-        
     }
     
     func initMethods() {
@@ -44,7 +36,6 @@ class CommentsView: UIViewController {
     // SETUP VIEW
     func setupView() {
         view.backgroundColor = .clear
-        //self.commentsUI.tableView.backgroundColor = .systemBackground
         self.view.addSubview(commentsUI)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -65,8 +56,6 @@ class CommentsView: UIViewController {
     
     // LLAMAR AL PRESENTER.
     func didTapComment() {
-        // CommentPost
-        debugPrint("Download Button tapped!")
         guard let textComment = self.commentsUI.typingCommentText.text else {
             return
         }
@@ -77,6 +66,8 @@ class CommentsView: UIViewController {
     func registerTableView() {
         commentsUI.tableView.register(PostCommentsListTableViewCell.self, forCellReuseIdentifier: PostCommentsListTableViewCell.identifier)
         commentsUI.tableView.register(CustomHeaderTableViewCell.self, forCellReuseIdentifier: CustomHeaderTableViewCell.identifier)
+        // DESACTIVAR LA SELECCION UITABLEVIEW
+        commentsUI.tableView.allowsSelection = false
     }
     
     // DELEGATES TABLEVIEW
@@ -176,13 +167,14 @@ extension CommentsView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostCommentsListTableViewCell.identifier, for: indexPath) as! PostCommentsListTableViewCell
         guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { return UITableViewCell() }
         cell.setCellWithValuesOf(with: comment)
+        cell.delegate = self
         return cell
     }
     
     // SHOW DATA HEADER
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomHeaderTableViewCell.identifier) as! CustomHeaderTableViewCell
-        let post = self.presenter?.showHeaderCommentData(section: section)
+        let post = self.presenter?.showHeaderCommentData()
         cell.setCellWithValuesOf(with: post)
         return cell
     }
@@ -197,29 +189,46 @@ extension CommentsView: UITableViewDataSource {
         return 100.0
     }
     
-    // ACTIONS DELETE OR UPDATE COMMENT
+    /*
+     * ------- SE CREA DOS ACCIONES --------
+     * EN LA FILA DE COMENTARIOS SE CREA DOS ACCIONES QUE SERÁ DE
+     * MODIFICACIÓN DE COMENTARIO O BORRADO.
+     */
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { fatalError("xxx") }
         let contextUpdateAction = UIContextualAction(style: .normal, title: "update") { (contextualAction, view, boolValue) in
-            guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { fatalError("xxx") }
             self.updateAction(comment: comment, indexPath: indexPath)
         }
         
         let contextDeleteAction = UIContextualAction(style: .destructive, title: "delete") { (contextualAction, view, boolValue) in
-            //self.presenter?.deleteRow(indexPath: indexPath)
-            //tableView.deleteRows(at: [indexPath], with: .automatic)
-            guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { fatalError("xxx") }
             self.deleteAction(comment: comment, indexPath: indexPath)
         }
         
         contextDeleteAction.backgroundColor = .red
         contextUpdateAction.backgroundColor = .blue
         
-        let swipeActions = UISwipeActionsConfiguration(actions: [contextDeleteAction , contextUpdateAction])
+        let swipeActions: UISwipeActionsConfiguration
+        
+        // EN ESTE PUNTO SE COMPRUEBA SI EL AUTOR DE LA PUBLICACIÓN
+        // ESTÁ ENTRE LOS COMENTARIOS Y DEPENDIENDO DE ESO SE COMPRUEBA SI PUEDE MODIFICAR EL CONTENIDO
+        // DE SU COMENTARIO O NO.
+        let user = self.presenter?.showHeaderCommentData().user
+        if user?.id == comment.userID {
+            swipeActions = UISwipeActionsConfiguration(actions: [contextDeleteAction , contextUpdateAction])
+        } else {
+            swipeActions = UISwipeActionsConfiguration(actions: [contextDeleteAction])
+        }
         return swipeActions
     }
     
-    // UPDATE
+    
+    /*
+     * ------- MODIFICAR COMENTARIO --------
+     * EN ESTE PUNTO EL USUARIO DESLIZARÁ LA FILA DEL COMENTARIO
+     * PARA QUE MODIFIQUE EL CONTENIDO DE SU COMENTARIO.
+     */
     private func updateAction(comment: Comment, indexPath: IndexPath) {
+        
         let alert = UIAlertController(title: "Update",
                                       message: "Update a comment",
                                       preferredStyle: .alert)
@@ -232,7 +241,7 @@ extension CommentsView: UITableViewDataSource {
                     return
                 }
                 // ACTUALIZAR TAMBIEN EN LA BASE DE DATOS.
-                // HAY QUE LLAMAR AL PRESENTER
+                // HAY QUE LLAMAR AL PRESENTER.
                 self.presenter?.updateComment( indexPath: indexPath, content: textToEdit )
                 self.commentsUI.tableView.reloadRows( at: [ indexPath ], with: .automatic )
             } else {
@@ -251,7 +260,12 @@ extension CommentsView: UITableViewDataSource {
         present(alert, animated: true)
     }
     
-    // DELETE
+
+    /*
+     * ------- BORRAR COMENTARIO --------
+     * EN ESTE PUNTO EL USUARIO DESLIZARÁ LA FILA DEL COMENTARIO
+     * PARA QUE BORRAR SU COMENTARIO.
+     */
     private func deleteAction(comment: Comment, indexPath: IndexPath) {
         let alert = UIAlertController(title: "Delete",
                                       message: "Are you sure want to delete comment?",
@@ -259,7 +273,7 @@ extension CommentsView: UITableViewDataSource {
         let deleteAction = UIAlertAction(title: "Yes", style: .default) { (action) in
             
             // ACTUALIZAR TAMBIEN EN LA BASE DE DATOS.
-            // HAY QUE LLAMAR AL PRESENTER
+            // HAY QUE LLAMAR AL PRESENTER.
             self.presenter?.deleteRow(indexPath: indexPath)
             self.commentsUI.tableView.deleteRows(at: [indexPath], with: .automatic)
             DispatchQueue.main.async {
@@ -285,12 +299,24 @@ extension CommentsView: UITableViewDataSource {
 
 
 
-// MARK: UITABLEVIEW
+// MARK: - UITABLEVIEW DELEGATE
 extension CommentsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // tableView.deselectRow(at: indexPath, animated: true)
         // print("Did select normal list item")
         // inputTextfield.endEditing(true)
+    }
+}
+
+
+// MARK: - PROTOCOLS
+// CELL: POST COMMENT UITABLE VIEWCELL
+extension CommentsView: PostCommentsListTableViewCellProtocol {
+    func didTapLikeButton(comment: Comment) {
+        print("like")
+        print(comment)
+        // LLAMAR AL PRESENTER
+        // INSETAR LIKE EN LA BASE DE DATOS.
     }
     
     

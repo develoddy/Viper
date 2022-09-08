@@ -34,7 +34,7 @@ protocol CommentsPresenterProtocol: AnyObject {
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showCommentsData(indexPath: IndexPath) -> Comment
-    func showHeaderCommentData(section: Int) -> Post
+    func showHeaderCommentData() -> Post
     func insertComment(textComment: String)
     func fetchMoreData()
     func deleteRow(indexPath: IndexPath)

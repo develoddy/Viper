@@ -12,6 +12,7 @@ class CommentsUI: UIView {
         //let tableView = UITableView(frame: .zero, style: .grouped)
         //tableView.isHidden = false
         let tableView = UITableView()
+        
         return tableView
     }()
     

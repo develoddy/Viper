@@ -7,10 +7,18 @@
 
 import UIKit
 
+protocol PostCommentsListTableViewCellProtocol: AnyObject {
+    func didTapLikeButton(comment: Comment)
+}
+
 
 class PostCommentsListTableViewCell: UITableViewCell {
     
+    private var model: Comment?
+    
     static let identifier = "PostCommentsListTableViewCell"
+    
+    public var delegate: PostCommentsListTableViewCellProtocol?
     
     private let userImageView: UIImageView = {
         let imageView = UIImageView()
@@ -76,6 +84,7 @@ class PostCommentsListTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        didTapsButtons()
     }
     
     func setupView() {
@@ -88,6 +97,12 @@ class PostCommentsListTableViewCell: UITableViewCell {
         // -- contentView.addSubview(viewMoreButton)
     }
     
+    // ACTIONS BUTTONES
+    func didTapsButtons() {
+        likeButton.addTarget(self, action: #selector(didTapLikeButton), for: .touchUpInside)
+    }
+    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -161,12 +176,12 @@ class PostCommentsListTableViewCell: UITableViewCell {
     }
     
     public func setCellWithValuesOf( with comment: Comment ) {
+        self.model = comment
         
         guard let username = comment.user?.username, let content = comment.content, let image = comment.user?.profile?.imageHeader else {
             return
         }
         updateUI(username: username, comment: content, image: image)
-        
     }
     
     func updateUI( username: String, comment: String, image: String ) {
@@ -174,6 +189,13 @@ class PostCommentsListTableViewCell: UITableViewCell {
         commentlabel.attributedText = attributedString
         let url = Constants.ApiRoutes.domain + "/api/users/get-image-user/" + image
         userImageView.sd_setImage(with: URL(string: url), completed: nil)
-        //userImageView.image = UIImage(systemName: "person.crop.circle")
+    }
+    
+    // ACCION DE BOTONES
+    @objc private func didTapLikeButton() {
+        guard let comment = self.model else {
+            return
+        }
+        delegate?.didTapLikeButton(comment: comment)
     }
 }

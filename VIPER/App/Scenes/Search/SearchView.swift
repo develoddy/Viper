@@ -31,8 +31,6 @@ class SearchView: UIViewController {
         registerCollection()
         delegates()
         configureActivity()
-        
-        
     }
     
     // LOAD DATA
