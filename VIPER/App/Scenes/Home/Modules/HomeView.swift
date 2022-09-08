@@ -11,14 +11,14 @@ import UIKit
 
 class HomeView: UIViewController {
 
-    // MARK: - PROPERTIES
+    // MARK: PROPERTIES
     var presenter: HomePresenterProtocol?
     var homeUI = HomeUI()
     let cellSpacingHeight: CGFloat = 5
     var token = Token()
     
     
-    // MARK: - LIFECICLY
+    // MARK: LIFECICLY
 
     // VIEWDIDLOAD
     override func viewDidLoad() {

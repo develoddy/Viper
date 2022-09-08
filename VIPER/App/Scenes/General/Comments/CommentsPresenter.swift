@@ -1,27 +1,7 @@
-//
-//  CommentsPresenter.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//  
-//
-
 import Foundation
-import CoreMIDI
 
-/*
- enum PostRenderType {
-     case header(provider: Post)
-     case primaryContent(provider: Post)
-     case actions(provider: Post)
-     case descriptions(post: Post)
-     case comments(comments: [Comment])
-     case footer(footer: Post)
- }
- */
 
 enum UserPostViewModelRenderType {
-    //case primaryContent(posts: Post)
     case comments(comments: [Comment])
 }
 
@@ -41,44 +21,62 @@ class CommentsPresenter : CommentsPresenterProtocol {
     private var token = Token()
     
     // MARK: CLOSURES
-    var renderModels: [UserPostViewModelRenderViewModel] = [] {
+    var renderModels: [Comment] = [] {
         didSet {
             self.view?.updateUI()
         }
     }
+    
 
     // MEDIANTE EL WIREFRAME RECIBIMOS LOS DATOS QUE NOS ENVIA EL MODULO HOME (ACTION - COMMENTS)
     func viewDidLoad() {
-        guard let comment = self.userpostReceivedFromHome?.comments else {
+        /*guard let comment = self.userpostReceivedFromHome?.comments else {
             return
         }
-        renderModels.append(UserPostViewModelRenderViewModel(renderType: .comments(comments: comment )))
+        renderModels = comment*/
+        guard let idPost = self.userpostReceivedFromHome?.id, let token = token.getUserToken().success else {
+            return
+        }
+        self.interactor?.interactorReadByComment(idPost: idPost, pagination: 0, token: token)
+        self.view?.startActivity()
     }
     
     // GET NUMBER OF SECTION
     func presenterNumberOfSections() -> Int {
-        return renderModels.count
+        return 1
        
     }
     
     // GET NUMBER OF ROWS INSECTION
     func numberOfRowsInsection(section: Int) -> Int {
-        switch renderModels[section].renderType {
-        
-        case .comments (let comments):
-            return comments.count > 0 ? comments.count : comments.count
-        }
+        return self.renderModels.count > 0 ? self.renderModels.count : self.renderModels.count
     }
     
     // GET DATA COMMENTS.
     func showCommentsData(indexPath: IndexPath) -> Comment {
-        let model = renderModels[indexPath.section]
-        switch model.renderType {
-        case .comments(let comments):
-            let comment = comments[indexPath.row]
-            return comment
-        
+        return self.renderModels[indexPath.row]
+    }
+    
+    // BORRAR COMENTARIO.
+    func deleteRow(indexPath: IndexPath) {
+        guard let id = self.renderModels[indexPath.row].id,
+              let token = token.getUserToken().success else {
+            return
         }
+
+        self.interactor?.interactorDeleteComment(id: id, token: token)
+        self.renderModels.remove(at: indexPath.row)
+    }
+    
+    // EDITAR COMENTARIO.
+    func updateComment(indexPath: IndexPath, content: String) {
+        guard let postId = self.renderModels[indexPath.row].postId,
+              let idComment = self.renderModels[indexPath.row].id,
+              let token = token.getUserToken().success else {
+            return
+        }
+        self.interactor?.interactorUpdateComment(idPost: postId, idComment: idComment, content: content, token: token)
+        self.renderModels[indexPath.row].content = content
     }
     
     // SHOW DATA HEADER.
@@ -87,9 +85,9 @@ class CommentsPresenter : CommentsPresenterProtocol {
             fatalError("Error showCommentsData")
         }
         return userPostViewModelModel
-        
     }
     
+    // INSERT COMMENT
     func insertComment( textComment: String ) {
         self.commentPost = CommentPost(
             typeID: 0,
@@ -108,25 +106,46 @@ class CommentsPresenter : CommentsPresenterProtocol {
         
         // LLAMAR AL INTERACTOR
         self.interactor?.interactorSetComment(pagination: false, commentPost: self.commentPost, token: token)
-        
     }
     
     // FETCH MORE DATA.
     func fetchMoreData() {
     }
-    
 }
 
 
 
 // MARK: - OUT PUT
 extension CommentsPresenter: CommentsInteractorOutputProtocol {
-    
-    // TODO: implement interactor output methods
-    func interactorCallBackData(with comment: [Comment]) {
-        self.renderModels = []
-        renderModels.append(UserPostViewModelRenderViewModel(renderType: .comments(comments: comment)))
+  
+    func interactorCallBackListComments(with comments: [Comment]) {
+        // OBTENDREMOS LA LISTA DE COMENTARIOS QUE LA BASE DE DATOS
+        // NOS HA DEVUELTO.
+        self.renderModels = comments
+        self.view?.stopActivity()
     }
     
+   
+    // TODO: implement interactor output methods
+    func interactorCallBackData(with comment: [Comment]) {
+        // OBTENDREMOS LA LISTA DE COMENTARIOS QUE LA BASE DE DATOS
+        // NOS HA DEVUELTO.
+        self.renderModels = []
+        self.renderModels = comment
+        self.view?.stopActivity()
+    }
     
+    // DELETE COMMENT
+    func interactorCallBackDeleteComment(with delete: Bool) {
+        // SI EL BORRADO EN LA BASE DE DATOS FUE EXITOSO
+        // ENTONCES OBTENDRMOS UN VALOR BOOLEANO "TRUE" O "FALSE".
+        if !delete {
+            print("Hubo un error al borrar el comentario...")
+        }
+    }
+    
+    func interactorCallBackUpdateComment(with update: [Int]) {
+        // SI LA MODIFICACION EN LA BASE DE DATOS FUE EXITOSO
+        // ENTONCES OBTENDREMOS COMO RESULTADO UN ARRAY CON UN NUMERICO 1.
+    }
 }

@@ -6,9 +6,12 @@ class CommentsUI: UIView {
     
     var bottomConstraint: NSLayoutConstraint?
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.isHidden = false
+        //let tableView = UITableView(frame: .zero, style: .grouped)
+        //tableView.isHidden = false
+        let tableView = UITableView()
         return tableView
     }()
     
@@ -28,29 +31,14 @@ class CommentsUI: UIView {
         return imageView
     }()
     
-    //var configuration = UIButton.Configuration.filled()
-    
     let typingCommentText : TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        
         textfield.attributedPlaceholder = NSAttributedString(
             string: "Escribe un comentario",
             attributes: [ NSAttributedString.Key.foregroundColor: UIColor.black ] )
         textfield.font = Constants.fontSize.regular
         textfield.backgroundColor = .systemGray6
         textfield.textColor = .black
-       
-        /*var configuration = UIButton.Configuration.filled()
-        configuration = UIButton.Configuration.plain()
-        configuration.title = "Public"
-        configuration.baseBackgroundColor = .systemBackground
-        configuration.cornerStyle = .capsule
-        configuration.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-        let button = UIButton(configuration: configuration, primaryAction: UIAction(handler: { action in
-          debugPrint("Download Button tapped!")
-        }))
-        textfield.rightView = button
-        textfield.rightViewMode = .always*/
         return textfield
     }()
 
@@ -59,6 +47,7 @@ class CommentsUI: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        setupContainer()
     }
     
     required init?(coder: NSCoder) {
@@ -83,15 +72,19 @@ class CommentsUI: UIView {
     }
     
     func setupView() {
-        backgroundColor = .systemCyan
+        //backgroundColor = .systemCyan
+        backgroundColor = .systemBackground
         self.addSubview(tableView)
+        self.addSubview(activityIndicator)
         self.addSubview(containerView)
+        
+    }
+    
+    func setupContainer() {
         containerView.addSubview(profilePhotoImageView)
         containerView.addSubview(typingCommentText)
-        
         self.addConstraintWhithFormat(format:"H:|[v0]|",views: containerView)
         self.addConstraintWhithFormat(format:"V:[v0(100)]",views: containerView)
-        
         bottomConstraint = NSLayoutConstraint(
             item: containerView,
             attribute: .bottom,
@@ -101,5 +94,9 @@ class CommentsUI: UIView {
             multiplier: 1,
             constant: -0)
         self.addConstraint(bottomConstraint!)
+    }
+    
+    func configureSpinner() {
+        activityIndicator.hidesWhenStopped = true
     }
 }

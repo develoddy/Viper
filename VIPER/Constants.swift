@@ -9,7 +9,7 @@ import  UIKit
 struct Constants {
     
     struct LoginData {
-        static let username = "eddylujan@gmail.com"
+        static let username = "paola@gmail.com"
         static let password = "secret"
     }
     
@@ -54,6 +54,7 @@ struct Constants {
         static let httpPost = "POST"
         static let httpGet = "GET"
         static let httpPut = "PUT"
+        static let httpDelete = "DELETE"
     }
     
     struct Constants {

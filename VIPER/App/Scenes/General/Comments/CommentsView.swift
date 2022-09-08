@@ -23,8 +23,9 @@ class CommentsView: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        commentsUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
         commentsUI.tableView.frame = view.bounds
+        commentsUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
+        
     }
     
     func initMethods() {
@@ -42,8 +43,8 @@ class CommentsView: UIViewController {
     
     // SETUP VIEW
     func setupView() {
-        self.view.backgroundColor = .systemBackground
-        self.commentsUI.tableView.backgroundColor = .systemBackground
+        view.backgroundColor = .clear
+        //self.commentsUI.tableView.backgroundColor = .systemBackground
         self.view.addSubview(commentsUI)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -133,7 +134,25 @@ extension CommentsView: CommentsViewProtocol {
         }
     }
     
-    // TODO: implement view output methods
+    func startActivity() {
+        DispatchQueue.main.async {
+            self.commentsUI.activityIndicator.startAnimating()
+            UIView.animate(withDuration: 0.2, animations:  {
+                self.commentsUI.tableView.alpha = 0.0
+            })
+        }
+    }
+    
+    func stopActivity() {
+        //DispatchQueue.main.asyncAfter(deadline: .now()+4) {
+        DispatchQueue.main.async {
+            self.commentsUI.activityIndicator.stopAnimating()
+            self.commentsUI.activityIndicator.hidesWhenStopped = true
+            UIView.animate(withDuration: 0.2, animations: {
+                self.commentsUI.tableView.alpha = 1.0
+            })
+        }
+    }
 }
 
 
@@ -178,6 +197,83 @@ extension CommentsView: UITableViewDataSource {
         return 100.0
     }
     
+    // ACTIONS DELETE OR UPDATE COMMENT
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextUpdateAction = UIContextualAction(style: .normal, title: "update") { (contextualAction, view, boolValue) in
+            guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { fatalError("xxx") }
+            self.updateAction(comment: comment, indexPath: indexPath)
+        }
+        
+        let contextDeleteAction = UIContextualAction(style: .destructive, title: "delete") { (contextualAction, view, boolValue) in
+            //self.presenter?.deleteRow(indexPath: indexPath)
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
+            guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { fatalError("xxx") }
+            self.deleteAction(comment: comment, indexPath: indexPath)
+        }
+        
+        contextDeleteAction.backgroundColor = .red
+        contextUpdateAction.backgroundColor = .blue
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextDeleteAction , contextUpdateAction])
+        return swipeActions
+    }
+    
+    // UPDATE
+    private func updateAction(comment: Comment, indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Update",
+                                      message: "Update a comment",
+                                      preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { ( action ) in
+            guard let textField = alert.textFields?.first else {
+                return
+            }
+            if let textToEdit = textField.text {
+                if textToEdit.count == 0 {
+                    return
+                }
+                // ACTUALIZAR TAMBIEN EN LA BASE DE DATOS.
+                // HAY QUE LLAMAR AL PRESENTER
+                self.presenter?.updateComment( indexPath: indexPath, content: textToEdit )
+                self.commentsUI.tableView.reloadRows( at: [ indexPath ], with: .automatic )
+            } else {
+                return
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        alert.addTextField()
+        guard let textField = alert.textFields?.first else {
+            return
+        }
+        textField.placeholder = "Changed tour comment "
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+    
+    // DELETE
+    private func deleteAction(comment: Comment, indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Delete",
+                                      message: "Are you sure want to delete comment?",
+                                      preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            
+            // ACTUALIZAR TAMBIEN EN LA BASE DE DATOS.
+            // HAY QUE LLAMAR AL PRESENTER
+            self.presenter?.deleteRow(indexPath: indexPath)
+            self.commentsUI.tableView.deleteRows(at: [indexPath], with: .automatic)
+            DispatchQueue.main.async {
+                self.commentsUI.tableView.reloadData()
+            }
+            
+        }
+        let cancelAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (self.commentsUI.tableView.height-100-scrollView.frame.size.height ) {
@@ -187,6 +283,8 @@ extension CommentsView: UITableViewDataSource {
     }
 }
 
+
+
 // MARK: UITABLEVIEW
 extension CommentsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -194,4 +292,6 @@ extension CommentsView: UITableViewDelegate {
         // print("Did select normal list item")
         // inputTextfield.endEditing(true)
     }
+    
+    
 }

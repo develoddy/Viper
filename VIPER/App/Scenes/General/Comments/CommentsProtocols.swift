@@ -13,6 +13,8 @@ protocol CommentsViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: CommentsPresenterProtocol? { get set }
     func updateUI()
+    func startActivity()
+    func stopActivity() 
 }
 
 protocol CommentsWireFrameProtocol: AnyObject {
@@ -35,11 +37,16 @@ protocol CommentsPresenterProtocol: AnyObject {
     func showHeaderCommentData(section: Int) -> Post
     func insertComment(textComment: String)
     func fetchMoreData()
+    func deleteRow(indexPath: IndexPath)
+    func updateComment(indexPath: IndexPath, content: String)
 }
 
 protocol CommentsInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
     func interactorCallBackData(with comment: [Comment])
+    func interactorCallBackDeleteComment(with delete: Bool)
+    func interactorCallBackListComments(with comments: [Comment])
+    func interactorCallBackUpdateComment(with update: [Int])
 }
 
 protocol CommentsInteractorInputProtocol: AnyObject {
@@ -47,24 +54,33 @@ protocol CommentsInteractorInputProtocol: AnyObject {
     var presenter: CommentsInteractorOutputProtocol? { get set }
     var localDatamanager: CommentsLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: CommentsRemoteDataManagerInputProtocol? { get set }
-    func interactorSetComment(pagination: Bool, commentPost: CommentPost?, token: String )
-}
-
-protocol CommentsDataManagerInputProtocol: AnyObject {
-    // INTERACTOR -> DATAMANAGER
+    func interactorSetComment(pagination: Bool, commentPost: CommentPost?, token: String)
+    func interactorReadByComment(idPost: Int, pagination:Int, token:String)
+    func interactorDeleteComment(id: Int, token:String)
+    func interactorUpdateComment(idPost: Int, idComment: Int, content: String, token:String)
 }
 
 protocol CommentsRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: CommentsRemoteDataManagerOutputProtocol? { get set }
-    func remoteSetComment(pagination: Bool, commentPost: CommentPost?, token: String )
     var isPagination : Bool  { get set }
+    func remoteSetComment(pagination: Bool, commentPost: CommentPost?, token: String )
+    func remoteReadByComment(idPost: Int, pagination:Int, token:String)
+    func remoteDeleteComment(id: Int, token:String)
+    func remoteUpdateComment(idPost: Int, idComment: Int, content: String, token:String)
 }
 
 protocol CommentsRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
     func remoteCallBackData(with comment: [Comment])
+    func remoteCallBackDeleteComment(with delete: Bool)
+    func remoteCallBackListComments(with comments: [Comment])
+    func remoteCallBackUpdateComment(with update: [Int])
     
+}
+
+protocol CommentsDataManagerInputProtocol: AnyObject {
+    // INTERACTOR -> DATAMANAGER
 }
 
 protocol CommentsLocalDataManagerInputProtocol: AnyObject {

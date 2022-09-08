@@ -51,14 +51,14 @@ struct Post: Codable {
 
 // MARK: - Comment
 struct Comment: Codable {
-    let id, userID, commentID: Int?
-    let content: String?
+    let id, userID, postId: Int?
+    var content: String?
     let user: User?
 
     enum CodingKeys: String, CodingKey {
         case id
         case userID = "userId"
-        case commentID = "commentId"
+        case postId = "postId"
         case content, user
     }
 }
@@ -155,6 +155,10 @@ struct ResFollow: Codable {
     }
 }
 
+// MARK: - ResMessage
+struct ResMessage: Codable {
+    let message: Bool?
+}
 
 
 
