@@ -12,11 +12,16 @@ import UIKit
 protocol PostViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: PostPresenterProtocol? { get set }
+    func updateUIList()
+    func startActivity()
+    func stopActivity()
+    func stateHeart(heart: Heart, post: Post)
 }
 
 protocol PostWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createPostModule(post: Post?) -> UIViewController
+    func navigateToComments(from view: PostViewProtocol, post: Post)
 }
 
 protocol PostPresenterProtocol: AnyObject {
@@ -29,11 +34,21 @@ protocol PostPresenterProtocol: AnyObject {
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func cellForRowAt(at index: IndexPath) -> PostRenderViewModel
+    func getIdentity() -> UserLogin?
+    func gotoCommentsScreen(post: Post)
+    func checkIfLikesExist(post: Post?)
+    // CRUD LIKE
+    func createLike(post: Post?)
+    func deleteLike(heart: Heart?)
+    
 }
 
 protocol PostInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
     func interactorCallBackData(userPost: [PostRenderViewModel])
+    func interactorCallBackLikesExist(with heart: [Heart], post: Post?)
+    func interactorCallBackDeleteLike(with message: ResMessage)
+    func interactorCallBackInsertLike(with heart: Heart)
 }
 
 protocol PostInteractorInputProtocol: AnyObject {
@@ -41,7 +56,12 @@ protocol PostInteractorInputProtocol: AnyObject {
     var presenter: PostInteractorOutputProtocol? { get set }
     var localDatamanager: PostLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: PostRemoteDataManagerInputProtocol? { get set }
-    func interactorGetData(userpost: Post) 
+    func interactorGetData(userpost: Post)
+    func interactorCheckIfLikesExist(postId: Int, userId: Int, token: String, post: Post?)
+    
+    // CRUD LIKE
+    func interactorCreateLike(post: Post?, userId: Int, token: String)
+    func interactorDeleteLike(heart: Heart?, token: String)
 }
 
 protocol PostDataManagerInputProtocol: AnyObject {
@@ -51,10 +71,17 @@ protocol PostDataManagerInputProtocol: AnyObject {
 protocol PostRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: PostRemoteDataManagerOutputProtocol? { get set }
+    func remoteCheckIfLikesExist(postId: Int, userId: Int, token: String, post: Post?)
+    func remoteDeleteLike(heart: Heart?, token: String)
+    
+    // CRUD LIKE
+    func remoteCreateLike(post: Post?, userId:Int, token: String)
 }
 
 protocol PostRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
+    func remoteCallBackLikesExist(with heart: [Heart], post: Post?)
+    func remoteCallBackDeleteLike(with message: ResMessage)
 }
 
 protocol PostLocalDataManagerInputProtocol: AnyObject {

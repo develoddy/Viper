@@ -77,6 +77,8 @@ class CommentsRemoteDataManager:CommentsRemoteDataManagerInputProtocol {
                 do {
                     let task = try decoder.decode( [Comment].self, from: data )
                     // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
+                    print("Comment Remeote")
+                    print(task)
                     self.remoteRequestHandler?.remoteCallBackData(with: task)
                 } catch {
                     print(error)

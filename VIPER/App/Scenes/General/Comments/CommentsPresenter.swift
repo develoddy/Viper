@@ -31,6 +31,7 @@ class CommentsPresenter : CommentsPresenterProtocol {
             return
         }
         
+        
         // LLAMAR AL INTERACTOR.
         self.interactor?.interactorReadByComment(idPost: idPost, pagination: 0, token: token)
         self.view?.startActivity()
@@ -62,6 +63,10 @@ class CommentsPresenter : CommentsPresenterProtocol {
     
     // CREATE COMENTARIO
     func insertComment( textComment: String ) {
+        
+        guard let identity = token.getUserToken().user?.id else {
+            return
+        }
         self.commentPost = CommentPost(
             typeID: 0,
             refID: 0,
@@ -71,7 +76,7 @@ class CommentsPresenter : CommentsPresenterProtocol {
             createdAt: "2021-12-26 20:47:23",
             updatedAt: "2021-12-26 20:47:23",
             postID: userpostReceivedFromHome?.id ?? 0,
-            userID: userpostReceivedFromHome?.user?.id ?? 0 )
+            userID: identity )
         
         guard let token = token.getUserToken().success else {
             return
@@ -125,6 +130,9 @@ extension CommentsPresenter: CommentsInteractorOutputProtocol {
     func interactorCallBackData(with comment: [Comment]) {
         // OBTENDREMOS LA LISTA DE COMENTARIOS QUE LA BASE DE DATOS
         // NOS HA DEVUELTO.
+        
+        //print("PResenter BACK: ")
+        //print(comment)
         self.renderModels = []
         self.renderModels = comment
         self.view?.stopActivity()

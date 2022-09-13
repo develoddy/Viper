@@ -30,7 +30,7 @@ class ProfileView: UIViewController {
     
     // SE LLAMA AL PRESENTER
     func loadData() {
-            self.presenter?.viewDidLoad()
+        self.presenter?.viewDidLoad()
     }
 
     // VIEWDIDLAYOUTSUBVIEWS
@@ -210,8 +210,7 @@ extension ProfileView: ProfileViewProtocol {
     func startActivity() {
         DispatchQueue.main.async {
             self.profileUI.activityIndicator.startAnimating()
-            UIView.animate(
-                withDuration: 0.2,
+            UIView.animate(withDuration: 0.2,
                 animations: {
                     self.collectionView.alpha = 0.0
                 })
@@ -223,8 +222,7 @@ extension ProfileView: ProfileViewProtocol {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.profileUI.activityIndicator.stopAnimating()
             self.profileUI.activityIndicator.hidesWhenStopped = true
-            UIView.animate(
-                withDuration: 0.2,
+            UIView.animate(withDuration: 0.2,
                 animations: {
                     self.collectionView.alpha = 1.0
                 })

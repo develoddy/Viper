@@ -10,10 +10,8 @@ import Foundation
 import UIKit
 
 class PostWireFrame: PostWireFrameProtocol {
-
+   
     class func createPostModule(post: Post?) -> UIViewController {
-        
-        
         let postView = PostView()
         let viewController = postView
         let presenter: PostPresenterProtocol & PostInteractorOutputProtocol = PostPresenter()
@@ -34,5 +32,13 @@ class PostWireFrame: PostWireFrameProtocol {
         remoteDataManager.remoteRequestHandler = interactor
             
         return viewController
+    }
+    
+    
+    func navigateToComments(from view: PostViewProtocol, post: Post) {
+        let newListcommentsView = CommentsWireFrame.createCommentsModule(userpost: post)
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(newListcommentsView, animated: true)
+        }
     }
 }

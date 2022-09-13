@@ -1,13 +1,8 @@
-//
-//  HomeView.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 14/1/22.
-//  
-//
-
 import Foundation
 import UIKit
+
+
+
 
 class HomeView: UIViewController {
 
@@ -76,7 +71,6 @@ class HomeView: UIViewController {
 
 // MARK: - HOME VIEW PROTOCOL
 extension HomeView: HomeViewProtocol {
-    
     func updateUIList() {
         DispatchQueue.main.async {
             self.homeUI.tableView.reloadData()
@@ -102,14 +96,48 @@ extension HomeView: HomeViewProtocol {
             })
         }
     }
+    
+    /* EN ESTE PUNTO ESTAMOS A LA ESPERA
+     * DE LA COMPROBACION SI EXISTE UN LIKE EN LA DDBB.
+     */
+    func stateHeart(heart: Heart, post: Post) {
+        if heart.id == nil {
+            /* --- LLAMAR AL PRESNTER ---
+             * LE DECIMOS AL PESENTER QUE QUEREMOS INSERTAR UN LIKE.
+             */
+            DispatchQueue.main.async {
+                self.presenter?.createLike(post: post)
+            }
+        } else {
+            /* --- LLAMAR AL PRESNTER ---
+             * LE DECIMOS AL PESENTER QUE QUEREMOS BORRAR UN LIKE.
+             */
+            DispatchQueue.main.async {
+                self.presenter?.deleteLike(heart: heart)
+            }
+        }
+    }
 }
+
 
 // MARK: ACCION DE BOTONES (LIKE, COMMENT, SHARE)
 extension HomeView: IGFeedPostActionsTableViewCellProtocol {
+    func didTapLikeButton(_ button: HeartButton, model: Post) {
+        /* --- LLAMAR AL PRESNTER ---
+         * HACER CONSULTA A LA BASE DE DATOS PARA SABER SI EL LIKE EXISTE O NO.
+         */
+        self.presenter?.checkIfLikesExist(post: model)
+        let _ = button.flipLikedState()
+    }
+    
     func didTapCommentButton(model: Post) {
+        /* --- LLAMAR AL PRESNTER ---
+         * SE ENVIA LOS DATOS DEL POSR A LA SIGUIENTE VISTA "COMMENTS".
+         */
         self.presenter?.gotoCommentsScreen(userpost: model)
     }
 }
+
 
 // MARK: CAMBIAR A LA PANTALLA DE COMENTATIOS
 extension HomeView: IGFeedPostDescriptionTableViewCellProtocol {

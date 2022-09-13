@@ -41,11 +41,12 @@ struct Post: Codable {
     let user: User?
     let images: [Image]?
     var comments: [Comment]?
+    let hearts: [Heart]?
 
     enum CodingKeys: String, CodingKey {
         case id, content
         case createdAt = "created_at"
-        case user, images, comments
+        case user, images, comments, hearts
     }
 }
 
@@ -137,6 +138,22 @@ struct Follow: Codable {
     let profile: Profile?
 }
 
+// MARK: - Like
+struct Heart: Codable {
+    let id, typeID, refID, userID: Int?
+    let createdAt, updatedAt: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case typeID = "type_id"
+        case refID = "ref_id"
+        case userID = "user_id"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+
+
 
 
 // MARK: - ResUser
@@ -173,7 +190,7 @@ enum PostRenderType {
     case actions(provider: Post)
     case descriptions(post: Post)
     case comments(comments: [Comment])
-    case footer(footer: Post)
+    //case footer(footer: Post)
 }
 
 struct PostRenderViewModel {
@@ -187,7 +204,7 @@ struct HomeFeedRenderViewModel {
     let actions: PostRenderViewModel
     let descriptions: PostRenderViewModel
     let comments: PostRenderViewModel
-    let footer: PostRenderViewModel
+    //let footer: PostRenderViewModel
 }
 
 

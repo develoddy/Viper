@@ -177,7 +177,6 @@ class PostCommentsListTableViewCell: UITableViewCell {
     
     public func setCellWithValuesOf( with comment: Comment ) {
         self.model = comment
-        
         guard let username = comment.user?.username, let content = comment.content, let image = comment.user?.profile?.imageHeader else {
             return
         }

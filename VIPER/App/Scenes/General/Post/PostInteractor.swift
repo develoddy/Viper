@@ -10,6 +10,8 @@ import Foundation
 
 class PostInteractor: PostInteractorInputProtocol {
     
+    
+    
     // MARK: PROPERTIES
     weak var presenter: PostInteractorOutputProtocol?
     var localDatamanager: PostLocalDataManagerInputProtocol?
@@ -25,13 +27,32 @@ class PostInteractor: PostInteractorInputProtocol {
         renderModels.append(PostRenderViewModel(renderType: .actions(provider: userpost)))
         renderModels.append(PostRenderViewModel(renderType: .descriptions(post: userpost)))
         //renderModels.append(PostRenderViewModel(renderType: .comments(comments: comments)))
-        renderModels.append(PostRenderViewModel(renderType: .footer(footer: userpost)))
+        //renderModels.append(PostRenderViewModel(renderType: .footer(footer: userpost)))
         
         self.presenter?.interactorCallBackData(userPost: renderModels)
+    }
+    
+    func interactorCheckIfLikesExist(postId: Int, userId: Int, token: String, post: Post?) {
+        self.remoteDatamanager?.remoteCheckIfLikesExist(postId: postId, userId: userId, token: token, post: post)
+    }
+    
+    func interactorCreateLike(post: Post?, userId: Int, token: String) {
+        self.remoteDatamanager?.remoteCreateLike(post: post, userId: userId, token: token)
+    }
+    
+    func interactorDeleteLike(heart: Heart?, token: String) {
+        self.remoteDatamanager?.remoteDeleteLike(heart: heart, token: token)
     }
 
 }
 
 extension PostInteractor: PostRemoteDataManagerOutputProtocol {
+    func remoteCallBackDeleteLike(with message: ResMessage) {
+        
+    }
+    
     // TODO: Implement use case methods
+    func remoteCallBackLikesExist(with heart: [Heart], post: Post?) {
+        self.presenter?.interactorCallBackLikesExist(with: heart, post: post)
+    }
 }

@@ -32,7 +32,7 @@ class IGFeedPostGeneralTableViewCell: UITableViewCell {
         let size = contentView.height-4
         let labelHeight = contentView.height/2
         commentTextlabel.frame = CGRect(
-             x: 15,
+             x: 10,
              y: 10,
              width: contentView.width-(size*2)-15,
              height: labelHeight)

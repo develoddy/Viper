@@ -7,7 +7,7 @@ extension HomeView: UITableViewDataSource {
         guard let numberOfSection = presenter?.presenterNumberOfSections() else {
             return 0
         }
-        return numberOfSection * 7
+        return numberOfSection * 6
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -16,7 +16,7 @@ extension HomeView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let count = indexPath.section
-        let boxes = 7
+        let boxes = 6
         let position = count % boxes == boxes ? count / boxes : ((count - (count % boxes)) / boxes)
         guard let data = presenter?.cellForRowAt(at: position) else {
             return UITableViewCell()
@@ -33,7 +33,7 @@ extension HomeView: UITableViewDataSource {
                 as! IGFeedPostHeaderTableViewCell
                 cell.configure(with: userpost)
                 // cell.delegate = self
-                case .comments, .actions, .primaryContent, .descriptions, .footer: return UITableViewCell()
+                case .comments, .actions, .primaryContent, .descriptions: return UITableViewCell()
             }
             
             // POST
@@ -43,7 +43,7 @@ extension HomeView: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostTableViewCell.identifier, for: indexPath)
                 as! IGFeedPostTableViewCell
                 cell.configure(with: post)
-                case .comments, .actions, .header, .descriptions, .footer: return UITableViewCell()
+                case .comments, .actions, .header, .descriptions: return UITableViewCell()
             }
             
             // ACTION
@@ -52,9 +52,10 @@ extension HomeView: UITableViewDataSource {
                 case .actions(let userpost):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostActionsTableViewCell.identifier, for: indexPath)
                 as! IGFeedPostActionsTableViewCell
-                cell.setCellWithValuesOf(userpost)
+                let identity = self.presenter?.getIdentity()
+                cell.setCellWithValuesOf(userpost, identity: identity)
                 cell.delegate = self
-                case .comments, .header, .primaryContent, .descriptions, .footer: return UITableViewCell()
+                case .comments, .header, .primaryContent, .descriptions: return UITableViewCell()
             }
             
             // DESCRIPTION
@@ -65,7 +66,7 @@ extension HomeView: UITableViewDataSource {
                 as! IGFeedPostDescriptionTableViewCell
                 cell.setCellWithValuesOf(post)
                 cell.delegate = self
-                case .comments, .header, .primaryContent, .actions, .footer: return UITableViewCell()
+                case .comments, .header, .primaryContent, .actions: return UITableViewCell()
             }
             
             // COMMENTS
@@ -75,11 +76,11 @@ extension HomeView: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostGeneralTableViewCell.identifier, for: indexPath) as! IGFeedPostGeneralTableViewCell
                 let comment = comments[indexPath.row]
                 cell.setCellWithValuesOf(with: comment)
-                case .header, .actions, .primaryContent, .descriptions, .footer: return UITableViewCell()
+                case .header, .actions, .primaryContent, .descriptions: return UITableViewCell()
             }
             
             // FOOTER
-            case 6:
+            /*case 6:
             switch model.footer.renderType {
                 case .footer(let footer):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostFooterTableViewCell.identifier, for: indexPath)
@@ -87,7 +88,7 @@ extension HomeView: UITableViewDataSource {
                 cell.configure(with: footer)
                 // cell.delegate = delegateFooter
                 case .comments, .header, .primaryContent, .actions, .descriptions: return UITableViewCell()
-            }
+            }*/
             
             // DEFAULT
             default: print("Error switch Home")
@@ -97,24 +98,24 @@ extension HomeView: UITableViewDataSource {
 
     // MARK: Heiht TableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = 7
+        let section = 6
         let subSection = indexPath.section % section
         switch subSection {
             case 1: return 70  // HEADER
             case 2: return tableView.width  // POST
             case 3: return 40  // ACTION
-            case 4: return 85  // DESCRIPTION
+            case 4: return 65  // DESCRIPTION
             case 5: return 30  // COMMENT
-            case 6: return 60  // FOOTER
+            //case 6: return 60  // FOOTER
             default: return 0
         }
     }
 
     // MARK: Height footer TableView
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let section = 7
+        let section = 6
         let subSection = section % section
-        return subSection == 6 ? 20 : 0
+        return subSection == 5 ? 20 : 0
     }
 
     // MARK: Spacing
@@ -127,7 +128,7 @@ extension HomeView: UITableViewDataSource {
 extension HomeView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let count = indexPath.section
-        let boxes = 7
+        let boxes = 6
         let position = count % boxes == boxes ? count / boxes : ((count - (count % boxes)) / boxes)
         guard let data = presenter?.cellForRowAt(at: position) else { return }
         let model: HomeFeedRenderViewModel = data
@@ -146,7 +147,7 @@ extension HomeView: UITableViewDelegate {
             case 3: break  // Action
             case 4: break  // Description
             case 5: break  // General
-            case 6: break  // Footer
+            //case 6: break  // Footer
             default: print("Error switch Home")
         }
     }
@@ -210,21 +211,12 @@ extension HomeView {
 
 extension HomeView {
     func configureTableView() {
-        homeUI.tableView.register(
-            IGFeedPostTableViewCell.self, forCellReuseIdentifier: IGFeedPostTableViewCell.identifier)
-        homeUI.tableView.register(
-            IGFeedPostHeaderTableViewCell.self, forCellReuseIdentifier: IGFeedPostHeaderTableViewCell.identifier)
-        homeUI.tableView.register(
-            IGFeedPostActionsTableViewCell.self,
-            forCellReuseIdentifier: IGFeedPostActionsTableViewCell.identifier)
-        homeUI.tableView.register(
-            IGFeedPostDescriptionTableViewCell.self,
-            forCellReuseIdentifier: IGFeedPostDescriptionTableViewCell.identifier)
-        homeUI.tableView.register(
-            IGFeedPostGeneralTableViewCell.self,
-            forCellReuseIdentifier: IGFeedPostGeneralTableViewCell.identifier)
-        homeUI.tableView.register(
-            IGFeedPostFooterTableViewCell.self, forCellReuseIdentifier: IGFeedPostFooterTableViewCell.identifier)
+        homeUI.tableView.register(IGFeedPostTableViewCell.self, forCellReuseIdentifier: IGFeedPostTableViewCell.identifier)
+        homeUI.tableView.register(IGFeedPostHeaderTableViewCell.self, forCellReuseIdentifier: IGFeedPostHeaderTableViewCell.identifier)
+        homeUI.tableView.register(IGFeedPostActionsTableViewCell.self,forCellReuseIdentifier: IGFeedPostActionsTableViewCell.identifier)
+        homeUI.tableView.register(IGFeedPostDescriptionTableViewCell.self,forCellReuseIdentifier: IGFeedPostDescriptionTableViewCell.identifier)
+        homeUI.tableView.register(IGFeedPostGeneralTableViewCell.self,forCellReuseIdentifier: IGFeedPostGeneralTableViewCell.identifier)
+//        homeUI.tableView.register(IGFeedPostFooterTableViewCell.self, forCellReuseIdentifier: IGFeedPostFooterTableViewCell.identifier)
         homeUI.tableView.separatorStyle = .none
     }
 

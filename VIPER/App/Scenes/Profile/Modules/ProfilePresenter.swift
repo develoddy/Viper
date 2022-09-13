@@ -50,7 +50,7 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.interactor?.interactorGetFollowing(page: 0, token: token)
         self.interactor?.interactorGetFollowers(page: 0, token: token)
         
-        // self.view?.startActivity()
+        self.view?.startActivity()
     }
     
     // GET NUMBER OF SECTION
@@ -123,14 +123,14 @@ extension ProfilePresenter: ProfileInteractorOutputProtocol {
     // EN ESTE PUNTO SE GUARDA LOS DATOS DEL PERFIL EN EL MODELO VIEWMODEL.
     func interactorCallBackData(with viewModel: [ User ]) {
         self.viewModel = viewModel
-        self.view?.stopActivity()
+        //self.view?.stopActivity()
     }
     
     // RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
     // EN ESTE PUNTO SE GUARDA LOS CONTADORES EN EL MODELO VIEWMODELTASTS.
     func interactorCallBackTasts(with viewModel: [ ResCounter ] ) {
         self.viewModelTasts = viewModel
-        self.view?.stopActivity()
+        //self.view?.stopActivity()
     }
     
 
@@ -138,7 +138,7 @@ extension ProfilePresenter: ProfileInteractorOutputProtocol {
     // EN ESTE PUNTO SE GUARDA LAS PUBLICACIONES EN EL MODELO VIEWMODELPOST.
     func interactorCallBackPosts( with viewModel: [ Post ] ) {
         self.viewModelPost = viewModel
-        // self.view?.stopActivity()
+        self.view?.stopActivity()
     }
     
 

@@ -196,6 +196,8 @@ extension CommentsView: UITableViewDataSource {
      */
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { fatalError("xxx") }
+        print("VIEW")
+        print(comment)
         let contextUpdateAction = UIContextualAction(style: .normal, title: "update") { (contextualAction, view, boolValue) in
             self.updateAction(comment: comment, indexPath: indexPath)
         }
@@ -213,7 +215,7 @@ extension CommentsView: UITableViewDataSource {
         // ESTÁ ENTRE LOS COMENTARIOS Y DEPENDIENDO DE ESO SE COMPRUEBA SI PUEDE MODIFICAR EL CONTENIDO
         // DE SU COMENTARIO O NO.
         let user = self.presenter?.showHeaderCommentData().user
-        if user?.id == comment.userID {
+        if user?.id != comment.userID {
             swipeActions = UISwipeActionsConfiguration(actions: [contextDeleteAction , contextUpdateAction])
         } else {
             swipeActions = UISwipeActionsConfiguration(actions: [contextDeleteAction])

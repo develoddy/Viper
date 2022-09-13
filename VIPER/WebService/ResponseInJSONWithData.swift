@@ -70,11 +70,11 @@ class ResponseInJSONWithData: NSObject {
             fatalError("Invalid HTTP status code: \(response.statusCode)")
         }
         
-        guard let data = data else {
+        guard let _ = data else {
             print("No data : \(error?.localizedDescription ?? "Unknown error").")
             return
         }
             
-        print("SUCCESS DATA: \(data)")
+        //print("SUCCESS DATA: \(data)")
     }
 }
