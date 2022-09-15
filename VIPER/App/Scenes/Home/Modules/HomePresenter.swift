@@ -10,13 +10,16 @@ import Foundation
 
 // MARK: PRESENTER
 class HomePresenter: HomePresenterProtocol  {
-
+    
+    
+    
     // MARK:  PROPERTIES
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
     var wireFrame: HomeWireFrameProtocol?
     var heart: [Heart]?
     var token = Token()
+    var totalPages: Int!
     
     // MARK: CLOUSURES
     var viewModel: [HomeFeedRenderViewModel] = [] {
@@ -30,7 +33,7 @@ class HomePresenter: HomePresenterProtocol  {
          * DECIRLE AL INTERACTOR QUE QUIERE TRAER UNOS DATOS
          */
         guard let token = token.getUserToken().success else { return }
-        self.interactor?.interactorGetData(token: token)
+        self.interactor?.interactorGetData(page: 0, isPagination: false, token: token)
         view?.startActivity()
     }
     
@@ -131,6 +134,17 @@ class HomePresenter: HomePresenterProtocol  {
         self.interactor?.interactorDeleteLike(heart: heart,
                                               token: token)
     }
+    
+    func getTotalPages() -> Int {
+        return self.totalPages
+    }
+    
+    func loadMoreData(page: Int) {
+        guard let token = token.getUserToken().success else {
+            return
+        }
+        self.interactor?.interactorGetData(page: page, isPagination: true, token: token)
+    }
 }
 
 
@@ -140,9 +154,10 @@ extension HomePresenter: HomeInteractorOutputProtocol {
     /* --- LLAMAR AL VIEW ---
      * EL PRESENTER RECIBE EL ARRAY DE OBJETOS QUE LE ENVIA EL INTERACTOR.
      */
-    func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel]) {
+    func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel], totalPages: Int) {
         self.viewModel = homeFeedRenderViewModel
         view?.stopActivity()
+        self.totalPages = totalPages
     }
     
     /* --- LLAMAR AL VIEW ---

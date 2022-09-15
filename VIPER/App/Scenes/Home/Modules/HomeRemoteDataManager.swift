@@ -12,6 +12,7 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
     
     // MARK:  PROPIERTIES
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol?
+    var isPaginationOn: Bool? = false
     let apiService: APIServiceProtocol
     var models: [HomeFeedRenderViewModel] = []
   
@@ -25,63 +26,73 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
     // MARK:  FUNCTIONS
     
     // GET DATA
-    func remoteGetData(token: String) {
+    func remoteGetData(page: Int, isPagination:Bool, token: String){
+        if isPagination {
+            isPaginationOn = true
+        }
         
-        apiService.getUserPost( token: token ) { [ weak self ] ( result ) in
-            switch result {
-            case .success(let listOf):
-                
-                // SE OBTIENE LAS PUBLICACIONES
-                guard let posts = listOf.resPostImages?.posts else {
-                    return
-                }
-                
-                /*
-                 * ------------- RECORRER LAS PUBLICACIONES -------------
-                 * EN ESTE PUNTO SE RECORRE TODAS LAS PUBLICACIONES Y
-                 * GUARDANDO LOS DATOS EN UN MODELO
-                 */
-                for items in posts {
+        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/\(page)" ) else {
+            return
+        }
+        var request = URLRequest( url: url )
+        request.httpMethod = Constants.Method.httpGet
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
+            if let data = data {
+                do {
+                    let tasks = try decoder.decode( ResPosts.self, from: data )
+                    guard let posts = tasks.resPostImages?.posts, let totalPages = tasks.resPostImages?.totalPages else {
+                        return
+                    }
                     
-                    let viewModel = HomeFeedRenderViewModel(
-                        header: PostRenderViewModel(
-                            renderType: .header( provider: items )
-                        ),
-                        post: PostRenderViewModel(
-                            renderType: .primaryContent( provider: items )
-                        ),
-                        actions: PostRenderViewModel(
-                            renderType: .actions( provider: items )
-                        ),
-                        descriptions: PostRenderViewModel(
-                            renderType: .descriptions( post: items )
-                        ),
-                        comments: PostRenderViewModel(
-                            renderType: .comments( comments: items.comments ?? [] )
+                    /*
+                     * ------------- RECORRER LAS PUBLICACIONES -------------
+                     * EN ESTE PUNTO SE RECORRE TODAS LAS PUBLICACIONES Y
+                     * GUARDANDO LOS DATOS EN UN MODELO
+                     */
+                    for items in posts {
+                        
+                        let viewModel = HomeFeedRenderViewModel(
+                            header: PostRenderViewModel(
+                                renderType: .header( provider: items )
+                            ),
+                            post: PostRenderViewModel(
+                                renderType: .primaryContent( provider: items )
+                            ),
+                            actions: PostRenderViewModel(
+                                renderType: .actions( provider: items )
+                            ),
+                            descriptions: PostRenderViewModel(
+                                renderType: .descriptions( post: items )
+                            ),
+                            comments: PostRenderViewModel(
+                                renderType: .comments( comments: items.comments ?? [] )
+                            )
+                            /*footer: PostRenderViewModel(
+                                renderType: .footer( footer: items )
+                            )*/
                         )
-                        /*footer: PostRenderViewModel(
-                            renderType: .footer( footer: items )
-                        )*/
-                    )
+                        
+                        self.models.append( viewModel )
+                    }
                     
-                    self?.models.append( viewModel )
+                    /*
+                     * ------------- ENVIAR DATOS AL INTERACTOR -------------
+                     * EN ESTE PUNTO DE DEVUELVE LOS DATOS PASANDOLE
+                     * AL INTERACTOR.
+                     */
+                    self.remoteRequestHandler?.remoteCallBackData( with: self.models, totalPages: totalPages )
+                    if isPagination {
+                        self.isPaginationOn = false
+                    }
+                } catch {
+                    print(" SearchRemoteDataManager: Error catch... ")
                 }
-                
-                guard let models = self?.models else {
-                    return
-                }
-                
-                /*
-                 * ------------- ENVIAR DATOS AL INTERACTOR -------------
-                 * EN ESTE PUNTO DE DEVUELVE LOS DATOS PASANDOLE
-                 * AL INTERACTOR.
-                 */
-                self?.remoteRequestHandler?.remoteCallBackData( with: models )
-                
-            case .failure(let error):
-                print("Error processing  data Home \(error)")
             }
         }
+        task.resume()
     }
     
     

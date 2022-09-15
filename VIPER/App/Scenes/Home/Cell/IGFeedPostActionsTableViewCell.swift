@@ -188,7 +188,6 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
         // SI SE ENCUENTRA ENTONCES ACTIVAMOS EL BOTON DE LIKES EN COLOR ROJO.
         let filter = heart.firstIndex(where: {$0.userID == identity.id})
         if filter != nil {
-            print("IF - filter")
             let _ = likeButton.flipLikedState()
         }
         

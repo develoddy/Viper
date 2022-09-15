@@ -29,13 +29,13 @@ class SearchCollectionsViews: NSObject {
                  top: 0,
                  leading: 0,
                  bottom: 0,
-                 trailing: 5 )
+                 trailing: 3 )
           
              let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize( widthDimension: .fractionalWidth(1), heightDimension: .absolute(150) ), subitem: item, count: 3)
              group.contentInsets = NSDirectionalEdgeInsets(
-                 top: 10,
+                 top: 3,
                  leading: 0,
-                 bottom: 10,
+                 bottom: 0,
                  trailing: 0)
              
                 return NSCollectionLayoutSection( group: group )

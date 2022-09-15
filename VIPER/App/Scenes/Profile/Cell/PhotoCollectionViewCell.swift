@@ -17,7 +17,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     var array_images: [Image] = []
     
-    private let photoImageView: UIImageView = {
+    private var photoImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -74,10 +74,12 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     func updateUI( image: String, model: Post ) {
         photoImageView.backgroundColor = .systemBackground
         let url = Constants.ApiRoutes.domain + "/api/posts/get-image-post/" + image
-        photoImageView.sd_setImage(
-            with: URL(string: url),
-            completed: nil
-        )
+        self.photoImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        self.photoImageView.sd_setImage( with: URL( string: url ), completed: nil )
         label.text = model.user?.name
+        
+        // Updates: For UIButton use this
+        // yourButton.sd_setImage(with: URL(string: urlString), for: .normal)
     }
+    
 }

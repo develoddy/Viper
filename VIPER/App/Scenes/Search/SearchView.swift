@@ -149,8 +149,8 @@ extension SearchView: SearchViewProtocol {
     
     func stopActivity() {
         
+        //DispatchQueue.main.asyncAfter(deadline: .now()+6) {
         DispatchQueue.main.async {
-        //DispatchQueue.main.asyncAfter(deadline: .now()+3) {
             self.searchUI.activityIndicator.stopAnimating()
             self.searchUI.activityIndicator.hidesWhenStopped = true
             UIView.animate(withDuration: 0.2, animations: {
@@ -208,6 +208,7 @@ extension SearchView: UICollectionViewDelegate {
             guard !isPaginationOn else {
                 return
             }
+            self.page += 1
             self.presenter?.loadMoreData(page: self.page)
         }
         

@@ -11,7 +11,7 @@ class HomeView: UIViewController {
     var homeUI = HomeUI()
     let cellSpacingHeight: CGFloat = 5
     var token = Token()
-    
+    var page: Int! = 0
     
     // MARK: LIFECICLY
 

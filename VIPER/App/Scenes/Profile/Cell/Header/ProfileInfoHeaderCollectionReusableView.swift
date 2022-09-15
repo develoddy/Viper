@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 protocol ProfileInfoHeaderCollectionReusableViewProtocol {
     func didTapFollowersButton( _header:  ProfileInfoHeaderCollectionReusableView)
@@ -231,6 +231,7 @@ final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         }
         
         let url = Constants.ApiRoutes.domain + "/api/users/get-image-user/" + image
+        profilePhotoImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         profilePhotoImageView.sd_setImage( with: URL( string: url ), completed: nil )
         usernameLabel.setTitle( username, for: .normal )
         biographyLabel.setTitle( bio, for: .normal )

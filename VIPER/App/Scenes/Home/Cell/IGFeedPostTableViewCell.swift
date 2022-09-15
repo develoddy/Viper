@@ -46,24 +46,9 @@ final class IGFeedPostTableViewCell: UITableViewCell {
     }
     
     public func configure(with post: Post) {
-        //self.postImageView.sd_setImage(with: URL(string: post.postImage![0].image?.src ?? ""), completed: nil)
-        //self.postImageView.sd_setImage(with: URL(string: post.images?[0].src ?? ""), completed: nil)
-        
         let title = post.images?[0].title ?? ""
-        let url = "http://localhost:3800/api/posts/get-image-post/"+title
-        var urlRequest = URLRequest(url: URL(string: url)!)
-        urlRequest.httpMethod = Constants.Method.httpGet
-        urlRequest.setValue(Constants.headerImage.valueContentType, forHTTPHeaderField: Constants.headerImage.forHTTPHeaderFieldContenType)
-        urlRequest.setValue(Constants.headerImage.valueUserAgent, forHTTPHeaderField: Constants.headerImage.forHTTPHeaderFieldUserAgent)
-        let dataTask = URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, response, error) in
-            if error == nil {
-                DispatchQueue.main.async {
-                    self?.postImageView.image = UIImage(data: data!)
-                }
-            } else {
-                print("FAILL URL ERROR.....: \(error!.localizedDescription)")
-            }
-        }
-        dataTask.resume()
+        let url = Constants.ApiRoutes.domain + "/api/posts/get-image-post/" + title
+        self.postImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        self.postImageView.sd_setImage( with: URL( string: url ), completed: nil )
     }
 }

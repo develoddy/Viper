@@ -126,6 +126,37 @@ extension HomeView: UITableViewDataSource {
 
 
 extension HomeView: UITableViewDelegate {
+    
+    // FOOTER SPINNER
+    private func createSpinnerFooter() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        return footerView
+    }
+    
+    // SCROLL FET MORE DATA
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.height && self.presenter?.getTotalPages() != self.page {
+            guard let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn else { return }
+            guard !isPaginationOn else { return }
+            self.page += 1
+            self.homeUI.tableView.tableFooterView = createSpinnerFooter()
+            self.presenter?.loadMoreData(page: self.page)
+            
+            // CUANDO HA TERMINADO LA EJECUCIÓN DEL SPINNER.
+            if self.page == self.presenter?.getTotalPages() {
+                DispatchQueue.main.async {
+                    self.homeUI.tableView.tableFooterView = nil
+                }
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let count = indexPath.section
         let boxes = 6

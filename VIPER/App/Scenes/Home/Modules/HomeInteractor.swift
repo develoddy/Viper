@@ -19,8 +19,8 @@ class HomeInteractor: HomeInteractorInputProtocol {
      - DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER)
      - QUE TIENE QUE TRAER UNOS DATOS.
      */
-    func interactorGetData(token: String) {
-        remoteDatamanager?.remoteGetData( token: token )
+    func interactorGetData(page: Int, isPagination:Bool, token: String) {
+        remoteDatamanager?.remoteGetData(page: page, isPagination: isPagination, token: token)
     }
     
     func interactorCreateLike(post: Post?, userId: Int, token: String) {
@@ -45,8 +45,8 @@ extension HomeInteractor: HomeRemoteDataManagerOutputProtocol {
      - EL INTERACTOR DEBE ENVIARLE LOS DATOS AL
      - PRESENTER BIEN "MASTICADITO"
      */
-    func remoteCallBackData( with homeFeedRenderViewModel: [ HomeFeedRenderViewModel ] ) {
-        presenter?.interactorCallBackData( with: homeFeedRenderViewModel )
+    func remoteCallBackData( with homeFeedRenderViewModel: [ HomeFeedRenderViewModel ], totalPages: Int ) {
+        presenter?.interactorCallBackData( with: homeFeedRenderViewModel, totalPages: totalPages )
     }
     
     func interactorCreateLike(like: Heart?) {

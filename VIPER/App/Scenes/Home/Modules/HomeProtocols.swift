@@ -12,6 +12,7 @@ import UIKit
 protocol HomeViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: HomePresenterProtocol? { get set }
+    var page: Int! { get set }
     func updateUIList()
     func startActivity()
     func stopActivity()
@@ -31,6 +32,7 @@ protocol HomePresenterProtocol: AnyObject {
     var interactor: HomeInteractorInputProtocol? { get set }
     var wireFrame: HomeWireFrameProtocol? { get set }
     var heart: [Heart]? { get set }
+    var totalPages: Int! {get set}
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
@@ -39,6 +41,8 @@ protocol HomePresenterProtocol: AnyObject {
     func deleteLike(heart: Heart?)
     func getIdentity() -> UserLogin?
     func checkIfLikesExist(post: Post?)
+    func getTotalPages() -> Int
+    func loadMoreData(page: Int)
     
     // CAMBIO DE PANTALLAS
     func gotoProfileScreen(id: Int, name: String, token: String)
@@ -47,7 +51,7 @@ protocol HomePresenterProtocol: AnyObject {
 
 protocol HomeInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
-    func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel])
+    func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel], totalPages: Int)
     func interactorCallBackLikesExist(with heart: [Heart], post: Post?)
     func interactorCallBackDeleteLike(with message: ResMessage)
     func interactorCallBackInsertLike(with heart: Heart)
@@ -59,7 +63,7 @@ protocol HomeInteractorInputProtocol: AnyObject {
     var localDatamanager: HomeLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: HomeRemoteDataManagerInputProtocol? { get set }
     
-    func interactorGetData(token: String)
+    func interactorGetData(page: Int, isPagination:Bool, token: String)
     func interactorCreateLike(post: Post?, userId: Int, token: String)
     func interactorDeleteLike(heart: Heart?, token: String)
     func interactorCheckIfLikesExist(postId: Int, userId: Int, token: String, post: Post?)
@@ -72,7 +76,8 @@ protocol HomeDataManagerInputProtocol: AnyObject {
 protocol HomeRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol? { get set }
-    func remoteGetData(token: String)
+    var isPaginationOn: Bool? { get set }
+    func remoteGetData(page: Int, isPagination:Bool, token: String)
     func remoteCreateLike(post: Post?, userId:Int, token: String)
     func remoteDeleteLike(heart: Heart?, token: String)
     func remoteCheckIfLikesExist(postId: Int, userId: Int, token: String, post: Post?)
@@ -80,7 +85,7 @@ protocol HomeRemoteDataManagerInputProtocol: AnyObject {
 
 protocol HomeRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func remoteCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel])
+    func remoteCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel], totalPages: Int)
     func remoteCallBackLikesExist(with heart: [Heart], post: Post?)
     func remoteCallBackInsertLike(with heart: Heart)
     func remoteCallBackDeleteLike(with message: ResMessage)
