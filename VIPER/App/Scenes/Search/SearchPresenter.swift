@@ -16,6 +16,7 @@ class SearchPresenter {
     var interactor: SearchInteractorInputProtocol?
     var wireFrame: SearchWireFrameProtocol?
     var token = Token()
+    var page: Int?
     
     var viewModel: [Post] = [] {
         didSet {
@@ -27,15 +28,18 @@ class SearchPresenter {
 
 // MARK: - FUNCTIONS
 extension SearchPresenter: SearchPresenterProtocol {
+  
+    func getTotalPages() -> Int {
+        return self.page ?? 0
+    }
     
-    // TODO: -  FUNCTIONS
     
     func viewDidLoad() {
         guard let token = token.getUserToken().success else { return }
         
         //LLAMAR AL INTERACTOR
-        self.interactor?.interactorGetData(token: token)
-        //self.view?.startActivity()
+        self.interactor?.interactorGetData(page: 0, isPagination:false, token: token)
+        view?.startActivity()
     }
     
     // GET NUMBER OF SECTION
@@ -45,6 +49,9 @@ extension SearchPresenter: SearchPresenterProtocol {
     
     // GET NUMBER OF ROWS INSECTION
     func numberOfRowsInsection(section: Int) -> Int {
+        
+        //return (self.viewModel.count > 0) ? (self.viewModel.count + 1) : 0
+        
         if self.viewModel.count != 0 {
             return self.viewModel.count
         }
@@ -66,18 +73,32 @@ extension SearchPresenter: SearchPresenterProtocol {
     func gotoPostScreen(post: Post?) {
         self.wireFrame?.navigateToPost(from: view!, post: post)
     }
+    
+    func loadMoreData(page: Int) {
+        guard let token = token.getUserToken().success else {
+            return
+        }
+        
+        self.interactor?.interactorGetData(page: page, isPagination: true, token: token)
+        //view?.startActivity()
+    }
 }
-
 
 
 // MARK: - OUT PUT
 extension SearchPresenter: SearchInteractorOutputProtocol {
-    
     // MARK: FUNCTIONS
-    
+    func interactorCallBackDataAppend(userpost: [Post]) {
+        for item in userpost {
+            self.viewModel.append(item)
+        }
+        //view?.stopActivity()
+    }
+
     // EL PRESENTER RECIBE LOS DATOS DEL INTERACTOR
-    func interactorCallBackData(userpost: [Post]) {
+    func interactorCallBackData(userpost: [Post], totalPages: Int) {
         self.viewModel = userpost
+        self.page = totalPages
         view?.stopActivity()
     }
 }

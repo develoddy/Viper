@@ -206,7 +206,6 @@ extension PostView: UITableViewDelegate {
 
 // MARK:
 extension PostView: IGFeedPostActionsTableViewCellProtocol {
-    
     func didTapLikeButton(_ sender: HeartButton, model: Post) {
         self.presenter?.checkIfLikesExist(post: model)
         let _ = sender.flipLikedState()
@@ -215,6 +214,4 @@ extension PostView: IGFeedPostActionsTableViewCellProtocol {
     func didTapCommentButton(model: Post) {
         self.presenter?.gotoCommentsScreen(post: model)
     }
-    
-    
 }

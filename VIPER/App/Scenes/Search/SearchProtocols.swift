@@ -12,9 +12,13 @@ import UIKit
 protocol SearchViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: SearchPresenterProtocol? { get set }
+    var page: Int! { get set }
+    var totalPages:Int! { get set }
+    var postsQuantity:Int! { get set }
     func updateUI()
     func startActivity()
     func stopActivity()
+    func postsCount(count: Int, totalPages: Int)
 }
 
 protocol SearchWireFrameProtocol: AnyObject {
@@ -30,17 +34,22 @@ protocol SearchPresenterProtocol: AnyObject {
     var interactor: SearchInteractorInputProtocol? { get set }
     var wireFrame: SearchWireFrameProtocol? { get set }
     
+    var page: Int? { get set }
+    func getTotalPages() -> Int
+    
     func viewDidLoad()
     func numberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showUserpostData(indexPath: IndexPath) -> Post
     func searchResultsUpdating(resultsComtroller: SearchResultView, filter: String)
     func gotoPostScreen(post: Post?)
+    func loadMoreData(page: Int)
 }
 
 protocol SearchInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
-    func interactorCallBackData(userpost: [Post])
+    func interactorCallBackData(userpost: [Post], totalPages: Int)
+    func interactorCallBackDataAppend(userpost: [Post])
 }
 
 protocol SearchInteractorInputProtocol: AnyObject {
@@ -48,7 +57,7 @@ protocol SearchInteractorInputProtocol: AnyObject {
     var presenter: SearchInteractorOutputProtocol? { get set }
     var localDatamanager: SearchLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: SearchRemoteDataManagerInputProtocol? { get set }
-    func interactorGetData(token: String)
+    func interactorGetData(page: Int, isPagination:Bool, token: String)
 }
 
 protocol SearchDataManagerInputProtocol: AnyObject {
@@ -57,13 +66,15 @@ protocol SearchDataManagerInputProtocol: AnyObject {
 
 protocol SearchRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
+    var isPaginationOn: Bool? { get set }
     var remoteRequestHandler: SearchRemoteDataManagerOutputProtocol? { get set }
-    func remoteGetData(token: String)
+    func remoteGetData(page: Int, isPagination:Bool, token: String)
 }
 
 protocol SearchRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
-    func remoteCallBackData(userpost: [Post])
+    func remoteCallBackData(userpost: [Post], totalPages: Int)
+    func remoteCallBackDataAppend(userpost: [Post])
 }
 
 protocol SearchLocalDataManagerInputProtocol: AnyObject {

@@ -26,9 +26,9 @@ class TabBarViewController: UITabBarController {
         let navProfile  = UINavigationController( rootViewController: tabs.profile  )
         
         viewControllers = [
+            navSearch   ,
             navProfile  ,
-            navHome     ,
-            navSearch   ]
+            navHome     ]
         
     }
 

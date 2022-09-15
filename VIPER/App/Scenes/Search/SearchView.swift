@@ -1,36 +1,65 @@
-//
-//  SearchView.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//  
-//
-
 import Foundation
 import UIKit
 
+class IndicatorCell: UICollectionViewCell {
+    
+    static let identifier = "IndicatorCell"
+    
+    var inidicator : UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.style = .large
+        return view
+    }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    func setup(){
+        contentView.addSubview(inidicator)
+        //inidicator.center(centerX: contentView.centerXAnchor,centerY: contentView.centerYAnchor)
+        inidicator.center = contentView.center
+        inidicator.startAnimating()
+    }
+    
+}
+
+
+
 
 class SearchView: UIViewController {
-    
-    
-    // MARK: - PROPERTIES
+    // MARK: PROPERTIES
     
     var presenter: SearchPresenterProtocol?
     var searchUI = SearchUI()
     var searchController = SearchCollectionsViews.searchControllerView()
+    var page: Int! = 0
+    
+    var totalPages:Int!
+    var postsQuantity:Int!
     
     var lastContentOffset: CGFloat = 0
+    
+    var isLoading: Bool = false
+    
 
-    // MARK: - LIFECYCLE
+
+    // MARK: LIFECYCLE
     
     // VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         setupView()
+        configureActivity()
         registerCollection()
         delegates()
-        configureActivity()
+        
     }
     
     // LOAD DATA
@@ -42,19 +71,28 @@ class SearchView: UIViewController {
     func setupView() {
         view.backgroundColor = .systemBackground
         self.view.addSubview(searchUI)
+    }
+    
+    // ACTIVITY
+    func configureActivity() {
         
+        self.searchUI.activityIndicator.center = view.center
+        self.searchUI.activityIndicator.hidesWhenStopped = false
     }
     
     // LAYOUTS
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        self.searchUI.collectionView.frame = view.bounds
         self.searchUI.frame = view.bounds
+        self.searchUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
         
     }
     
     // REGISTER COLLECTION
     func registerCollection() {
         self.searchUI.collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        self.searchUI.collectionView.register(IndicatorCell.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,withReuseIdentifier: IndicatorCell.identifier)
     }
     
     // DELEGATES
@@ -67,12 +105,6 @@ class SearchView: UIViewController {
         //self.searchController.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = self.searchController
         
-    }
-    
-    // ACTIVITY
-    func configureActivity() {
-        self.searchUI.activityIndicator.center = view.center
-        self.searchUI.activityIndicator.hidesWhenStopped = false
     }
 }
 
@@ -94,8 +126,11 @@ extension SearchView: UISearchResultsUpdating, UISearchBarDelegate {
 
 // MARK: - OUT PUT
 extension SearchView: SearchViewProtocol {
+    func postsCount(count: Int, totalPages: Int) {
+        // 
+    }
     
-
+    
     func updateUI() {
         DispatchQueue.main.async {
             self.searchUI.collectionView.reloadData()
@@ -105,14 +140,17 @@ extension SearchView: SearchViewProtocol {
     func startActivity() {
         DispatchQueue.main.async {
             self.searchUI.activityIndicator.startAnimating()
-            UIView.animate(withDuration: 0.2, animations:  {
+            UIView.animate(withDuration: 0.2,
+                animations: {
                 self.searchUI.collectionView.alpha = 0.0
-            })
+                })
         }
     }
     
     func stopActivity() {
-        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+        
+        DispatchQueue.main.async {
+        //DispatchQueue.main.asyncAfter(deadline: .now()+3) {
             self.searchUI.activityIndicator.stopAnimating()
             self.searchUI.activityIndicator.hidesWhenStopped = true
             UIView.animate(withDuration: 0.2, animations: {
@@ -124,7 +162,7 @@ extension SearchView: SearchViewProtocol {
 
 
 
-// MARK: - UICOLLECTIONS
+// MARK: - COLLETION VIEW
 extension SearchView: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -132,18 +170,23 @@ extension SearchView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 1 { return 0 }
         return self.presenter?.numberOfRowsInsection(section: section) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
-        let post = self.presenter?.showUserpostData(indexPath: indexPath)
-        cell.setCellWithValuesOf(with: post)
-        return cell
+        
+        //if indexPath.row < self.presenter?.getTotalPages() ?? 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
+            let post = self.presenter?.showUserpostData(indexPath: indexPath)
+            cell.setCellWithValuesOf(with: post)
+            return cell
+        //} else {
+        //    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndicatorCell.identifier, for: indexPath) as! IndicatorCell
+        //    cell.inidicator.startAnimating()
+        //    return cell
+        //}
     }
-}
-
-extension SearchView: UICollectionViewDelegateFlowLayout {
     
 }
 
@@ -153,4 +196,37 @@ extension SearchView: UICollectionViewDelegate {
         // LLAMAR AL PRESENTER.
         self.presenter?.gotoPostScreen(post: self.presenter?.showUserpostData(indexPath: indexPath))
     }
+    
+    // SCROLL
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.height && (self.presenter?.getTotalPages())!-1 != self.page {
+            guard let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn else {
+                return
+            }
+            guard !isPaginationOn else {
+                return
+            }
+            self.presenter?.loadMoreData(page: self.page)
+        }
+        
+        /*let currentOffsetY = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.height // scrollView.contentSize.height-100-scrollView.frame.size.height
+        let distanceToBottom = maximumOffset - currentOffsetY
+        if distanceToBottom < 500 && self.presenter?.getTotalPages() != self.page {
+         guard !self.isLoading else { return }
+         self.isLoading = true
+         print(self.isLoading)
+         // cargar más datos
+         // que establecer self.isLoading en falso cuando se cargan nuevos datos
+            self.page += 1
+            elf.presenter?.loadMoreData(page: self.page)
+        }*/
+        
+    }
+}
+
+
+extension SearchView: UICollectionViewDelegateFlowLayout {
 }

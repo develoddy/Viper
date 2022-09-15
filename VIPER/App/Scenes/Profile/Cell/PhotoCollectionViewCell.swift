@@ -28,7 +28,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .white
         label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.text = "Name"
         return label
     }()
     
@@ -65,19 +64,20 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     // SETUP VALUES
     public func setCellWithValuesOf( with model: Post? ) {
-        guard let image = model?.images?[0].title else {
+        guard let image = model?.images?[0].title, let post = model else {
             return
         }
-        updateUI(image: image)
+        updateUI(image: image, model: post)
     }
     
     // UPDATE VIEW
-    func updateUI( image: String ) {
+    func updateUI( image: String, model: Post ) {
         photoImageView.backgroundColor = .systemBackground
         let url = Constants.ApiRoutes.domain + "/api/posts/get-image-post/" + image
         photoImageView.sd_setImage(
             with: URL(string: url),
             completed: nil
         )
+        label.text = model.user?.name
     }
 }

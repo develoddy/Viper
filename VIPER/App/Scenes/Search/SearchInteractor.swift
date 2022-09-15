@@ -18,20 +18,23 @@ class SearchInteractor: SearchInteractorInputProtocol {
     // MARK: FUNCTIONS
     
     // LLAMAR AL REMOTE DATA MANAGER
-    func interactorGetData(token: String) {
-        self.remoteDatamanager?.remoteGetData(token: token)
+    func interactorGetData(page: Int, isPagination:Bool, token: String) {
+        self.remoteDatamanager?.remoteGetData(page: page, isPagination:isPagination, token: token)
     }
-
+    
 }
 
 
 // MARK: - OUPUT
 extension SearchInteractor: SearchRemoteDataManagerOutputProtocol {
+    func remoteCallBackDataAppend(userpost: [Post]) {
+        self.presenter?.interactorCallBackDataAppend(userpost: userpost)
+    }
     
     // MARK: FUNCTIONS
     
     // LLAMAR AL PRESENTER PARA DE VOLVER LOS DATOS
-    func remoteCallBackData(userpost: [Post]) {
-        self.presenter?.interactorCallBackData(userpost: userpost)
+    func remoteCallBackData(userpost: [Post], totalPages: Int) {
+        self.presenter?.interactorCallBackData(userpost: userpost, totalPages: totalPages)
     }
 }
