@@ -42,12 +42,14 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
 
     // GOTO NAVIGATION TO POST SCREEN.
     func gotoPostScreen(from view: ProfileViewProtocol, post: Post?) {
-//        guard let post = post  else {
-//            return
-//        }
         let newPostView = PostWireFrame.createPostModule(post: post)
+        newPostView.title = post?.user?.username
         if let sourceView = view as? UIViewController {
-            sourceView.navigationController?.pushViewController(newPostView, animated: true)
+            //sourceView.navigationController?.pushViewController(newPostView, animated: true)
+            let navigationController = UINavigationController(rootViewController: newPostView )
+            navigationController.modalPresentationStyle = .fullScreen
+            //navigationController.navigationItem.largeTitleDisplayMode = .never
+            sourceView.present( navigationController, animated: true )
         }
     }
     

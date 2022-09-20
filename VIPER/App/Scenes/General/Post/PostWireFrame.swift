@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class PostWireFrame: PostWireFrameProtocol {
-   
+    
     class func createPostModule(post: Post?) -> UIViewController {
         let postView = PostView()
         let viewController = postView
@@ -41,4 +41,12 @@ class PostWireFrame: PostWireFrameProtocol {
             sourceView.navigationController?.pushViewController(newListcommentsView, animated: true)
         }
     }
+    
+    func navigateSheePostView(from view: PostViewProtocol, post: Post) {
+        let newSheePostView = SheePostWireFrame.createSheePostModule(post: post)
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.present(newSheePostView, animated: true, completion: nil)
+        }
+    }
+    
 }

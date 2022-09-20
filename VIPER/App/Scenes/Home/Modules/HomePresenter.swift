@@ -10,9 +10,8 @@ import Foundation
 
 // MARK: PRESENTER
 class HomePresenter: HomePresenterProtocol  {
-    
-    
-    
+   
+
     // MARK:  PROPERTIES
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
@@ -144,6 +143,10 @@ class HomePresenter: HomePresenterProtocol  {
             return
         }
         self.interactor?.interactorGetData(page: page, isPagination: true, token: token)
+    }
+    
+    func gotoSheetHomePostsView(post: Post) {
+        self.wireFrame?.navigateSheetHomePostsView(from: view!, post: post)
     }
 }
 

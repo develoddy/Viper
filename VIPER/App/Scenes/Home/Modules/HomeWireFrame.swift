@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class HomeWireFrame: HomeWireFrameProtocol {
-
     
     class func createHomeModule() -> UIViewController {
         
@@ -47,6 +46,14 @@ class HomeWireFrame: HomeWireFrameProtocol {
         let newListcommentsView = CommentsWireFrame.createCommentsModule(userpost: userpost)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newListcommentsView, animated: true)
+        }
+    }
+    
+    // NAVIGATE GOTO SHEET HOME POST VIEW.
+    func navigateSheetHomePostsView(from view: HomeViewProtocol, post: Post) {
+        let newSheetHomePostsView = SheetHomePostsWireFrame.createSheetHomePostsModule(post: post)
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.present(newSheetHomePostsView, animated: true, completion: nil)
         }
     }
 }

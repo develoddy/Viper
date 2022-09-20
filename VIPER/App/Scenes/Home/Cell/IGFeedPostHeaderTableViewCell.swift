@@ -8,7 +8,7 @@
 import SDWebImage
 import UIKit
 
-protocol IGFeedPostHeaderTableViewCellDelegate: AnyObject {
+protocol IGFeedPostHeaderTableViewCellProtocol: AnyObject {
         func didTapMoreButton(post: Post)
 }
 
@@ -16,7 +16,7 @@ class IGFeedPostHeaderTableViewCell: UITableViewCell {
 
         static let identifier = "IGFeedPostHeaderTableViewCell"
 
-        //public var delegate: IGFeedPostHeaderTableViewCellDelegate?
+        public var delegate: IGFeedPostHeaderTableViewCellProtocol?
 
         private var model: Post?
 
@@ -69,7 +69,7 @@ class IGFeedPostHeaderTableViewCell: UITableViewCell {
                 contentView.addSubview(usernameLabel)
                 contentView.addSubview(postTimeLabel)
                 contentView.addSubview(moreButton)
-                //moreButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+                moreButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         }
 
         required init?(coder: NSCoder) {
@@ -131,11 +131,11 @@ class IGFeedPostHeaderTableViewCell: UITableViewCell {
 
         }
 
-        //    @objc private func didTapButton() {
-        //        guard let post = self.model else {
-        //            return
-        //        }
-        //        delegate?.didTapMoreButton(post: post)
-        //    }
+            @objc private func didTapButton() {
+                guard let post = self.model else {
+                    return
+                }
+                delegate?.didTapMoreButton(post: post)
+            }
 }
 

@@ -7,13 +7,14 @@
 //
 import Foundation
 class PostPresenter: PostPresenterProtocol {
-    
+   
     // MARK: PROPERTIES
     weak var view: PostViewProtocol?
     var interactor: PostInteractorInputProtocol?
     var wireFrame: PostWireFrameProtocol?
     var userpostReceivedFromProfile: Post?
     var token = Token()
+    
     var renderModels: [PostRenderViewModel] = []
     // MARK: CLOUSURES
     /*var renderModels: [PostRenderViewModel] = [] {
@@ -30,8 +31,8 @@ class PostPresenter: PostPresenterProtocol {
             return
         }
         
-        // SE LLAMA AL INTERACTOR
         
+        // SE LLAMA AL INTERACTOR
         self.interactor?.interactorGetData(userpost: post)
         // view?.startActivity()
         
@@ -99,8 +100,26 @@ class PostPresenter: PostPresenterProtocol {
         self.interactor?.interactorDeleteLike(heart: heart,
                                               token: token)
     }
+    
+    func gotoSheePostView(post: Post) {
+        self.wireFrame?.navigateSheePostView(from: view!, post: post)
+    }
+    
+    // LLAMAR AL INTERACTOR
+    // SE INTENTARÁ BORRAR LA PUBLICACIÓN DEL PERFIL.
+    func deletePost() {
+        print("presenter post.... delete")
+        
+        self.view?.updateUIList()
+        
+    }
 
 }
+
+
+
+
+
 // MARK: - OUTPUT
 extension PostPresenter: PostInteractorOutputProtocol {
     

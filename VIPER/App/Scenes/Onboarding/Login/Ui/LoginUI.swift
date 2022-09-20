@@ -16,7 +16,7 @@ class LoginUI: UIView {
     
     public let headerView : UIView = {
         let headerView = UIView()
-        headerView.backgroundColor = Constants.Color.appBlue
+        headerView.backgroundColor = Constants.Color.primary
         return headerView
     }()
     
@@ -41,7 +41,7 @@ class LoginUI: UIView {
         label.textAlignment = .left
         label.backgroundColor = .systemBackground
         label.font = .systemFont(ofSize: 12, weight: .bold)
-        label.textColor = Constants.Color.appBlue
+        label.textColor = Constants.Color.primary
         return label
     }()
     
@@ -51,7 +51,7 @@ class LoginUI: UIView {
         label.textAlignment = .left
         label.backgroundColor = .systemBackground
         label.font = .systemFont(ofSize: 12, weight: .bold)
-        label.textColor = Constants.Color.appBlue
+        label.textColor = Constants.Color.primary
         return label
     }()
     
@@ -90,7 +90,7 @@ class LoginUI: UIView {
         let button = LoadingButton()
         button.setTitle("Log In", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-        button.backgroundColor = Constants.Color.appBlue 
+        button.backgroundColor = Constants.Color.primary
         return button
     }()
     
@@ -114,7 +114,7 @@ class LoginUI: UIView {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
         button.setTitle("Create Account", for: .normal)
-        button.setTitleColor(Constants.Color.appBlue, for: .normal)
+        button.setTitleColor(Constants.Color.primary, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         // button.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
         return button

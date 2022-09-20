@@ -28,6 +28,13 @@
 		B31963EC279881D000A23628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31963EB279881D000A23628 /* LaunchScreen.storyboard */; };
 		B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F127995BD500A23628 /* TextFieldWithPadding.swift */; };
 		B31963F42799801000A23628 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963F32799801000A23628 /* LoadingButton.swift */; };
+		B319715228D36F7500FDB342 /* SheetHomePostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319714B28D36F7500FDB342 /* SheetHomePostsPresenter.swift */; };
+		B319715328D36F7500FDB342 /* SheetHomePostsLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319714C28D36F7500FDB342 /* SheetHomePostsLocalDataManager.swift */; };
+		B319715428D36F7500FDB342 /* SheetHomePostsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319714D28D36F7500FDB342 /* SheetHomePostsProtocols.swift */; };
+		B319715528D36F7500FDB342 /* SheetHomePostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319714E28D36F7500FDB342 /* SheetHomePostsInteractor.swift */; };
+		B319715628D36F7500FDB342 /* SheetHomePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319714F28D36F7500FDB342 /* SheetHomePostsView.swift */; };
+		B319715728D36F7500FDB342 /* SheetHomePostsRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319715028D36F7500FDB342 /* SheetHomePostsRemoteDataManager.swift */; };
+		B319715828D36F7500FDB342 /* SheetHomePostsWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319715128D36F7500FDB342 /* SheetHomePostsWireFrame.swift */; };
 		B341B00628208EFD009FA4A9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B341B00528208EFD009FA4A9 /* Alert.swift */; };
 		B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E527AD4B61006EFACD /* PostPresenter.swift */; };
 		B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */; };
@@ -37,6 +44,15 @@
 		B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */; };
 		B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804EB27AD4B61006EFACD /* PostWireFrame.swift */; };
 		B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34804F427AD4C0D006EFACD /* PostUI.swift */; };
+		B34B12FD28D5F71F00172986 /* SheePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12F628D5F71E00172986 /* SheePostPresenter.swift */; };
+		B34B12FE28D5F71F00172986 /* SheePostLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12F728D5F71F00172986 /* SheePostLocalDataManager.swift */; };
+		B34B12FF28D5F71F00172986 /* SheePostProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12F828D5F71F00172986 /* SheePostProtocols.swift */; };
+		B34B130028D5F71F00172986 /* SheePostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12F928D5F71F00172986 /* SheePostInteractor.swift */; };
+		B34B130128D5F71F00172986 /* SheePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12FA28D5F71F00172986 /* SheePostView.swift */; };
+		B34B130228D5F71F00172986 /* SheePostRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12FB28D5F71F00172986 /* SheePostRemoteDataManager.swift */; };
+		B34B130328D5F71F00172986 /* SheePostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12FC28D5F71F00172986 /* SheePostWireFrame.swift */; };
+		B34B130628D5F75B00172986 /* SheePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B130528D5F75B00172986 /* SheePostTableViewCell.swift */; };
+		B34B130A28D5F7B300172986 /* SheePostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B130928D5F7B300172986 /* SheePostUI.swift */; };
 		B36C2A7728C0B56200624B8E /* ListPeopleUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C2A7628C0B56200624B8E /* ListPeopleUI.swift */; };
 		B36C2A7A28C0B79A00624B8E /* UserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C2A7928C0B79A00624B8E /* UserFollowTableViewCell.swift */; };
 		B37AD64328BF42CB0019167E /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64228BF42CB0019167E /* FormTableViewCell.swift */; };
@@ -87,6 +103,8 @@
 		B3A4D48F279464A9006B4CCA /* ProfileWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */; };
 		B3A4D49227958A32006B4CCA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D49127958A31006B4CCA /* Extensions.swift */; };
 		B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D494279596F4006B4CCA /* LoginUI.swift */; };
+		B3ABB33928D3B67E00B44EF3 /* SheeHomePostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABB33828D3B67E00B44EF3 /* SheeHomePostsTableViewCell.swift */; };
+		B3ABB33C28D3BA9300B44EF3 /* SheetHomePostsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABB33B28D3BA9300B44EF3 /* SheetHomePostsUI.swift */; };
 		B3B5677127B2559600CC123A /* BCApiRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677027B2559600CC123A /* BCApiRest.swift */; };
 		B3B5677527B255E000CC123A /* WSApiRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677427B255E000CC123A /* WSApiRest.swift */; };
 		B3B5677727B255FC00CC123A /* WSTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5677627B255FC00CC123A /* WSTranslator.swift */; };
@@ -180,6 +198,13 @@
 		B31963EB279881D000A23628 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B31963F127995BD500A23628 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		B31963F32799801000A23628 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		B319714B28D36F7500FDB342 /* SheetHomePostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsPresenter.swift; sourceTree = "<group>"; };
+		B319714C28D36F7500FDB342 /* SheetHomePostsLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsLocalDataManager.swift; sourceTree = "<group>"; };
+		B319714D28D36F7500FDB342 /* SheetHomePostsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsProtocols.swift; sourceTree = "<group>"; };
+		B319714E28D36F7500FDB342 /* SheetHomePostsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsInteractor.swift; sourceTree = "<group>"; };
+		B319714F28D36F7500FDB342 /* SheetHomePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsView.swift; sourceTree = "<group>"; };
+		B319715028D36F7500FDB342 /* SheetHomePostsRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsRemoteDataManager.swift; sourceTree = "<group>"; };
+		B319715128D36F7500FDB342 /* SheetHomePostsWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsWireFrame.swift; sourceTree = "<group>"; };
 		B341B00528208EFD009FA4A9 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B34804E527AD4B61006EFACD /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
 		B34804E627AD4B61006EFACD /* PostLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocalDataManager.swift; sourceTree = "<group>"; };
@@ -189,6 +214,15 @@
 		B34804EA27AD4B61006EFACD /* PostRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRemoteDataManager.swift; sourceTree = "<group>"; };
 		B34804EB27AD4B61006EFACD /* PostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWireFrame.swift; sourceTree = "<group>"; };
 		B34804F427AD4C0D006EFACD /* PostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUI.swift; sourceTree = "<group>"; };
+		B34B12F628D5F71E00172986 /* SheePostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostPresenter.swift; sourceTree = "<group>"; };
+		B34B12F728D5F71F00172986 /* SheePostLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostLocalDataManager.swift; sourceTree = "<group>"; };
+		B34B12F828D5F71F00172986 /* SheePostProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostProtocols.swift; sourceTree = "<group>"; };
+		B34B12F928D5F71F00172986 /* SheePostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostInteractor.swift; sourceTree = "<group>"; };
+		B34B12FA28D5F71F00172986 /* SheePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostView.swift; sourceTree = "<group>"; };
+		B34B12FB28D5F71F00172986 /* SheePostRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostRemoteDataManager.swift; sourceTree = "<group>"; };
+		B34B12FC28D5F71F00172986 /* SheePostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostWireFrame.swift; sourceTree = "<group>"; };
+		B34B130528D5F75B00172986 /* SheePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostTableViewCell.swift; sourceTree = "<group>"; };
+		B34B130928D5F7B300172986 /* SheePostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostUI.swift; sourceTree = "<group>"; };
 		B36C2A7628C0B56200624B8E /* ListPeopleUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleUI.swift; sourceTree = "<group>"; };
 		B36C2A7928C0B79A00624B8E /* UserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowTableViewCell.swift; sourceTree = "<group>"; };
 		B37AD64228BF42CB0019167E /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
@@ -243,6 +277,8 @@
 		B3A4D488279464A9006B4CCA /* ProfileWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWireFrame.swift; sourceTree = "<group>"; };
 		B3A4D49127958A31006B4CCA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B3A4D494279596F4006B4CCA /* LoginUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
+		B3ABB33828D3B67E00B44EF3 /* SheeHomePostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeHomePostsTableViewCell.swift; sourceTree = "<group>"; };
+		B3ABB33B28D3BA9300B44EF3 /* SheetHomePostsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHomePostsUI.swift; sourceTree = "<group>"; };
 		B3B5677027B2559600CC123A /* BCApiRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCApiRest.swift; sourceTree = "<group>"; };
 		B3B5677427B255E000CC123A /* WSApiRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSApiRest.swift; sourceTree = "<group>"; };
 		B3B5677627B255FC00CC123A /* WSTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTranslator.swift; sourceTree = "<group>"; };
@@ -435,6 +471,22 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		B319715928D36F8200FDB342 /* SheetHomePosts */ = {
+			isa = PBXGroup;
+			children = (
+				B319714D28D36F7500FDB342 /* SheetHomePostsProtocols.swift */,
+				B319715128D36F7500FDB342 /* SheetHomePostsWireFrame.swift */,
+				B319714C28D36F7500FDB342 /* SheetHomePostsLocalDataManager.swift */,
+				B319715028D36F7500FDB342 /* SheetHomePostsRemoteDataManager.swift */,
+				B319714E28D36F7500FDB342 /* SheetHomePostsInteractor.swift */,
+				B319714B28D36F7500FDB342 /* SheetHomePostsPresenter.swift */,
+				B319714F28D36F7500FDB342 /* SheetHomePostsView.swift */,
+				B3ABB33A28D3B68200B44EF3 /* cell */,
+				B3ABB33D28D3BA9700B44EF3 /* ui */,
+			);
+			path = SheetHomePosts;
+			sourceTree = "<group>";
+		};
 		B33B345128BCF767007203B4 /* RES */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +527,38 @@
 				B34804F427AD4C0D006EFACD /* PostUI.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		B34B130428D5F72700172986 /* SheePost */ = {
+			isa = PBXGroup;
+			children = (
+				B34B12F828D5F71F00172986 /* SheePostProtocols.swift */,
+				B34B12FC28D5F71F00172986 /* SheePostWireFrame.swift */,
+				B34B12F728D5F71F00172986 /* SheePostLocalDataManager.swift */,
+				B34B12FB28D5F71F00172986 /* SheePostRemoteDataManager.swift */,
+				B34B12F928D5F71F00172986 /* SheePostInteractor.swift */,
+				B34B12F628D5F71E00172986 /* SheePostPresenter.swift */,
+				B34B12FA28D5F71F00172986 /* SheePostView.swift */,
+				B34B130828D5F77700172986 /* cell */,
+				B34B130B28D5F7B600172986 /* ui */,
+			);
+			path = SheePost;
+			sourceTree = "<group>";
+		};
+		B34B130828D5F77700172986 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				B34B130528D5F75B00172986 /* SheePostTableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		B34B130B28D5F7B600172986 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				B34B130928D5F7B300172986 /* SheePostUI.swift */,
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 		B36C2A7828C0B56600624B8E /* ui */ = {
@@ -712,6 +796,22 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		B3ABB33A28D3B68200B44EF3 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABB33828D3B67E00B44EF3 /* SheeHomePostsTableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		B3ABB33D28D3BA9700B44EF3 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABB33B28D3BA9300B44EF3 /* SheetHomePostsUI.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 		B3B5676F27B2557800CC123A /* WebService */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,6 +955,8 @@
 				B3EF8508279ED1E80076D443 /* Comments */,
 				B3EF8539279FEAE50076D443 /* SearchResult */,
 				B37AD65628BF8CEA0019167E /* ListPeople */,
+				B319715928D36F8200FDB342 /* SheetHomePosts */,
+				B34B130428D5F72700172986 /* SheePost */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -1137,6 +1239,7 @@
 				B3EA7A6B28BE78D000C78FC6 /* EditProfileLocalDataManager.swift in Sources */,
 				B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */,
 				B341B00628208EFD009FA4A9 /* Alert.swift in Sources */,
+				B34B130228D5F71F00172986 /* SheePostRemoteDataManager.swift in Sources */,
 				B3EF8537279FEADF0076D443 /* SearchResultRemoteDataManager.swift in Sources */,
 				B31963DA2796D6E100A23628 /* ProfileCollectionsViews.swift in Sources */,
 				B3A4D4502792C203006B4CCA /* LoginInteractor.swift in Sources */,
@@ -1144,6 +1247,7 @@
 				B3B5677527B255E000CC123A /* WSApiRest.swift in Sources */,
 				B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */,
 				B3EF8521279F15050076D443 /* SearchWireFrame.swift in Sources */,
+				B34B130128D5F71F00172986 /* SheePostView.swift in Sources */,
 				B31963BB279630E200A23628 /* HomeUI.swift in Sources */,
 				B3EF8505279ED1D70076D443 /* CommentsView.swift in Sources */,
 				B3EF853C279FEBFF0076D443 /* SearchResultUI.swift in Sources */,
@@ -1153,6 +1257,7 @@
 				B3A4D49227958A32006B4CCA /* Extensions.swift in Sources */,
 				B3EF853F279FEDEC0076D443 /* SearchResultViewTableViewCell.swift in Sources */,
 				B3A4D48E279464A9006B4CCA /* ProfileRemoteDataManager.swift in Sources */,
+				B319715328D36F7500FDB342 /* SheetHomePostsLocalDataManager.swift in Sources */,
 				B3A4D48F279464A9006B4CCA /* ProfileWireFrame.swift in Sources */,
 				B3EF8504279ED1D70076D443 /* CommentsInteractor.swift in Sources */,
 				B3EF8528279F54A80076D443 /* SearchCollectionsViews.swift in Sources */,
@@ -1163,18 +1268,22 @@
 				B3EF8538279FEADF0076D443 /* SearchResultWireFrame.swift in Sources */,
 				B31963DF2796FD2A00A23628 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
 				B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */,
+				B3ABB33C28D3BA9300B44EF3 /* SheetHomePostsUI.swift in Sources */,
 				B31963C127963D5800A23628 /* IGFeedPostTableViewCell.swift in Sources */,
 				B34804F527AD4C0D006EFACD /* PostUI.swift in Sources */,
 				B3EA7A7628BE7A3200C78FC6 /* EditProfileUI.swift in Sources */,
 				B3A4D47C27941201006B4CCA /* TabBarViewController.swift in Sources */,
 				B31963C727963E0700A23628 /* IGFeedPostFooterTableViewCell.swift in Sources */,
+				B319715828D36F7500FDB342 /* SheetHomePostsWireFrame.swift in Sources */,
 				B31963D82796D11700A23628 /* ProfileUI.swift in Sources */,
 				B3A4D4512792C203006B4CCA /* LoginView.swift in Sources */,
 				B3EF8520279F15050076D443 /* SearchRemoteDataManager.swift in Sources */,
+				B34B130328D5F71F00172986 /* SheePostWireFrame.swift in Sources */,
 				B3EA7A6D28BE78D000C78FC6 /* EditProfileInteractor.swift in Sources */,
 				B3A4D46B2792C618006B4CCA /* Constants.swift in Sources */,
 				B3EA7A6C28BE78D000C78FC6 /* EditProfileProtocols.swift in Sources */,
 				B36C2A7A28C0B79A00624B8E /* UserFollowTableViewCell.swift in Sources */,
+				B34B12FD28D5F71F00172986 /* SheePostPresenter.swift in Sources */,
 				B3A4D48A279464A9006B4CCA /* ProfileLocalDataManager.swift in Sources */,
 				B31963F42799801000A23628 /* LoadingButton.swift in Sources */,
 				B31963E12796FD8200A23628 /* StoryFeaturedCollectionTableViewCell.swift in Sources */,
@@ -1183,14 +1292,17 @@
 				B3A4D48D279464A9006B4CCA /* ProfileView.swift in Sources */,
 				B3A4D470279367EA006B4CCA /* KeyChain.swift in Sources */,
 				B3A4D4372791A5FF006B4CCA /* HomeLocalDataManager.swift in Sources */,
+				B34B12FF28D5F71F00172986 /* SheePostProtocols.swift in Sources */,
 				B3A4D47627937092006B4CCA /* Token.swift in Sources */,
 				B3EF851F279F15050076D443 /* SearchView.swift in Sources */,
 				B3EF8501279ED1D70076D443 /* CommentsPresenter.swift in Sources */,
 				B3EF850E279ED25C0076D443 /* CommentsUI.swift in Sources */,
+				B319715528D36F7500FDB342 /* SheetHomePostsInteractor.swift in Sources */,
 				B3A4D47E27945D37006B4CCA /* TabBarModuleBuilder.swift in Sources */,
 				B3A4D48027945DA7006B4CCA /* TabBarWireFrame.swift in Sources */,
 				B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */,
 				B3A4D44D2792C203006B4CCA /* LoginPresenter.swift in Sources */,
+				B319715728D36F7500FDB342 /* SheetHomePostsRemoteDataManager.swift in Sources */,
 				B31963CA2796CCCC00A23628 /* HomeExtension.swift in Sources */,
 				B3B5677D27B2960800CC123A /* WSenderToken.swift in Sources */,
 				B3EF8525279F15940076D443 /* SearchUI.swift in Sources */,
@@ -1199,6 +1311,7 @@
 				B3A4D4382791A5FF006B4CCA /* HomeProtocols.swift in Sources */,
 				B3EF8535279FEADF0076D443 /* SearchResultInteractor.swift in Sources */,
 				B3B5677B27B295E900CC123A /* WSenderCookie.swift in Sources */,
+				B3ABB33928D3B67E00B44EF3 /* SheeHomePostsTableViewCell.swift in Sources */,
 				B37AD64628BF5F060019167E /* EditProfileAdapter.swift in Sources */,
 				B31963D62796D10600A23628 /* ProfileExtension.swift in Sources */,
 				B3A4D45E2792C525006B4CCA /* Model.swift in Sources */,
@@ -1213,15 +1326,18 @@
 				B31963DC2796D91300A23628 /* PhotoCollectionViewCell.swift in Sources */,
 				B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */,
 				B37AD65128BF8CA30019167E /* ListPeopleProtocols.swift in Sources */,
+				B34B130628D5F75B00172986 /* SheePostTableViewCell.swift in Sources */,
 				B3A4D4362791A5FF006B4CCA /* HomePresenter.swift in Sources */,
 				B3A4D46E2793675B006B4CCA /* Closures.swift in Sources */,
 				B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */,
 				B3A4D44F2792C203006B4CCA /* LoginProtocols.swift in Sources */,
+				B319715428D36F7500FDB342 /* SheetHomePostsProtocols.swift in Sources */,
 				B3A4D4392791A5FF006B4CCA /* HomeInteractor.swift in Sources */,
 				B3EF8534279FEADF0076D443 /* SearchResultProtocols.swift in Sources */,
 				B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */,
 				B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */,
 				B37AD65328BF8CA30019167E /* ListPeopleView.swift in Sources */,
+				B319715228D36F7500FDB342 /* SheetHomePostsPresenter.swift in Sources */,
 				B3A4D47327936B8F006B4CCA /* APIService.swift in Sources */,
 				B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */,
 				B3A4D43C2791A5FF006B4CCA /* HomeWireFrame.swift in Sources */,
@@ -1229,6 +1345,7 @@
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
 				B3DB819E27AE54C40007138F /* APICaller.swift in Sources */,
 				B37AD65228BF8CA30019167E /* ListPeopleInteractor.swift in Sources */,
+				B34B130A28D5F7B300172986 /* SheePostUI.swift in Sources */,
 				B3EF8533279FEADF0076D443 /* SearchResultLocalDataManager.swift in Sources */,
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
 				B36C2A7728C0B56200624B8E /* ListPeopleUI.swift in Sources */,
@@ -1244,10 +1361,13 @@
 				B3EA7A6F28BE78D000C78FC6 /* EditProfileRemoteDataManager.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,
 				B37AD65428BF8CA30019167E /* ListPeopleRemoteDataManager.swift in Sources */,
+				B34B12FE28D5F71F00172986 /* SheePostLocalDataManager.swift in Sources */,
 				B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */,
 				B37AD64F28BF8CA30019167E /* ListPeoplePresenter.swift in Sources */,
+				B319715628D36F7500FDB342 /* SheetHomePostsView.swift in Sources */,
 				B37AD65528BF8CA30019167E /* ListPeopleWireFrame.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,
+				B34B130028D5F71F00172986 /* SheePostInteractor.swift in Sources */,
 				B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,12 +16,15 @@ protocol PostViewProtocol: AnyObject {
     func startActivity()
     func stopActivity()
     func stateHeart(heart: Heart, post: Post)
+    func dismissModule()
+    func deletePost(post: Post?)
 }
 
 protocol PostWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createPostModule(post: Post?) -> UIViewController
     func navigateToComments(from view: PostViewProtocol, post: Post)
+    func navigateSheePostView(from view: PostViewProtocol, post: Post)
 }
 
 protocol PostPresenterProtocol: AnyObject {
@@ -30,6 +33,7 @@ protocol PostPresenterProtocol: AnyObject {
     var interactor: PostInteractorInputProtocol? { get set }
     var wireFrame: PostWireFrameProtocol? { get set }
     var userpostReceivedFromProfile: Post? { get set }
+    
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
@@ -40,6 +44,8 @@ protocol PostPresenterProtocol: AnyObject {
     // CRUD LIKE
     func createLike(post: Post?)
     func deleteLike(heart: Heart?)
+    func gotoSheePostView(post: Post)
+    func deletePost()
     
 }
 
@@ -58,6 +64,7 @@ protocol PostInteractorInputProtocol: AnyObject {
     var remoteDatamanager: PostRemoteDataManagerInputProtocol? { get set }
     func interactorGetData(userpost: Post)
     func interactorCheckIfLikesExist(postId: Int, userId: Int, token: String, post: Post?)
+    func interactorDeletePost(post: Post?, token: String)
     
     // CRUD LIKE
     func interactorCreateLike(post: Post?, userId: Int, token: String)
@@ -76,6 +83,9 @@ protocol PostRemoteDataManagerInputProtocol: AnyObject {
     
     // CRUD LIKE
     func remoteCreateLike(post: Post?, userId:Int, token: String)
+    
+    // CRUD POST
+    func remoteDeletePost(post: Post?, token: String)
 }
 
 protocol PostRemoteDataManagerOutputProtocol: AnyObject {

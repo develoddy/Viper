@@ -145,3 +145,11 @@ extension HomeView: IGFeedPostDescriptionTableViewCellProtocol {
         self.presenter?.gotoCommentsScreen(userpost: model)
     }
 }
+
+extension HomeView: IGFeedPostHeaderTableViewCellProtocol {
+    
+    func didTapMoreButton(post: Post) {
+        // llamar a otro modulo
+        self.presenter?.gotoSheetHomePostsView(post: post)
+    }
+}

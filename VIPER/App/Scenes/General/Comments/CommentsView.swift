@@ -196,8 +196,6 @@ extension CommentsView: UITableViewDataSource {
      */
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let comment = self.presenter?.showCommentsData(indexPath: indexPath) else { fatalError("xxx") }
-        print("VIEW")
-        print(comment)
         let contextUpdateAction = UIContextualAction(style: .normal, title: "update") { (contextualAction, view, boolValue) in
             self.updateAction(comment: comment, indexPath: indexPath)
         }
@@ -271,7 +269,7 @@ extension CommentsView: UITableViewDataSource {
     private func deleteAction(comment: Comment, indexPath: IndexPath) {
         let alert = UIAlertController(title: "Delete",
                                       message: "Are you sure want to delete comment?",
-                                      preferredStyle: .alert)
+                                      preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Yes", style: .default) { (action) in
             
             // ACTUALIZAR TAMBIEN EN LA BASE DE DATOS.

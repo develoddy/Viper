@@ -9,20 +9,34 @@
 import Foundation
 import UIKit
 
+extension PostView: SheePostViewDelegate {
+    func formControllerDidFinish(_ controller: SheePostView) {
+        print("formControllerDidFinish .....")
+    }
+    
+    
+}
+
 class PostView: UIViewController {
 
     // MARK: PROPERTIES
     var presenter: PostPresenterProtocol?
     var postUI = PostUI()
+    var shee = SheePostView()
+    
+    
 
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         setupView()
-        //configureActivity()
+        configureActivity()
         configureTableView()
         configureDelegates()
+        configureNavigationItem()
+        
+        shee.delegate = self
     }
     
     // VIEWDIDLAYOUTSUBVIEWS
@@ -47,8 +61,10 @@ class PostView: UIViewController {
         view.addSubview(postUI)
     }
     
+    
+    
     func configureTableView() {
-        postUI.tableView.backgroundColor = .secondarySystemFill
+        postUI.tableView.backgroundColor =  .systemBackground
         postUI.tableView.register(IGFeedPostTableViewCell.self, forCellReuseIdentifier: IGFeedPostTableViewCell.identifier)
         postUI.tableView.register(IGFeedPostHeaderTableViewCell.self, forCellReuseIdentifier: IGFeedPostHeaderTableViewCell.identifier)
         postUI.tableView.register(IGFeedPostActionsTableViewCell.self, forCellReuseIdentifier: IGFeedPostActionsTableViewCell.identifier)
@@ -62,11 +78,42 @@ class PostView: UIViewController {
         postUI.tableView.delegate = self
         postUI.tableView.dataSource = self
     }
+    
+    private func configureNavigationItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(didTapCancel))
+        //navigationItem.titleView?.backgroundColor = .red
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
+    // MARK: ACCION BUTTONS NAV.
+    @objc func didTapSave() {
+        self.dismiss(animated: true)
+        
+    }
+    
+    @objc func didTapCancel() {
+        dismiss(animated: true)
+    }
+    
 }
 
+
+
 extension PostView: PostViewProtocol {
+    func deletePost(post: Post?) {
+        //self.presenter?.deletePost(post: post)
+    }
+    
+    func dismissModule() {
+        self.didTapSave()
+    }
+    
     func updateUIList() {
+        
         DispatchQueue.main.async {
+            
             self.postUI.tableView.reloadData()
         }
     }
@@ -162,7 +209,7 @@ extension PostView: UITableViewDataSource {
             case .header(let post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostHeaderTableViewCell.identifier,for: indexPath) as! IGFeedPostHeaderTableViewCell
                 cell.configure(with: post)
-                // cell.delegate = self
+                 cell.delegate = self
                 return cell
             
             // DESCRIPTION
@@ -214,4 +261,14 @@ extension PostView: IGFeedPostActionsTableViewCellProtocol {
     func didTapCommentButton(model: Post) {
         self.presenter?.gotoCommentsScreen(post: model)
     }
+}
+
+
+extension PostView: IGFeedPostHeaderTableViewCellProtocol {
+    func didTapMoreButton(post: Post) {
+        //self.presenter.goto
+        self.presenter?.gotoSheePostView(post: post)
+    }
+    
+    
 }

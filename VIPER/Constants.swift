@@ -66,7 +66,28 @@ struct Constants {
     }
     
     struct Color {
-        static let appBlue = UIColor(red: 0.00, green: 0.78, blue: 1.00, alpha: 1.00)
+        static let blue = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.00)
+        static let indigo = UIColor(red: 0.40, green: 0.06, blue: 0.95, alpha: 1.00)
+        static let purple = UIColor(red: 0.44, green: 0.26, blue: 0.76, alpha: 1.00)
+        static let pink = UIColor(red: 0.91, green: 0.24, blue: 0.55, alpha: 1.00)
+        static let red = UIColor(red: 0.86, green: 0.21, blue: 0.27, alpha: 1.00)
+        static let orange = UIColor(red: 0.99, green: 0.49, blue: 0.08, alpha: 1.00)
+        static let yellow = UIColor(red: 1.00, green: 0.76, blue: 0.03, alpha: 1.00)
+        static let green = UIColor(red: 0.16, green: 0.65, blue: 0.27, alpha: 1.00)
+        static let teal = UIColor(red: 0.13, green: 0.79, blue: 0.59, alpha: 1.00)
+        static let cyan = UIColor(red: 0.32, green: 0.65, blue: 0.98, alpha: 1.00)
+        static let white = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
+        static let gray = UIColor(red: 0.42, green: 0.46, blue: 0.49, alpha: 1.00)
+        static let grayDark = UIColor(red: 0.20, green: 0.23, blue: 0.25, alpha: 1.00)
+        static let primary = UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.00)
+        static let secondary = UIColor(red: 0.42, green: 0.46, blue: 0.49, alpha: 1.00)
+        static let success = UIColor(red: 0.16, green: 0.65, blue: 0.27, alpha: 1.00)
+        static let info = UIColor(red: 0.09, green: 0.64, blue: 0.72, alpha: 1.00)
+        static let warning = UIColor(red: 1.00, green: 0.76, blue: 0.03, alpha: 1.00)
+        static let danger = UIColor(red: 0.86, green: 0.21, blue: 0.27, alpha: 1.00)
+        static let light = UIColor(red: 0.97, green: 0.98, blue: 0.98, alpha: 1.00)
+        static let lightDark = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.00)
+        static let black = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
     }
     
     struct Icon {

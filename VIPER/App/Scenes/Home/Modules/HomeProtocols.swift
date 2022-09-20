@@ -24,6 +24,7 @@ protocol HomeWireFrameProtocol: AnyObject {
     static func createHomeModule() -> UIViewController
     func navigateToProfile(from view: HomeViewProtocol, id: Int, name: String, token: String)
     func navigateToComments(from view: HomeViewProtocol, userpost: Post)
+    func navigateSheetHomePostsView(from view: HomeViewProtocol, post: Post)
 }
 
 protocol HomePresenterProtocol: AnyObject {
@@ -47,6 +48,7 @@ protocol HomePresenterProtocol: AnyObject {
     // CAMBIO DE PANTALLAS
     func gotoProfileScreen(id: Int, name: String, token: String)
     func gotoCommentsScreen(userpost: Post)
+    func gotoSheetHomePostsView(post: Post)
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {

@@ -32,7 +32,7 @@ extension HomeView: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostHeaderTableViewCell.identifier, for: indexPath)
                 as! IGFeedPostHeaderTableViewCell
                 cell.configure(with: userpost)
-                // cell.delegate = self
+                cell.delegate = self
                 case .comments, .actions, .primaryContent, .descriptions: return UITableViewCell()
             }
             

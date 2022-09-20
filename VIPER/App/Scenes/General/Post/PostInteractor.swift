@@ -21,14 +21,10 @@ class PostInteractor: PostInteractorInputProtocol {
     
     // MARK: FUNCTION
     func interactorGetData(userpost: Post) {
-        
         renderModels.append(PostRenderViewModel(renderType: .header(provider: userpost)))
         renderModels.append(PostRenderViewModel(renderType: .primaryContent(provider: userpost)))
         renderModels.append(PostRenderViewModel(renderType: .actions(provider: userpost)))
         renderModels.append(PostRenderViewModel(renderType: .descriptions(post: userpost)))
-        //renderModels.append(PostRenderViewModel(renderType: .comments(comments: comments)))
-        //renderModels.append(PostRenderViewModel(renderType: .footer(footer: userpost)))
-        
         self.presenter?.interactorCallBackData(userPost: renderModels)
     }
     
@@ -42,6 +38,11 @@ class PostInteractor: PostInteractorInputProtocol {
     
     func interactorDeleteLike(heart: Heart?, token: String) {
         self.remoteDatamanager?.remoteDeleteLike(heart: heart, token: token)
+    }
+    
+    func interactorDeletePost(post: Post?, token: String) {
+        print("POST INTERACTOR: - interactorDeletePost")
+        self.remoteDatamanager?.remoteDeletePost(post: post, token: token)
     }
 
 }

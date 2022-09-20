@@ -9,6 +9,8 @@
 import Foundation
 
 class PostRemoteDataManager:PostRemoteDataManagerInputProtocol {
+    
+    
    
     // MARK: PROPERTIES
     var remoteRequestHandler: PostRemoteDataManagerOutputProtocol?
@@ -116,4 +118,12 @@ class PostRemoteDataManager:PostRemoteDataManagerInputProtocol {
         }
         task.resume()
     }
+    
+    
+    // DELETE POST.
+    func remoteDeletePost(post: Post?, token: String) {
+        
+        print("POST REMOTE - DELETE POST.")
+    }
+    
 }
