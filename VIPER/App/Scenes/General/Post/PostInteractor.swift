@@ -41,7 +41,7 @@ class PostInteractor: PostInteractorInputProtocol {
     }
     
     func interactorDeletePost(post: Post?, token: String) {
-        print("POST INTERACTOR: - interactorDeletePost")
+        
         self.remoteDatamanager?.remoteDeletePost(post: post, token: token)
     }
 

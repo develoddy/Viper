@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if token != nil {
             let submodules = (
                 home: HomeWireFrame.createHomeModule(),
-                profile: ProfileWireFrame.createProfileModule(id: 0, name: "", token: ""),
+                profile: ProfileWireFrame.createProfileModule(id: 0, name: "", token: "", indexPath: []),
                 search: SearchWireFrame.createSearchModule() )
 
             let window                  = UIWindow(windowScene: windowScene)

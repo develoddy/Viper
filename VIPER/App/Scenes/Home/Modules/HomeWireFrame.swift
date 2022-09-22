@@ -35,7 +35,7 @@ class HomeWireFrame: HomeWireFrameProtocol {
     
     // NAVIGATE GOTO PROFILE
     func navigateToProfile(from view: HomeViewProtocol, id: Int, name: String, token: String) {
-        let newProfileView = ProfileWireFrame.createProfileModule(id: id, name: name, token: token)
+        let newProfileView = ProfileWireFrame.createProfileModule(id: id, name: name, token: token, indexPath: [])
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newProfileView, animated: true)
         }

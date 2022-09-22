@@ -107,12 +107,9 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
                 do {
                     let tasks = try decoder.decode( ResPosts.self, from: data )
                     guard let posts = tasks.resPostImages?.posts else {
-                        print("Profile Remote: properties posts vacio." )
                         return
                     }
-                    //print("Profile Remote: ")
-                    //print(posts)
-                    //self.viewModelPost = posts
+                    
                     // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
                     self.remoteRequestHandler?.remoteCallBackPosts( with: posts )
         

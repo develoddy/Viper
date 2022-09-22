@@ -22,9 +22,9 @@ protocol PostViewProtocol: AnyObject {
 
 protocol PostWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createPostModule(post: Post?) -> UIViewController
+    static func createPostModule(post: Post?, indexPath: IndexPath) -> UIViewController
     func navigateToComments(from view: PostViewProtocol, post: Post)
-    func navigateSheePostView(from view: PostViewProtocol, post: Post)
+    func navigateSheePostView(from view: PostViewProtocol, post: Post, indexPath: IndexPath)
 }
 
 protocol PostPresenterProtocol: AnyObject {
@@ -33,6 +33,7 @@ protocol PostPresenterProtocol: AnyObject {
     var interactor: PostInteractorInputProtocol? { get set }
     var wireFrame: PostWireFrameProtocol? { get set }
     var userpostReceivedFromProfile: Post? { get set }
+    var indexPathReceivedFromProfile: IndexPath? { get set }
     
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
@@ -45,7 +46,8 @@ protocol PostPresenterProtocol: AnyObject {
     func createLike(post: Post?)
     func deleteLike(heart: Heart?)
     func gotoSheePostView(post: Post)
-    func deletePost()
+    func deletePost(post: Post?)
+    func getIndexPathReceivedFromProfile() -> IndexPath
     
 }
 

@@ -122,8 +122,7 @@ class PostRemoteDataManager:PostRemoteDataManagerInputProtocol {
     
     // DELETE POST.
     func remoteDeletePost(post: Post?, token: String) {
-        
-        print("POST REMOTE - DELETE POST.")
+        print("Post REMOTE")
     }
     
 }

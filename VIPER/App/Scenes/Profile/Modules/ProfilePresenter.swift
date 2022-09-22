@@ -2,7 +2,8 @@ import UIKit
 
 // MARK: PRESENTER
 class ProfilePresenter: ProfilePresenterProtocol  {
-
+    
+    
     // MARK:  PROPERTIES
     weak var view: ProfileViewProtocol?
     var interactor: ProfileInteractorInputProtocol?
@@ -10,6 +11,8 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     var idReceivedFromHome: Int?
     var nameReceivedFromHome: String?
     var tokenReceivedFromHome: String?
+    var postReceivedFromSheetPost: Post?
+    var indexPathReceivedFromSheePost: IndexPath?
     var token = Token()
     
     // MARK: CLOSURES
@@ -41,7 +44,6 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     // LOS DATOS QUE LLEGAN DEL MODULO HOMEVIEW SE LO PASAMOS AL INTERACTOR
     func viewDidLoad() {
         guard let id = idReceivedFromHome, let token = tokenReceivedFromHome else {
-            print("Profile Presenter viewDidLoad() - Error en properties")
             return
         }
         self.interactor?.interactorGetData(id: id, token: token)
@@ -49,7 +51,6 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.interactor?.interactorGetPosts(id: id, page: 0, token: token)
         self.interactor?.interactorGetFollowing(page: 0, token: token)
         self.interactor?.interactorGetFollowers(page: 0, token: token)
-        
         self.view?.startActivity()
     }
     
@@ -84,8 +85,8 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     }
     
     // LLAMAR AL WIREFRAME.
-    func gotoPostScreen(post: Post?) {
-        self.wireFrame?.gotoPostScreen(from: view!, post: post)
+    func gotoPostScreen(post: Post?, indexPath: IndexPath) {
+        self.wireFrame?.gotoPostScreen(from: view!, post: post, indexPath: indexPath)
     }
     
     // SHOW DATA FOLLOWING.
@@ -109,10 +110,7 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.wireFrame?.gotoListPeopleScreen(following: following, from: view!, token: token.getUserToken())
     }
     
-    // RESETEAR EL ARRAY DE MODDEL POST.
-    func resetPost() {
-        self.viewModelPost = []
-    }
+ 
 }
 
 
@@ -123,14 +121,14 @@ extension ProfilePresenter: ProfileInteractorOutputProtocol {
     // EN ESTE PUNTO SE GUARDA LOS DATOS DEL PERFIL EN EL MODELO VIEWMODEL.
     func interactorCallBackData(with viewModel: [ User ]) {
         self.viewModel = viewModel
-        //self.view?.stopActivity()
+        self.view?.stopActivity()
     }
     
     // RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
     // EN ESTE PUNTO SE GUARDA LOS CONTADORES EN EL MODELO VIEWMODELTASTS.
     func interactorCallBackTasts(with viewModel: [ ResCounter ] ) {
         self.viewModelTasts = viewModel
-        //self.view?.stopActivity()
+        self.view?.stopActivity()
     }
     
 

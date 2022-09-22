@@ -12,7 +12,8 @@ import UIKit
 class SheePostWireFrame: SheePostWireFrameProtocol {
   
     
-    class func createSheePostModule(post: Post?) -> UIViewController {
+    class func createSheePostModule(post: Post?, indexPath: IndexPath) -> UIViewController {
+       
         let SheePost = SheePostView()
         let viewController = SheePost
         let presenter: SheePostPresenterProtocol & SheePostInteractorOutputProtocol = SheePostPresenter()
@@ -20,12 +21,15 @@ class SheePostWireFrame: SheePostWireFrameProtocol {
         let localDataManager: SheePostLocalDataManagerInputProtocol = SheePostLocalDataManager()
         let remoteDataManager: SheePostRemoteDataManagerInputProtocol = SheePostRemoteDataManager()
         let wireFrame: SheePostWireFrameProtocol = SheePostWireFrame()
-        
+            
         viewController.presenter = presenter
         presenter.view = viewController
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
         presenter.postReceivedFromPost = post
+        
+        presenter.indexPathReceivedFromProfile = indexPath
+        
         interactor.presenter = presenter
         interactor.localDatamanager = localDataManager
         interactor.remoteDatamanager = remoteDataManager
@@ -35,13 +39,23 @@ class SheePostWireFrame: SheePostWireFrameProtocol {
     }
     
 
-    func sendDataPost(from view: SheePostViewProtocol, delete: Bool)  {
+    // DISMISS POST VIEW.
+    func sendDataPost(from viewController: UIViewController, userId: Int, token: String, indexPath: IndexPath)  {
+        let view =  ProfileWireFrame.createProfileModule(id: userId, name: "sheepost", token: token, indexPath: indexPath)
+        view.viewDidLoad()
+      
+        
+        
+        let tran : CATransition = CATransition()
+        tran.duration = 0.5
+        tran.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        tran.type = CATransitionType.fade
+        tran.subtype = CATransitionSubtype.fromTop
+        viewController.view.window?.layer.add(tran, forKey: nil)
+        viewController.dismiss(animated: true)
+        
+       
+        
     }
     
-    func navigateToPost(post: Post?, from view: SheePostViewProtocol) {
-        
-        //let cv = PostWireFrame.createPostModule(post: post) as? PostView
-        
-               
-    }
 }

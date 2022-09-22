@@ -36,7 +36,7 @@ class SearchResultWireFrame: SearchResultWireFrameProtocol {
     
     func navigateToProfile(from view: SearchResultViewProtocol, id: Int, name: String, token: String) {
         
-        let newProfileView = ProfileWireFrame.createProfileModule(id: id, name: name, token: token)
+        let newProfileView = ProfileWireFrame.createProfileModule(id: id, name: name, token: token, indexPath: [])
         newProfileView.title = "ProfileWireFrame"
        
         if let sourceView = view as? UIViewController {

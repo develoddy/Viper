@@ -11,14 +11,67 @@ class SheePostView: UIViewController {
     // MARK: PROPERTIES
     var presenter: SheePostPresenterProtocol?
     var sheetPostUI = SheePostUI()
-    
     weak var delegate: SheePostViewDelegate?
 
-    // MARK: LIFECYCLE
+
+    // MARK:  LIFECYCLE
+
+    /* TODO: 1. VIEW DID LOAD
+     * ES MUY IMPORTANTE QUE SEPAMOS QUE EN ESTE PUNTO SE LLAMA SOLO UNA UNICA VEZ.
+     * ESTO ES UN BUEN PUNTO PARA INICIALIZAR TODAS LAS VARIABLES ASOCIADA A LA VISTA
+     * O COMENZAR LA CARGA DE DATOS QUE VAMOS A UTILIZAR EN LA VISTA.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         initMethods()
     }
+    
+    
+    /* TODO: 2. VIEW WILL APPERAR
+     * QUIERE DECIR QUE NUESTRO CONTROLADOR DE VISTA YA SE HA INSTANCIADO.
+     * TAMBIEN QUIERE DECIR QUE LA VISTA SE VA A MOSTRAR PERO AÚN NO LO HA HECHO,
+     * ES DECIR QUE TODA LA JERARQUIA DE VISTA ASOCIADO A NUESTRO VIEWCONTROLLER
+     * AÚN NO SE HA AÑADIDO HA EL CONTROLADOR PADRE.
+     *
+     * EN ESTE BLOQUE DE CODIGO PODREMOS AGREGAR CUALQUIER OPERACIÓN QUE QUERRAMOS
+     * QUE SE EJECUTE JUSTO ANTES DE QUE SE MUESTRE NUESTA VISTA.
+     */
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+
+    /* TODO: 3. VIEW DID APPEAR
+     * YA NOS INDICA QUE LA VISTA SE VA A MOSTRAR EN ESTE PRECISO MOMENTO.
+     * EN ESTE PUNTO LA JERARQUIA DE VISTA DE NUESTRO CONTROLADOR YA CONTIENE A TODAS LAS SUB VISTAS.
+     */
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    
+    /* TODO: 4. VIEW WILL DISAPPEAR
+     * EN ESTE PUNTO TIENE UNA SEMEJANZA DIRECTA CON "VIEW WILL APPEAR".
+     * SI "VIEW WILL APPEAR" NOS DECIA QUE ESTABA APUNTO DE APARECER,
+     * ENTONCES VIEW WILL DISAPPEAR ESTÁ APUNTO DE DESAPARECER.
+     *
+     * ESTÁ APUNTO DE DESAPARECER PORQUE VAMOS A NAVEGAR A UN NUEVO CONTROLADOR.
+     */
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+    
+    /* TODO: 5. VIEW DID DISAPPEAR
+     * EN ESTE PUNTO TIENE UNA SEMEJANZA DIRECTA CON "VIEW DID APPEAR".
+     * SI "VIEW DID APPEAR" NOS DECIA QUE ESE PRECISO MOMENTO VA A APARECER,
+     * ENTONCES VIEW DID DISAPPEAR EN ESTE PRECISO MOMENTO VA A DESAPARACER.
+     */
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -52,8 +105,10 @@ class SheePostView: UIViewController {
             .medium(),
             //.large(),
         ]
-        
     }
+    
+    
+    
     
     func configureTableView() {
         view.addSubview(sheetPostUI)
@@ -99,31 +154,12 @@ class SheePostView: UIViewController {
 extension SheePostView: SheePostViewProtocol {
     func dismiss() {
         self.didDismiss()
-       
     }
-    
-    
-    /*func alertDelete() {
-        
-        // SE PRESENTAR UN ALERT PARA BORRAR LA PUBLICACION.
-        let alert = UIAlertController(title: "¿Eliminar publicación?",
-                                      message: "Podrás restaurar esta publicación duante los proximos 30 días desde 'Eliminados recientemente' en 'Tu Actividad' Transcurrido este tiempo, se eliminará definitivamente.",
-                                      preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Eliminar", style: .default) { (action) in
-            self.presenter?.deletePost()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
-        alert.addAction(deleteAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
-    }*/
 }
 
 extension SheePostView: UISheetPresentationControllerDelegate {
     override var sheetPresentationController: UISheetPresentationController {
         presentationController as! UISheetPresentationController
-        
     }
 }
 

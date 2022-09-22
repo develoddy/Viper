@@ -53,6 +53,7 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
      - EN ESTE PUNTO SE OBTIENE LAS PUBLICACIONES.
      */
     func interactorGetPosts(id: Int, page: Int, token: String) {
+        //print("PROFILE INTERACTOR")
         if token.isEmpty {
             guard let id = self.token.getUserToken().user?.id else { return }
             guard let token = self.token.getUserToken().success else { return }

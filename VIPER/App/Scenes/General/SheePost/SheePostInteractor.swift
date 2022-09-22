@@ -9,6 +9,8 @@
 import Foundation
 
 class SheePostInteractor: SheePostInteractorInputProtocol {
+   
+    
     
     
     
@@ -26,13 +28,17 @@ class SheePostInteractor: SheePostInteractorInputProtocol {
         self.remoteDatamanager?.formGetData()
     }
     
+    func interactorGetPosts(id: Int, page: Int, token: String) {
+            // CODE
+    }
+    
     func interactorDeletePost(post: Post?, token: String) {
         self.remoteDatamanager?.remoteDeletePost(post: post, token: token)
     }
 }
 
 extension SheePostInteractor: SheePostRemoteDataManagerOutputProtocol {
-   
+  
     func remoteCallBackData(section01: [SheePostFormModel], section02: [SheePostFormModel]) {
         // SECTION 01
         for item in section01 {
@@ -56,8 +62,14 @@ extension SheePostInteractor: SheePostRemoteDataManagerOutputProtocol {
         self.presenter?.interactorCallBackData(with: self.viewModel)
     }
     
+    
+    // EN ESTE PUNTO SE RECIBE LOS DATOS QUE LLEGAN DEL REMOTE MANAGER.
     func remoteCallBackDeletePost(with delete: Bool) {
         // LLAMAR AL PRESENTER
         presenter?.interactorCallBackDeletePost(with: delete)
+    }
+    
+    func remoteCallBackPosts(with viewModel: [Post]) {
+        
     }
 }

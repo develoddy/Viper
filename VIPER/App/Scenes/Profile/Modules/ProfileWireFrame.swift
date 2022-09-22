@@ -11,7 +11,7 @@ import UIKit
 
 class ProfileWireFrame: ProfileWireFrameProtocol {
     
-    static func createProfileModule(id: Int, name: String, token: String) -> UIViewController {
+    static func createProfileModule(id: Int, name: String, token: String, indexPath: IndexPath) -> UIViewController {
 
         let profileView = ProfileView()
         let viewController = profileView
@@ -26,11 +26,13 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
         
+        
         // DATOS QUE RECIBE DEL MODULO HOMEVIEW
         presenter.idReceivedFromHome = id
         presenter.nameReceivedFromHome = name
-        presenter.tokenReceivedFromHome = token 
-        
+        presenter.tokenReceivedFromHome = token
+        presenter.indexPathReceivedFromSheePost = indexPath
+    
         interactor.presenter = presenter
         interactor.localDatamanager = localDataManager
         interactor.remoteDatamanager = remoteDataManager
@@ -40,15 +42,15 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
     }
     
 
+    
+
     // GOTO NAVIGATION TO POST SCREEN.
-    func gotoPostScreen(from view: ProfileViewProtocol, post: Post?) {
-        let newPostView = PostWireFrame.createPostModule(post: post)
+    func gotoPostScreen(from view: ProfileViewProtocol, post: Post?, indexPath: IndexPath) {
+        let newPostView = PostWireFrame.createPostModule(post: post, indexPath: indexPath)
         newPostView.title = post?.user?.username
         if let sourceView = view as? UIViewController {
-            //sourceView.navigationController?.pushViewController(newPostView, animated: true)
             let navigationController = UINavigationController(rootViewController: newPostView )
             navigationController.modalPresentationStyle = .fullScreen
-            //navigationController.navigationItem.largeTitleDisplayMode = .never
             sourceView.present( navigationController, animated: true )
         }
     }

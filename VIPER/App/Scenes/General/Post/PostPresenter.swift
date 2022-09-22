@@ -6,13 +6,17 @@
 //
 //
 import Foundation
+import UIKit
 class PostPresenter: PostPresenterProtocol {
+   
+    
    
     // MARK: PROPERTIES
     weak var view: PostViewProtocol?
     var interactor: PostInteractorInputProtocol?
     var wireFrame: PostWireFrameProtocol?
     var userpostReceivedFromProfile: Post?
+    var indexPathReceivedFromProfile: IndexPath?
     var token = Token()
     
     var renderModels: [PostRenderViewModel] = []
@@ -30,12 +34,8 @@ class PostPresenter: PostPresenterProtocol {
         guard let post = userpostReceivedFromProfile else {
             return
         }
-        
-        
         // SE LLAMA AL INTERACTOR
         self.interactor?.interactorGetData(userpost: post)
-        // view?.startActivity()
-        
     }
 
     func presenterNumberOfSections() -> Int {
@@ -62,6 +62,13 @@ class PostPresenter: PostPresenterProtocol {
             fatalError("error show data user token")
         }
         return identity
+    }
+    
+    func getIndexPathReceivedFromProfile() -> IndexPath {
+        guard let indexPath = self.indexPathReceivedFromProfile else {
+            return IndexPath()
+        }
+        return indexPath
     }
     
     /* ---- LLAMAR AL WIREFRAME ----
@@ -102,21 +109,18 @@ class PostPresenter: PostPresenterProtocol {
     }
     
     func gotoSheePostView(post: Post) {
-        self.wireFrame?.navigateSheePostView(from: view!, post: post)
+        self.wireFrame?.navigateSheePostView(from: view!, post: post, indexPath: self.getIndexPathReceivedFromProfile())
     }
     
     // LLAMAR AL INTERACTOR
     // SE INTENTARÁ BORRAR LA PUBLICACIÓN DEL PERFIL.
-    func deletePost() {
-        print("presenter post.... delete")
-        
-        self.view?.updateUIList()
-        
+    func deletePost(post: Post?) {
+        guard let token = token.getUserToken().success else {
+            return
+        }
+        self.interactor?.interactorDeletePost(post: post, token: token)
     }
-
 }
-
-
 
 
 
@@ -126,7 +130,6 @@ extension PostPresenter: PostInteractorOutputProtocol {
     // SE RECIBE LOS DATOS QUE LLEGA DEL INTERACTOR
     func interactorCallBackData(userPost: [PostRenderViewModel]) {
         self.renderModels = userPost
-        // view?.stopActivity()
     }
     
     func interactorCallBackLikesExist(with heart: [Heart], post: Post?) {
@@ -156,5 +159,4 @@ extension PostPresenter: PostInteractorOutputProtocol {
     func interactorCallBackDeleteLike(with message: ResMessage) {
         // -
     }
-
 }

@@ -105,4 +105,13 @@ struct Constants {
         static let createStory = "createStory"
         static let collections = "collections"
     }
+    
+    struct PostView {
+        // CONFiGURACIÓN DE ALERTAS
+        static let alertDeleteTitle = "¿Eliminar publicación?"
+        static let alertDeleteMessage = "Podrás restaurar esta publicación duante los proximos 30 días desde 'Eliminados recientemente' en 'Tu Actividad' Transcurrido este tiempo, se eliminará definitivamente."
+        static let alertDeleteActionTitle = "Eliminar"
+        static let alertDeleteActionCancel = "Cancelar"
+    }
+    
 }

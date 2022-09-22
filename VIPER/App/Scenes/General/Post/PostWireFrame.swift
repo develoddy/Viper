@@ -11,7 +11,8 @@ import UIKit
 
 class PostWireFrame: PostWireFrameProtocol {
     
-    class func createPostModule(post: Post?) -> UIViewController {
+    class func createPostModule(post: Post?, indexPath: IndexPath) -> UIViewController {
+        
         let postView = PostView()
         let viewController = postView
         let presenter: PostPresenterProtocol & PostInteractorOutputProtocol = PostPresenter()
@@ -25,6 +26,7 @@ class PostWireFrame: PostWireFrameProtocol {
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
         presenter.userpostReceivedFromProfile = post
+        presenter.indexPathReceivedFromProfile = indexPath
         
         interactor.presenter = presenter
         interactor.localDatamanager = localDataManager
@@ -42,8 +44,8 @@ class PostWireFrame: PostWireFrameProtocol {
         }
     }
     
-    func navigateSheePostView(from view: PostViewProtocol, post: Post) {
-        let newSheePostView = SheePostWireFrame.createSheePostModule(post: post)
+    func navigateSheePostView(from view: PostViewProtocol, post: Post, indexPath: IndexPath) {
+        let newSheePostView = SheePostWireFrame.createSheePostModule(post: post, indexPath: indexPath)
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.present(newSheePostView, animated: true, completion: nil)
         }

@@ -45,7 +45,8 @@ class SearchWireFrame: SearchWireFrameProtocol {
         guard let post = post else {
             return
         }
-        let newPostView = PostWireFrame.createPostModule(post: post)
+        
+        let newPostView = PostWireFrame.createPostModule(post: post, indexPath: [0,0])
         if let sourceView = view as? UIViewController {
             newPostView.title = "Explorar"
             sourceView.navigationController?.pushViewController(newPostView, animated: true)

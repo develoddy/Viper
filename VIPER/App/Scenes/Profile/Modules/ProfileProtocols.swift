@@ -13,13 +13,15 @@ protocol ProfileViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     func updateUI()
     func startActivity()
-    func stopActivity() 
+    func stopActivity()
+    func update()
+
 }
 
 protocol ProfileWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createProfileModule(id: Int, name:String, token:String) -> UIViewController
-    func gotoPostScreen(from view: ProfileViewProtocol, post: Post?)
+    static func createProfileModule(id: Int, name:String, token:String, indexPath: IndexPath) -> UIViewController
+    func gotoPostScreen(from view: ProfileViewProtocol, post: Post?, indexPath: IndexPath)
     func navigateToEditProfile(from view: ProfileViewProtocol, model: User?)
     func gotoListPeopleScreen(following: [Follow], from view: ProfileViewProtocol, token: LoginToken?)
 }
@@ -32,18 +34,19 @@ protocol ProfilePresenterProtocol: AnyObject {
     var idReceivedFromHome: Int? {get set}
     var nameReceivedFromHome: String? { get set }
     var tokenReceivedFromHome: String? { get set }
+    var postReceivedFromSheetPost: Post? { get set }
+    var indexPathReceivedFromSheePost: IndexPath? { get set }
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showPostsData(indexPath: IndexPath) -> Post?
     func username() -> User?
     func tasts() -> ResCounter?
-    func gotoPostScreen(post: Post?)
+    func gotoPostScreen(post: Post?, indexPath: IndexPath)
     func showFollowin() -> [Follow]
     func showFollowers() -> [Follow]
     func gotoEitProfileScreen(model: User?)
     func gotoListPeopleScreen(following: [Follow]?)
-    func resetPost()
 }
 
 protocol ProfileInteractorInputProtocol: AnyObject {
