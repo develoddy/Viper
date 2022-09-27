@@ -9,8 +9,7 @@
 import Foundation
 
 class SheePostRemoteDataManager:SheePostRemoteDataManagerInputProtocol {
-   
-
+    
     
     // MARK: PROPERTIES
     var remoteRequestHandler: SheePostRemoteDataManagerOutputProtocol?
@@ -35,7 +34,7 @@ class SheePostRemoteDataManager:SheePostRemoteDataManagerInputProtocol {
     /*
      * BORRAR PUBLICACION.
      */
-    func remoteDeletePost(post: Post?, token: String) {
+    func remoteDeletePost(post: PostViewData?, token: String) {
         guard let postId = post?.id else {
             return
         }
@@ -92,4 +91,50 @@ class SheePostRemoteDataManager:SheePostRemoteDataManagerInputProtocol {
         }
         task.resume()
     }
+    
+    func remoteUpdatePost(post: /*Post?*/ PostViewData?, token: String) {
+        
+        guard let content = post?.content, let postId = post?.id else {
+            return
+        }
+        
+        print(content)
+        print(postId)
+        let param : [ String : Any ] = [
+            "content": content,
+            "postId": postId
+        ]
+    
+        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/update" ) else {
+            return
+        }
+        
+        var request = URLRequest( url: url )
+        if !content.isEmpty {
+            do {
+                request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                request.httpBody = try JSONSerialization.data(
+                    withJSONObject: param,
+                    options: JSONSerialization.WritingOptions.prettyPrinted)
+                request.httpMethod = Constants.Method.httpPut
+            } catch {}
+        }
+        
+        
+        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
+            if let data = data {
+                do {
+                    let _ = try decoder.decode( ResMessage.self, from: data )
+                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
+                } catch {
+                    print(error)
+                    print("error preccesing data Profile")
+                }
+            }
+        }
+        task.resume()
+    }
+    
+ 
 }

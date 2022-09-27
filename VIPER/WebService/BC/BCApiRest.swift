@@ -82,6 +82,7 @@ class BCApiRest: NSObject {
         do {
             appDelegate.loginSession = objUsuario
             let objUsuario = try JSONEncoder().encode( objUsuario )
+            
             CDMKeyChain.guardarDataEnKeychain(
                 try NSKeyedArchiver.archivedData(withRootObject: objUsuario, requiringSecureCoding: false),conCuenta: "CDMLogin", conServicio:"datosUsuario")
         } catch {

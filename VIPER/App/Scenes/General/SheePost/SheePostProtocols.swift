@@ -4,14 +4,15 @@ import UIKit
 protocol SheePostViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: SheePostPresenterProtocol? { get set }
-    //func alertDelete()
     func dismiss()
 }
 
 protocol SheePostWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createSheePostModule(post: Post?, indexPath: IndexPath) -> UIViewController
+    static func createSheePostModule(post: /*Post?*/ PostViewData?, indexPath: IndexPath) -> UIViewController
     func sendDataPost(from viewController: UIViewController, userId: Int, token: String, indexPath: IndexPath)
+    func gotoPost(from viewController: UIViewController, post: /*Post?*/ PostViewData?)
+   
 }
 
 protocol SheePostPresenterProtocol: AnyObject {
@@ -19,16 +20,19 @@ protocol SheePostPresenterProtocol: AnyObject {
     var view: SheePostViewProtocol? { get set }
     var interactor: SheePostInteractorInputProtocol? { get set }
     var wireFrame: SheePostWireFrameProtocol? { get set }
-    var postReceivedFromPost: Post? { get set }
+    var postReceivedFromPost: PostViewData? /*Post?*/ { get set }
     var indexPathReceivedFromProfile: IndexPath? { get set }
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showData(indexPath: IndexPath) -> SheePostFormModel?
-    func getPost() -> Post?
+    func getPost() -> PostViewData? //Post?
     func choosePostOptions(indexPath: IndexPath, in viewController: UIViewController)
     func currentTopViewController() -> UIViewController
     func present(in viewController: UIViewController, indexPath: IndexPath)
+    func presentKeyboard(in viewController: UIViewController)
+    
+    
 }
 
 protocol SheePostInteractorOutputProtocol: AnyObject {
@@ -44,8 +48,8 @@ protocol SheePostInteractorInputProtocol: AnyObject {
     var localDatamanager: SheePostLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: SheePostRemoteDataManagerInputProtocol? { get set }
     func interactorGetData()
-    func interactorDeletePost(post: Post?, token: String)
-    
+    func interactorDeletePost(post: PostViewData? /*Post?*/, token: String)
+    func interactorUpdatePost(post: PostViewData? /*Post?*/, token: String)
     func interactorGetPosts(id: Int, page: Int, token: String) 
 }
 
@@ -58,7 +62,8 @@ protocol SheePostRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: SheePostRemoteDataManagerOutputProtocol? { get set }
     func formGetData()
     func remoteGetPosts(id: Int, page: Int, token: String)
-    func remoteDeletePost(post: Post?, token: String)
+    func remoteDeletePost(post: PostViewData?, token: String)
+    func remoteUpdatePost(post: PostViewData? /*Post?*/, token: String)
 }
 
 protocol SheePostRemoteDataManagerOutputProtocol: AnyObject {

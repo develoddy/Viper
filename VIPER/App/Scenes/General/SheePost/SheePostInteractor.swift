@@ -9,11 +9,7 @@
 import Foundation
 
 class SheePostInteractor: SheePostInteractorInputProtocol {
-   
-    
-    
-    
-    
+  
     // MARK: PROPERTIES
     weak var presenter: SheePostInteractorOutputProtocol?
     var localDatamanager: SheePostLocalDataManagerInputProtocol?
@@ -32,9 +28,14 @@ class SheePostInteractor: SheePostInteractorInputProtocol {
             // CODE
     }
     
-    func interactorDeletePost(post: Post?, token: String) {
+    func interactorDeletePost(post: PostViewData?, token: String) {
         self.remoteDatamanager?.remoteDeletePost(post: post, token: token)
     }
+    
+    func interactorUpdatePost(post: PostViewData?, token: String) {
+        self.remoteDatamanager?.remoteUpdatePost(post: post, token: token)
+    }
+    
 }
 
 extension SheePostInteractor: SheePostRemoteDataManagerOutputProtocol {

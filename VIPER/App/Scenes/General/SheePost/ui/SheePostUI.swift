@@ -8,7 +8,9 @@
 import UIKit
 
 class SheePostUI: UIView {
-
+    
+    var bottomConstraint: NSLayoutConstraint?
+    
     public let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         //let tableView = UITableView()
@@ -34,5 +36,5 @@ class SheePostUI: UIView {
         backgroundColor = .white
         self.addSubview(tableView)
     }
-
+    
 }

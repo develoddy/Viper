@@ -2,7 +2,7 @@
 //  EditProfileWireFrame.swift
 //  VIPER
 //
-//  Created by Eddy Donald Chinchay Lujan on 30/8/22.
+//  Created by Eddy Donald Chinchay Lujan on 30/8/22.Edit
 //  
 //
 
@@ -11,7 +11,7 @@ import UIKit
 
 class EditProfileWireFrame: EditProfileWireFrameProtocol {
 
-    class func createEditProfileModule(model: User?) -> UIViewController {
+    class func createEditProfileModule(model: UserViewData? /*User?*/) -> UIViewController {
         
         let editProfileView = EditProfileView() 
         

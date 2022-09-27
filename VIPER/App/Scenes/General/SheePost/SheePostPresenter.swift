@@ -7,7 +7,7 @@ class SheePostPresenter  {
     weak var view: SheePostViewProtocol?
     var interactor: SheePostInteractorInputProtocol?
     var wireFrame: SheePostWireFrameProtocol?
-    var postReceivedFromPost: Post?
+    var postReceivedFromPost: PostViewData? //Post?
     var indexPathReceivedFromProfile: IndexPath?
     var token = Token()
     var viewModelPost: [Post] = []
@@ -17,7 +17,6 @@ class SheePostPresenter  {
 }
 
 extension SheePostPresenter: SheePostPresenterProtocol {
-   
     func viewDidLoad() {
         /* --- LLAMAR AL PRESENTER ---
          * SE INTENTA OBTENER LOS DATOS PARA MOSTRAR EN LA VISTA
@@ -50,7 +49,7 @@ extension SheePostPresenter: SheePostPresenterProtocol {
     /*
      * SE OBTIENE LA PUBLICACIÓN
      */
-    func getPost() -> Post? {
+    func getPost() -> /*Post?*/ PostViewData? {
         return self.postReceivedFromPost
     }
     
@@ -64,7 +63,10 @@ extension SheePostPresenter: SheePostPresenterProtocol {
         } else {
             if indexPath.section == 1 {
                 switch indexPath.item {
-                case 0: break
+                case 0:
+                    self.view?.dismiss()
+                    presentKeyboard(in: viewController)
+                    break
                 case 1:
                     self.view?.dismiss()
                     present(in: viewController, indexPath: self.indexPathReceivedFromProfile!)
@@ -75,6 +77,49 @@ extension SheePostPresenter: SheePostPresenterProtocol {
             }
         }
     }
+    
+    func presentKeyboard(in viewController: UIViewController) {
+        guard let content = self.postReceivedFromPost?.content else {
+            return
+        }
+        
+        let alert = UIAlertController(
+            title: Constants.PostView.alertUpdateTitle,
+            message: content,
+            preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.text = content
+        }
+        
+        let saveAction = UIAlertAction(title: Constants.PostView.alertUpdateActionSave, style: .default) { (action) in
+            /* --- LLAMAR AL PRESENTER ---
+             * EN ESTE PUNTO SE INTENTARA MODIFICAR EL CONTENIDO LA PUBLICACIÓN.
+             * Y VOLVER AL MODULO POSTVIEW.
+             */
+            guard let textFields = alert.textFields,
+                  let token = self.token.getUserToken().success else { return }
+            if let contentText = textFields[0].text {
+                self.postReceivedFromPost?.content = contentText
+            }
+            self.interactor?.interactorUpdatePost(post: self.postReceivedFromPost, token: token)
+            /* DESPUES DE ACTUALIZAR EL CONTENIDO DE LA PUBLICACIÓN VAMOS A CERRAR
+             * EL ALERT Y POSICIOARNOS EN LA PUBLICACIÓN
+             */
+            
+            let currentTopVC: UIViewController? = self.currentTopViewController()
+            alert.dismiss(animated: true)
+            self.wireFrame?.gotoPost(from: currentTopVC!, post: self.postReceivedFromPost)
+           
+        }
+        let cancelAction = UIAlertAction(title: Constants.PostView.alertUpdateActionCancel, style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        let currentTopVC: UIViewController? = self.currentTopViewController()
+        currentTopVC?.present(alert, animated: true, completion: nil)
+    }
+    
+    
     
     /* ---- UIALERTCONTROLLER ----
      * DESPUES DE ELEJIR LA OPCION EN SHEET
@@ -120,6 +165,9 @@ extension SheePostPresenter: SheePostPresenterProtocol {
         topVC = topVC?.presentedViewController
         return topVC!
     }
+    
+    
+   
 }
 
 

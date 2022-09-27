@@ -6,13 +6,15 @@ class SheetHomePostsPresenter  {
     weak var view: SheetHomePostsViewProtocol?
     var interactor: SheetHomePostsInteractorInputProtocol?
     var wireFrame: SheetHomePostsWireFrameProtocol?
-    var postReceivedFromHome: Post?
+    var postReceivedFromHome: PostViewData?
     
     // MARK: CLOSURES
     private var viewModel = [ [ SheeHomePostsFormModel ] ]()
 }
 
 extension SheetHomePostsPresenter: SheetHomePostsPresenterProtocol {
+
+    
 
     // TODO: IMPLEMENT PRESENTER METHODS
     func viewDidLoad() {
@@ -33,13 +35,12 @@ extension SheetHomePostsPresenter: SheetHomePostsPresenterProtocol {
         return self.viewModel[indexPath.section][indexPath.row]
     }
     
-    func getPost() -> Post? {
+    func getPost() -> PostViewData? {
         return self.postReceivedFromHome
     }
     
     // ENVIAR POST AL HOMEVIEW.
     func postSentHome() {
-        //print(self.postReceivedFromHome)
     }
 }
 

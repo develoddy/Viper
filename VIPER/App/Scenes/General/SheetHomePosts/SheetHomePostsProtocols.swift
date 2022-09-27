@@ -16,7 +16,7 @@ protocol SheetHomePostsViewProtocol: AnyObject {
 
 protocol SheetHomePostsWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createSheetHomePostsModule(post: Post?) -> UIViewController
+    static func createSheetHomePostsModule(post: PostViewData?) -> UIViewController
 }
 
 protocol SheetHomePostsPresenterProtocol: AnyObject {
@@ -24,13 +24,13 @@ protocol SheetHomePostsPresenterProtocol: AnyObject {
     var view: SheetHomePostsViewProtocol? { get set }
     var interactor: SheetHomePostsInteractorInputProtocol? { get set }
     var wireFrame: SheetHomePostsWireFrameProtocol? { get set }
-    var postReceivedFromHome: Post? { get set }
+    var postReceivedFromHome: PostViewData? { get set }
     
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
     func showData(indexPath: IndexPath) -> SheeHomePostsFormModel?
-    func getPost() -> Post?
+    func getPost() -> PostViewData?
     func postSentHome()
 }
 

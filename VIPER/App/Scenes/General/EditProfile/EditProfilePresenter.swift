@@ -6,7 +6,7 @@ class EditProfilePresenter: EditProfilePresenterProtocol  {
     weak var view: EditProfileViewProtocol?
     var interactor: EditProfileInteractorInputProtocol?
     var wireFrame: EditProfileWireFrameProtocol?
-    var userReceivedFromProfile: User?
+    var userReceivedFromProfile: UserViewData? //User?
     
     // MARK: CLOSURES
     private var viewModel = [ [ EditProfileFormModel ] ]()
@@ -29,7 +29,7 @@ class EditProfilePresenter: EditProfilePresenterProtocol  {
     }
     
     func showImageProfile() -> String? {
-        return userReceivedFromProfile?.profile?.imageHeader
+        return userReceivedFromProfile?.imageHeader
     }
 }
 

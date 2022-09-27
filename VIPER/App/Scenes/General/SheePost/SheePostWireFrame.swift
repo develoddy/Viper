@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class SheePostWireFrame: SheePostWireFrameProtocol {
-  
-    
-    class func createSheePostModule(post: Post?, indexPath: IndexPath) -> UIViewController {
+   
+   
+    class func createSheePostModule(post: /*Post?*/ PostViewData?, indexPath: IndexPath) -> UIViewController {
        
         let SheePost = SheePostView()
         let viewController = SheePost
@@ -41,10 +41,23 @@ class SheePostWireFrame: SheePostWireFrameProtocol {
 
     // DISMISS POST VIEW.
     func sendDataPost(from viewController: UIViewController, userId: Int, token: String, indexPath: IndexPath)  {
-        let view =  ProfileWireFrame.createProfileModule(id: userId, name: "sheepost", token: token, indexPath: indexPath)
-        view.viewDidLoad()
-      
-        
+        let _ =  ProfileWireFrame.createProfileModule(id: userId, name: "sheepost", token: token, indexPath: indexPath)
+        //view.viewDidLoad()
+
+        let tran : CATransition = CATransition()
+        tran.duration = 0.5
+        tran.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        tran.type = CATransitionType.fade
+        tran.subtype = CATransitionSubtype.fromTop
+        viewController.view.window?.layer.add(tran, forKey: nil)
+        viewController.dismiss(animated: true)
+    }
+    
+    /*
+     *
+     */
+    func gotoPost(from viewController: UIViewController, post: /*Post?*/ PostViewData?) {
+        let _ =  PostWireFrame.createPostModule(post: post, indexPath: [])
         
         let tran : CATransition = CATransition()
         tran.duration = 0.5
@@ -53,9 +66,6 @@ class SheePostWireFrame: SheePostWireFrameProtocol {
         tran.subtype = CATransitionSubtype.fromTop
         viewController.view.window?.layer.add(tran, forKey: nil)
         viewController.dismiss(animated: true)
-        
-       
-        
     }
     
 }

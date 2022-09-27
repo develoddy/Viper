@@ -16,7 +16,7 @@ protocol EditProfileViewProtocol: AnyObject {
 
 protocol EditProfileWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
-    static func createEditProfileModule(model: User?) -> UIViewController
+    static func createEditProfileModule(model: UserViewData? /*User?*/) -> UIViewController
 }
 
 protocol EditProfilePresenterProtocol: AnyObject {
@@ -24,7 +24,7 @@ protocol EditProfilePresenterProtocol: AnyObject {
     var view: EditProfileViewProtocol? { get set }
     var interactor: EditProfileInteractorInputProtocol? { get set }
     var wireFrame: EditProfileWireFrameProtocol? { get set }
-    var userReceivedFromProfile: User? { get set }
+    var userReceivedFromProfile: UserViewData? /*User?*/ { get set }
     
     func viewDidLoad()
     func presenterNumberOfSections() -> Int

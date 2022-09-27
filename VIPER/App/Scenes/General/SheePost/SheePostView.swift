@@ -71,6 +71,23 @@ class SheePostView: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    override func didReceiveMemoryWarning() {
+        debugPrint("SHEE POST VIEW: LA APLICACION SE ESTA QUEDANDO SIN MEMORIA...")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     override func viewDidLayoutSubviews() {
@@ -105,9 +122,9 @@ class SheePostView: UIViewController {
             .medium(),
             //.large(),
         ]
+        
+        
     }
-    
-    
     
     
     func configureTableView() {
@@ -145,9 +162,7 @@ class SheePostView: UIViewController {
     }
     
     @objc private func didDismiss() {
-        
         dismiss(animated: true)
-        //delegate?.formControllerDidFinish(self)
     }
 }
 
@@ -274,7 +289,6 @@ extension SheePostView : UITableViewDataSource {
 
 
 extension SheePostView: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.choosePostOptions(indexPath: indexPath, in: self)
     }

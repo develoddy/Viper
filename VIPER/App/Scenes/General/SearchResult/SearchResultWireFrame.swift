@@ -40,13 +40,10 @@ class SearchResultWireFrame: SearchResultWireFrameProtocol {
         newProfileView.title = "ProfileWireFrame"
        
         if let sourceView = view as? UIViewController {
-           //sourceView.navigationController?.pushViewController(newProfileView, animated: true)
-            //sourceView.present(newProfileView, animated: true)
-            
-            //let navigationController = UINavigationController( rootViewController: newProfileView )
-            //navigationController.modalPresentationStyle = .fullScreen
-            //sourceView.present( navigationController, animated: true )
-            sourceView.navigationController?.pushViewController(newProfileView, animated: true)
+           //  sourceView.navigationController?.pushViewController(newProfileView, animated: true)
+            let navigationController = UINavigationController(rootViewController: newProfileView )
+            navigationController.modalPresentationStyle = .fullScreen
+            sourceView.present( navigationController, animated: true )
         }
     }
 }

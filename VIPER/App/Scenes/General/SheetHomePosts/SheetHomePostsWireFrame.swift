@@ -11,7 +11,7 @@ import UIKit
 
 class SheetHomePostsWireFrame: SheetHomePostsWireFrameProtocol {
 
-    class func createSheetHomePostsModule(post: Post?) -> UIViewController {
+    class func createSheetHomePostsModule(post: PostViewData?) -> UIViewController {
         
         let SheetHomePosts = SheetHomePostsView()
         let viewController = SheetHomePosts
