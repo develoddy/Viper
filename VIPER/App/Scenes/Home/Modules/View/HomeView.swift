@@ -100,16 +100,14 @@ extension HomeView: HomeViewProtocol {
      */
     func stateHeart(heart: Heart, post: PostViewData) {
         if heart.id == nil {
-            /* --- LLAMAR AL PRESNTER ---
-             * LE DECIMOS AL PESENTER QUE QUEREMOS INSERTAR UN LIKE.
-             */
+            // LLAMAR AL PRESENTER.
+            // LE DECIMOS AL PRESENTER QUE QUEREMOS CREAR UN "ME GUSTA".
             DispatchQueue.main.async {
                 self.presenter?.createLike(post: post)
             }
         } else {
-            /* --- LLAMAR AL PRESNTER ---
-             * LE DECIMOS AL PESENTER QUE QUEREMOS BORRAR UN LIKE.
-             */
+            // LLAMAR AL PRESENTER.
+            // LE DECIMOS AL PRESNETER QUE QUEREMOS BORRAR UN "ME GUSTA".
             DispatchQueue.main.async {
                 self.presenter?.deleteLike(heart: heart)
             }
@@ -118,36 +116,39 @@ extension HomeView: HomeViewProtocol {
 }
 
 
-// MARK: ACCION DE BOTONES (LIKE, COMMENT, SHARE)
+// MARK: - ACCION DE BOTONES (LIKE, COMMENT, SHARE)
 extension HomeView: IGFeedPostActionsTableViewCellProtocol {
     func didTapLikeButton(_ button: HeartButton, model: PostViewData) {
-        /* --- LLAMAR AL PRESNTER ---
-         * HACER CONSULTA A LA BASE DE DATOS PARA SABER SI EL LIKE EXISTE O NO.
-         */
+        // LLAMAR AL PRESENTER.
+        // EN ESTE PUNTO QUEREMOS SABER SI "EL ME GUSTA" ESTÁ CREADO O NO.
         self.presenter?.checkIfLikesExist(post: model)
         let _ = button.flipLikedState()
     }
     
     func didTapCommentButton(model: PostViewData) {
-        /* --- LLAMAR AL PRESNTER ---
-         * SE ENVIA LOS DATOS DEL POSR A LA SIGUIENTE VISTA "COMMENTS".
-         */
+        // LLAMAR AL PRESENTER.
+        // EN ESTE PUNTO QUEREMOS NAVERGAR A OTRA VISTA PASANDO DATOS DE LA PUBLICACIÓN.
         self.presenter?.gotoCommentsScreen(userpost: model)
     }
 }
 
-
-// MARK: CAMBIAR A LA PANTALLA DE COMENTATIOS
+// MARK: - NAVEGAR A OTRO MODULO
 extension HomeView: IGFeedPostDescriptionTableViewCellProtocol {
     func didTapComments(model: PostViewData) {
+        // LLAMAR AL PRESENTER.
+        // EN ESTE PUNTO QUEREMOS NAVEGAR A OTRO MODULO "COMMENTS"
+        // PASANDOLE DATOS DE LA PUBLICACIÓN.
         self.presenter?.gotoCommentsScreen(userpost: model)
     }
 }
 
+// MARK: - NAVEGAR A OTRO MODULO
 extension HomeView: IGFeedPostHeaderTableViewCellProtocol {
-    
     func didTapMoreButton(post: PostViewData) {
-        // llamar a otro modulo
+        
+        // LLAMAR AL PRESENTER.
+        // EN ESTE PUNTO QUEREMOS NAVEGAR A OTRO MODULO "SHEE HOME POST VIEW"
+        // PASANDOLE LOS DATOS DE LA PUBLICACIÑON.
         self.presenter?.gotoSheetHomePostsView(post: post)
     }
 }

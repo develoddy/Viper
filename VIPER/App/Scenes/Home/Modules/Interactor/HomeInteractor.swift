@@ -1,11 +1,5 @@
-//
-//  HomeInteractor.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 14/1/22.
-//
-//
 import Foundation
+
 // MARK: HOME INTERACTOR
 class HomeInteractor: HomeInteractorInputProtocol {
  
@@ -15,11 +9,9 @@ class HomeInteractor: HomeInteractorInputProtocol {
     var remoteDatamanager: HomeRemoteDataManagerInputProtocol?
     var models: [HomeFeedRenderViewModel] = []
     
-    /*
-     - ------------ LLAMAR AL EXTERNALDATAMANEGER -------------
-     - DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER)
-     - QUE TIENE QUE TRAER UNOS DATOS.
-     */
+    /* TODO: LLAMAR AL REMOTE MANAGER
+     * DECIRLE A LA CAPA DE CONEXIÓN EXTERNA (EXTERNALDATAMANEGER)
+     * QUE TIENE QUE TRAER UNOS DATOS. */
     func interactorGetData(page: Int, isPagination:Bool, token: String) {
         remoteDatamanager?.remoteGetData(page: page, isPagination: isPagination, token: token)
     }
@@ -41,11 +33,11 @@ class HomeInteractor: HomeInteractorInputProtocol {
 // MARK: - OUTPUT REMOTE MANAGER PROTOCOL
 extension HomeInteractor: HomeRemoteDataManagerOutputProtocol {
     
-    /*
-     - ------------ LLAMAR AL PRESENTER -------------
-     - EL INTERACTOR DEBE ENVIARLE LOS DATOS AL
-     - PRESENTER BIEN "MASTICADITO"
-     */
+    
+    
+    /* TODO: LLAMAR AL PRESENTER
+     * EL INTERACTOR DEBE ENVIARLE LOS DATOS AL
+     * PRESENTER BIEN "MASTICADITO". */
     func remoteCallBackData(with posts: [Post], totalPages: Int) {
         let formattedItemsPost = posts.map{PostViewData(info: $0)}
         for items in formattedItemsPost {
@@ -76,6 +68,10 @@ extension HomeInteractor: HomeRemoteDataManagerOutputProtocol {
     
     func remoteCallBackDeleteLike(with message: ResMessage) {
         self.presenter?.interactorCallBackDeleteLike(with: message)
+    }
+    
+    func remoteLikeFailed() {
+        self.presenter?.interactorLikeFailed()
     }
 
 }

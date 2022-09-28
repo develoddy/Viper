@@ -41,6 +41,9 @@ struct Constants {
     
     struct ApiRoutes {
         static let domain   = "http://localhost:3800"
+        static let json = "Application/json"
+        static let type = "Content-Type"
+        static let authorization = "Authorization"
     }
     
     struct headerImage {

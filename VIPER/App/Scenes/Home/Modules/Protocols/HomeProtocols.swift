@@ -57,6 +57,7 @@ protocol HomeInteractorOutputProtocol: AnyObject {
     func interactorCallBackLikesExist(with heart: [Heart], post: PostViewData?)
     func interactorCallBackDeleteLike(with message: ResMessage)
     func interactorCallBackInsertLike(with heart: Heart)
+    func interactorLikeFailed()
 }
 
 protocol HomeInteractorInputProtocol: AnyObject {
@@ -87,11 +88,11 @@ protocol HomeRemoteDataManagerInputProtocol: AnyObject {
 
 protocol HomeRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
-    //func remoteCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel], totalPages: Int)
     func remoteCallBackData(with posts: [Post], totalPages: Int)
     func remoteCallBackLikesExist(with heart: [Heart], post: PostViewData?)
     func remoteCallBackInsertLike(with heart: Heart)
     func remoteCallBackDeleteLike(with message: ResMessage)
+    func remoteLikeFailed()
 }
 
 protocol HomeLocalDataManagerInputProtocol: AnyObject {
