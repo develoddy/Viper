@@ -25,7 +25,7 @@ class BCApiRest: NSObject {
             return nil
         }
         return WSApiRest.login(email:email, password: password, conCompletionCorrecto: {(objUser) in
-            BCApiRest.saveSesion(deUsuario: objUser)
+            BCApiRest.saveSesion(deUsuario: objUser!)
             completioCorrecto(objUser)
         }, error: {(mensajeError) in
             completionIncorrecto(mensajeError)
@@ -97,7 +97,7 @@ class BCApiRest: NSObject {
 //    // Return object userpost o de lo contrario un mensaje de error.
     @discardableResult class
     public func apiUserPostBC(_ token                                     : String?                         ,
-                              conCompletionCorrecto completioCorrecto     : @escaping Closures.userPost     ,
+                              conCompletionCorrecto completioCorrecto     : @escaping Closures.Posts     ,
                               conCompletionIncorrecto completionIncorrecto: @escaping Closures.MessageError ) -> URLSessionDataTask? {
       
         let result = WSApiRest.startApiUserPost( token, conCompletionCorrecto: { ( data ) in

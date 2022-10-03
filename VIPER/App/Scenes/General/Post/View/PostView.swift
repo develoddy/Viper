@@ -6,21 +6,19 @@ class PostView: UIViewController {
     var presenter: PostPresenterProtocol?
     var postUI = PostUI()
     var shee = SheePostView()
-    
+    var liked: Bool?
     
     // MARK:  LIFECYCLE
 
     /* TODO: 1. VIEW DID LOAD
      * ES MUY IMPORTANTE QUE SEPAMOS QUE EN ESTE PUNTO SE LLAMA SOLO UNA UNICA VEZ.
      * ESTO ES UN BUEN PUNTO PARA INICIALIZAR TODAS LAS VARIABLES ASOCIADA A LA VISTA
-     * O COMENZAR LA CARGA DE DATOS QUE VAMOS A UTILIZAR EN LA VISTA.
-     */
+     * O COMENZAR LA CARGA DE DATOS QUE VAMOS A UTILIZAR EN LA VISTA. */
     override func viewDidLoad() {
         super.viewDidLoad()
         initMethods()
     }
     
-        
     /* TODO: 2. VIEW WILL APPEAR
      * QUIERE DECIR QUE NUESTRO CONTROLADOR DE VISTA YA SE HA INSTANCIADO.
      * TAMBIEN QUIERE DECIR QUE LA VISTA SE VA A MOSTRAR PERO AÚN NO LO HA HECHO,
@@ -28,40 +26,33 @@ class PostView: UIViewController {
      * AÚN NO SE HA AÑADIDO HA EL CONTROLADOR PADRE.
      *
      * EN ESTE BLOQUE DE CODIGO PODREMOS AGREGAR CUALQUIER OPERACIÓN QUE QUERRAMOS
-     * QUE SE EJECUTE JUSTO ANTES DE QUE SE MUESTRE NUESTA VISTA.
-     */
+     * QUE SE EJECUTE JUSTO ANTES DE QUE SE MUESTRE NUESTA VISTA. */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
-
-    
 
     /* TODO: 3. VIEW DID APPEAR
      * YA NOS INDICA QUE LA VISTA SE VA A MOSTRAR EN ESTE PRECISO MOMENTO.
-     * EN ESTE PUNTO LA JERARQUIA DE VISTA DE NUESTRO CONTROLADOR YA CONTIENE A TODAS LAS SUB VISTAS.
-     */
+     * EN ESTE PUNTO LA JERARQUIA DE VISTA DE NUESTRO CONTROLADOR YA CONTIENE A TODAS LAS SUB VISTAS. */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
     
     /* TODO: 4. VIEW WILL DISAPPEAR
      * EN ESTE PUNTO TIENE UNA SEMEJANZA DIRECTA CON "VIEW WILL APPEAR".
      * SI "VIEW WILL APPEAR" NOS DECIA QUE ESTABA APUNTO DE APARECER,
      * ENTONCES VIEW WILL DISAPPEAR ESTÁ APUNTO DE DESAPARECER.
      *
-     * ESTÁ APUNTO DE DESAPARECER PORQUE VAMOS A NAVEGAR A UN NUEVO CONTROLADOR.
-     */
+     * ESTÁ APUNTO DE DESAPARECER PORQUE VAMOS A NAVEGAR A UN NUEVO CONTROLADOR. */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
-    
     /* TODO: 5. VIEW DID DISAPPEAR
      * EN ESTE PUNTO TIENE UNA SEMEJANZA DIRECTA CON "VIEW DID APPEAR".
      * SI "VIEW DID APPEAR" NOS DECIA QUE ESE PRECISO MOMENTO VA A APARECER,
-     * ENTONCES VIEW DID DISAPPEAR EN ESTE PRECISO MOMENTO VA A DESAPARACER.
-     */
+     * ENTONCES VIEW DID DISAPPEAR EN ESTE PRECISO MOMENTO VA A DESAPARACER. */
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -103,8 +94,7 @@ class PostView: UIViewController {
         view.addSubview(postUI)
     }
     
-    
-    
+    // SE CONFIGURA TODAS LAS CELLS.
     func configureTableView() {
         postUI.tableView.backgroundColor =  .systemBackground
         postUI.tableView.register(IGFeedPostTableViewCell.self, forCellReuseIdentifier: IGFeedPostTableViewCell.identifier)
@@ -116,11 +106,13 @@ class PostView: UIViewController {
         postUI.tableView.separatorStyle = .none
     }
     
+    // SE CONFIGURA LAS DELEGACIONES.
     func configureDelegates() {
         postUI.tableView.delegate = self
         postUI.tableView.dataSource = self
     }
     
+    // SE CONFIGURA LOS ITEM EN EL NAVIGATION.
     private func configureNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(didTapCancel))
@@ -128,26 +120,22 @@ class PostView: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
     
-    // MARK: ACCION BUTTONS NAV.
+    // MARK: ACCION BOTON NAV.
     @objc func didTapSave() {
         print("Did TAP SAVE....")
         dismiss(animated: true)
     }
     
+    // MARK: ACCION BOTON CANCELAR.
     @objc func didTapCancel() {
         dismiss(animated: true)
     }
-    
 }
 
 
 
 // MARK: - POSTVIEW
 extension PostView: PostViewProtocol {
-    func deletePost(post: PostViewData?) {
-        //self.presenter?.deletePost(post: post)
-    }
-    
     func dismissModule() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.didTapSave()
@@ -180,35 +168,28 @@ extension PostView: PostViewProtocol {
         }
     }
     
+    func likeNotExist(post: PostViewData, sender: HeartButton) {
+        // SI EL LIKE NO EXISTE, HAY QUE CREARLO
+        self.presenter?.createLike(post: post)
+        let likedImage = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+        sender.setImage(likedImage, for: .normal)
+        
+    }
     
-    // TODO: implement view output methods
-    func stateHeart(heart: Heart, post: PostViewData) {
-        if heart.id == nil {
-            /* --- LLAMAR AL PRESNTER ---
-             * LE DECIMOS AL PESENTER QUE QUEREMOS INSERTAR UN LIKE.
-             */
-            print("PostVIEW - If")
-            DispatchQueue.main.async {
-                
-                self.presenter?.createLike(post: post)
-            }
-        } else {
-            /* --- LLAMAR AL PRESNTER ---
-             * LE DECIMOS AL PESENTER QUE QUEREMOS BORRAR UN LIKE.
-             */
-            print("PostVIEW - ELSE")
-            DispatchQueue.main.async {
-                self.presenter?.deleteLike(heart: heart)
-            }
-        }
+    func likeExist(heart: Heart, sender: HeartButton) {
+        // SI EL LIKE EXITE, HAY QUE BORRARLO
+        self.presenter?.deleteLike(heart: heart)
+        let unlikedImage = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        sender.setImage(unlikedImage, for: .normal)
+    }
+    
+    func deletePost(post: PostViewData?) {
+        // CODE
     }
 }
 
 
-
-
-// MARK: - UITABLE VIEW DATASOURCE
-
+// MARK: - TABLE VIEW
 extension PostView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -220,13 +201,9 @@ extension PostView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let model = self.presenter?.cellForRowAt( at: indexPath ) else {
-            return UITableViewCell()
-        }
-        
+        guard let model = self.presenter?.cellForRowAt( at: indexPath ) else { return UITableViewCell() }
         switch model.renderType {
-            // ACTIONS.
+            // TODO: ACTIONS
             case .actions(let post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostActionsTableViewCell.identifier, for: indexPath) as! IGFeedPostActionsTableViewCell
                 let identity = self.presenter?.getIdentity()
@@ -234,46 +211,36 @@ extension PostView: UITableViewDataSource {
                 cell.delegate = self
                 return cell
             
-            // COMMENTS.
+            // TODO: COMMENTS
             case .comments(let comments):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostGeneralTableViewCell.identifier, for: indexPath) as! IGFeedPostGeneralTableViewCell
                 let comment = comments[indexPath.row]
                 cell.setCellWithValuesOf(with: comment)
                 return cell
             
-            // CONTENT.
+            // TODO: CONTENT
             case .primaryContent(let post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostTableViewCell.identifier, for: indexPath) as! IGFeedPostTableViewCell
                 cell.configure(with: post)
                 return cell
             
-            // HEADER.
+            // TODO: HEADER
             case .header(let post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostHeaderTableViewCell.identifier,for: indexPath) as! IGFeedPostHeaderTableViewCell
                 cell.configure(with: post)
-                 cell.delegate = self
+                cell.delegate = self
                 return cell
             
-            // DESCRIPTION
+            // TODO: DESCRIPTION
             case .descriptions(let post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostDescriptionTableViewCell.identifier, for: indexPath) as! IGFeedPostDescriptionTableViewCell
                 cell.setCellWithValuesOf(post)
-                //cell.delegate = self
                 return cell
-            
-            /*case .footer(let footer):
-                let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostFooterTableViewCell.identifier, for: indexPath) as! IGFeedPostFooterTableViewCell
-                cell.configure(with: footer)
-                return cell*/
         }
-        
     }
 }
 
-
-
-// MARK: - UITABLE VIEW DELEGATE
-
+// MARK: - UITABLE  DELEGATE
 extension PostView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let model = self.presenter?.cellForRowAt(at: indexPath) else { return CGFloat() }
@@ -283,7 +250,6 @@ extension PostView: UITableViewDelegate {
             case .primaryContent(_) : return tableView.width // POST
             case .header(_)         : return 70 // HEADER
             case .descriptions(_)   : return 85 // DESCRIPTION
-            //case .footer(_)         : return 50 // FOOTER
         }
     }
     
@@ -292,13 +258,10 @@ extension PostView: UITableViewDelegate {
     }
 }
 
-
-// MARK: DELEGATES
+// MARK: - VANEGACION A OTRO MODULO
 extension PostView: IGFeedPostActionsTableViewCellProtocol {
-    
     func didTapLikeButton(_ sender: HeartButton, model: PostViewData) {
-        self.presenter?.checkIfLikesExist(post: model)
-        let _ = sender.flipLikedState()
+        self.presenter?.checkIfLikesExist(post: model, sender: sender)
     }
     
     func didTapCommentButton(model: PostViewData) {
@@ -306,13 +269,9 @@ extension PostView: IGFeedPostActionsTableViewCellProtocol {
     }
 }
 
-
-// MARK: DELEGATE SHEE POST
+// MARK: - VANEGACION A OTRO MODULO
 extension PostView: IGFeedPostHeaderTableViewCellProtocol {
     func didTapMoreButton(post: PostViewData) {
-        //self.presenter.goto
         self.presenter?.gotoSheePostView(post: post)
     }
-    
-    
 }

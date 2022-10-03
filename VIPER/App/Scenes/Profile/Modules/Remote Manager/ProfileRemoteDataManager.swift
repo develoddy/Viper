@@ -1,11 +1,3 @@
-//
-//  ProfileRemoteDataManager.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 16/1/22.
-//  
-//
-
 import Foundation
 
 // MARK: REMOTE DATA MANAGER
@@ -13,15 +5,16 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
     
     // MARK: PROPERTIES
     var remoteRequestHandler: ProfileRemoteDataManagerOutputProtocol?
-    let apiService: APIServiceProtocol
+    let apiManager: ProAPIManagerProtocol
+    var isPaginationOn: Bool? = false
     var viewModelPost: [Post] = []
     var viewModel: [User] = []
     var viewModelTasts: [ResCounter] = []
     
     
     // MARK:  CONSTRUCTOR
-    init( apiService: APIServiceProtocol = APIService() ) {
-        self.apiService = apiService
+    init(apiManager: ProAPIManagerProtocol = APIManager()) {
+        self.apiManager = apiManager
     }
     
     
@@ -93,7 +86,11 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
      * EN ESTE PUNTO SE OBTIENE LOS DATOS DE
      * LAS PUBLICACIONES (GRID IMAGENES).
      */
-    func remoteGetPosts(id: Int, page: Int, token: String) {
+    func remoteGetPosts(id: Int, page: Int, token: String, isPagination:Bool) {
+        if isPagination {
+            isPaginationOn = true
+        }
+        
         guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/user/\(id)/\(page)" ) else {
             return
         }
@@ -106,14 +103,20 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
             if let data = data {
                 do {
                     let tasks = try decoder.decode( ResPosts.self, from: data )
-                    guard let posts = tasks.resPostImages?.posts else {
+                    guard let posts = tasks.resPostImages?.posts, let totalPages = tasks.resPostImages?.totalPages else {
                         return
                     }
                     
-                    if page == 0 {
-                        self.remoteRequestHandler?.remoteCallBackPosts( with: posts )
-                    } else {
+                    if isPagination {
                         self.remoteRequestHandler?.remoteCallBackAppendPosts(with: posts)
+                        if isPagination {
+                            self.isPaginationOn = false
+                        }
+                    } else {
+                        self.remoteRequestHandler?.remoteCallBackPosts( with: posts, totalPages: totalPages )
+                        if isPagination {
+                            self.isPaginationOn = false
+                        }
                     }
         
                 } catch {

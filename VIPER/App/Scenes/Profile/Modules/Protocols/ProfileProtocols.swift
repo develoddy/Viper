@@ -1,11 +1,3 @@
-//
-//  ProfileProtocols.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 16/1/22.
-//  
-//
-
 import Foundation
 import UIKit
 
@@ -15,6 +7,7 @@ protocol ProfileViewProtocol: AnyObject {
     func startActivity()
     func stopActivity()
     func update()
+    var page: Int! { get set }
 
 }
 
@@ -31,6 +24,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     var view: ProfileViewProtocol? { get set }
     var interactor: ProfileInteractorInputProtocol? { get set }
     var wireFrame: ProfileWireFrameProtocol? { get set }
+    var page: Int? { get set }
     var idReceivedFromHome: Int? {get set}
     var nameReceivedFromHome: String? { get set }
     var tokenReceivedFromHome: String? { get set }
@@ -52,6 +46,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func gotoEitProfileScreen(model: UserViewData? /*User?*/)
     func gotoListPeopleScreen(following: [Follow]?)
     func getPostCount() -> Int
+    func getTotalPages() -> Int
 }
 
 protocol ProfileInteractorInputProtocol: AnyObject {
@@ -61,7 +56,7 @@ protocol ProfileInteractorInputProtocol: AnyObject {
     var remoteDatamanager: ProfileRemoteDataManagerInputProtocol? { get set }
     func interactorGetData(id: Int, token: String)
     func interactorGetCounter(id: Int, token: String)
-    func interactorGetPosts(id: Int, page: Int, token: String)
+    func interactorGetPosts(id: Int, page: Int, token: String, isPagination:Bool)
     func interactorGetFollowing(page: Int, token: String)
     func interactorGetFollowers(page: Int, token: String)
 }
@@ -70,7 +65,7 @@ protocol ProfileInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
     func interactorCallBackData(with viewModel: [User])
     func interactorCallBackTasts(with viewModel: [ResCounter])
-    func interactorCallBackPosts(with viewModel: [Post])
+    func interactorCallBackPosts(with viewModel: [Post], totalPages: Int)
     func interactorCallBackAppendPosts(with viewModel: [Post])
     func interactorCallBackFollowing(with viewModel: [Follow])
     func interactorCallBackFollowers(with viewModel: [Follow])
@@ -83,9 +78,10 @@ protocol ProfileDataManagerInputProtocol: AnyObject {
 protocol ProfileRemoteDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> REMOTEDATAMANAGER
     var remoteRequestHandler: ProfileRemoteDataManagerOutputProtocol? { get set }
+    var isPaginationOn: Bool? { get set }
     func remoteGetData(id: Int, token: String)
     func remoteGetCounter(id: Int, token: String)
-    func remoteGetPosts(id: Int, page: Int, token: String)
+    func remoteGetPosts(id: Int, page: Int, token: String, isPagination:Bool)
     func remoteGetFollowing(page: Int, token: String)
     func remoteGetFollowers(page: Int, token: String)
 }
@@ -94,7 +90,7 @@ protocol ProfileRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
     func remoteCallBackData(with viewModel: [User])
     func remoteCallBackTasts(with viewModel: [ResCounter])
-    func remoteCallBackPosts(with viewModel: [Post])
+    func remoteCallBackPosts(with viewModel: [Post], totalPages: Int)
     func remoteCallBackAppendPosts(with viewModel: [Post])
     func remoteCallBackFollowing(with viewModel: [Follow])
     func remoteCallBackFollowers(with viewModel: [Follow])

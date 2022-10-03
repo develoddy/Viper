@@ -11,7 +11,7 @@ import UIKit
 class HeartButton: UIButton {
     private var isLiked = false
     private let unlikedImage = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.black, renderingMode: .alwaysOriginal)
-    private let likedImage = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+    public let likedImage = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
  
     private let unlikedScale: CGFloat = 0.7
     private let likedScale: CGFloat = 1.3
@@ -76,6 +76,8 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
     
     private var idUser = 0
     
+    private var filter = false
+    
     /*private let likeButton: UIButton = {
         let button = UIButton()
         let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold)
@@ -87,7 +89,7 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
         return button
     }()*/
     
-    private let likeButton: HeartButton = {
+    let likeButton: HeartButton = {
         let likeButton = HeartButton()
         likeButton.layer.masksToBounds = true
         return likeButton
@@ -174,12 +176,22 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
     // SETUP VALUES
     public func setCellWithValuesOf(_ model: PostViewData, identity: UserLogin?) {
         self.model = model
-        
-        guard let identity = identity else {
-            return
+        for item in model.hearts {
+            if item.userID == identity?.id {
+                self.filter = true
+            }
         }
-        let heart = model.hearts
-        self.updateUI(heart: heart, identity: identity)
+        
+        if self.filter {
+            // EXISTE LIKED
+            let likedImage = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+            self.likeButton.setImage(likedImage, for: .normal)
+        } else {
+            // NO EXISTE LIKED
+            let unlikedImage = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            self.likeButton.setImage(unlikedImage, for: .normal)
+        }
+        
     }
     
     // UPDATE UI
@@ -187,12 +199,24 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
         
         // SI EL USUARIO CONECTADO SE ENCUENTRA EN EL ARRAY DE LIKES.
         // SI SE ENCUENTRA ENTONCES ACTIVAMOS EL BOTON DE LIKES EN COLOR ROJO.
-        let filter = heart.firstIndex(where: {$0.userID == identity.id})
-        if filter != nil {
-            let _ = likeButton.flipLikedState()
-        }
+        //let filter = heart.firstIndex(where: {$0.userID == identity.id})
         
-        //let _ = likeButton.flipLikedState()
+        /*for item in heart {
+            if item.userID == identity.id {
+                self.filter = true
+                break
+            }
+        }
+        if self.filter {
+            let likedImage = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+            
+            self.likeButton.setImage(likedImage, for: .normal)
+        } else {
+            print("CELL ELSE")
+            print("NO EXISTE LIKE")
+            let unlikedImage = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold))?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            self.likeButton.setImage(unlikedImage, for: .normal)
+        }*/
     }
     
     // DIPTAP BUTTONS
@@ -214,6 +238,15 @@ class IGFeedPostActionsTableViewCell: UITableViewCell {
         
         //guard let button = sender as? HeartButton else { return }
         //button.flipLikedState()
+    }
+    
+    @objc private func buttonHeart(_ sender: UIButton) {
+    
+        //guard let button = sender as? HeartButton else { return }
+        //delegate?.didTapLikeButton(button, model: model)
+        
+        guard let button = sender as? HeartButton else { return }
+        let _ = button.flipLikedState()
     }
 }
 

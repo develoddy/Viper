@@ -10,35 +10,19 @@ import Foundation
 class ResponseInJSONWithData: NSObject {
     
     // TRATADO DE RESPUESTA DEL BACKEND.
-    class func detResponseInJSONWithData(
-        _ data : Data
-    ) -> Any? {
+    // RESPUESTA DE JSON CON DATOS.
+    class func detResponseInJSONWithData(_ data : Data ) -> Any? {
         do {
-            return try JSONSerialization.jsonObject(
-                with: data,
-                options: JSONSerialization.ReadingOptions.allowFragments) as Any
+            return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as Any
         } catch { return nil }
     }
     
     // RESPONSE.
-    class func getServiceResponse(
-        paraData data           : Data?         ,
-        conResponse response    : URLResponse?  ,
-        conError error          : NSError?      )  -> WebResponse {
-        
+    class func getServiceResponse(paraData data: Data?, conResponse response: URLResponse?, conError error: NSError?) -> WebResponse {
             var respuesta : Any? = nil
             if error == nil && data != nil {
                 respuesta = self.detResponseInJSONWithData(data!)
             }
-        
-            /**
-             - ---------------------------- ResponseJSON ----------------------------
-             - Se ontiene y de imprime el restultado que
-             - envia el serrvidoe.
-            */
-            //print("---------- ResponseJSON ------------")
-            //print(respuesta ?? "")
-            
             let urlResponse = response as? HTTPURLResponse
             let headerFields : NSDictionary? = urlResponse?.allHeaderFields as NSDictionary?
             let objResponse = WebResponse()

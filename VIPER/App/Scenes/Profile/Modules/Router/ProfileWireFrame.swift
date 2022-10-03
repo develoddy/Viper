@@ -44,7 +44,7 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
 
     
 
-    // GOTO NAVIGATION TO POST SCREEN.
+    // GOTO NAVIGATION TO POST.
     func gotoPostScreen(from view: ProfileViewProtocol, post: PostViewData? /*Post?*/, indexPath: IndexPath) {
         let newPostView = PostWireFrame.createPostModule(post: post, indexPath: indexPath)
         newPostView.title = post?.user.username

@@ -15,7 +15,7 @@ class ProfilePresenter: ProfilePresenterProtocol  {
     var indexPathReceivedFromSheePost: IndexPath?
     var token = Token()
     var isLoadingMore: Bool?
- 
+    var page: Int?
     
     // MARK: CLOSURES
     // var viewModelPost: [Post] = [] {
@@ -58,30 +58,22 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.interactor?.interactorGetCounter(id: id, token: token)
         self.interactor?.interactorGetFollowing(page: 0, token: token)
         self.interactor?.interactorGetFollowers(page: 0, token: token)
-        self.interactor?.interactorGetPosts(id: id, page: 0, token: token)
-        self.view?.startActivity()
+        self.interactor?.interactorGetPosts(id: id, page: 0, token: token, isPagination: false)
+        //self.view?.startActivity()
         
     }
     
     func fetchPosts(page: Int) {
-        guard let id = idReceivedFromHome, let token = tokenReceivedFromHome, var loading = isLoadingMore else {
-            print("RETURN -......")
+        guard let id = token.getUserToken().user?.id, let token = token.getUserToken().success else {
             return
         }
-        
-        guard !loading else { return }
-        self.interactor?.interactorGetPosts(id: id, page: page, token: token)
-        //guard !isLoadingMore! else {return}
-        //self.view?.startActivity()
-        loading = page > 1
+        self.interactor?.interactorGetPosts(id: id, page: page, token: token, isPagination: true)
     }
     
     // GET NUMBER OF SECTION
     func presenterNumberOfSections() -> Int {
         return 3
     }
-    
-    
     
     // GET NUMBER OF ROWS INSECTION
     func numberOfRowsInsection(section: Int) -> Int {
@@ -92,6 +84,10 @@ class ProfilePresenter: ProfilePresenterProtocol  {
             return self.postViewData.count
         }
         return 0
+    }
+    
+    func getTotalPages() -> Int {
+        return self.page ?? 0
     }
     
     func getPostCount() -> Int {
@@ -148,42 +144,36 @@ class ProfilePresenter: ProfilePresenterProtocol  {
 
 // MARK: - OUTPUT
 extension ProfilePresenter: ProfileInteractorOutputProtocol {
-   
-    
-
     // RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
     // EN ESTE PUNTO SE GUARDA LOS DATOS DEL PERFIL EN EL MODELO VIEWMODEL.
     func interactorCallBackData(with viewModel: [ User ]) {
-        //self.viewModel = viewModel
         let formattedItems = viewModel.map{UserViewData(info: $0)}
         self.userViewData = formattedItems
-        self.view?.stopActivity()
+        //self.view?.stopActivity()
     }
     
     // RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
     // EN ESTE PUNTO SE GUARDA LOS CONTADORES EN EL MODELO VIEWMODELTASTS.
     func interactorCallBackTasts(with viewModel: [ ResCounter ] ) {
         self.viewModelTasts = viewModel
-        self.view?.stopActivity()
+        //self.view?.stopActivity()
     }
     
 
     // RECIBE LOS DATOS DE VUELTA DEL INTERACTOR.
     // EN ESTE PUNTO SE GUARDA LAS PUBLICACIONES EN EL MODELO VIEWMODELPOST.
-    func interactorCallBackPosts( with viewModel: [ Post ] ) {
-        // self.viewModelPost = viewModel
+    func interactorCallBackPosts( with viewModel: [ Post ], totalPages: Int ) {
         let formattedItems = viewModel.map{ PostViewData(info: $0)}
         self.postViewData = formattedItems
+        self.page = totalPages
     }
     
     func interactorCallBackAppendPosts(with viewModel: [Post]) {
-        
         let formattedItems = viewModel.map{ PostViewData(info: $0)}
         for item in formattedItems {
             self.postViewData.append(item)
         }
-        self.view?.stopActivity()
-        isLoadingMore = false
+        //self.view?.stopActivity()
     }
     
 

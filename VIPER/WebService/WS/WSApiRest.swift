@@ -135,7 +135,7 @@ class WSApiRest: NSObject {
     // MARK: USERPOST A CALL IS MDADE TO THE BACKEND.
     @discardableResult class
     func startApiUserPost(_ token                                 : String?                        ,
-                          conCompletionCorrecto completionCorrecto: @escaping Closures.userPost    ,
+                          conCompletionCorrecto completionCorrecto: @escaping Closures.Posts    ,
                           error procesoIncorrecto                 : @escaping Closures.MessageError) -> URLSessionDataTask? {
         let dic : [Any]? = nil
         

@@ -1,122 +1,68 @@
-//
-//  PostRemoteDataManager.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 4/2/22.
-//  
-//
-
 import Foundation
 
 class PostRemoteDataManager:PostRemoteDataManagerInputProtocol {
     
-    
-   
     // MARK: PROPERTIES
     var remoteRequestHandler: PostRemoteDataManagerOutputProtocol?
+    let apiManager: ProAPIManagerProtocol
     
-    
-    func remoteCheckIfLikesExist(postId: Int, userId: Int, token: String, post: PostViewData?) {
-        
-        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/checkIfLikesExist/\(postId)/\(userId)" ) else {
-            return
-        }
-        
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpGet
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( [Heart].self, from: data )
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                    self.remoteRequestHandler?.remoteCallBackLikesExist(with: tasks, post: post)
-                } catch {
-                    print(error)
-                }
-            }
-        }
-        task.resume()
+    // MARK:  CONSTRUCTOR
+    init(apiManager: ProAPIManagerProtocol = APIManager()) {
+        self.apiManager = apiManager
     }
     
+    /* TODO: COMPROBACION SI EXISTE O NO "EL ME GUSTA"
+     * SE LLAMA AL API MANAGER PARA QUE NOS DIGA SI "EL ME GUSTA" ESTÁ CREADO O NO,
+     * PARA HACERLO SABER AL INTERACTOR COMO RESPUESTA DE VUELTA. */
+    func remoteCheckIfLikesExist(postId: Int, userId: Int, token: String, post: PostViewData?, sender: HeartButton) {
+        /*self.apiManager.checkIfLikesExist(postId: postId, userId: userId, token: token) { [weak self] response in
+            if let heart = response {
+                self?.remoteRequestHandler?.remoteCallBackLikesExist(with: heart, post: post, sender: sender)
+            } else {
+                // ERROR
+            }
+        }*/
+        
+        // LLAMAR AL API MANAGER
+        self.apiManager.checkIfLikesExist(postId: postId, userId: userId, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let heart = response {
+                    self?.remoteRequestHandler?.remoteCallBackLikesExist(with: heart, post: post, sender: sender)
+                }
+            case .failure(let error): print("Error processing  home create like\(error)")
+            }
+        }
+    }
     
+    /* TODO: SE CREA "EL ME GUSTA"
+     * SE LLAMA AL API MANAGER PARA CREAR "EL ME GUSTA". */
     func remoteCreateLike(post: PostViewData?, userId: Int, token: String) {
-        guard let ref_id = post?.id else {
-            return
-        }
-        print("Home Remote: ")
-        print(ref_id)
-        print("UserId: ")
-        print(userId)
-        
-        let param : [ String : Any ] = [
-            "type_id"   : 10,
-            "ref_id"    : ref_id,
-            "user_id"   : userId]
-        
-        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/create-like" ) else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        if post != nil {
-            do {
-                request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-                request.httpBody = try JSONSerialization.data(
-                    withJSONObject: param,
-                    options: JSONSerialization.WritingOptions.prettyPrinted)
-                request.httpMethod = Constants.Method.httpPost
-            } catch {}
-        }
-        
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let task = try decoder.decode( Heart.self, from: data )
-                    print("Home Remote: ")
-                    print(task)
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                    
-                } catch {
-                    print(error)
-                    print("error preccesing data Profile")
+        self.apiManager.insertLike(post: post, userId: userId, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let _ = response {
+                    // LLAMAR AL INTERACTOR.
+                } else {
+                    self?.remoteRequestHandler?.remoteLikeFailed()
                 }
+            case .failure(let error): print("Error processing  home create like\(error)")
             }
         }
-        task.resume()
     }
     
-    
+    /* TODO: SE BORRA "EL ME GUSTA"
+     * SE LLAMA AL API MANAGER PARA BORRAR "EL ME GUSTA". */
     func remoteDeleteLike(heart: Heart?, token: String) {
-        guard let commentId = heart?.id, let refId = heart?.refID else {
-            return
-        }
-        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/delete/\(commentId)/\(refId)" ) else {
-            return
-        }
-        
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpDelete
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( ResMessage.self, from: data )
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                    // RETORNA "TRUE" SI SE HA ELIMINADO CON EXITO.
-                    self.remoteRequestHandler?.remoteCallBackDeleteLike(with: tasks)
-                } catch {
-                    print(error)
+        self.apiManager.deleteLike(heart: heart, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let task = response {
+                    self?.remoteRequestHandler?.remoteCallBackDeleteLike(with: task)
                 }
+            case .failure(let error): print("Error processing  home delete like\(error)")
             }
         }
-        task.resume()
     }
     
     

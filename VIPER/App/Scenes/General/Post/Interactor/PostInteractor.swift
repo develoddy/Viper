@@ -1,11 +1,3 @@
-//
-//  PostInteractor.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 4/2/22.
-//  
-//
-
 import Foundation
 
 class PostInteractor: PostInteractorInputProtocol {
@@ -26,8 +18,8 @@ class PostInteractor: PostInteractorInputProtocol {
         self.presenter?.interactorCallBackData(userPost: renderModels)
     }
     
-    func interactorCheckIfLikesExist(postId: Int, userId: Int, token: String, post: PostViewData?) {
-        self.remoteDatamanager?.remoteCheckIfLikesExist(postId: postId, userId: userId, token: token, post: post)
+    func interactorCheckIfLikesExist(postId: Int, userId: Int, token: String, post: PostViewData?, sender: HeartButton) {
+        self.remoteDatamanager?.remoteCheckIfLikesExist(postId: postId, userId: userId, token: token, post: post, sender: sender)
     }
     
     func interactorCreateLike(post: PostViewData?, userId: Int, token: String) {
@@ -39,19 +31,35 @@ class PostInteractor: PostInteractorInputProtocol {
     }
     
     func interactorDeletePost(post: PostViewData?, token: String) {
-        
         self.remoteDatamanager?.remoteDeletePost(post: post, token: token)
     }
-
 }
 
+
+// MARK: - OUT PUT
 extension PostInteractor: PostRemoteDataManagerOutputProtocol {
-    func remoteCallBackDeleteLike(with message: ResMessage) {
-        
+    func remoteLikeFailed() {
+        // CODE
     }
     
-    // TODO: Implement use case methods
-    func remoteCallBackLikesExist(with heart: [Heart], post: PostViewData?) {
-        self.presenter?.interactorCallBackLikesExist(with: heart, post: post)
+    func remoteCallBackDeleteLike(with message: ResMessage) {
+        // CODE
+    }
+    
+    /* TODO: SE APLICA LA LOGICA SI EXISTE O NO "EL ME GUSTA"
+     * EL INTERACTOR RECIBE LOS DATOS QUE VIENE DEL REMOTE MANAAGER
+     * SE COMPRUEBA SI EXISTE O NO "EL ME GUSTA" PARA ENVIASELO AL PRESENTER. */
+    func remoteCallBackLikesExist(with heart: [Heart], post: PostViewData?, sender: HeartButton) {
+        DispatchQueue.main.async {[weak self] in
+            if heart.count != 0 {
+                // SI EXISTE LIKE.
+                for item in heart {
+                    self?.presenter?.interactorCallBackLikesExist(with: item, sender: sender)
+                }
+            } else {
+               // NO EXISTE LIKE.
+                self?.presenter?.interactorCallBackLikeNotExist(post: post, sender: sender)
+            }
+        }
     }
 }

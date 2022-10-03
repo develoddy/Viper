@@ -159,7 +159,7 @@ extension HomePresenter: HomeInteractorOutputProtocol {
         self.totalPages = totalPages
     }
     
-    /* TODO: DE OBTIENE EL RESULTADO DE LA VERIFICACIONES DE "ME GUSTA"
+    /* TODO: DE OBTIENE EL RESULTADO DE LA VERIFICACION DE "ME GUSTA"
      * EL PRESENTER RECIBE LOS DATOS DE VERIFICACION "EL GUSTA" PARA SABER
      * SI YA ESTABA CREADO O NO. */
     func interactorCallBackLikesExist(with heart: [Heart], post: PostViewData?) {

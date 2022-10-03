@@ -2,10 +2,6 @@ import Foundation
 import UIKit
 
 
-
-
-
-
 class SearchView: UIViewController {
     // MARK: PROPERTIES
     

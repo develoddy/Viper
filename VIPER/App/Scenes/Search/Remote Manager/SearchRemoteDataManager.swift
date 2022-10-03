@@ -1,22 +1,14 @@
-//
-//  SearchRemoteDataManager.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//  
-//
-
 import Foundation
 
 class SearchRemoteDataManager:SearchRemoteDataManagerInputProtocol {
     // MARK: PROPERTIES
     var remoteRequestHandler: SearchRemoteDataManagerOutputProtocol?
-    let apiService: APIServiceProtocol
+    let apiManager: ProAPIManagerProtocol
     var isPaginationOn: Bool? = false
     
-    // MARK: CONSTRUCTOR
-    init(apiService: APIServiceProtocol = APIService()) {
-        self.apiService = apiService
+    // MARK:  CONSTRUCTOR
+    init(apiManager: ProAPIManagerProtocol = APIManager()) {
+        self.apiManager = apiManager
     }
     
     

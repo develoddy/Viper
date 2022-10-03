@@ -52,13 +52,13 @@ class ProfileInteractor: ProfileInteractorInputProtocol {
      - ---------- LLAMAR AL REMOTEDATAMANAGER ------------
      - EN ESTE PUNTO SE OBTIENE LAS PUBLICACIONES.
      */
-    func interactorGetPosts(id: Int, page: Int, token: String) {
+    func interactorGetPosts(id: Int, page: Int, token: String, isPagination:Bool) {
         if token.isEmpty {
             guard let id = self.token.getUserToken().user?.id else { return }
             guard let token = self.token.getUserToken().success else { return }
-            self.remoteDatamanager?.remoteGetPosts(id: id, page: page, token: token)
+            self.remoteDatamanager?.remoteGetPosts(id: id, page: page, token: token, isPagination: isPagination)
         } else {
-            self.remoteDatamanager?.remoteGetPosts(id: id, page: page, token: token)
+            self.remoteDatamanager?.remoteGetPosts(id: id, page: page, token: token, isPagination: isPagination)
         }
     }
     
@@ -115,8 +115,8 @@ extension ProfileInteractor: ProfileRemoteDataManagerOutputProtocol {
      * RECIBE LOS DATOS DE VUELTA DEL REMOTE DATA MANAGER.
      * EN ESTE PUNTO SE ENVIA LOS DATOS (POST) AL PRESENTER.
      */
-    func remoteCallBackPosts( with viewModel: [ Post ] ) {
-        self.presenter?.interactorCallBackPosts( with: viewModel )
+    func remoteCallBackPosts( with viewModel: [ Post ], totalPages: Int ) {
+        self.presenter?.interactorCallBackPosts( with: viewModel, totalPages: totalPages )
     }
     
     func remoteCallBackAppendPosts(with viewModel: [Post]) {

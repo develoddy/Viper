@@ -30,10 +30,6 @@ class SearchPresenter {
 // MARK: - FUNCTIONS
 extension SearchPresenter: SearchPresenterProtocol {
   
-    func getTotalPages() -> Int {
-        return self.page ?? 0
-    }
-    
     
     func viewDidLoad() {
         guard let token = token.getUserToken().success else { return }
@@ -62,6 +58,10 @@ extension SearchPresenter: SearchPresenterProtocol {
     // GET DATA
     func showUserpostData(indexPath: IndexPath) -> PostViewData /*Post*/ {
         return self.postViewData[indexPath.row]
+    }
+    
+    func getTotalPages() -> Int {
+        return self.page ?? 0
     }
     
     // SEARCH FILTER

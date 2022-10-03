@@ -12,12 +12,12 @@ class SearchResultRemoteDataManager:SearchResultRemoteDataManagerInputProtocol {
     
     // MARK: - PROPIERTIES
     var remoteRequestHandler: SearchResultRemoteDataManagerOutputProtocol?
-    let apiService: APIServiceProtocol
+    let apiManager: ProAPIManagerProtocol
     var viewModel: [User] = []
     
-    // MARK: - CONSTRUCTOR
-    init(apiService: APIServiceProtocol = APIService()) {
-        self.apiService = apiService
+    // MARK:  CONSTRUCTOR
+    init(apiManager: ProAPIManagerProtocol = APIManager()) {
+        self.apiManager = apiManager
     }
     
     // MARK: - FUNCTIONS
