@@ -15,14 +15,6 @@ class PostRemoteDataManager:PostRemoteDataManagerInputProtocol {
      * SE LLAMA AL API MANAGER PARA QUE NOS DIGA SI "EL ME GUSTA" ESTÁ CREADO O NO,
      * PARA HACERLO SABER AL INTERACTOR COMO RESPUESTA DE VUELTA. */
     func remoteCheckIfLikesExist(postId: Int, userId: Int, token: String, post: PostViewData?, sender: HeartButton) {
-        /*self.apiManager.checkIfLikesExist(postId: postId, userId: userId, token: token) { [weak self] response in
-            if let heart = response {
-                self?.remoteRequestHandler?.remoteCallBackLikesExist(with: heart, post: post, sender: sender)
-            } else {
-                // ERROR
-            }
-        }*/
-        
         // LLAMAR AL API MANAGER
         self.apiManager.checkIfLikesExist(postId: postId, userId: userId, token: token) { [weak self] result in
             switch result {
@@ -65,10 +57,8 @@ class PostRemoteDataManager:PostRemoteDataManagerInputProtocol {
         }
     }
     
-    
     // DELETE POST.
     func remoteDeletePost(post: PostViewData?, token: String) {
         print("Post REMOTE")
     }
-    
 }

@@ -6,6 +6,9 @@ class Closures: NSObject {
     typealias heart = (_ response: Heart?) -> Void
     typealias resMessage = (_ response: ResMessage?) -> Void
     typealias checkHeart = (_ response: [Heart]?) -> Void
+    typealias resUser = (_ response: ResUser?) -> Void
+    typealias resCounter = (_ response: ResCounter?) -> Void
+    typealias resFollows = (_ response: ResFollows?) -> Void
     
     typealias MessageError = (_ messageError: String ) -> Void
     typealias Message = (_ message: Operation ) -> Void

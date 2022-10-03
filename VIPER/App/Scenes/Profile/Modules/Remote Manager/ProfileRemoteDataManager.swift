@@ -17,172 +17,83 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
         self.apiManager = apiManager
     }
     
-    
-    /*
-     * ----------- PERFIL ------------
-     * EN ESTE PUNTO SE OBTIENE LOS DATOS DEL PERFIL (HEADER).
-     */
+    // PROFILE.
     func remoteGetData(id: Int, token: String) {
-        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/users/one/\(id)" ) else {
-            return
-        }
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpGet
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( ResUser.self, from: data )
-                    guard let viewModel = tasks.user else {
-                        return
-                    }
-                    self.viewModel.append( viewModel )
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                    self.remoteRequestHandler?.remoteCallBackData( with: self.viewModel )
-                } catch {
-                    print("error preccesing data Profile")
+        self.apiManager.fetchProfile(id: id, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let user = response?.user {
+                    self?.viewModel.append(user)
+                    self?.remoteRequestHandler?.remoteCallBackData(with: self?.viewModel ?? [])
                 }
+            case .failure(let error): print("Remote: Error processing profile like\(error)")
             }
         }
-        task.resume()
     }
     
     
-    /*
-     * ----------- COUNTER ------------
-     * EN ESTE PUNTO SE OBTIENE LOS DATOS DE LOS
-     * CONTADORES DE PUBLICACIÓN, SEFGUIDORES Y SIGUIENDO.
-     */
+    // TASKS.
     func remoteGetCounter(id: Int, token: String) {
-        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/users/counters/one/\(id)" ) else {
-            return
-        }
-        
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpGet
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( ResCounter.self, from: data )
-                    self.viewModelTasts.append( tasks )
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                    self.remoteRequestHandler?.remoteCallBackTasts( with: self.viewModelTasts )
-                } catch {
-                    print(error)
+        self.apiManager.fetchProfileCounters(id: id, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let tasks = response {
+                    self?.viewModelTasts.append(tasks)
+                    self?.remoteRequestHandler?.remoteCallBackTasts(with: self?.viewModelTasts ?? [])
                 }
+            case .failure(let error): print("Remote: Error processing profile counter\(error)")
             }
         }
-        task.resume()
     }
     
     
-    /*
-     * ----------- POST USER ------------
-     * EN ESTE PUNTO SE OBTIENE LOS DATOS DE
-     * LAS PUBLICACIONES (GRID IMAGENES).
-     */
+    // POSTS.
     func remoteGetPosts(id: Int, page: Int, token: String, isPagination:Bool) {
-        if isPagination {
-            isPaginationOn = true
-        }
-        
-        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/user/\(id)/\(page)" ) else {
-            return
-        }
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpGet
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( ResPosts.self, from: data )
-                    guard let posts = tasks.resPostImages?.posts, let totalPages = tasks.resPostImages?.totalPages else {
-                        return
-                    }
-                    
+        self.apiManager.fetchProfilePosts(id: id, page: page, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let posts = response?.resPostImages?.posts, let totalPages = response?.resPostImages?.totalPages {
                     if isPagination {
-                        self.remoteRequestHandler?.remoteCallBackAppendPosts(with: posts)
+                        self?.remoteRequestHandler?.remoteCallBackAppendPosts(with: posts)
                         if isPagination {
-                            self.isPaginationOn = false
+                            self?.isPaginationOn = false
                         }
                     } else {
-                        self.remoteRequestHandler?.remoteCallBackPosts( with: posts, totalPages: totalPages )
+                        self?.remoteRequestHandler?.remoteCallBackPosts( with: posts, totalPages: totalPages )
                         if isPagination {
-                            self.isPaginationOn = false
+                            self?.isPaginationOn = false
                         }
                     }
-        
-                } catch {
-                    print(error)
                 }
+            case .failure(let error): print("Error processing profile posts.\(error)")
             }
         }
-        task.resume()
     }
     
     
-    /*
-     * ----------- FOLLOWING ------------
-     * EN ESTE PUNTO SE OBTIENE A LA GENTE QUE SEGUIMOS.
-     */
+    // FOLLOWING.
     func remoteGetFollowing(page: Int, token: String) {
-        
-        guard let url = URL(string: Constants.ApiRoutes.domain + "/api/follows/following/\(page)") else {
-            return
-        }
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpGet
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( ResFollows.self, from: data )
-                    guard let following = tasks.follows else {
-                        return
-                    }
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                    self.remoteRequestHandler?.remoteCallBackFollowing(with: following)
-                } catch {
-                    print(error)
+        self.apiManager.fetchProfileFollowing(page: page, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let following = response?.follows {
+                    self?.remoteRequestHandler?.remoteCallBackFollowing(with: following)
                 }
+            case .failure(let error): print("Error processing profile following.\(error)")
             }
         }
-        task.resume()
     }
     
+    // FOLLOWERS.
     func remoteGetFollowers(page: Int, token: String) {
-        
-        guard let url = URL(string: Constants.ApiRoutes.domain + "/api/follows/followed/\(page)") else {
-            return
-        }
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpGet
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( ResFollows.self, from: data )
-                    guard let follower = tasks.follows else {
-                        return
-                    }
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
-                    self.remoteRequestHandler?.remoteCallBackFollowers(with: follower)
-                } catch {
-                    print(error)
+        self.apiManager.fetchProfileFollowers(page: page, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let following = response?.follows {
+                    self?.remoteRequestHandler?.remoteCallBackFollowers(with: following)
                 }
+            case .failure(let error): print("Error processing profile following.\(error)")
             }
         }
-        task.resume()
     }
 }

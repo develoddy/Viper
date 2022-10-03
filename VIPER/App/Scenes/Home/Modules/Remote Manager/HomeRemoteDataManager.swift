@@ -70,13 +70,6 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
      * TODO: COMPROBAR SI EXISTE "ME GUSTA"
      * SE LLAMA AL API REST PARA QUE NOS DIGA SI EXISTE "EL MESGUSTA" O NO. */
     func remoteCheckIfLikesExist(postId: Int, userId: Int, token: String, post: PostViewData?) {
-        /*self.apiManager.checkIfLikesExist(postId: postId, userId: userId, token: token) { [weak self] response in
-            if let heart = response {
-                self?.remoteRequestHandler?.remoteCallBackLikesExist(with: heart, post: post)
-            } else {
-                // ERROR
-            }
-        }*/
         self.apiManager.checkIfLikesExist(postId: postId, userId: userId, token: token) { [weak self] result in
             switch result {
             case .success(let response):
