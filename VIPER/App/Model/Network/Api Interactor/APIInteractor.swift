@@ -15,6 +15,11 @@ class APIInteractor: NSObject  {
     static let _URL_profile_counters = "api/users/counters/one/"
     static let _URL_profile_following = "api/follows/following/"
     static let _URL_profile_followers = "api/follows/followed/"
+    static let _URL_comments = "api/comments/read/"
+    static let _URL_comment_create = "api/comments/create/"
+    static let _URL_comment_delete = "api/comments/delete/"
+    static let _UR_comment_update = "api/comments/update"
+    static let _URL_search_user = "api/users/get-user-filter/"
     
     /* TODO: SE APLICA LA LOGICA DE OBTENER LOS DATOS "LOGIN"
      * LLAMAR AL APIREMOTE
@@ -237,6 +242,129 @@ class APIInteractor: NSObject  {
                     switch result {
                     case .success(let response):completion(response)
                     case .failure(let error): processIncorrect(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        return task
+    }
+    
+    // OBTENER COMMENTARIOS.
+    @discardableResult class
+    func fetchReadByComment(postId: Int?, pagination: Int?, token: String?, completion: @escaping Closures.comments, processIncorrect: @escaping Closures.MessageError) -> URLSessionDataTask? {
+        guard let postId = postId, let pagination = pagination, let token = token else {
+            return nil
+        }
+        let params : [Any]? = nil
+        let task = APIRemote.doGETTokenToURL(url: APIInteractor.urlBase, path: APIInteractor._URL_comments + "\(postId)/\(pagination)", params: params, token: token) { response in
+            if let data = response.respuestaNSData {
+                ApiTranslator.translate(data: data, modelToDecode: [Comment].self) { result in
+                    switch result {
+                    case .success(let response):completion(response)
+                    case .failure(let error): processIncorrect(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        return task
+    }
+    
+    // CREAR COMENTARIO.
+    @discardableResult class
+    func insertComment(pagination: Bool?, commentPost: CommentPost?, token: String?, completion: @escaping Closures.comments, processIncorrect: @escaping Closures.MessageError) -> URLSessionDataTask? {
+        guard let comment = commentPost, let token = token else {
+            return nil
+        }
+        
+        let params : [ String : Any ] = [
+            "type_id"   : comment.typeID!   ,
+            "ref_id"    : comment.refID!    ,
+            "user_id"   : comment.user_id!  ,
+            "content"   : comment.content!  ,
+            "comment_id": comment.commentID!,
+            "created_at": comment.createdAt!,
+            "updated_at": comment.updatedAt!,
+            "postId"    : comment.postID!   ,
+            "userId"    : comment.userID!   ,
+        ]
+        
+        let task = APIRemote.doPOSTTokenToURL(url: APIInteractor.urlBase, path: APIInteractor._URL_comment_create, params: params, token: token) { response in
+            if let data = response.respuestaNSData {
+                // LLAMAR AL API TRANSLATAROR.
+                ApiTranslator.translate(data: data, modelToDecode: [Comment].self) { result in
+                    switch result {
+                    case .success(let response): completion(response)
+                    case .failure(let error): processIncorrect(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        return task
+    }
+    
+    // BORRADO DE COMENTARI0.
+    @discardableResult class
+    func deleteComment(id: Int?, token: String?, completion: @escaping Closures.resMessage, processIncorrect: @escaping Closures.MessageError) -> URLSessionDataTask? {
+        guard let id = id, let token = token else {
+            return nil
+        }
+        let params : [Any]? = nil
+        let task = APIRemote.doDELETETokenToURL(url: APIInteractor.urlBase, path: APIInteractor._URL_comment_delete + "\(id)", params: params, token: token) { response in
+            if let data = response.respuestaNSData {
+                ApiTranslator.translate(data: data, modelToDecode: ResMessage.self) { result in
+                    switch result {
+                    case .success(let response):
+                        completion(response)
+                    case .failure(let error):
+                        processIncorrect(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        return task
+    }
+    
+    
+    @discardableResult class
+    func updateComment(postId: Int?, commentId: Int?, content: String?, token: String?, completion: @escaping Closures.upcomment, processIncorrect: @escaping Closures.MessageError) -> URLSessionDataTask? {
+        guard let postId = postId, let commentId = commentId, let content = content, let token = token else {
+            return nil
+        }
+        let params: [ String : Any ] = [
+            "idComment": commentId,
+            "postId": postId,
+            "content": content
+        ]
+        let task = APIRemote.doPUTTokenToURL(url: APIInteractor.urlBase, path: APIInteractor._UR_comment_update, params: params, token: token) { response in
+            if let data = response.respuestaNSData {
+                ApiTranslator.translate(data: data, modelToDecode: [Int].self) { result in
+                    switch result {
+                    case .success(let response):
+                        completion(response)
+                    case .failure(let error):
+                        processIncorrect(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        return task
+    }
+    
+    // FILTRAR EL USUARIO
+    @discardableResult class
+    func filterSearch(token: String?, filter: String?, completion: @escaping Closures.user, processIncorrect: @escaping Closures.MessageError) -> URLSessionDataTask? {
+        guard let token = token, let filter = filter else {
+            return nil
+        }
+        let params : [Any]? = nil
+        let task = APIRemote.doGETTokenToURL(url: APIInteractor.urlBase, path: APIInteractor._URL_search_user + "\(filter)", params: params, token: token) { response in
+            if let data = response.respuestaNSData {
+                ApiTranslator.translate(data: data, modelToDecode: [User].self) { result in
+                    switch result {
+                    case .success(let response):
+                        completion(response)
+                    case .failure(let error):
+                        processIncorrect(error.localizedDescription)
                     }
                 }
             }

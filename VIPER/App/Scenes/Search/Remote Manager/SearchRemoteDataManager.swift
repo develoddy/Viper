@@ -11,49 +11,25 @@ class SearchRemoteDataManager:SearchRemoteDataManagerInputProtocol {
         self.apiManager = apiManager
     }
     
-    
-    // MARK: - FUNCTIONS
-    
+
     // LLAMAR AL API REST PARA TRAER TODAS LAS PUBLICACIONES.
     func remoteGetData(page: Int, isPagination:Bool, token: String) {
-        
         if isPagination {
-            isPaginationOn = true
+            self.isPaginationOn = true
         }
-        
-        guard let url = URL( string: Constants.ApiRoutes.domain + "/api/posts/\(page)" ) else {
-            return
-        }
-        var request = URLRequest( url: url )
-        request.httpMethod = Constants.Method.httpGet
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask( with: request ) { data, response, error in let decoder = JSONDecoder()
-            if let data = data {
-                do {
-                    let tasks = try decoder.decode( ResPosts.self, from: data )
-                    guard let post = tasks.resPostImages?.posts, let totalPages = tasks.resPostImages?.totalPages else {
-                        return
-                    }
-                    // ENVIAR DE VUELTA LOS DATOS AL INTERACTOR
+        self.apiManager.fetchPosts(page: page, isPagination: isPagination, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let posts = response?.resPostImages?.posts, let totalPages = response?.resPostImages?.totalPages {
                     if isPagination {
-                        self.remoteRequestHandler?.remoteCallBackDataAppend(userpost: post)
-                        if isPagination {
-                            self.isPaginationOn = false
-                        }
+                        self?.remoteRequestHandler?.remoteCallBackDataAppend(userpost: posts)
+                            self?.isPaginationOn = false
                     } else {
-                        self.remoteRequestHandler?.remoteCallBackData(userpost: post, totalPages: totalPages)
-                        if isPagination {
-                            self.isPaginationOn = false
-                        }
+                        self?.remoteRequestHandler?.remoteCallBackData(userpost: posts, totalPages: totalPages)
                     }
-                } catch {
-                    print(" SearchRemoteDataManager: Error catch... ")
                 }
+            case .failure(let error): print("Error processing  home posts\(error)")
             }
         }
-        task.resume()
     }
-    
 }

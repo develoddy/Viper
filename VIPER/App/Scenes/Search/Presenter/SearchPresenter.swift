@@ -1,11 +1,3 @@
-//
-//  SearchPresenter.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//  
-//
-
 import Foundation
 import UIKit
 
@@ -90,21 +82,22 @@ extension SearchPresenter: SearchPresenterProtocol {
 extension SearchPresenter: SearchInteractorOutputProtocol {
     // MARK: FUNCTIONS
     func interactorCallBackDataAppend(userpost: [Post]) {
-        
-        let formattedItems = userpost.map{PostViewData(info: $0)}
-        
-        for item in formattedItems {
-            self.postViewData.append(item)
+        DispatchQueue.main.async {[weak self] in
+            let formattedItems = userpost.map{PostViewData(info: $0)}
+            
+            for item in formattedItems {
+                self?.postViewData.append(item)
+            }
         }
-        //view?.stopActivity()
     }
 
     // EL PRESENTER RECIBE LOS DATOS DEL INTERACTOR
     func interactorCallBackData(userpost: [Post], totalPages: Int) {
-        let formattedItems = userpost.map{PostViewData(info: $0)}
-        self.postViewData = formattedItems
-        //self.viewModel = userpost
-        self.page = totalPages
-        view?.stopActivity()
+        DispatchQueue.main.async {[weak self] in
+            let formattedItems = userpost.map{PostViewData(info: $0)}
+            self?.postViewData = formattedItems
+            self?.page = totalPages
+            self?.view?.stopActivity()
+        }
     }
 }

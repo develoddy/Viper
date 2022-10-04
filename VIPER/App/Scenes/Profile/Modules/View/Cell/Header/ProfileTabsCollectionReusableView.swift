@@ -25,6 +25,7 @@ class ProfileTabsCollectionReusableView:  UICollectionReusableView {
         button.setBackgroundImage(UIImage(systemName: "square.grid.2x2"), for: .normal)
         return button
     }()
+        
     private let taggedButton: UIButton = {
         let button  = UIButton()
         button.clipsToBounds = true

@@ -3,7 +3,7 @@ import UIKit
 class APIRemote: NSObject {
     
     // MARK: - CONSUMPTION SERVICE SIMPLE
-    class func doPOSTToURL(url: String, path: String, params: Any?, completion: @escaping ( _ objRespuesta : WebResponse) -> Void ) -> URLSessionDataTask {
+    class func doPOSTToURL(url: String, path: String, params: Any?, completion: @escaping ( _ response : WebResponse) -> Void ) -> URLSessionDataTask {
         let urlService = "\(url)/\(path)"
         let url = URL( string: urlService)
         var request = URLRequest(url: url!)
@@ -28,7 +28,7 @@ class APIRemote: NSObject {
     
     // MARK: - CONSUMPTION OF SERVICE WITH TOKKEN
     // POST
-    class func doPOSTTokenToURL(url: String, path: String, params: Any?, token: String, completion: @escaping (_ objRespuesta: WebResponse) -> Void) -> URLSessionDataTask {
+    class func doPOSTTokenToURL(url: String, path: String, params: Any?, token: String, completion: @escaping (_ response: WebResponse) -> Void) -> URLSessionDataTask {
         
         let configurationSession = URLSessionConfiguration.default
         configurationSession.httpAdditionalHeaders = HeadersRequest.createHeaderRequestWithToken(token) as? [AnyHashable: Any]
@@ -56,7 +56,7 @@ class APIRemote: NSObject {
     }
     
     // GET
-    class func doGETTokenToURL(url: String, path: String, params: Any?, token: String, completion: @escaping (_ objRespuesta: WebResponse) -> Void) -> URLSessionDataTask {
+    class func doGETTokenToURL(url: String, path: String, params: Any?, token: String, completion: @escaping (_ response: WebResponse) -> Void) -> URLSessionDataTask {
         let configurationSession = URLSessionConfiguration.default
         configurationSession.httpAdditionalHeaders = HeadersRequest.createHeaderRequestWithToken(token) as? [AnyHashable: Any]
         let sesion = URLSession.init(configuration: configurationSession)
@@ -83,7 +83,7 @@ class APIRemote: NSObject {
     }
     
     // DELETE
-    class func doDELETETokenToURL(url: String, path: String, params: Any?, token: String, completion: @escaping (_ objRespuesta: WebResponse) -> Void) -> URLSessionDataTask {
+    class func doDELETETokenToURL(url: String, path: String, params: Any?, token: String, completion: @escaping (_ response: WebResponse) -> Void) -> URLSessionDataTask {
         let configurationSession = URLSessionConfiguration.default
         configurationSession.httpAdditionalHeaders = HeadersRequest.createHeaderRequestWithToken(token) as? [AnyHashable: Any]
         let sesion = URLSession.init(configuration: configurationSession)
@@ -100,6 +100,33 @@ class APIRemote: NSObject {
             } catch {}
         }
         request.httpMethod = Constants.Method.httpDelete
+        let task = sesion.dataTask(with: request as URLRequest) { (data, response, error) in
+            DispatchQueue.main.async( execute: {
+                let objRespuesta = ApiResponseJSON.getServiceResponse(paraData: data, conResponse: response, conError: error as NSError?)
+                completion(objRespuesta)
+            })
+        }
+        task.resume()
+        return task
+    }
+    
+    // PUT
+    class func doPUTTokenToURL(url: String, path: String, params: Any?, token: String, completion: @escaping (_ response: WebResponse) -> Void) -> URLSessionDataTask {
+        let configurationSession = URLSessionConfiguration.default
+        configurationSession.httpAdditionalHeaders = HeadersRequest.createHeaderRequestWithToken(token) as? [AnyHashable: Any]
+        let sesion = URLSession.init(configuration: configurationSession)
+        
+        let urlService = "\(url)/\(path)"
+        let url = URL( string: urlService)
+        var request = URLRequest(url: url!)
+        
+        if params != nil {
+            do {
+                request.setValue(Constants.ApiRoutes.json, forHTTPHeaderField: Constants.ApiRoutes.type)
+                request.httpBody = try JSONSerialization.data( withJSONObject: params!, options: JSONSerialization.WritingOptions.prettyPrinted)
+            } catch {}
+        }
+        request.httpMethod = Constants.Method.httpPut
         let task = sesion.dataTask(with: request as URLRequest) { (data, response, error) in
             DispatchQueue.main.async( execute: {
                 let objRespuesta = ApiResponseJSON.getServiceResponse(paraData: data, conResponse: response, conError: error as NSError?)

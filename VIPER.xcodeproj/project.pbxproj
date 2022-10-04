@@ -412,6 +412,72 @@
 			path = Session;
 			sourceTree = "<group>";
 		};
+		B3025B1528EC119600439BB7 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5678027B299BA00CC123A /* HeadersRequest.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		B3025B1628EC16F000439BB7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF853D279FEC7A0076D443 /* Cell */,
+				B3EF853A279FEBC20076D443 /* Ui */,
+				B3EF852F279FEADF0076D443 /* SearchResultView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3025B1728EC16F600439BB7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF852B279FEADF0076D443 /* SearchResultPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3025B1828EC16FC00439BB7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF852E279FEADF0076D443 /* SearchResultInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3025B1928EC170300439BB7 /* Remote Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF8530279FEADF0076D443 /* SearchResultRemoteDataManager.swift */,
+			);
+			path = "Remote Manager";
+			sourceTree = "<group>";
+		};
+		B3025B1A28EC170C00439BB7 /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF852C279FEADF0076D443 /* SearchResultLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B3025B1B28EC171300439BB7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF8531279FEADF0076D443 /* SearchResultWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3025B1C28EC171A00439BB7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3EF852D279FEADF0076D443 /* SearchResultProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		B31963B9279630CE00A23628 /* Ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,7 +589,6 @@
 		B33B345128BCF767007203B4 /* RES */ = {
 			isa = PBXGroup;
 			children = (
-				B3B5678027B299BA00CC123A /* HeadersRequest.swift */,
 				B3B5677E27B298B600CC123A /* ResponseInJSONWithData.swift */,
 			);
 			name = RES;
@@ -696,7 +761,6 @@
 		B3A4D42C2791A3E4006B4CCA /* App */ = {
 			isa = PBXGroup;
 			children = (
-				B3A4D4902794689F006B4CCA /* Common */,
 				B3A4D45C2792C50C006B4CCA /* Model */,
 				B3A4D42D2791A3EC006B4CCA /* Scenes */,
 				B3AB373328E3114C00C2BDB5 /* Utilities */,
@@ -797,14 +861,6 @@
 				B31963E62797F34400A23628 /* Modules */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		B3A4D4902794689F006B4CCA /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4D46C27936749006B4CCA /* Resources */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		B3AB36F728E1DBA800C2BDB5 /* View */ = {
@@ -1159,6 +1215,7 @@
 		B3AB373328E3114C00C2BDB5 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B3A4D46C27936749006B4CCA /* Resources */,
 				B31963F127995BD500A23628 /* TextFieldWithPadding.swift */,
 				B341B00528208EFD009FA4A9 /* Alert.swift */,
 				B3A4D49127958A31006B4CCA /* Extensions.swift */,
@@ -1238,6 +1295,7 @@
 		B3AB374228E5FFC300C2BDB5 /* Api Remote */ = {
 			isa = PBXGroup;
 			children = (
+				B3025B1528EC119600439BB7 /* Headers */,
 				B3AB374E28E7098100C2BDB5 /* ResponseJSON */,
 				B3AB374028E5DE0700C2BDB5 /* APIRemote.swift */,
 			);
@@ -1437,15 +1495,13 @@
 		B3EF8539279FEAE50076D443 /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
-				B3EF853D279FEC7A0076D443 /* Cell */,
-				B3EF853A279FEBC20076D443 /* Ui */,
-				B3EF852D279FEADF0076D443 /* SearchResultProtocols.swift */,
-				B3EF8531279FEADF0076D443 /* SearchResultWireFrame.swift */,
-				B3EF852C279FEADF0076D443 /* SearchResultLocalDataManager.swift */,
-				B3EF8530279FEADF0076D443 /* SearchResultRemoteDataManager.swift */,
-				B3EF852E279FEADF0076D443 /* SearchResultInteractor.swift */,
-				B3EF852B279FEADF0076D443 /* SearchResultPresenter.swift */,
-				B3EF852F279FEADF0076D443 /* SearchResultView.swift */,
+				B3025B1C28EC171A00439BB7 /* Protocols */,
+				B3025B1B28EC171300439BB7 /* Router */,
+				B3025B1A28EC170C00439BB7 /* Local Manager */,
+				B3025B1928EC170300439BB7 /* Remote Manager */,
+				B3025B1828EC16FC00439BB7 /* Interactor */,
+				B3025B1728EC16F600439BB7 /* Presenter */,
+				B3025B1628EC16F000439BB7 /* View */,
 			);
 			path = SearchResult;
 			sourceTree = "<group>";

@@ -114,20 +114,11 @@ class ProfileView: UIViewController {
 
     // COLLECTION HEADER
     func configureCollectionViewHeader() {
-        collectionView.register(
-                StoryFeaturedCollectionTableViewCell.self,
-                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier)
+        collectionView.register(StoryFeaturedCollectionTableViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StoryFeaturedCollectionTableViewCell.identifier)
 
-        collectionView.register(
-                ProfileInfoHeaderCollectionReusableView.self,
-                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier)
+        collectionView.register(ProfileInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier)
 
-        collectionView.register(
-                ProfileTabsCollectionReusableView.self,
-                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: ProfileTabsCollectionReusableView.identifier)
+        collectionView.register(ProfileTabsCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileTabsCollectionReusableView.identifier)
     }
 
     // DELEGATES
@@ -137,13 +128,58 @@ class ProfileView: UIViewController {
     }
 
     func configureNavigationItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+         //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
         // navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(didTapCancel))
+        confireColorNavigation()
+        setupLeftNavItems()
+        setupRightNavItems()
+    }
+    
+    func confireColorNavigation() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
+    
+    // NAV ITEMS
+    func setupLeftNavItems() {
+        let followButton = UIButton(type: .system)
+        followButton.setTitle("App", for: .normal)
+        followButton.titleLabel?.font = .systemFont(ofSize: 26, weight: .black )
+        followButton.tintColor = Constants.Color.black
+        followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)
+        
+    }
+    
+    func setupRightNavItems() {
+        let buttonPlusIcon = UIImage(systemName: "plus")
+        let rightBarPlusButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        rightBarPlusButton.image = buttonPlusIcon
+        rightBarPlusButton.tintColor = .black
+        
+        let buttonLineIcon = UIImage(systemName: "line.3.horizontal")
+        let rightBarLineButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        rightBarLineButton.image = buttonLineIcon
+        rightBarLineButton.tintColor = .black
+        
+        navigationItem.rightBarButtonItems = [
+            rightBarPlusButton,
+            rightBarLineButton
+        ]
     }
     
     // ACCION BUTTONS
     @objc func didTapSave() {
-        dismiss(animated: true, completion: nil)
+        // LLAMAR AL PRESENTER
+        // PRESENTAR OTRO MODULO DE SHEE.
+        print("rightBarButtonItem Tapped")
     }
     
     @objc func didTapCancel() {
@@ -153,7 +189,6 @@ class ProfileView: UIViewController {
 
 
 // MARK: - UIABLEVIEW DATASOURCE
-
 extension ProfileView: UICollectionViewDataSource {
     func numberOfSections( in collectionView: UICollectionView ) -> Int {
         guard let numberOfSections = self.presenter?.presenterNumberOfSections() else { return 0 }
@@ -293,7 +328,7 @@ extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     
     // ---------- LLAMAR AL PRESENTER -----------
     // SE PRETENDE NAVEGAR A OTRO MODULO (LISTPEOPLE)
-    // QUEREMOS LISTAR A LOS QUE QUE ME SIGUEN.
+    // LISTAR A LOS QUE QUE ME SIGUEN.
     func didTapFollowersButton(_header: ProfileInfoHeaderCollectionReusableView) {
         let follower = self.presenter?.showFollowers()
         self.presenter?.gotoListPeopleScreen(following: follower)
@@ -301,26 +336,22 @@ extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     
     // ---------- LLAMAR AL PRESENTER -----------
     // SE PRETENDE NAVEGAR A OTRO MODULO (LISTPEOPLE)
-    // QUEREMOS LISTAR A LOS QUE YO SIGO.
+    // LISTAR A LOS QUE YO SIGO.
     func didTapFollowingButton(_header: ProfileInfoHeaderCollectionReusableView) {
-        
         let following = self.presenter?.showFollowin()
         self.presenter?.gotoListPeopleScreen(following: following)   
     }
     
     // ---------- LLAMAR AL PRESENTER -----------
     // SE PRETENDE NAVEGAR A OTRO MODULO (EDIT PROFILE)
-    // QUEREMOS EDITAR NUESTRA INFORMACIÓN DE PERFIL.
+    // EDITAR NUESTRA INFORMACIÓN DE PERFIL.
     func didTapEditProfileButton( _header: ProfileInfoHeaderCollectionReusableView ) {
-        // LLAMAR AL PRESENTER
         self.presenter?.gotoEitProfileScreen(model: _header.model)
     }
 }
 
 
-
-
-// TODO: - ACCIONES DE BOTONES EN EL TAB.
+// MARK: - ACCIONES DE BOTONES EN EL TAB.
 extension ProfileView: ProfileTabsCollectionReusableViewProtocol {
     func didTapGridButtonTab() {
         self.presenter?.viewDidLoad()
@@ -332,4 +363,3 @@ extension ProfileView: ProfileTabsCollectionReusableViewProtocol {
         }
     }
 }
-

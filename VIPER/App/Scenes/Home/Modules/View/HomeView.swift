@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-
+// MARK: HOMEVIEW
 class HomeView: UIViewController {
 
     // MARK: PROPERTIES
@@ -39,7 +39,7 @@ class HomeView: UIViewController {
         configureDelegates()
         configureActivity()
         headerTableView()
-        setupLeftNavItems()
+        configureNavigationItem()
     }
     
     // LLAMAR AL PRESENTER.
@@ -60,8 +60,68 @@ class HomeView: UIViewController {
     }
     
     // NAV ITEMS
+    func configureNavigationItem() {
+        confireColorNavigation()
+        setupLeftNavItems()
+        setupRightNavItems()
+    }
+    
+    func confireColorNavigation() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     func setupLeftNavItems() {
-        self.navigationItem.title = "Secondary"
+        let followButton = UIButton(type: .system)
+        followButton.setTitle("App", for: .normal)
+        followButton.titleLabel?.font = .systemFont(ofSize: 26, weight: .black )
+        followButton.tintColor = Constants.Color.black
+        followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)
+    }
+    
+    func setupRightNavItems() {
+        // Crear
+        let buttonPlusIcon = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold))?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        
+        let rightBarPlusButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        rightBarPlusButton.image = buttonPlusIcon
+        rightBarPlusButton.tintColor = .black
+        
+        // chat
+        let buttonChatIcon = UIImage(systemName: "paperplane.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 19, weight: .semibold))?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let rightBarChatButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        rightBarChatButton.image = buttonChatIcon
+        rightBarChatButton.tintColor = .black
+        
+        // bell
+        let buttonBellIcon = UIImage(systemName: "bell.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 19, weight: .semibold))?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let rightBarBellButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        rightBarBellButton.image = buttonBellIcon
+        rightBarBellButton.tintColor = .black
+        
+        navigationItem.rightBarButtonItems = [
+            rightBarChatButton,
+            rightBarBellButton,
+            rightBarPlusButton
+        ]
+    }
+    
+    // ACCION BUTTONS
+    @objc func didTapSave() {
+        // LLAMAR AL PRESENTER
+        // PRESENTAR OTRO MODULO DE SHEE.
+        print("rightBarButtonItem Tapped")
+    }
+    
+    @objc func didTapCancel() {
+        dismiss(animated: true, completion: nil)
     }
 }
 

@@ -38,7 +38,10 @@ class LoginWireFrame: LoginWireFrameProtocol {
         let submodules = (
             home: HomeWireFrame.createHomeModule(),
             profile: ProfileWireFrame.createProfileModule( id: 0, name: "", token: "", indexPath: []),
-            search: SearchWireFrame.createSearchModule())
+            search: SearchWireFrame.createSearchModule(),
+            bell: UIViewController(),
+            messages: UIViewController()
+        )
         
         let tabBarController = TabBarModuleBuilder.build( usingSubmodules: submodules )
         

@@ -1,15 +1,16 @@
-//
-//  ProfileUI.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 18/1/22.
-//
-
 import UIKit
 
 class ProfileUI : UIView {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    private let lineButton: UIButton = {
+        let lineButton  = UIButton()
+        lineButton.clipsToBounds = true
+        lineButton.tintColor = .lightGray
+        lineButton.setBackgroundImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
+        return lineButton
+    }()
     
     // MARK: - Init
     override init(frame: CGRect) {

@@ -10,16 +10,17 @@ protocol ProAPIManagerProtocol: AnyObject {
     func fetchProfilePosts(id: Int?, page: Int?, token: String?, completion: @escaping (Result<ResPosts?, Error>) -> ())
     func fetchProfileCounters(id:Int?, token:String?, completion: @escaping (Result<ResCounter?, Error>) -> ())
     func fetchProfileFollowing(page: Int?, token:String?, completion: @escaping (Result<ResFollows?, Error>) -> ())
-    // func remoteGetFollowers(page: Int, token: String)
     func fetchProfileFollowers(page: Int?, token:String?, completion: @escaping (Result<ResFollows?, Error>) -> ())
+    func fetchReadByComment(postId: Int?, pagination:Int?, token:String?, completion: @escaping (Result<[Comment]?, Error>) -> ())
+    func insertComment(pagination: Bool?, commentPost: CommentPost?, token:String?, completion: @escaping (Result<[Comment]?, Error>) -> ())
+    func deleteComment(id:Int?, token:String?, completion: @escaping (Result<ResMessage?, Error>) -> ())
+    func updateComment(postId: Int?, commentId: Int?, content: String?, token: String?, completion: @escaping (Result<[Int]?, Error>) -> ())
+    func filterSearch(token: String?, filter: String? , completion: @escaping (Result<[User]?, Error>) -> ())
 }
 
 // MARK: API MANAGER
 class APIManager: NSObject, ProAPIManagerProtocol {
-    
-    
-   
-    
+
     // MARK: SHARED
     static let shared = APIManager()
     
@@ -109,6 +110,51 @@ class APIManager: NSObject, ProAPIManagerProtocol {
     // BUSCAR FOLLOWRS.
     func fetchProfileFollowers(page: Int?, token: String?, completion: @escaping (Result<ResFollows?, Error>) -> ()) {
         APIInteractor.fetchProfileFollowers(page: page, token: token) { response in
+            completion(.success(response))
+        } processIncorrect: { messageError in
+            completion(.failure(messageError as! Error))
+        }
+    }
+    
+    // BUSCAR COMMENTARIOS.
+    func fetchReadByComment(postId: Int?, pagination: Int?, token: String?, completion: @escaping (Result<[Comment]?, Error>) -> ()) {
+        APIInteractor.fetchReadByComment(postId: postId, pagination: pagination, token: token) { response in
+            completion(.success(response))
+        } processIncorrect: { messageError in
+            completion(.failure(messageError as! Error))
+        }
+    }
+    
+    // CREAR COMMENTARIO.
+    func insertComment(pagination: Bool?, commentPost: CommentPost?, token: String?, completion: @escaping (Result<[Comment]?, Error>) -> ()) {
+        APIInteractor.insertComment(pagination: pagination, commentPost: commentPost, token: token) { response in
+            completion(.success(response))
+        } processIncorrect: { messageError in
+            completion(.failure(messageError as! Error))
+        }
+    }
+    
+    // BORRAR COMENTARIO.
+    func deleteComment(id: Int?, token: String?, completion: @escaping (Result<ResMessage?, Error>) -> ()) {
+        APIInteractor.deleteComment(id: id, token: token) { response in
+            completion(.success(response))
+        } processIncorrect: { messageError in
+            completion(.failure(messageError as! Error))
+        }
+    }
+    
+    // MODIFICAR COMENTARIO.
+    func updateComment(postId: Int?, commentId: Int?, content: String?, token: String?, completion: @escaping (Result<[Int]?, Error>) -> ()) {
+        APIInteractor.updateComment(postId: postId, commentId: commentId, content: content, token: token) { response in
+            completion(.success(response))
+        } processIncorrect: { messageError in
+            completion(.failure(messageError as! Error))
+        }
+    }
+    
+    // BUSCAR Y FILTRAR USUARIO.
+    func filterSearch(token: String?, filter: String?, completion: @escaping (Result<[User]?, Error>) -> ()) {
+        APIInteractor.filterSearch(token: token, filter: filter) { response in
             completion(.success(response))
         } processIncorrect: { messageError in
             completion(.failure(messageError as! Error))

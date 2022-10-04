@@ -1,11 +1,3 @@
-//
-//  SearchInteractor.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//  
-//
-
 import Foundation
 
 class SearchInteractor: SearchInteractorInputProtocol {
@@ -21,20 +13,21 @@ class SearchInteractor: SearchInteractorInputProtocol {
     func interactorGetData(page: Int, isPagination:Bool, token: String) {
         self.remoteDatamanager?.remoteGetData(page: page, isPagination:isPagination, token: token)
     }
-    
 }
 
 
 // MARK: - OUPUT
 extension SearchInteractor: SearchRemoteDataManagerOutputProtocol {
     func remoteCallBackDataAppend(userpost: [Post]) {
-        self.presenter?.interactorCallBackDataAppend(userpost: userpost)
+        DispatchQueue.main.async {[weak self] in
+            self?.presenter?.interactorCallBackDataAppend(userpost: userpost)
+        }
     }
-    
-    // MARK: FUNCTIONS
     
     // LLAMAR AL PRESENTER PARA DE VOLVER LOS DATOS
     func remoteCallBackData(userpost: [Post], totalPages: Int) {
-        self.presenter?.interactorCallBackData(userpost: userpost, totalPages: totalPages)
+        DispatchQueue.main.async {[weak self] in
+            self?.presenter?.interactorCallBackData(userpost: userpost, totalPages: totalPages)
+        }
     }
 }
