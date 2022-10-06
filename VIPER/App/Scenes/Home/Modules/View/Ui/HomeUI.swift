@@ -1,15 +1,14 @@
-//
-//  HomeUI.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 18/1/22.
-//
-
 import UIKit
 
 class HomeUI: UIView {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    lazy var refreshControl: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .blue
+        return refreshControl
+    }()
     
     public let tableView: UITableView = {
         let tableView = UITableView()

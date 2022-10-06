@@ -8,15 +8,16 @@ protocol ProfileViewProtocol: AnyObject {
     func stopActivity()
     func update()
     var page: Int! { get set }
-
 }
 
 protocol ProfileWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createProfileModule(id: Int, name:String, token:String, indexPath: IndexPath) -> UIViewController
-    func gotoPostScreen(from view: ProfileViewProtocol, post: PostViewData? /*Post?*/, indexPath: IndexPath)
-    func navigateToEditProfile(from view: ProfileViewProtocol, model: UserViewData? /*User?*/)
+    func gotoPostScreen(from view: ProfileViewProtocol, post: PostViewData?, indexPath: IndexPath)
+    func navigateToEditProfile(from view: ProfileViewProtocol, model: UserViewData?)
     func gotoListPeopleScreen(following: [Follow], from view: ProfileViewProtocol, token: LoginToken?)
+    func presentSheeMenu(from view: ProfileViewProtocol)
+    func presentUploadPost(from view: ProfileViewProtocol)
 }
 
 protocol ProfilePresenterProtocol: AnyObject {
@@ -31,22 +32,22 @@ protocol ProfilePresenterProtocol: AnyObject {
     var postReceivedFromSheetPost: Post? { get set }
     var indexPathReceivedFromSheePost: IndexPath? { get set }
     var isLoadingMore: Bool? { get set }
-    
     func fetchPosts(page : Int)
-    
     func viewDidLoad()
     func presenterNumberOfSections() -> Int
     func numberOfRowsInsection(section: Int) -> Int
-    func showPostsData(indexPath: IndexPath) -> PostViewData? //Post?
-    func username() -> UserViewData? //User?
+    func showPostsData(indexPath: IndexPath) -> PostViewData?
+    func username() -> UserViewData?
     func tasts() -> ResCounter?
-    func gotoPostScreen(post: PostViewData? /*Post?*/, indexPath: IndexPath)
+    func gotoPostScreen(post: PostViewData?, indexPath: IndexPath)
     func showFollowin() -> [Follow]
     func showFollowers() -> [Follow]
-    func gotoEitProfileScreen(model: UserViewData? /*User?*/)
+    func gotoEitProfileScreen(model: UserViewData?)
     func gotoListPeopleScreen(following: [Follow]?)
     func getPostCount() -> Int
     func getTotalPages() -> Int
+    func gotoSheeMenu()
+    func gotoUploadPost()
 }
 
 protocol ProfileInteractorInputProtocol: AnyObject {

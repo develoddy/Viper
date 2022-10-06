@@ -1,7 +1,7 @@
 import Foundation
 
 class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
-    
+
     // MARK:  PROPIERTIES
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol?
     var isPaginationOn: Bool? = false
@@ -28,6 +28,18 @@ class HomeRemoteDataManager:HomeRemoteDataManagerInputProtocol {
                     if isPagination {
                         self?.isPaginationOn = false
                     }
+                }
+            case .failure(let error): print("Error processing  home posts\(error)")
+            }
+        }
+    }
+    
+    func remoteRefreshPost(page: Int, isPagination:Bool, token: String) {
+        self.apiManager.fetchPosts(page: page, isPagination: isPagination, token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if let posts = response?.resPostImages?.posts {
+                    self?.remoteRequestHandler?.remoteRefreshCallBackData(with: posts)
                 }
             case .failure(let error): print("Error processing  home posts\(error)")
             }

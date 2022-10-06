@@ -14,8 +14,8 @@ class SheePostWireFrame: SheePostWireFrameProtocol {
    
     class func createSheePostModule(post: /*Post?*/ PostViewData?, indexPath: IndexPath) -> UIViewController {
        
-        let SheePost = SheePostView()
-        let viewController = SheePost
+        let sheePost = SheePostView()
+        let viewController = sheePost
         let presenter: SheePostPresenterProtocol & SheePostInteractorOutputProtocol = SheePostPresenter()
         let interactor: SheePostInteractorInputProtocol & SheePostRemoteDataManagerOutputProtocol = SheePostInteractor()
         let localDataManager: SheePostLocalDataManagerInputProtocol = SheePostLocalDataManager()

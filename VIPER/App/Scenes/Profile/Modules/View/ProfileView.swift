@@ -12,26 +12,23 @@ class ProfileView: UIViewController {
 
     // MARK:  LIFECYCLE
 
-    /* --- 1. VIEW DID LOAD ---
+    /* TODO: 1. VIEW DID LOAD
      * ES MUY IMPORTANTE QUE SEPAMOS QUE EN ESTE PUNTO SE LLAMA SOLO UNA UNICA VEZ.
      * ESTO ES UN BUEN PUNTO PARA INICIALIZAR TODAS LAS VARIABLES ASOCIADA A LA VISTA
-     * O COMENZAR LA CARGA DE DATOS QUE VAMOS A UTILIZAR EN LA VISTA.
-     */
+     * O COMENZAR LA CARGA DE DATOS QUE VAMOS A UTILIZAR EN LA VISTA. */
     override func viewDidLoad() {
         super.viewDidLoad()
         initMethods()
     }
     
-    
-    /* --- 2. VIEW WILL APPERAR ---
+    /* TODO: 2. VIEW WILL APPERAR
      * QUIERE DECIR QUE NUESTRO CONTROLADOR DE VISTA YA SE HA INSTANCIADO.
      * TAMBIEN QUIERE DECIR QUE LA VISTA SE VA A MOSTRAR PERO AÚN NO LO HA HECHO,
      * ES DECIR QUE TODA LA JERARQUIA DE VISTA ASOCIADO A NUESTRO VIEWCONTROLLER
      * AÚN NO SE HA AÑADIDO HA EL CONTROLADOR PADRE.
      *
      * EN ESTE BLOQUE DE CODIGO PODREMOS AGREGAR CUALQUIER OPERACIÓN QUE QUERRAMOS
-     * QUE SE EJECUTE JUSTO ANTES DE QUE SE MUESTRE NUESTA VISTA.
-     */
+     * QUE SE EJECUTE JUSTO ANTES DE QUE SE MUESTRE NUESTA VISTA. */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
@@ -39,37 +36,33 @@ class ProfileView: UIViewController {
         }
     }
     
-
-    /* --- 3. VIEW DID APPEAR ---
+    /* TODO: 3. VIEW DID APPEAR
      * YA NOS INDICA QUE LA VISTA SE VA A MOSTRAR EN ESTE PRECISO MOMENTO.
-     * EN ESTE PUNTO LA JERARQUIA DE VISTA DE NUESTRO CONTROLADOR YA CONTIENE A TODAS LAS SUB VISTAS.
-     */
+     * EN ESTE PUNTO LA JERARQUIA DE VISTA DE NUESTRO CONTROLADOR YA CONTIENE A TODAS LAS SUB VISTAS. */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    
-    /* --- 4. VIEW WILL DISAPPEAR ---
+    /* TODO: 4. VIEW WILL DISAPPEAR
      * EN ESTE PUNTO TIENE UNA SEMEJANZA DIRECTA CON "VIEW WILL APPEAR".
      * SI "VIEW WILL APPEAR" NOS DECIA QUE ESTABA APUNTO DE APARECER,
      * ENTONCES VIEW WILL DISAPPEAR ESTÁ APUNTO DE DESAPARECER.
      *
-     * ESTÁ APUNTO DE DESAPARECER PORQUE VAMOS A NAVEGAR A UN NUEVO CONTROLADOR.
-     */
+     * ESTÁ APUNTO DE DESAPARECER PORQUE VAMOS A NAVEGAR A UN NUEVO CONTROLADOR. */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
-    
-    /* --- 5. VIEW DID DISAPPEAR ---
+    /* TODO: 5. VIEW DID DISAPPEAR
      * EN ESTE PUNTO TIENE UNA SEMEJANZA DIRECTA CON "VIEW DID APPEAR".
      * SI "VIEW DID APPEAR" NOS DECIA QUE ESE PRECISO MOMENTO VA A APARECER,
-     * ENTONCES VIEW DID DISAPPEAR EN ESTE PRECISO MOMENTO VA A DESAPARACER.
-     */
+     * ENTONCES VIEW DID DISAPPEAR EN ESTE PRECISO MOMENTO VA A DESAPARACER. */
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
+    /* TODO: INICIALIZAR TODO LOS ELEMENTOS.
+     * EN ESTE PUNTO SE INICIALIZA TODO LOS ELEMENTOS. */
     func initMethods() {
         loadData()
         setupView()
@@ -80,19 +73,22 @@ class ProfileView: UIViewController {
         configureNavigationItem()
     }
     
-    // SE LLAMA AL PRESENTER
+    /* TODO: VIPER
+     * SE LLAMA AL PRESENTER. */
     func loadData() {
         self.presenter?.viewDidLoad()
     }
 
-    // VIEWDIDLAYOUTSUBVIEWS
+    /* TODO: SE CONFIGURA LA VISTA
+     * EN ESTE PUNTO SE CONFIGURA LA VISTA. */
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.collectionView.frame = view.bounds
         self.profileUI.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
     }
 
-    // SETUPVIEW
+    /* TODO: SETUPVIEW
+     * SE AGREGAN LOS COMPONENTES. */
     func setupView() {
         view.backgroundColor = .systemBackground
         self.modalPresentationStyle = .overFullScreen
@@ -128,8 +124,6 @@ class ProfileView: UIViewController {
     }
 
     func configureNavigationItem() {
-         //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
-        // navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(didTapCancel))
         confireColorNavigation()
         setupLeftNavItems()
         setupRightNavItems()
@@ -155,17 +149,16 @@ class ProfileView: UIViewController {
         followButton.tintColor = Constants.Color.black
         followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)
-        
     }
     
     func setupRightNavItems() {
         let buttonPlusIcon = UIImage(systemName: "plus")
-        let rightBarPlusButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        let rightBarPlusButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapUploadPost))
         rightBarPlusButton.image = buttonPlusIcon
         rightBarPlusButton.tintColor = .black
         
         let buttonLineIcon = UIImage(systemName: "line.3.horizontal")
-        let rightBarLineButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSave))
+        let rightBarLineButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapSheeMenu))
         rightBarLineButton.image = buttonLineIcon
         rightBarLineButton.tintColor = .black
         
@@ -176,14 +169,14 @@ class ProfileView: UIViewController {
     }
     
     // ACCION BUTTONS
-    @objc func didTapSave() {
+    @objc func didTapSheeMenu() {
         // LLAMAR AL PRESENTER
         // PRESENTAR OTRO MODULO DE SHEE.
-        print("rightBarButtonItem Tapped")
+        presenter?.gotoSheeMenu()
     }
     
-    @objc func didTapCancel() {
-        dismiss(animated: true, completion: nil)
+    @objc func didTapUploadPost() {
+        presenter?.gotoUploadPost()
     }
 }
 
@@ -327,7 +320,7 @@ extension ProfileView: ProfileViewProtocol {
 extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     
     // ---------- LLAMAR AL PRESENTER -----------
-    // SE PRETENDE NAVEGAR A OTRO MODULO (LISTPEOPLE)
+    // NAVEGAR A OTRO MODULO (LISTPEOPLE)
     // LISTAR A LOS QUE QUE ME SIGUEN.
     func didTapFollowersButton(_header: ProfileInfoHeaderCollectionReusableView) {
         let follower = self.presenter?.showFollowers()
@@ -335,7 +328,7 @@ extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     }
     
     // ---------- LLAMAR AL PRESENTER -----------
-    // SE PRETENDE NAVEGAR A OTRO MODULO (LISTPEOPLE)
+    // NAVEGAR A OTRO MODULO (LISTPEOPLE)
     // LISTAR A LOS QUE YO SIGO.
     func didTapFollowingButton(_header: ProfileInfoHeaderCollectionReusableView) {
         let following = self.presenter?.showFollowin()
@@ -343,7 +336,7 @@ extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
     }
     
     // ---------- LLAMAR AL PRESENTER -----------
-    // SE PRETENDE NAVEGAR A OTRO MODULO (EDIT PROFILE)
+    // NAVEGAR A OTRO MODULO (EDIT PROFILE)
     // EDITAR NUESTRA INFORMACIÓN DE PERFIL.
     func didTapEditProfileButton( _header: ProfileInfoHeaderCollectionReusableView ) {
         self.presenter?.gotoEitProfileScreen(model: _header.model)

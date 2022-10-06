@@ -62,6 +62,8 @@ extension HomeView: UITableViewDataSource {
             case 4:
             switch model.descriptions.renderType {
                 case .descriptions(let post):
+                //print("Description: ")
+                //print(post.content)
                 let cell = tableView.dequeueReusableCell(withIdentifier: IGFeedPostDescriptionTableViewCell.identifier, for: indexPath)
                 as! IGFeedPostDescriptionTableViewCell
                 cell.setCellWithValuesOf(post)
@@ -149,7 +151,7 @@ extension HomeView: UITableViewDelegate {
             self.presenter?.loadMoreData(page: self.page)
             
             // CUANDO HA TERMINADO LA EJECUCIÓN DEL SPINNER.
-            if self.page == self.presenter?.getTotalPages() {
+            if self.page < self.presenter?.getTotalPages() ?? 0 {
                 DispatchQueue.main.async {
                     self.homeUI.tableView.tableFooterView = nil
                 }

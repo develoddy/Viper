@@ -2,7 +2,6 @@ import Foundation
 
 // MARK: PRESENTER
 class HomePresenter: HomePresenterProtocol  {
-    
     // MARK:  PROPERTIES
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
@@ -131,6 +130,7 @@ class HomePresenter: HomePresenterProtocol  {
      * LE DECIMOS AL INTERACTOR QUE QUEREMOS HACER MAS PAGINADO PARA VER MÁS
      * PUBLICACIONES EN LA VISTA. */
     func loadMoreData(page: Int) {
+        self.viewModel.removeAll()
         guard let token = token.getUserToken().success else {
             return
         }
@@ -143,20 +143,39 @@ class HomePresenter: HomePresenterProtocol  {
     func gotoSheetHomePostsView(post: PostViewData) {
         self.wireFrame?.navigateSheetHomePostsView(from: view!, post: post)
     }
+    
+    // REFRESCAR LOS DATOS.
+    func refresh() {
+        guard let token = token.getUserToken().success else {
+            return
+        }
+        self.interactor?.interactorGetData(page: 0, isPagination: false, token: token)
+    }
 }
 
 
 
 // MARK: - OUT PUT 
 extension HomePresenter: HomeInteractorOutputProtocol {
-   
     /* TODO: SE OBTIENE TODAS LAS PUBLICACIONES
      * EL PRESENTER RECIBE EL ARRAY DE OBJETOS DE TODAS
      * LAS PUBLICACIONES Y EL TOTAL DE PAGINAS. */
     func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel], totalPages: Int) {
-        self.viewModel = homeFeedRenderViewModel
-        view?.stopActivity()
-        self.totalPages = totalPages
+        //self.viewModel = []
+        print("homeFeedRenderViewModel COUNT:  \(homeFeedRenderViewModel.count)")
+        DispatchQueue.main.async {[weak self] in
+            self?.viewModel = homeFeedRenderViewModel
+            self?.view?.stopActivity()
+            self?.totalPages = totalPages
+        }
+    }
+    
+    func interactorRefreshCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel]) {
+        DispatchQueue.main.async {[weak self] in
+            self?.viewModel = []
+            self?.viewModel = homeFeedRenderViewModel
+            self?.view?.stopActivity()
+        }
     }
     
     /* TODO: DE OBTIENE EL RESULTADO DE LA VERIFICACION DE "ME GUSTA"

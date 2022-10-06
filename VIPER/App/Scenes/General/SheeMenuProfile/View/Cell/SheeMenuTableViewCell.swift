@@ -1,41 +1,34 @@
 import UIKit
 
-struct SheePostFormModel:Hashable {
+struct SheeMenuFormModel:Hashable {
     let iconImage: String
     let label: String
 }
 
+// MARK: CELL
+class SheeMenuTableViewCell: UITableViewCell {
 
-protocol  SheePostTableViewCellProtocol {
-    func formTableViewCell( _ cell: SheePostTableViewCell, didUpdateField updateModel: SheePostFormModel )
-}
-
-
-class SheePostTableViewCell: UITableViewCell {
-
-    // MARK: PORPERTIES
-    static let identifier = "SheePostTableViewCell"
-    private var model: SheePostFormModel?
-    //public var delegate: SheeHomePostsTableViewCellProtocol?
+    // MARK: PROPERTIES
+    static let identifier = "SheeMenuTableViewCell"
+    private var model: SheeMenuFormModel?
     
     // MARK: ELEMENTS
     private let iconUIImageView: UIImageView = {
         let iconUIImageView = UIImageView()
-        iconUIImageView.tintColor = .black
+        iconUIImageView.tintColor = Constants.Color.grayDark
         return iconUIImageView
     }()
     
     private let label: UILabel = {
         let textLabel = UILabel()
-        textLabel.textColor = .label
+        textLabel.textColor = Constants.Color.grayDark
         textLabel.numberOfLines = 1
         return textLabel
     }()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = Constants.Color.lightDark
+        contentView.backgroundColor = .clear
         setupView()
     }
     
@@ -73,8 +66,9 @@ class SheePostTableViewCell: UITableViewCell {
     }
     
     // SETUP VALUES
-    public func setCellWithValuesOf( with model: SheePostFormModel? ) {
+    public func setCellWithValuesOf( with model: SheeMenuFormModel? ) {
         self.model = model
+        
         guard let iconImage = model?.iconImage,
               let label = model?.label else {
             return
@@ -84,7 +78,7 @@ class SheePostTableViewCell: UITableViewCell {
     
     // UPDATE VIEW
     func updateUI(iconImage: String, label: String) {
-        let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold)
+        let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .regular)
         self.iconUIImageView.image = UIImage(systemName: iconImage, withConfiguration: config)
         self.label.text = label
     }

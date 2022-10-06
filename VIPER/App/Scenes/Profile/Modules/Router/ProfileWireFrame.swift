@@ -11,8 +11,9 @@ import UIKit
 
 class ProfileWireFrame: ProfileWireFrameProtocol {
     
+    
+    
     static func createProfileModule(id: Int, name: String, token: String, indexPath: IndexPath) -> UIViewController {
-
         let profileView = ProfileView()
         let viewController = profileView
         let presenter: ProfilePresenterProtocol & ProfileInteractorOutputProtocol = ProfilePresenter()
@@ -26,7 +27,6 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
         
-        
         // DATOS QUE RECIBE DEL MODULO HOMEVIEW
         presenter.idReceivedFromHome = id
         presenter.nameReceivedFromHome = name
@@ -37,13 +37,11 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
         interactor.localDatamanager = localDataManager
         interactor.remoteDatamanager = remoteDataManager
         remoteDataManager.remoteRequestHandler = interactor
-        
         return viewController
     }
-    
-
-    
-
+    /*
+     *
+     */
     // GOTO NAVIGATION TO POST.
     func gotoPostScreen(from view: ProfileViewProtocol, post: PostViewData? /*Post?*/, indexPath: IndexPath) {
         let newPostView = PostWireFrame.createPostModule(post: post, indexPath: indexPath)
@@ -76,6 +74,21 @@ class ProfileWireFrame: ProfileWireFrameProtocol {
         newListPeople.title = token?.user?.name
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(newListPeople, animated: true)
+        }
+    }
+    
+    // LLAMAR AL WIREFRAME DE SHE MENU PROFILE.
+    func presentSheeMenu(from view: ProfileViewProtocol) {
+        let newSheeMenuView = SheeMenuProfileWireFrame.createSheeMenuProfileModule()
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.present(newSheeMenuView, animated: true, completion: nil)
+        }
+    }
+    
+    func presentUploadPost(from view: ProfileViewProtocol) {
+        let newUploadPostView = uploadPostWireFrame.createuploadPostModule()
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.present(newUploadPostView, animated: true, completion: nil)
         }
     }
 }

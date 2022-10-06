@@ -1,19 +1,12 @@
-//
-//  SheePostUI.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 17/9/22.
-//
-
 import UIKit
 
-class SheePostUI: UIView {
+class SheeMenuProfileUI: UIView {
     
     public let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        //let tableView = UITableView(frame: .zero, style: .insetGrouped)
         //let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .systemBackground
-        
         return tableView
     }()
     
@@ -34,5 +27,4 @@ class SheePostUI: UIView {
         backgroundColor = .white
         self.addSubview(tableView)
     }
-    
 }

@@ -44,16 +44,16 @@ protocol HomePresenterProtocol: AnyObject {
     func checkIfLikesExist(post: PostViewData?)
     func getTotalPages() -> Int
     func loadMoreData(page: Int)
-    
-    // CAMBIO DE PANTALLAS
     func gotoProfileScreen(id: Int, name: String, token: String)
     func gotoCommentsScreen(userpost: PostViewData)
     func gotoSheetHomePostsView(post: PostViewData)
+    func refresh()
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {
     // INTERACTOR -> PRESENTER
     func interactorCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel], totalPages: Int)
+    func interactorRefreshCallBackData(with homeFeedRenderViewModel: [HomeFeedRenderViewModel])
     func interactorCallBackLikesExist(with heart: [Heart], post: PostViewData?)
     func interactorCallBackDeleteLike(with message: ResMessage)
     func interactorCallBackInsertLike(with heart: Heart)
@@ -81,6 +81,7 @@ protocol HomeRemoteDataManagerInputProtocol: AnyObject {
     var remoteRequestHandler: HomeRemoteDataManagerOutputProtocol? { get set }
     var isPaginationOn: Bool? { get set }
     func remoteGetData(page: Int, isPagination:Bool, token: String)
+    func remoteRefreshPost(page: Int, isPagination:Bool, token: String)
     func remoteCreateLike(post: PostViewData?, userId:Int, token: String)
     func remoteDeleteLike(heart: Heart?, token: String)
     func remoteCheckIfLikesExist(postId: Int, userId: Int, token: String, post: PostViewData?)
@@ -89,6 +90,7 @@ protocol HomeRemoteDataManagerInputProtocol: AnyObject {
 protocol HomeRemoteDataManagerOutputProtocol: AnyObject {
     // REMOTEDATAMANAGER -> INTERACTOR
     func remoteCallBackData(with posts: [Post], totalPages: Int)
+    func remoteRefreshCallBackData(with posts: [Post])
     func remoteCallBackLikesExist(with heart: [Heart], post: PostViewData?)
     func remoteCallBackInsertLike(with heart: Heart)
     func remoteCallBackDeleteLike(with message: ResMessage)

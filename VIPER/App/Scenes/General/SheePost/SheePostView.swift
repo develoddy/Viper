@@ -75,21 +75,6 @@ class SheePostView: UIViewController {
         debugPrint("SHEE POST VIEW: LA APLICACION SE ESTA QUEDANDO SIN MEMORIA...")
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         //self.sheetHomePostsUI.tableView.frame = CGRect(x: 20, y: 5, width: view.width-40, height: view.height)
@@ -122,10 +107,7 @@ class SheePostView: UIViewController {
             .medium(),
             //.large(),
         ]
-        
-        
     }
-    
     
     func configureTableView() {
         view.addSubview(sheetPostUI)

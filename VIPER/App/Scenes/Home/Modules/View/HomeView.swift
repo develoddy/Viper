@@ -40,6 +40,36 @@ class HomeView: UIViewController {
         configureActivity()
         headerTableView()
         configureNavigationItem()
+        refresh()
+    }
+    
+    func refresh() {
+        homeUI.refreshControl.addTarget(self, action: #selector(updateData(_:) ), for: .valueChanged)
+    }
+    
+    @objc func updateData(_ refreshControl: UIRefreshControl) {
+        //var addString = "OTRO MáS"
+        //print(addString)
+        
+        // APPEND.
+        // LLAMAR AL PRESENTER
+        //presenter?.viewDidLoad()
+        
+        //presenter?.refresh()
+        
+        
+        // REFRESH
+        
+        
+        //home.uita
+        homeUI.refreshControl.beginRefreshing()
+        guard let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn else { return }
+        guard !isPaginationOn else { return }
+        self.page += 1
+        self.presenter?.loadMoreData(page: self.page)
+        
+        homeUI.refreshControl.endRefreshing()
+        
     }
     
     // LLAMAR AL PRESENTER.
@@ -52,6 +82,7 @@ class HomeView: UIViewController {
         view.backgroundColor = .clear
         view.addSubview(homeUI)
         homeUI.tableView.allowsSelection = false
+        homeUI.tableView.addSubview(homeUI.refreshControl)
     }
     
     // TABLE HEADER

@@ -10,6 +10,23 @@
 		2E9F7984A0D66CBA02983719 /* Pods_VIPER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2DB19E5C1B390F1FE09F0D /* Pods_VIPER.framework */; };
 		3E04118A0EE2121059808398 /* Pods_VIPERTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A625106D62E4025D22CFFC5 /* Pods_VIPERTests.framework */; };
 		B3025B1328EAEAB300439BB7 /* ApiSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B1228EAEAB200439BB7 /* ApiSession.swift */; };
+		B3025B2428EC624000439BB7 /* SheeMenuProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B1D28EC623F00439BB7 /* SheeMenuProfilePresenter.swift */; };
+		B3025B2528EC624000439BB7 /* SheeMenuProfileLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B1E28EC623F00439BB7 /* SheeMenuProfileLocalDataManager.swift */; };
+		B3025B2628EC624000439BB7 /* SheeMenuProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B1F28EC623F00439BB7 /* SheeMenuProfileProtocols.swift */; };
+		B3025B2728EC624000439BB7 /* SheeMenuProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B2028EC623F00439BB7 /* SheeMenuProfileInteractor.swift */; };
+		B3025B2828EC624000439BB7 /* SheeMenuProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B2128EC623F00439BB7 /* SheeMenuProfileView.swift */; };
+		B3025B2928EC624000439BB7 /* SheeMenuProfileRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B2228EC623F00439BB7 /* SheeMenuProfileRemoteDataManager.swift */; };
+		B3025B2A28EC624000439BB7 /* SheeMenuProfileWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B2328EC623F00439BB7 /* SheeMenuProfileWireFrame.swift */; };
+		B3025B3428EC647800439BB7 /* SheeMenuProfileUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B3328EC647800439BB7 /* SheeMenuProfileUI.swift */; };
+		B3025B3728EC6EDB00439BB7 /* ExtensionsSheeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B3628EC6EDB00439BB7 /* ExtensionsSheeMenu.swift */; };
+		B3025B3A28EC702200439BB7 /* SheeMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B3928EC702200439BB7 /* SheeMenuTableViewCell.swift */; };
+		B3025B4328ECD2CB00439BB7 /* uploadPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B3C28ECD2CA00439BB7 /* uploadPostPresenter.swift */; };
+		B3025B4428ECD2CB00439BB7 /* uploadPostLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B3D28ECD2CA00439BB7 /* uploadPostLocalDataManager.swift */; };
+		B3025B4528ECD2CB00439BB7 /* uploadPostProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B3E28ECD2CA00439BB7 /* uploadPostProtocols.swift */; };
+		B3025B4628ECD2CB00439BB7 /* uploadPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B3F28ECD2CA00439BB7 /* uploadPostInteractor.swift */; };
+		B3025B4728ECD2CB00439BB7 /* uploadPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B4028ECD2CA00439BB7 /* uploadPostView.swift */; };
+		B3025B4828ECD2CB00439BB7 /* uploadPostRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B4128ECD2CA00439BB7 /* uploadPostRemoteDataManager.swift */; };
+		B3025B4928ECD2CB00439BB7 /* uploadPostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3025B4228ECD2CA00439BB7 /* uploadPostWireFrame.swift */; };
 		B31963BB279630E200A23628 /* HomeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963BA279630E200A23628 /* HomeUI.swift */; };
 		B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963BC279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift */; };
 		B31963BF2796393A00A23628 /* IGFeedPostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31963BE2796393A00A23628 /* IGFeedPostHeaderTableViewCell.swift */; };
@@ -191,6 +208,23 @@
 		AE8EAABFC7CC50F39FA8872F /* Pods-VIPER-VIPERUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER-VIPERUITests.release.xcconfig"; path = "Target Support Files/Pods-VIPER-VIPERUITests/Pods-VIPER-VIPERUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B070FC6474C9CE230ACB59C0 /* Pods-VIPERTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPERTests.release.xcconfig"; path = "Target Support Files/Pods-VIPERTests/Pods-VIPERTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3025B1228EAEAB200439BB7 /* ApiSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSession.swift; sourceTree = "<group>"; };
+		B3025B1D28EC623F00439BB7 /* SheeMenuProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfilePresenter.swift; sourceTree = "<group>"; };
+		B3025B1E28EC623F00439BB7 /* SheeMenuProfileLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfileLocalDataManager.swift; sourceTree = "<group>"; };
+		B3025B1F28EC623F00439BB7 /* SheeMenuProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfileProtocols.swift; sourceTree = "<group>"; };
+		B3025B2028EC623F00439BB7 /* SheeMenuProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfileInteractor.swift; sourceTree = "<group>"; };
+		B3025B2128EC623F00439BB7 /* SheeMenuProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfileView.swift; sourceTree = "<group>"; };
+		B3025B2228EC623F00439BB7 /* SheeMenuProfileRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfileRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3025B2328EC623F00439BB7 /* SheeMenuProfileWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfileWireFrame.swift; sourceTree = "<group>"; };
+		B3025B3328EC647800439BB7 /* SheeMenuProfileUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuProfileUI.swift; sourceTree = "<group>"; };
+		B3025B3628EC6EDB00439BB7 /* ExtensionsSheeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsSheeMenu.swift; sourceTree = "<group>"; };
+		B3025B3928EC702200439BB7 /* SheeMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeMenuTableViewCell.swift; sourceTree = "<group>"; };
+		B3025B3C28ECD2CA00439BB7 /* uploadPostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPostPresenter.swift; sourceTree = "<group>"; };
+		B3025B3D28ECD2CA00439BB7 /* uploadPostLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPostLocalDataManager.swift; sourceTree = "<group>"; };
+		B3025B3E28ECD2CA00439BB7 /* uploadPostProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPostProtocols.swift; sourceTree = "<group>"; };
+		B3025B3F28ECD2CA00439BB7 /* uploadPostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPostInteractor.swift; sourceTree = "<group>"; };
+		B3025B4028ECD2CA00439BB7 /* uploadPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPostView.swift; sourceTree = "<group>"; };
+		B3025B4128ECD2CA00439BB7 /* uploadPostRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPostRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3025B4228ECD2CA00439BB7 /* uploadPostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadPostWireFrame.swift; sourceTree = "<group>"; };
 		B31963BA279630E200A23628 /* HomeUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUI.swift; sourceTree = "<group>"; };
 		B31963BC279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostActionsTableViewCell.swift; sourceTree = "<group>"; };
 		B31963BE2796393A00A23628 /* IGFeedPostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -476,6 +510,173 @@
 				B3EF852D279FEADF0076D443 /* SearchResultProtocols.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3025B2B28EC625200439BB7 /* SheeMenuProfile */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B2E28EC627100439BB7 /* Protocols */,
+				B3025B3228EC628D00439BB7 /* Router */,
+				B3025B2F28EC627600439BB7 /* Local Manager */,
+				B3025B3128EC628500439BB7 /* Remote Manager */,
+				B3025B2D28EC626B00439BB7 /* Interactor */,
+				B3025B3028EC627D00439BB7 /* Presenter */,
+				B3025B2C28EC626300439BB7 /* View */,
+			);
+			path = SheeMenuProfile;
+			sourceTree = "<group>";
+		};
+		B3025B2C28EC626300439BB7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B2128EC623F00439BB7 /* SheeMenuProfileView.swift */,
+				B3025B3528EC648000439BB7 /* Ui */,
+				B3025B3828EC6EEB00439BB7 /* Extensions */,
+				B3025B3B28EC702F00439BB7 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3025B2D28EC626B00439BB7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B2028EC623F00439BB7 /* SheeMenuProfileInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3025B2E28EC627100439BB7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B1F28EC623F00439BB7 /* SheeMenuProfileProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3025B2F28EC627600439BB7 /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B1E28EC623F00439BB7 /* SheeMenuProfileLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B3025B3028EC627D00439BB7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B1D28EC623F00439BB7 /* SheeMenuProfilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3025B3128EC628500439BB7 /* Remote Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B2228EC623F00439BB7 /* SheeMenuProfileRemoteDataManager.swift */,
+			);
+			path = "Remote Manager";
+			sourceTree = "<group>";
+		};
+		B3025B3228EC628D00439BB7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B2328EC623F00439BB7 /* SheeMenuProfileWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3025B3528EC648000439BB7 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B3328EC647800439BB7 /* SheeMenuProfileUI.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		B3025B3828EC6EEB00439BB7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B3628EC6EDB00439BB7 /* ExtensionsSheeMenu.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B3025B3B28EC702F00439BB7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B3928EC702200439BB7 /* SheeMenuTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B3025B4A28ECD2D300439BB7 /* UploadPost */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B4F28ECDB0700439BB7 /* Protocols */,
+				B3025B5028ECDB0F00439BB7 /* Router */,
+				B3025B4D28ECDAD600439BB7 /* Local Manager */,
+				B3025B5128ECDB1500439BB7 /* Remote Manager */,
+				B3025B4E28ECDAFD00439BB7 /* Interactor */,
+				B3025B4C28ECDACE00439BB7 /* Presenter */,
+				B3025B4B28ECDAC000439BB7 /* View */,
+			);
+			path = UploadPost;
+			sourceTree = "<group>";
+		};
+		B3025B4B28ECDAC000439BB7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B4028ECD2CA00439BB7 /* uploadPostView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3025B4C28ECDACE00439BB7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B3C28ECD2CA00439BB7 /* uploadPostPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3025B4D28ECDAD600439BB7 /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B3D28ECD2CA00439BB7 /* uploadPostLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B3025B4E28ECDAFD00439BB7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B3F28ECD2CA00439BB7 /* uploadPostInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3025B4F28ECDB0700439BB7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B3E28ECD2CA00439BB7 /* uploadPostProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3025B5028ECDB0F00439BB7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B4228ECD2CA00439BB7 /* uploadPostWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3025B5128ECDB1500439BB7 /* Remote Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3025B4128ECD2CA00439BB7 /* uploadPostRemoteDataManager.swift */,
+			);
+			path = "Remote Manager";
 			sourceTree = "<group>";
 		};
 		B31963B9279630CE00A23628 /* Ui */ = {
@@ -1488,6 +1689,8 @@
 				B37AD65628BF8CEA0019167E /* ListPeople */,
 				B319715928D36F8200FDB342 /* SheetHomePosts */,
 				B34B130428D5F72700172986 /* SheePost */,
+				B3025B2B28EC625200439BB7 /* SheeMenuProfile */,
+				B3025B4A28ECD2D300439BB7 /* UploadPost */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -1760,7 +1963,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3025B2728EC624000439BB7 /* SheeMenuProfileInteractor.swift in Sources */,
 				B3A4D4522792C203006B4CCA /* LoginRemoteDataManager.swift in Sources */,
+				B3025B2628EC624000439BB7 /* SheeMenuProfileProtocols.swift in Sources */,
 				B3EF851B279F15050076D443 /* SearchPresenter.swift in Sources */,
 				B3AB373C28E3154C00C2BDB5 /* LoginViewData.swift in Sources */,
 				B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */,
@@ -1774,11 +1979,14 @@
 				B31963DA2796D6E100A23628 /* ProfileCollectionsViews.swift in Sources */,
 				B3A4D4502792C203006B4CCA /* LoginInteractor.swift in Sources */,
 				B3A4D48B279464A9006B4CCA /* ProfileProtocols.swift in Sources */,
+				B3025B2928EC624000439BB7 /* SheeMenuProfileRemoteDataManager.swift in Sources */,
 				B3B5677527B255E000CC123A /* WSApiRest.swift in Sources */,
 				B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */,
 				B3EF8521279F15050076D443 /* SearchWireFrame.swift in Sources */,
 				B34B130128D5F71F00172986 /* SheePostView.swift in Sources */,
 				B31963BB279630E200A23628 /* HomeUI.swift in Sources */,
+				B3025B2A28EC624000439BB7 /* SheeMenuProfileWireFrame.swift in Sources */,
+				B3025B4328ECD2CB00439BB7 /* uploadPostPresenter.swift in Sources */,
 				B3AB373F28E5DDC400C2BDB5 /* APIInteractor.swift in Sources */,
 				B3EF8505279ED1D70076D443 /* CommentsView.swift in Sources */,
 				B3EF853C279FEBFF0076D443 /* SearchResultUI.swift in Sources */,
@@ -1796,6 +2004,7 @@
 				B3EF8532279FEADF0076D443 /* SearchResultPresenter.swift in Sources */,
 				B34804EF27AD4B61006EFACD /* PostInteractor.swift in Sources */,
 				B3AB371328E1E68000C2BDB5 /* ProfileViewData.swift in Sources */,
+				B3025B4828ECD2CB00439BB7 /* uploadPostRemoteDataManager.swift in Sources */,
 				B3EF8538279FEADF0076D443 /* SearchResultWireFrame.swift in Sources */,
 				B31963DF2796FD2A00A23628 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
 				B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */,
@@ -1812,6 +2021,7 @@
 				B31963D82796D11700A23628 /* ProfileUI.swift in Sources */,
 				B3A4D4512792C203006B4CCA /* LoginView.swift in Sources */,
 				B3EF8520279F15050076D443 /* SearchRemoteDataManager.swift in Sources */,
+				B3025B4428ECD2CB00439BB7 /* uploadPostLocalDataManager.swift in Sources */,
 				B34B130328D5F71F00172986 /* SheePostWireFrame.swift in Sources */,
 				B3EA7A6D28BE78D000C78FC6 /* EditProfileInteractor.swift in Sources */,
 				B3A4D46B2792C618006B4CCA /* Constants.swift in Sources */,
@@ -1821,6 +2031,7 @@
 				B3A4D48A279464A9006B4CCA /* ProfileLocalDataManager.swift in Sources */,
 				B31963F42799801000A23628 /* LoadingButton.swift in Sources */,
 				B31963E12796FD8200A23628 /* StoryFeaturedCollectionTableViewCell.swift in Sources */,
+				B3025B2528EC624000439BB7 /* SheeMenuProfileLocalDataManager.swift in Sources */,
 				B3EA7A6E28BE78D000C78FC6 /* EditProfileView.swift in Sources */,
 				B31963E32796FDAB00A23628 /* StoryCollectionViewCell.swift in Sources */,
 				B3A4D48D279464A9006B4CCA /* ProfileView.swift in Sources */,
@@ -1828,7 +2039,9 @@
 				B3A4D4372791A5FF006B4CCA /* HomeLocalDataManager.swift in Sources */,
 				B34B12FF28D5F71F00172986 /* SheePostProtocols.swift in Sources */,
 				B3A4D47627937092006B4CCA /* Token.swift in Sources */,
+				B3025B4628ECD2CB00439BB7 /* uploadPostInteractor.swift in Sources */,
 				B3EF851F279F15050076D443 /* SearchView.swift in Sources */,
+				B3025B4728ECD2CB00439BB7 /* uploadPostView.swift in Sources */,
 				B3EF8501279ED1D70076D443 /* CommentsPresenter.swift in Sources */,
 				B3EF850E279ED25C0076D443 /* CommentsUI.swift in Sources */,
 				B319715528D36F7500FDB342 /* SheetHomePostsInteractor.swift in Sources */,
@@ -1837,6 +2050,7 @@
 				B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */,
 				B3A4D44D2792C203006B4CCA /* LoginPresenter.swift in Sources */,
 				B319715728D36F7500FDB342 /* SheetHomePostsRemoteDataManager.swift in Sources */,
+				B3025B2828EC624000439BB7 /* SheeMenuProfileView.swift in Sources */,
 				B31963CA2796CCCC00A23628 /* HomeExtension.swift in Sources */,
 				B3B5677D27B2960800CC123A /* WSenderToken.swift in Sources */,
 				B3EF8525279F15940076D443 /* SearchUI.swift in Sources */,
@@ -1873,13 +2087,16 @@
 				B3A4D4392791A5FF006B4CCA /* HomeInteractor.swift in Sources */,
 				B3EF8534279FEADF0076D443 /* SearchResultProtocols.swift in Sources */,
 				B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */,
+				B3025B3A28EC702200439BB7 /* SheeMenuTableViewCell.swift in Sources */,
 				B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */,
 				B37AD65328BF8CA30019167E /* ListPeopleView.swift in Sources */,
 				B319715228D36F7500FDB342 /* SheetHomePostsPresenter.swift in Sources */,
 				B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */,
 				B3A4D43C2791A5FF006B4CCA /* HomeWireFrame.swift in Sources */,
+				B3025B2428EC624000439BB7 /* SheeMenuProfilePresenter.swift in Sources */,
 				B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */,
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
+				B3025B4528ECD2CB00439BB7 /* uploadPostProtocols.swift in Sources */,
 				B37AD65228BF8CA30019167E /* ListPeopleInteractor.swift in Sources */,
 				B34B130A28D5F7B300172986 /* SheePostUI.swift in Sources */,
 				B3EF8533279FEADF0076D443 /* SearchResultLocalDataManager.swift in Sources */,
@@ -1901,14 +2118,17 @@
 				B37AD65428BF8CA30019167E /* ListPeopleRemoteDataManager.swift in Sources */,
 				B34B12FE28D5F71F00172986 /* SheePostLocalDataManager.swift in Sources */,
 				B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */,
+				B3025B4928ECD2CB00439BB7 /* uploadPostWireFrame.swift in Sources */,
 				B37AD64F28BF8CA30019167E /* ListPeoplePresenter.swift in Sources */,
 				B319715628D36F7500FDB342 /* SheetHomePostsView.swift in Sources */,
 				B37AD65528BF8CA30019167E /* ListPeopleWireFrame.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,
 				B34B130028D5F71F00172986 /* SheePostInteractor.swift in Sources */,
+				B3025B3428EC647800439BB7 /* SheeMenuProfileUI.swift in Sources */,
 				B3AB371828E1F1E200C2BDB5 /* PostViewData.swift in Sources */,
 				B3AB372428E201C100C2BDB5 /* PostRenderViewData.swift in Sources */,
 				B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */,
+				B3025B3728EC6EDB00439BB7 /* ExtensionsSheeMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,8 +51,8 @@ class TabBarViewController: UITabBarController {
         let messages =  generateNavController(vc: tabs.messages, selected: buttonMessagesIconSelected!, unselected: buttonMessagesIconUnselected!)
         
         viewControllers = [
-            navProfile  ,
             navHome     ,
+            navProfile  ,
             navSearch   ,
             navBell     ,
            messages

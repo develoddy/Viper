@@ -2,8 +2,7 @@ import UIKit
 
 // MARK: PRESENTER
 class ProfilePresenter: ProfilePresenterProtocol  {
-    
-
+   
     // MARK:  PROPERTIES
     weak var view: ProfileViewProtocol?
     var interactor: ProfileInteractorInputProtocol?
@@ -138,7 +137,15 @@ class ProfilePresenter: ProfilePresenterProtocol  {
         self.wireFrame?.gotoListPeopleScreen(following: following, from: view!, token: token.getUserToken())
     }
     
- 
+    // LLAMAR AL WIRERAME.
+    func gotoSheeMenu() {
+        wireFrame?.presentSheeMenu(from: self.view!)
+    }
+    
+    // LLAMAR AL WIREFRAME.
+    func gotoUploadPost() {
+        wireFrame?.presentUploadPost(from: self.view!)
+    }
 }
 
 

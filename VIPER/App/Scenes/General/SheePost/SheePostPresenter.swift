@@ -60,6 +60,7 @@ extension SheePostPresenter: SheePostPresenterProtocol {
      */
     func choosePostOptions(indexPath: IndexPath, in viewController: UIViewController)  {
         if indexPath.section == 0 {
+            // CODE
         } else {
             if indexPath.section == 1 {
                 switch indexPath.item {
