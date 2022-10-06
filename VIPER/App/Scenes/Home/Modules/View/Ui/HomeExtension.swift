@@ -130,7 +130,7 @@ extension HomeView: UITableViewDataSource {
 extension HomeView: UITableViewDelegate {
     
     // FOOTER SPINNER
-    private func createSpinnerFooter() -> UIView {
+    func createSpinnerFooter() -> UIView {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
@@ -144,14 +144,16 @@ extension HomeView: UITableViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.height && self.presenter?.getTotalPages() != self.page {
-            guard let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn else { return }
+            guard let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn, let totalPages = self.presenter?.getTotalPages() else { return }
             guard !isPaginationOn else { return }
             self.page += 1
             self.homeUI.tableView.tableFooterView = createSpinnerFooter()
             self.presenter?.loadMoreData(page: self.page)
             
+            print("HOME Extension")
+            print("page \(self.page) - \(totalPages)")
             // CUANDO HA TERMINADO LA EJECUCIÓN DEL SPINNER.
-            if self.page < self.presenter?.getTotalPages() ?? 0 {
+            if self.page <= totalPages  {
                 DispatchQueue.main.async {
                     self.homeUI.tableView.tableFooterView = nil
                 }

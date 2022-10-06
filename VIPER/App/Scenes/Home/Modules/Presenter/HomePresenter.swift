@@ -130,7 +130,6 @@ class HomePresenter: HomePresenterProtocol  {
      * LE DECIMOS AL INTERACTOR QUE QUEREMOS HACER MAS PAGINADO PARA VER MÁS
      * PUBLICACIONES EN LA VISTA. */
     func loadMoreData(page: Int) {
-        self.viewModel.removeAll()
         guard let token = token.getUserToken().success else {
             return
         }
@@ -151,6 +150,30 @@ class HomePresenter: HomePresenterProtocol  {
         }
         self.interactor?.interactorGetData(page: 0, isPagination: false, token: token)
     }
+    /*
+     @objc func updateData(_ refreshControl: UIRefreshControl) {
+         if let totalPages = self.presenter?.getTotalPages() {
+             if self.page != totalPages {
+                 if let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn {
+                     guard !isPaginationOn else {
+                         return
+                     }
+                     self.page += 1
+                     self.homeUI.tableView.tableFooterView = createSpinnerFooter()
+                     // LLAMAR AL PRESENTER.
+                     presenter?.loadMoreData(page: self.page)
+                     if self.page <= totalPages {
+                         DispatchQueue.main.async {
+                             self.homeUI.tableView.tableFooterView = nil
+                         }
+                     }
+                 }
+                 
+             }
+         }
+         homeUI.refreshControl.endRefreshing()
+     }
+     */
 }
 
 

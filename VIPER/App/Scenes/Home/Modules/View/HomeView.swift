@@ -43,35 +43,6 @@ class HomeView: UIViewController {
         refresh()
     }
     
-    func refresh() {
-        homeUI.refreshControl.addTarget(self, action: #selector(updateData(_:) ), for: .valueChanged)
-    }
-    
-    @objc func updateData(_ refreshControl: UIRefreshControl) {
-        //var addString = "OTRO MáS"
-        //print(addString)
-        
-        // APPEND.
-        // LLAMAR AL PRESENTER
-        //presenter?.viewDidLoad()
-        
-        //presenter?.refresh()
-        
-        
-        // REFRESH
-        
-        
-        //home.uita
-        homeUI.refreshControl.beginRefreshing()
-        guard let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn else { return }
-        guard !isPaginationOn else { return }
-        self.page += 1
-        self.presenter?.loadMoreData(page: self.page)
-        
-        homeUI.refreshControl.endRefreshing()
-        
-    }
-    
     // LLAMAR AL PRESENTER.
     func loadData() {
         presenter?.viewDidLoad()
@@ -142,6 +113,34 @@ class HomeView: UIViewController {
             rightBarBellButton,
             rightBarPlusButton
         ]
+    }
+    
+    func refresh() {
+        homeUI.refreshControl.addTarget(self, action: #selector(updateData(_:) ), for: .valueChanged)
+    }
+    
+    // REFRESCAR LA TABLA
+    @objc func updateData(_ refreshControl: UIRefreshControl) {
+        if let totalPages = self.presenter?.getTotalPages() {
+            if self.page != totalPages {
+                if let isPaginationOn = presenter?.interactor?.remoteDatamanager?.isPaginationOn {
+                    guard !isPaginationOn else {
+                        return
+                    }
+                    self.page += 1
+                    self.homeUI.tableView.tableFooterView = createSpinnerFooter()
+                    // LLAMAR AL PRESENTER.
+                    presenter?.loadMoreData(page: self.page)
+                    if self.page <= totalPages {
+                        DispatchQueue.main.async {
+                            self.homeUI.tableView.tableFooterView = nil
+                        }
+                    }
+                }
+                
+            }
+        }
+        homeUI.refreshControl.endRefreshing()
     }
     
     // ACCION BUTTONS
