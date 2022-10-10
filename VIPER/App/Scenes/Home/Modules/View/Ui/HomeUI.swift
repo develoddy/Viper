@@ -6,7 +6,7 @@ class HomeUI: UIView {
     
     lazy var refreshControl: UIRefreshControl = {
        let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = .blue
+        refreshControl.tintColor = Constants.Color.lightDark
         return refreshControl
     }()
     

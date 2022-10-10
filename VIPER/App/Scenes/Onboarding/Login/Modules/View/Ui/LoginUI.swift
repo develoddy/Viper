@@ -1,22 +1,14 @@
-//
-//  LoginUI.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 17/1/22.
-//
-
 import UIKit
 
 // MARK: UI
 class LoginUI: UIView {
     
-    //var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    
     let gradient = CAGradientLayer()
+    var bottomConstraint: NSLayoutConstraint?
     
     public let headerView : UIView = {
         let headerView = UIView()
-        headerView.backgroundColor = Constants.Color.primary
+        headerView.backgroundColor = Constants.Color.white
         return headerView
     }()
     
@@ -27,38 +19,38 @@ class LoginUI: UIView {
     
     public let titleLabel : UILabel = {
         let label = UILabel()
-        label.text = "T I M W I D E R"
+        label.text = "Iniciar sesión"
         label.textAlignment = .center
         label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: 30, weight: .bold)
-        label.textColor = .white
+        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.textColor = Constants.Color.black
         return label
     }()
     
     public let emailLabel : UILabel = {
         let label = UILabel()
-        label.text = "EMAIL"
+        label.text = "CORREO ELECTRÓNICO"
         label.textAlignment = .left
         label.backgroundColor = .systemBackground
-        label.font = .systemFont(ofSize: 12, weight: .bold)
-        label.textColor = Constants.Color.primary
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = Constants.Color.gray
         return label
     }()
     
     public let passwordLabel : UILabel = {
         let label = UILabel()
-        label.text = "PASSWORD"
+        label.text = "CONTRASEÑA"
         label.textAlignment = .left
         label.backgroundColor = .systemBackground
-        label.font = .systemFont(ofSize: 12, weight: .bold)
-        label.textColor = Constants.Color.primary
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = Constants.Color.gray
         return label
     }()
     
     public let emailText : TextFieldWithPadding = {
         let emailText = TextFieldWithPadding()
-        emailText.placeholder = "Username or Email"
-        emailText.text = Constants.LoginData.username
+        //emailText.placeholder = "Username or Email"
+        //emailText.text = Constants.LoginData.username
         emailText.returnKeyType = .next
         emailText.leftViewMode = .always
         emailText.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -73,8 +65,8 @@ class LoginUI: UIView {
     public let passwordText : TextFieldWithPadding = {
         let passwordText = TextFieldWithPadding()
         passwordText.isSecureTextEntry = true
-        passwordText.placeholder = "Password"
-        passwordText.text = Constants.LoginData.password
+       // passwordText.placeholder = "Password"
+        //passwordText.text = Constants.LoginData.password
         passwordText.returnKeyType = .continue
         passwordText.leftViewMode = .always
         passwordText.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -88,9 +80,9 @@ class LoginUI: UIView {
     
     public let loginButton : LoadingButton = {
         let button = LoadingButton()
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Iniciar sesión", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-        button.backgroundColor = Constants.Color.primary
+        button.backgroundColor = Constants.Color.cyan
         return button
     }()
     
@@ -98,6 +90,7 @@ class LoginUI: UIView {
         let button = UIButton()
         button.setTitle("Terms of Serviced", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .regular)
         // button.addTarget(self, action: #selector(didTapTermsButton), for: .touchUpInside)
         return button
     }()
@@ -106,6 +99,7 @@ class LoginUI: UIView {
         let button = UIButton()
         button.setTitle("Privacy Polocy", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .regular)
         // button.addTarget(self, action: #selector(didTapPrivacyButton), for: .touchUpInside)
         return button
     }()
@@ -113,19 +107,47 @@ class LoginUI: UIView {
     public let createAccountButton : UIButton = {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
-        button.setTitle("Create Account", for: .normal)
-        button.setTitleColor(Constants.Color.primary, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        button.setTitle("Registrarse", for: .normal)
+        button.setTitleColor(Constants.Color.black, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .regular)
         // button.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
         return button
     }()
     
+    public let forgottenPasswordButton : UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.label, for: .normal)
+        button.setTitle("¿Has olvidado tu contraseña?", for: .normal)
+        button.setTitleColor(Constants.Color.primary, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
+        // button.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
+        return button
+    }()
+    
+    public let messageLoginIncorrectLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Contraseña incorrecta; vuelve a intentarlo."
+        label.textAlignment = .left
+        label.backgroundColor = .systemBackground
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = Constants.Color.danger
+        return label
+    }()
+    
+    
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemBackground
+        return view
+    }()
     
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        setupContainer()
         configureHeaderView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -136,28 +158,26 @@ class LoginUI: UIView {
     // SETUP
     private func setupView() {
         backgroundColor = .systemBackground
-        
         self.addSubview(headerView)
-        
         self.addSubview(emailLabel)
         self.addSubview(emailText)
-        
         self.addSubview(passwordLabel)
         self.addSubview(passwordText)
+        self.addSubview(forgottenPasswordButton)
+        self.addSubview(containerView)
+        self.addSubview(messageLoginIncorrectLabel)
+        //self.addSubview(createAccountButton)
+        //self.addSubview(termsButton)
+        //self.addSubview(privacyButton)
         
-        self.addSubview(loginButton)
-        self.addSubview(termsButton)
-        self.addSubview(privacyButton)
-        self.addSubview(createAccountButton)
         
-        //self.addSubview(activityIndicator)
     }
     
     // LAYOUT SUB VIEWS
     override func layoutSubviews() {
         
         // HEADER
-        headerView.frame = CGRect(x: 0,y: 0.0,width: self.width,height: self.height/3.0)
+        headerView.frame = CGRect(x: 0,y: 0.0,width: self.width,height: self.height/4)
         
         // LOGO
         let size = headerView.height/3
@@ -167,31 +187,39 @@ class LoginUI: UIView {
         // TITLE
         titleLabel.frame = CGRect(x:10, y:logoImageView.bottom+40, width: width-20, height:30)
         
-        // EMAIL
+        // TEXT EMAIL
         let emailLabellSize = emailLabel.sizeThatFits(self.frame.size)
-        emailLabel.frame = CGRect(x: 25, y: headerView.bottom+20, width: width-50, height: emailLabellSize.height).integral
+        emailLabel.frame = CGRect(x: 50, y: headerView.bottom+20, width: width-100, height: emailLabellSize.height).integral
         let emailTextlSize = emailText.sizeThatFits(self.frame.size)
-        emailText.frame = CGRect(x: 25, y: emailLabel.bottom+5, width: width-50, height: emailTextlSize.height).integral
+        emailText.frame = CGRect(x: 50, y: emailLabel.bottom+5, width: width-100, height: emailTextlSize.height).integral
         
-        // PASSWORD
+        // TEXT PASSWORD
         let passwordLabelize = passwordLabel.sizeThatFits(self.frame.size)
-        passwordLabel.frame = CGRect(x: 25, y: emailText.bottom+20, width: self.width-50, height:passwordLabelize.height).integral
+        passwordLabel.frame = CGRect(x: 50, y: emailText.bottom+20, width: self.width-100, height:passwordLabelize.height).integral
         let passwordTextlSize = passwordText.sizeThatFits(self.frame.size)
-        passwordText.frame = CGRect(x:25, y: passwordLabel.bottom+5, width:self.width-50, height:passwordTextlSize.height).integral
+        passwordText.frame = CGRect(x:50, y: passwordLabel.bottom+5, width:self.width-100, height:passwordTextlSize.height).integral
         
-        // BUTTON LOGIN
-        loginButton.frame = CGRect(x:40, y: passwordText.bottom+20, width: width-80, height:50)
+        // MENSAJE ERROR LOGIN
+        let messageLoginIncorrectLabelsize = messageLoginIncorrectLabel.sizeThatFits(self.frame.size)
+        messageLoginIncorrectLabel.frame = CGRect(x: 50, y: passwordText.bottom+7, width: self.width-100, height: messageLoginIncorrectLabelsize.height).integral
+        
+        // BOTON PASSWORD OLVIDADO
+        forgottenPasswordButton.frame = CGRect(x: 25, y: messageLoginIncorrectLabel.bottom+20, width: self.width-50, height: 50.0)
+        
+        // BOTON LOGIN
+        /*loginButton.frame = CGRect(x:100, y: forgottenPasswordButton.bottom+40, width: width-200, height:50)
+        loginButton.layer.cornerRadius = loginButton.height/2*/
+        loginButton.frame = CGRect(x:100, y: 20, width: width-200, height:50)
         loginButton.layer.cornerRadius = loginButton.height/2
         
+        // BOTON REGISTRARSE
+        //createAccountButton.frame = CGRect(x:25, y:loginButton.bottom+10, width:self.width-50, height: 52.0)
+        
         // BUTTON TERMS
-        termsButton.frame = CGRect(x:10, y:self.height-self.safeAreaInsets.bottom-100, width:self.width-20, height: 50)
+        //termsButton.frame = CGRect(x:10, y:self.height-self.safeAreaInsets.bottom-100, width:self.width-20, height: 50)
         
         // BUTTTON PRIVACY
-        privacyButton.frame = CGRect(x:10, y:self.height-self.safeAreaInsets.bottom-50, width:self.width-20, height:50)
-        
-        // BUTTON CREATE ACCOUNT
-        createAccountButton.frame = CGRect(x:25, y:loginButton.bottom+10, width:self.width-50, height: 52.0)
-        
+        //privacyButton.frame = CGRect(x:10, y:self.height-self.safeAreaInsets.bottom-50, width:self.width-20, height:50)
     }
     
     
@@ -211,5 +239,22 @@ class LoginUI: UIView {
         // ADD LOGO & TITLE
         headerView.addSubview(logoImageView)
         headerView.addSubview(titleLabel)
+    }
+    
+    func setupContainer() {
+        //containerView.addSubview(profilePhotoImageView)
+        //containerView.addSubview(typingCommentText)
+        containerView.addSubview(loginButton)
+        self.addConstraintWhithFormat(format:"H:|[v0]|",views: containerView)
+        self.addConstraintWhithFormat(format:"V:[v0(100)]",views: containerView)
+        bottomConstraint = NSLayoutConstraint(
+            item: containerView,
+            attribute: .bottom,
+            relatedBy: .equal,
+            toItem: self,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: -0)
+        self.addConstraint(bottomConstraint!)
     }
 }

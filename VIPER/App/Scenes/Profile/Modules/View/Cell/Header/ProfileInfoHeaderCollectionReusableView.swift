@@ -12,7 +12,7 @@ protocol ProfileInfoHeaderCollectionReusableViewProtocol {
     func didTapFollowersButton( _header:  ProfileInfoHeaderCollectionReusableView)
     func didTapFollowingButton( _header:  ProfileInfoHeaderCollectionReusableView)
     func didTapEditProfileButton( _header:  ProfileInfoHeaderCollectionReusableView)
-    // func profileHeaderDidTapPostButton( _header:  ProfileInfoHeaderCollectionReusableView)
+    func didTapPostButton( _header:  ProfileInfoHeaderCollectionReusableView)
     // func profileWritePostDidTapEditProfileButton( _post:  ProfileInfoHeaderCollectionReusableView)
 }
 
@@ -143,7 +143,7 @@ final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         followersCountButton.addTarget(self, action: #selector(didTapFollowerButton), for: .touchUpInside)
         followingCountButton.addTarget(self, action: #selector(didTapFollowingButton), for: .touchUpInside)
         editProfileButton.addTarget(self, action: #selector(didTapEditProfileButton), for: .touchUpInside)
-        // postButton.addTarget(self, action: #selector(didTapPostsButton), for: .touchUpInside)
+        postButton.addTarget(self, action: #selector(didTapPostsButton), for: .touchUpInside)
     }
     
     
@@ -268,6 +268,10 @@ extension ProfileInfoHeaderCollectionReusableView {
 
     @objc private func didTapEditProfileButton() {
         delegate?.didTapEditProfileButton(_header: self)
+    }
+    
+    @objc private func didTapPostsButton() {
+        delegate?.didTapPostButton(_header: self)
     }
 }
 

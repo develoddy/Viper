@@ -150,8 +150,6 @@ extension HomeView: UITableViewDelegate {
             self.homeUI.tableView.tableFooterView = createSpinnerFooter()
             self.presenter?.loadMoreData(page: self.page)
             
-            print("HOME Extension")
-            print("page \(self.page) - \(totalPages)")
             // CUANDO HA TERMINADO LA EJECUCIÓN DEL SPINNER.
             if self.page <= totalPages  {
                 DispatchQueue.main.async {

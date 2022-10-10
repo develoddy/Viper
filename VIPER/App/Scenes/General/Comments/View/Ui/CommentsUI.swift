@@ -73,7 +73,6 @@ class CommentsUI: UIView {
     }
     
     func setupView() {
-        //backgroundColor = .systemCyan
         backgroundColor = .systemBackground
         self.addSubview(tableView)
         self.addSubview(activityIndicator)

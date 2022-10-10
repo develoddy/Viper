@@ -318,6 +318,11 @@ extension ProfileView: ProfileViewProtocol {
 
 // MARK: - VANEGAR A OTRO MODULO
 extension ProfileView: ProfileInfoHeaderCollectionReusableViewProtocol {
+    func didTapPostButton(_header: ProfileInfoHeaderCollectionReusableView) {
+        // SCROLL TO THE POSTS.
+            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 2), at: .top, animated: true)
+    }
+    
     
     // ---------- LLAMAR AL PRESENTER -----------
     // NAVEGAR A OTRO MODULO (LISTPEOPLE)

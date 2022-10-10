@@ -19,13 +19,14 @@ class LoginRemoteDataManager:LoginRemoteDataManagerInputProtocol {
         APIManager.shared.fetchLogin(email: email, password: password) {[weak self] (result) in
             switch result {
             case .success(let response):
-                DispatchQueue.main.async {
-                    guard let userLogin = response else {
-                        return
+                if let login = response {
+                    if login.success != nil {
+                        ApiSession.shared.saveSesion(deUsuario: login)
+                        self?.remoteRequestHandler?.remoteCallBackData(success: true)
+                    } else {
+                        self?.remoteRequestHandler?.remoteLoginFailed()
                     }
-                    ApiSession.shared.saveSesion(deUsuario: userLogin)
                 }
-                self?.remoteRequestHandler?.remoteCallBackData(success: true)
             case .failure(let error): print("Error processing  data Login \(error)")
             }
         }

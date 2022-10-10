@@ -25,7 +25,7 @@ class HomeView: UIViewController {
         homeUI.tableView.frame = view.bounds
         homeUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
     }
-    
+     
     // WILL APPEAR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
