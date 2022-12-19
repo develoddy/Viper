@@ -1,57 +1,5 @@
 import UIKit
 
-extension LoginView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.loginUI.emailText {
-            self.loginUI.passwordText.becomeFirstResponder()
-        } else if textField == self.loginUI.passwordText {
-            print("dip tap login")
-            self.didTapLoginButton()
-        }
-        
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        /*if self.loginUI.emailText.text?.count == 0 || self.loginUI.passwordText.text?.count == 0 {
-            print("DidEndEditing: Email esta vacio")
-            textField.enablesReturnKeyAutomatically = true
-            self.loginUI.loginButton.backgroundColor = Constants.Color.lightDark
-            self.loginUI.loginButton.isEnabled = false
-        } else {
-            print("DidEndEditing: Pass: Esta lleno....")
-            self.loginUI.loginButton.backgroundColor = Constants.Color.cyan
-            self.loginUI.loginButton.isEnabled = true
-        }*/
-        if textField.text?.count == 0  {
-            print("Esta vacio....")
-            textField.enablesReturnKeyAutomatically = true
-            self.loginUI.loginButton.backgroundColor = Constants.Color.lightDark
-            self.loginUI.loginButton.isEnabled = false
-        } else {
-            print("Esta lleno....")
-            
-        }
-    }
-    
-  
-        
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        
-        if self.loginUI.emailText.text?.count == 0 || self.loginUI.passwordText.text?.count == 0  {
-            print("textFieldDidChangeSelection: If --- vacio")
-            
-            self.loginUI.loginButton.backgroundColor = Constants.Color.lightDark
-            self.loginUI.loginButton.isEnabled = false
-            self.loginUI.messageLoginIncorrectLabel.isHidden = true
-        } else {
-            print("textFieldDidChangeSelection: else --- lleno")
-            self.loginUI.loginButton.backgroundColor = Constants.Color.cyan
-            self.loginUI.loginButton.isEnabled = true
-        }
-    }
-}
-
 class LoginView: UIViewController {
 
     // MARK: PROPERTIES
@@ -62,13 +10,15 @@ class LoginView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initMethods()
-        setupView()
     }
     
     func initMethods() {
         upKeyboard()
         setupView()
         loadData()
+        setupView()
+        setupLeftNavItems()
+        didTapLoginButton()
     }
     
     func loadData() {
@@ -77,7 +27,6 @@ class LoginView: UIViewController {
     
     // SETUPVIEW
     func setupView() {
-        
         view.backgroundColor = .systemBackground
         view.addSubview(loginUI)
         let loginButton = loginUI.loginButton
@@ -97,6 +46,29 @@ class LoginView: UIViewController {
     }
     
     
+    // SE CONFIGURA LOS ITEM EN EL NAVIGATION.
+    func setupLeftNavItems() {
+        let buttonPlusIcon = UIImage(systemName: "chevron.left")
+        let leftBarPlusButton = UIBarButtonItem(title: "Listo", style: .done, target: self, action: #selector(didTapUploadPost))
+        leftBarPlusButton.image = buttonPlusIcon
+        leftBarPlusButton.tintColor = Constants.Color.primary
+        
+        navigationItem.leftBarButtonItems = [
+            leftBarPlusButton
+        ]
+    }
+    
+    // ACCION BUTTONS
+    @objc func didTapUploadPost() {
+        let transition = CATransition()
+        transition.duration = 0.2
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade //CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        self.view.window!.layer.add(transition, forKey: nil)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
     // VIEW DID LAYOUT SUB VIEWS
     override func viewDidLayoutSubviews() {
         self.loginUI.frame = view.bounds
@@ -107,7 +79,6 @@ class LoginView: UIViewController {
         self.loginUI.emailText.becomeFirstResponder()
         
     }
-    
     
     // TAP LOGIN
     @objc private func didTapLoginButton() {
@@ -128,7 +99,6 @@ class LoginView: UIViewController {
         if let userInfo: NSValue = notification.userInfo?[ UIResponder.keyboardFrameEndUserInfoKey ] as? NSValue {
             let keyboardFrame = userInfo.cgRectValue
             let isKeyBoardShowing = notification.name == UIResponder.keyboardWillShowNotification
-            
             loginUI.bottomConstraint?.constant = isKeyBoardShowing ? -keyboardFrame.height: 0
             UIView.animate(withDuration: 0,delay: 0,options: UIView.AnimationOptions.curveEaseOut,animations: {
                 self.view.layoutIfNeeded()
@@ -140,10 +110,7 @@ class LoginView: UIViewController {
 }
 
 
-
 // MARK: - OU TPUT LOGIN
-
-// LA VISTA ES LLAMADO DESDE EL PRESENTER.
 extension LoginView: LoginViewProtocol {
    
     // ANIMATE ACTIVITY
@@ -160,7 +127,6 @@ extension LoginView: LoginViewProtocol {
     
     // ERROR LOGIN.
     func onError() {
-        //self.loginUI.addSubview(self.loginUI.messageLoginIncorrectLabel)
         self.loginUI.messageLoginIncorrectLabel.isHidden = false
         self.loginUI.passwordText.becomeFirstResponder()
         /*let alert = UIAlertController(title: Constants.LogInError.title, message: Constants.LogInError.mensajeError, preferredStyle: .alert)
@@ -170,5 +136,36 @@ extension LoginView: LoginViewProtocol {
         }))
         self.present(alert, animated: true, completion: nil)
          */
+    }
+}
+
+// MARK: - TECLADO DELEGATE
+extension LoginView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.loginUI.emailText {
+            self.loginUI.passwordText.becomeFirstResponder()
+        } else if textField == self.loginUI.passwordText {
+            self.didTapLoginButton()
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text?.count == 0  {
+            textField.enablesReturnKeyAutomatically = true
+            self.loginUI.loginButton.backgroundColor = Constants.Color.lightDark
+            self.loginUI.loginButton.isEnabled = false
+        } else {}
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if self.loginUI.emailText.text?.count == 0 || self.loginUI.passwordText.text?.count == 0  {
+            self.loginUI.loginButton.backgroundColor = Constants.Color.lightDark
+            self.loginUI.loginButton.isEnabled = false
+            self.loginUI.messageLoginIncorrectLabel.isHidden = true
+        } else {
+            self.loginUI.loginButton.backgroundColor = Constants.Color.cyan
+            self.loginUI.loginButton.isEnabled = true
+        }
     }
 }

@@ -71,6 +71,35 @@
 		B34B130328D5F71F00172986 /* SheePostWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B12FC28D5F71F00172986 /* SheePostWireFrame.swift */; };
 		B34B130628D5F75B00172986 /* SheePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B130528D5F75B00172986 /* SheePostTableViewCell.swift */; };
 		B34B130A28D5F7B300172986 /* SheePostUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B130928D5F7B300172986 /* SheePostUI.swift */; };
+		B355942728F3F6AF0010EC3D /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355942028F3F6AF0010EC3D /* WelcomePresenter.swift */; };
+		B355942828F3F6AF0010EC3D /* WelcomeLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355942128F3F6AF0010EC3D /* WelcomeLocalDataManager.swift */; };
+		B355942928F3F6AF0010EC3D /* WelcomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355942228F3F6AF0010EC3D /* WelcomeProtocols.swift */; };
+		B355942A28F3F6AF0010EC3D /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355942328F3F6AF0010EC3D /* WelcomeInteractor.swift */; };
+		B355942B28F3F6AF0010EC3D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355942428F3F6AF0010EC3D /* WelcomeView.swift */; };
+		B355942C28F3F6AF0010EC3D /* WelcomeRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355942528F3F6AF0010EC3D /* WelcomeRemoteDataManager.swift */; };
+		B355942D28F3F6AF0010EC3D /* WelcomeWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355942628F3F6AF0010EC3D /* WelcomeWireFrame.swift */; };
+		B355943728F3F9130010EC3D /* WelcomeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355943628F3F9130010EC3D /* WelcomeUI.swift */; };
+		B355944E28F423250010EC3D /* UsernamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355944728F423250010EC3D /* UsernamePresenter.swift */; };
+		B355944F28F423250010EC3D /* UsernameLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355944828F423250010EC3D /* UsernameLocalDataManager.swift */; };
+		B355945028F423250010EC3D /* UsernameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355944928F423250010EC3D /* UsernameProtocols.swift */; };
+		B355945128F423250010EC3D /* UsernameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355944A28F423250010EC3D /* UsernameInteractor.swift */; };
+		B355945228F423250010EC3D /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355944B28F423250010EC3D /* UsernameView.swift */; };
+		B355945328F423250010EC3D /* UsernameRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355944C28F423250010EC3D /* UsernameRemoteDataManager.swift */; };
+		B355945428F423250010EC3D /* UsernameWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355944D28F423250010EC3D /* UsernameWireFrame.swift */; };
+		B355945D28F423C10010EC3D /* BirthdayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355945628F423C10010EC3D /* BirthdayPresenter.swift */; };
+		B355945E28F423C10010EC3D /* BirthdayLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355945728F423C10010EC3D /* BirthdayLocalDataManager.swift */; };
+		B355945F28F423C10010EC3D /* BirthdayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355945828F423C10010EC3D /* BirthdayProtocols.swift */; };
+		B355946028F423C10010EC3D /* BirthdayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355945928F423C10010EC3D /* BirthdayInteractor.swift */; };
+		B355946128F423C10010EC3D /* BirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355945A28F423C10010EC3D /* BirthdayView.swift */; };
+		B355946228F423C10010EC3D /* BirthdayRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355945B28F423C10010EC3D /* BirthdayRemoteDataManager.swift */; };
+		B355946328F423C10010EC3D /* BirthdayWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355945C28F423C10010EC3D /* BirthdayWireFrame.swift */; };
+		B355946C28F4240C0010EC3D /* PasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355946528F4240C0010EC3D /* PasswordPresenter.swift */; };
+		B355946D28F4240C0010EC3D /* PasswordLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355946628F4240C0010EC3D /* PasswordLocalDataManager.swift */; };
+		B355946E28F4240C0010EC3D /* PasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355946728F4240C0010EC3D /* PasswordProtocols.swift */; };
+		B355946F28F4240C0010EC3D /* PasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355946828F4240C0010EC3D /* PasswordInteractor.swift */; };
+		B355947028F4240C0010EC3D /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355946928F4240C0010EC3D /* PasswordView.swift */; };
+		B355947128F4240C0010EC3D /* PasswordRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355946A28F4240C0010EC3D /* PasswordRemoteDataManager.swift */; };
+		B355947228F4240C0010EC3D /* PasswordWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355946B28F4240C0010EC3D /* PasswordWireFrame.swift */; };
 		B36C2A7728C0B56200624B8E /* ListPeopleUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C2A7628C0B56200624B8E /* ListPeopleUI.swift */; };
 		B36C2A7A28C0B79A00624B8E /* UserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C2A7928C0B79A00624B8E /* UserFollowTableViewCell.swift */; };
 		B37AD64328BF42CB0019167E /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AD64228BF42CB0019167E /* FormTableViewCell.swift */; };
@@ -88,6 +117,43 @@
 		B3A066A127919A0C00271073 /* VIPERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A066A027919A0C00271073 /* VIPERTests.swift */; };
 		B3A066AB27919A0C00271073 /* VIPERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A066AA27919A0C00271073 /* VIPERUITests.swift */; };
 		B3A066AD27919A0C00271073 /* VIPERUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A066AC27919A0C00271073 /* VIPERUITestsLaunchTests.swift */; };
+		B3A21B352947887F00EB7ECB /* EmailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B2E2947887F00EB7ECB /* EmailPresenter.swift */; };
+		B3A21B362947887F00EB7ECB /* EmailLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B2F2947887F00EB7ECB /* EmailLocalDataManager.swift */; };
+		B3A21B372947887F00EB7ECB /* EmailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B302947887F00EB7ECB /* EmailProtocols.swift */; };
+		B3A21B382947887F00EB7ECB /* EmailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B312947887F00EB7ECB /* EmailInteractor.swift */; };
+		B3A21B392947887F00EB7ECB /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B322947887F00EB7ECB /* EmailView.swift */; };
+		B3A21B3A2947887F00EB7ECB /* EmailRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B332947887F00EB7ECB /* EmailRemoteDataManager.swift */; };
+		B3A21B3B2947887F00EB7ECB /* EmailWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B342947887F00EB7ECB /* EmailWireFrame.swift */; };
+		B3A21B452947896D00EB7ECB /* EmailUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B442947896D00EB7ECB /* EmailUI.swift */; };
+		B3A21B4929486B5700EB7ECB /* EmailCollectionsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B4829486B5700EB7ECB /* EmailCollectionsViews.swift */; };
+		B3A21B4B29489CE900EB7ECB /* EmailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B4A29489CE900EB7ECB /* EmailTableViewCell.swift */; };
+		B3A21B532948CB1000EB7ECB /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B4C2948CB1000EB7ECB /* ChatPresenter.swift */; };
+		B3A21B542948CB1000EB7ECB /* ChatLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B4D2948CB1000EB7ECB /* ChatLocalDataManager.swift */; };
+		B3A21B552948CB1000EB7ECB /* ChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B4E2948CB1000EB7ECB /* ChatProtocols.swift */; };
+		B3A21B562948CB1000EB7ECB /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B4F2948CB1000EB7ECB /* ChatInteractor.swift */; };
+		B3A21B572948CB1000EB7ECB /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B502948CB1000EB7ECB /* ChatView.swift */; };
+		B3A21B582948CB1000EB7ECB /* ChatRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B512948CB1000EB7ECB /* ChatRemoteDataManager.swift */; };
+		B3A21B592948CB1000EB7ECB /* ChatWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B522948CB1000EB7ECB /* ChatWireFrame.swift */; };
+		B3A21B652948CBA900EB7ECB /* ChatUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B642948CBA900EB7ECB /* ChatUI.swift */; };
+		B3A21B672948CBC300EB7ECB /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B662948CBC300EB7ECB /* ChatTableViewCell.swift */; };
+		B3A21B6F2948D85D00EB7ECB /* SheeContactsChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B682948D85D00EB7ECB /* SheeContactsChatPresenter.swift */; };
+		B3A21B702948D85D00EB7ECB /* SheeContactsChatLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B692948D85D00EB7ECB /* SheeContactsChatLocalDataManager.swift */; };
+		B3A21B712948D85D00EB7ECB /* SheeContactsChatProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B6A2948D85D00EB7ECB /* SheeContactsChatProtocols.swift */; };
+		B3A21B722948D85D00EB7ECB /* SheeContactsChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B6B2948D85D00EB7ECB /* SheeContactsChatInteractor.swift */; };
+		B3A21B732948D85D00EB7ECB /* SheeContactsChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B6C2948D85D00EB7ECB /* SheeContactsChatView.swift */; };
+		B3A21B742948D85D00EB7ECB /* SheeContactsChatRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B6D2948D85D00EB7ECB /* SheeContactsChatRemoteDataManager.swift */; };
+		B3A21B752948D85D00EB7ECB /* SheeContactsChatWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B6E2948D85D00EB7ECB /* SheeContactsChatWireFrame.swift */; };
+		B3A21B812948D93C00EB7ECB /* SheeContactsChatUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B802948D93C00EB7ECB /* SheeContactsChatUI.swift */; };
+		B3A21B832948D95800EB7ECB /* SheeContactsChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B822948D95800EB7ECB /* SheeContactsChatTableViewCell.swift */; };
+		B3A21B8B294CAACC00EB7ECB /* NewMessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B84294CAACB00EB7ECB /* NewMessagePresenter.swift */; };
+		B3A21B8C294CAACC00EB7ECB /* NewMessageLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B85294CAACB00EB7ECB /* NewMessageLocalDataManager.swift */; };
+		B3A21B8D294CAACC00EB7ECB /* NewMessageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B86294CAACB00EB7ECB /* NewMessageProtocols.swift */; };
+		B3A21B8E294CAACC00EB7ECB /* NewMessageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B87294CAACB00EB7ECB /* NewMessageInteractor.swift */; };
+		B3A21B8F294CAACC00EB7ECB /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B88294CAACB00EB7ECB /* NewMessageView.swift */; };
+		B3A21B90294CAACC00EB7ECB /* NewMessageRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B89294CAACB00EB7ECB /* NewMessageRemoteDataManager.swift */; };
+		B3A21B91294CAACC00EB7ECB /* NewMessageWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B8A294CAACB00EB7ECB /* NewMessageWireFrame.swift */; };
+		B3A21B9B294CAB6100EB7ECB /* NewMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B9A294CAB6100EB7ECB /* NewMessageViewCell.swift */; };
+		B3A21B9D294CAB7900EB7ECB /* NewMessageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A21B9C294CAB7900EB7ECB /* NewMessageUI.swift */; };
 		B3A4D4362791A5FF006B4CCA /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D42F2791A5FF006B4CCA /* HomePresenter.swift */; };
 		B3A4D4372791A5FF006B4CCA /* HomeLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D4302791A5FF006B4CCA /* HomeLocalDataManager.swift */; };
 		B3A4D4382791A5FF006B4CCA /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4D4312791A5FF006B4CCA /* HomeProtocols.swift */; };
@@ -180,6 +246,17 @@
 		B3EF8538279FEADF0076D443 /* SearchResultWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF8531279FEADF0076D443 /* SearchResultWireFrame.swift */; };
 		B3EF853C279FEBFF0076D443 /* SearchResultUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF853B279FEBFF0076D443 /* SearchResultUI.swift */; };
 		B3EF853F279FEDEC0076D443 /* SearchResultViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF853E279FEDEC0076D443 /* SearchResultViewTableViewCell.swift */; };
+		B3F8246F28F4355E000EDC11 /* UsernameUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8246E28F4355E000EDC11 /* UsernameUI.swift */; };
+		B3F8247A28F4650C000EDC11 /* BirthdayUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8247928F4650C000EDC11 /* BirthdayUI.swift */; };
+		B3F8248328F468AE000EDC11 /* PasswordUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248228F468AE000EDC11 /* PasswordUI.swift */; };
+		B3F8248D28F48466000EDC11 /* PicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248628F48466000EDC11 /* PicPresenter.swift */; };
+		B3F8248E28F48466000EDC11 /* PicLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248728F48466000EDC11 /* PicLocalDataManager.swift */; };
+		B3F8248F28F48466000EDC11 /* PicProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248828F48466000EDC11 /* PicProtocols.swift */; };
+		B3F8249028F48466000EDC11 /* PicInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248928F48466000EDC11 /* PicInteractor.swift */; };
+		B3F8249128F48466000EDC11 /* PicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248A28F48466000EDC11 /* PicView.swift */; };
+		B3F8249228F48466000EDC11 /* PicRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248B28F48466000EDC11 /* PicRemoteDataManager.swift */; };
+		B3F8249328F48466000EDC11 /* PicWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8248C28F48466000EDC11 /* PicWireFrame.swift */; };
+		B3F8249D28F484CF000EDC11 /* PicUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8249C28F484CF000EDC11 /* PicUI.swift */; };
 		D598549660E83303FC87F2B3 /* Pods_VIPER_VIPERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E70BF9B390B942AEE1C133A1 /* Pods_VIPER_VIPERUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -269,6 +346,35 @@
 		B34B12FC28D5F71F00172986 /* SheePostWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostWireFrame.swift; sourceTree = "<group>"; };
 		B34B130528D5F75B00172986 /* SheePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostTableViewCell.swift; sourceTree = "<group>"; };
 		B34B130928D5F7B300172986 /* SheePostUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheePostUI.swift; sourceTree = "<group>"; };
+		B355942028F3F6AF0010EC3D /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
+		B355942128F3F6AF0010EC3D /* WelcomeLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLocalDataManager.swift; sourceTree = "<group>"; };
+		B355942228F3F6AF0010EC3D /* WelcomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeProtocols.swift; sourceTree = "<group>"; };
+		B355942328F3F6AF0010EC3D /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
+		B355942428F3F6AF0010EC3D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B355942528F3F6AF0010EC3D /* WelcomeRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRemoteDataManager.swift; sourceTree = "<group>"; };
+		B355942628F3F6AF0010EC3D /* WelcomeWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWireFrame.swift; sourceTree = "<group>"; };
+		B355943628F3F9130010EC3D /* WelcomeUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeUI.swift; sourceTree = "<group>"; };
+		B355944728F423250010EC3D /* UsernamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernamePresenter.swift; sourceTree = "<group>"; };
+		B355944828F423250010EC3D /* UsernameLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLocalDataManager.swift; sourceTree = "<group>"; };
+		B355944928F423250010EC3D /* UsernameProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameProtocols.swift; sourceTree = "<group>"; };
+		B355944A28F423250010EC3D /* UsernameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameInteractor.swift; sourceTree = "<group>"; };
+		B355944B28F423250010EC3D /* UsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameView.swift; sourceTree = "<group>"; };
+		B355944C28F423250010EC3D /* UsernameRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameRemoteDataManager.swift; sourceTree = "<group>"; };
+		B355944D28F423250010EC3D /* UsernameWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameWireFrame.swift; sourceTree = "<group>"; };
+		B355945628F423C10010EC3D /* BirthdayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPresenter.swift; sourceTree = "<group>"; };
+		B355945728F423C10010EC3D /* BirthdayLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayLocalDataManager.swift; sourceTree = "<group>"; };
+		B355945828F423C10010EC3D /* BirthdayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayProtocols.swift; sourceTree = "<group>"; };
+		B355945928F423C10010EC3D /* BirthdayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayInteractor.swift; sourceTree = "<group>"; };
+		B355945A28F423C10010EC3D /* BirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayView.swift; sourceTree = "<group>"; };
+		B355945B28F423C10010EC3D /* BirthdayRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayRemoteDataManager.swift; sourceTree = "<group>"; };
+		B355945C28F423C10010EC3D /* BirthdayWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayWireFrame.swift; sourceTree = "<group>"; };
+		B355946528F4240C0010EC3D /* PasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordPresenter.swift; sourceTree = "<group>"; };
+		B355946628F4240C0010EC3D /* PasswordLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordLocalDataManager.swift; sourceTree = "<group>"; };
+		B355946728F4240C0010EC3D /* PasswordProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordProtocols.swift; sourceTree = "<group>"; };
+		B355946828F4240C0010EC3D /* PasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInteractor.swift; sourceTree = "<group>"; };
+		B355946928F4240C0010EC3D /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		B355946A28F4240C0010EC3D /* PasswordRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRemoteDataManager.swift; sourceTree = "<group>"; };
+		B355946B28F4240C0010EC3D /* PasswordWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordWireFrame.swift; sourceTree = "<group>"; };
 		B36C2A7628C0B56200624B8E /* ListPeopleUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPeopleUI.swift; sourceTree = "<group>"; };
 		B36C2A7928C0B79A00624B8E /* UserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowTableViewCell.swift; sourceTree = "<group>"; };
 		B37AD64228BF42CB0019167E /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
@@ -290,6 +396,43 @@
 		B3A066A627919A0C00271073 /* VIPERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VIPERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A066AA27919A0C00271073 /* VIPERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPERUITests.swift; sourceTree = "<group>"; };
 		B3A066AC27919A0C00271073 /* VIPERUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPERUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B3A21B2E2947887F00EB7ECB /* EmailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPresenter.swift; sourceTree = "<group>"; };
+		B3A21B2F2947887F00EB7ECB /* EmailLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLocalDataManager.swift; sourceTree = "<group>"; };
+		B3A21B302947887F00EB7ECB /* EmailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailProtocols.swift; sourceTree = "<group>"; };
+		B3A21B312947887F00EB7ECB /* EmailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInteractor.swift; sourceTree = "<group>"; };
+		B3A21B322947887F00EB7ECB /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		B3A21B332947887F00EB7ECB /* EmailRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3A21B342947887F00EB7ECB /* EmailWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailWireFrame.swift; sourceTree = "<group>"; };
+		B3A21B442947896D00EB7ECB /* EmailUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUI.swift; sourceTree = "<group>"; };
+		B3A21B4829486B5700EB7ECB /* EmailCollectionsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCollectionsViews.swift; sourceTree = "<group>"; };
+		B3A21B4A29489CE900EB7ECB /* EmailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTableViewCell.swift; sourceTree = "<group>"; };
+		B3A21B4C2948CB1000EB7ECB /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		B3A21B4D2948CB1000EB7ECB /* ChatLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLocalDataManager.swift; sourceTree = "<group>"; };
+		B3A21B4E2948CB1000EB7ECB /* ChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProtocols.swift; sourceTree = "<group>"; };
+		B3A21B4F2948CB1000EB7ECB /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		B3A21B502948CB1000EB7ECB /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		B3A21B512948CB1000EB7ECB /* ChatRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3A21B522948CB1000EB7ECB /* ChatWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWireFrame.swift; sourceTree = "<group>"; };
+		B3A21B642948CBA900EB7ECB /* ChatUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUI.swift; sourceTree = "<group>"; };
+		B3A21B662948CBC300EB7ECB /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		B3A21B682948D85D00EB7ECB /* SheeContactsChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatPresenter.swift; sourceTree = "<group>"; };
+		B3A21B692948D85D00EB7ECB /* SheeContactsChatLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatLocalDataManager.swift; sourceTree = "<group>"; };
+		B3A21B6A2948D85D00EB7ECB /* SheeContactsChatProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatProtocols.swift; sourceTree = "<group>"; };
+		B3A21B6B2948D85D00EB7ECB /* SheeContactsChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatInteractor.swift; sourceTree = "<group>"; };
+		B3A21B6C2948D85D00EB7ECB /* SheeContactsChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatView.swift; sourceTree = "<group>"; };
+		B3A21B6D2948D85D00EB7ECB /* SheeContactsChatRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3A21B6E2948D85D00EB7ECB /* SheeContactsChatWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatWireFrame.swift; sourceTree = "<group>"; };
+		B3A21B802948D93C00EB7ECB /* SheeContactsChatUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatUI.swift; sourceTree = "<group>"; };
+		B3A21B822948D95800EB7ECB /* SheeContactsChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheeContactsChatTableViewCell.swift; sourceTree = "<group>"; };
+		B3A21B84294CAACB00EB7ECB /* NewMessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessagePresenter.swift; sourceTree = "<group>"; };
+		B3A21B85294CAACB00EB7ECB /* NewMessageLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageLocalDataManager.swift; sourceTree = "<group>"; };
+		B3A21B86294CAACB00EB7ECB /* NewMessageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageProtocols.swift; sourceTree = "<group>"; };
+		B3A21B87294CAACB00EB7ECB /* NewMessageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageInteractor.swift; sourceTree = "<group>"; };
+		B3A21B88294CAACB00EB7ECB /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
+		B3A21B89294CAACB00EB7ECB /* NewMessageRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3A21B8A294CAACB00EB7ECB /* NewMessageWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageWireFrame.swift; sourceTree = "<group>"; };
+		B3A21B9A294CAB6100EB7ECB /* NewMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewCell.swift; sourceTree = "<group>"; };
+		B3A21B9C294CAB7900EB7ECB /* NewMessageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageUI.swift; sourceTree = "<group>"; };
 		B3A4D42F2791A5FF006B4CCA /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		B3A4D4302791A5FF006B4CCA /* HomeLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLocalDataManager.swift; sourceTree = "<group>"; };
 		B3A4D4312791A5FF006B4CCA /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
@@ -382,6 +525,17 @@
 		B3EF8531279FEADF0076D443 /* SearchResultWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultWireFrame.swift; sourceTree = "<group>"; };
 		B3EF853B279FEBFF0076D443 /* SearchResultUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultUI.swift; sourceTree = "<group>"; };
 		B3EF853E279FEDEC0076D443 /* SearchResultViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewTableViewCell.swift; sourceTree = "<group>"; };
+		B3F8246E28F4355E000EDC11 /* UsernameUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameUI.swift; sourceTree = "<group>"; };
+		B3F8247928F4650C000EDC11 /* BirthdayUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayUI.swift; sourceTree = "<group>"; };
+		B3F8248228F468AE000EDC11 /* PasswordUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUI.swift; sourceTree = "<group>"; };
+		B3F8248628F48466000EDC11 /* PicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicPresenter.swift; sourceTree = "<group>"; };
+		B3F8248728F48466000EDC11 /* PicLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicLocalDataManager.swift; sourceTree = "<group>"; };
+		B3F8248828F48466000EDC11 /* PicProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicProtocols.swift; sourceTree = "<group>"; };
+		B3F8248928F48466000EDC11 /* PicInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicInteractor.swift; sourceTree = "<group>"; };
+		B3F8248A28F48466000EDC11 /* PicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicView.swift; sourceTree = "<group>"; };
+		B3F8248B28F48466000EDC11 /* PicRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicRemoteDataManager.swift; sourceTree = "<group>"; };
+		B3F8248C28F48466000EDC11 /* PicWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicWireFrame.swift; sourceTree = "<group>"; };
+		B3F8249C28F484CF000EDC11 /* PicUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicUI.swift; sourceTree = "<group>"; };
 		B6D91E06A3B9E3BDF69F9427 /* Pods-VIPER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER.debug.xcconfig"; path = "Target Support Files/Pods-VIPER/Pods-VIPER.debug.xcconfig"; sourceTree = "<group>"; };
 		E70BF9B390B942AEE1C133A1 /* Pods_VIPER_VIPERUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VIPER_VIPERUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66E627C3D62E816471154AC /* Pods-VIPER-VIPERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIPER-VIPERUITests.debug.xcconfig"; path = "Target Support Files/Pods-VIPER-VIPERUITests/Pods-VIPER-VIPERUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -860,6 +1014,130 @@
 			path = ui;
 			sourceTree = "<group>";
 		};
+		B355942E28F3F6D00010EC3D /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				B355943228F3F8620010EC3D /* Router */,
+				B355943428F3F8720010EC3D /* Protocols */,
+				B355943528F3F87D0010EC3D /* Local Manager */,
+				B355943328F3F86A0010EC3D /* Data Manager */,
+				B355943128F3F8590010EC3D /* Interactor */,
+				B355943028F3F8500010EC3D /* Presenter */,
+				B355942F28F3F8480010EC3D /* View */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		B355942F28F3F8480010EC3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B355942428F3F6AF0010EC3D /* WelcomeView.swift */,
+				B355943628F3F9130010EC3D /* WelcomeUI.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B355943028F3F8500010EC3D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B355942028F3F6AF0010EC3D /* WelcomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B355943128F3F8590010EC3D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B355942328F3F6AF0010EC3D /* WelcomeInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B355943228F3F8620010EC3D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B355942628F3F6AF0010EC3D /* WelcomeWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B355943328F3F86A0010EC3D /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B355942528F3F6AF0010EC3D /* WelcomeRemoteDataManager.swift */,
+			);
+			path = "Data Manager";
+			sourceTree = "<group>";
+		};
+		B355943428F3F8720010EC3D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B355942228F3F6AF0010EC3D /* WelcomeProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B355943528F3F87D0010EC3D /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B355942128F3F6AF0010EC3D /* WelcomeLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B355944628F420330010EC3D /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				B355945528F423980010EC3D /* Username */,
+				B355946428F423C60010EC3D /* Birthday */,
+				B355947328F424100010EC3D /* Password */,
+				B3F8249428F4846E000EDC11 /* Pic */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		B355945528F423980010EC3D /* Username */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8246B28F43523000EDC11 /* Presenter */,
+				B3F8246A28F4351C000EDC11 /* Local Manager */,
+				B3F8246928F43516000EDC11 /* Protocols */,
+				B3F8246828F43511000EDC11 /* Interactor */,
+				B3F8246728F4350C000EDC11 /* View */,
+				B3F8246C28F43528000EDC11 /* Remote Manager */,
+				B3F8246D28F4353D000EDC11 /* Router */,
+			);
+			path = Username;
+			sourceTree = "<group>";
+		};
+		B355946428F423C60010EC3D /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8247628F4648D000EDC11 /* Presenter */,
+				B3F8247428F4647B000EDC11 /* Local Manager */,
+				B3F8247328F46474000EDC11 /* Prtocols */,
+				B3F8247228F4646E000EDC11 /* Interactor */,
+				B3F8247128F46469000EDC11 /* View */,
+				B3F8247728F46494000EDC11 /* Remote Maneger */,
+				B3F8247828F4649D000EDC11 /* Route */,
+			);
+			path = Birthday;
+			sourceTree = "<group>";
+		};
+		B355947328F424100010EC3D /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8247F28F46865000EDC11 /* Presenter */,
+				B3F8247E28F4684A000EDC11 /* Local Manager */,
+				B3F8247D28F46845000EDC11 /* Protocols */,
+				B3F8247C28F46840000EDC11 /* Interactor */,
+				B3F8247B28F4683B000EDC11 /* View */,
+				B3F8248028F46870000EDC11 /* Remote Manager */,
+				B3F8248128F46877000EDC11 /* Router */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
 		B36C2A7828C0B56600624B8E /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -959,6 +1237,343 @@
 			path = VIPERUITests;
 			sourceTree = "<group>";
 		};
+		B3A21B3C2947888700EB7ECB /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B3F294788FD00EB7ECB /* Protocols */,
+				B3A21B432947892800EB7ECB /* Router */,
+				B3A21B402947890600EB7ECB /* LocalManager */,
+				B3A21B422947891800EB7ECB /* RemoteManager */,
+				B3A21B3E294788F400EB7ECB /* Interactor */,
+				B3A21B412947890F00EB7ECB /* Presenter */,
+				B3A21B3D294788E000EB7ECB /* View */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		B3A21B3D294788E000EB7ECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B462947897C00EB7ECB /* Cell */,
+				B3A21B472947898200EB7ECB /* Ui */,
+				B3A21B322947887F00EB7ECB /* EmailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3A21B3E294788F400EB7ECB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B312947887F00EB7ECB /* EmailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3A21B3F294788FD00EB7ECB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B302947887F00EB7ECB /* EmailProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3A21B402947890600EB7ECB /* LocalManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B2F2947887F00EB7ECB /* EmailLocalDataManager.swift */,
+			);
+			path = LocalManager;
+			sourceTree = "<group>";
+		};
+		B3A21B412947890F00EB7ECB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B2E2947887F00EB7ECB /* EmailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3A21B422947891800EB7ECB /* RemoteManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B332947887F00EB7ECB /* EmailRemoteDataManager.swift */,
+			);
+			path = RemoteManager;
+			sourceTree = "<group>";
+		};
+		B3A21B432947892800EB7ECB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B342947887F00EB7ECB /* EmailWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3A21B462947897C00EB7ECB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B4829486B5700EB7ECB /* EmailCollectionsViews.swift */,
+				B3A21B4A29489CE900EB7ECB /* EmailTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3A21B472947898200EB7ECB /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B442947896D00EB7ECB /* EmailUI.swift */,
+			);
+			name = Ui;
+			sourceTree = "<group>";
+		};
+		B3A21B5A2948CB1600EB7ECB /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B5B2948CB3B00EB7ECB /* View */,
+				B3A21B5F2948CB6200EB7ECB /* Presenter */,
+				B3A21B5C2948CB4300EB7ECB /* Interactor */,
+				B3A21B602948CB6A00EB7ECB /* RemoteManager */,
+				B3A21B5E2948CB5600EB7ECB /* LocalManager */,
+				B3A21B612948CB7300EB7ECB /* Router */,
+				B3A21B5D2948CB4C00EB7ECB /* Protocols */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		B3A21B5B2948CB3B00EB7ECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B632948CB8C00EB7ECB /* Cell */,
+				B3A21B622948CB8300EB7ECB /* Ui */,
+				B3A21B502948CB1000EB7ECB /* ChatView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3A21B5C2948CB4300EB7ECB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B4F2948CB1000EB7ECB /* ChatInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3A21B5D2948CB4C00EB7ECB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B4E2948CB1000EB7ECB /* ChatProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3A21B5E2948CB5600EB7ECB /* LocalManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B4D2948CB1000EB7ECB /* ChatLocalDataManager.swift */,
+			);
+			path = LocalManager;
+			sourceTree = "<group>";
+		};
+		B3A21B5F2948CB6200EB7ECB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B4C2948CB1000EB7ECB /* ChatPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3A21B602948CB6A00EB7ECB /* RemoteManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B512948CB1000EB7ECB /* ChatRemoteDataManager.swift */,
+			);
+			path = RemoteManager;
+			sourceTree = "<group>";
+		};
+		B3A21B612948CB7300EB7ECB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B522948CB1000EB7ECB /* ChatWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3A21B622948CB8300EB7ECB /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B642948CBA900EB7ECB /* ChatUI.swift */,
+			);
+			name = Ui;
+			sourceTree = "<group>";
+		};
+		B3A21B632948CB8C00EB7ECB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B662948CBC300EB7ECB /* ChatTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B3A21B762948D86700EB7ECB /* SheeContactsChat */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B772948D87F00EB7ECB /* View */,
+				B3A21B7B2948D8A100EB7ECB /* Presenter */,
+				B3A21B782948D88600EB7ECB /* Interactor */,
+				B3A21B7C2948D8AB00EB7ECB /* RemoteManager */,
+				B3A21B7A2948D89800EB7ECB /* LocalManager */,
+				B3A21B7D2948D8B300EB7ECB /* Router */,
+				B3A21B792948D88E00EB7ECB /* Protocols */,
+			);
+			path = SheeContactsChat;
+			sourceTree = "<group>";
+		};
+		B3A21B772948D87F00EB7ECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B7F2948D8ED00EB7ECB /* Cell */,
+				B3A21B7E2948D8E500EB7ECB /* Ui */,
+				B3A21B6C2948D85D00EB7ECB /* SheeContactsChatView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3A21B782948D88600EB7ECB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B6B2948D85D00EB7ECB /* SheeContactsChatInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3A21B792948D88E00EB7ECB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B6A2948D85D00EB7ECB /* SheeContactsChatProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3A21B7A2948D89800EB7ECB /* LocalManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B692948D85D00EB7ECB /* SheeContactsChatLocalDataManager.swift */,
+			);
+			path = LocalManager;
+			sourceTree = "<group>";
+		};
+		B3A21B7B2948D8A100EB7ECB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B682948D85D00EB7ECB /* SheeContactsChatPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3A21B7C2948D8AB00EB7ECB /* RemoteManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B6D2948D85D00EB7ECB /* SheeContactsChatRemoteDataManager.swift */,
+			);
+			path = RemoteManager;
+			sourceTree = "<group>";
+		};
+		B3A21B7D2948D8B300EB7ECB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B6E2948D85D00EB7ECB /* SheeContactsChatWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3A21B7E2948D8E500EB7ECB /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B802948D93C00EB7ECB /* SheeContactsChatUI.swift */,
+			);
+			name = Ui;
+			sourceTree = "<group>";
+		};
+		B3A21B7F2948D8ED00EB7ECB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B822948D95800EB7ECB /* SheeContactsChatTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B3A21B92294CAAD400EB7ECB /* NewMessage */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B93294CAAEB00EB7ECB /* View */,
+				B3A21B94294CAAF400EB7ECB /* Presenter */,
+				B3A21B97294CAB0E00EB7ECB /* Interactor */,
+				B3A21B98294CAB1800EB7ECB /* RemoteManager */,
+				B3A21B95294CAAFD00EB7ECB /* LocalManager */,
+				B3A21B99294CAB2400EB7ECB /* Router */,
+				B3A21B96294CAB0700EB7ECB /* Protocols */,
+			);
+			path = NewMessage;
+			sourceTree = "<group>";
+		};
+		B3A21B93294CAAEB00EB7ECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B88294CAACB00EB7ECB /* NewMessageView.swift */,
+				B3A21B9A294CAB6100EB7ECB /* NewMessageViewCell.swift */,
+				B3A21B9C294CAB7900EB7ECB /* NewMessageUI.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3A21B94294CAAF400EB7ECB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B84294CAACB00EB7ECB /* NewMessagePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3A21B95294CAAFD00EB7ECB /* LocalManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B85294CAACB00EB7ECB /* NewMessageLocalDataManager.swift */,
+			);
+			path = LocalManager;
+			sourceTree = "<group>";
+		};
+		B3A21B96294CAB0700EB7ECB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B86294CAACB00EB7ECB /* NewMessageProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3A21B97294CAB0E00EB7ECB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B87294CAACB00EB7ECB /* NewMessageInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3A21B98294CAB1800EB7ECB /* RemoteManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B89294CAACB00EB7ECB /* NewMessageRemoteDataManager.swift */,
+			);
+			path = RemoteManager;
+			sourceTree = "<group>";
+		};
+		B3A21B99294CAB2400EB7ECB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3A21B8A294CAACB00EB7ECB /* NewMessageWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		B3A4D42C2791A3E4006B4CCA /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,6 +1593,7 @@
 				B3A4D4452792C1DA006B4CCA /* Onboarding */,
 				B3A4D48127946487006B4CCA /* Profile */,
 				B3A4D42E2791A404006B4CCA /* Home */,
+				B3A21B3C2947888700EB7ECB /* Email */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1007,6 +1623,8 @@
 			isa = PBXGroup;
 			children = (
 				B3A4D47727937565006B4CCA /* Login */,
+				B355942E28F3F6D00010EC3D /* Welcome */,
+				B355944628F420330010EC3D /* Register */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1691,6 +2309,9 @@
 				B34B130428D5F72700172986 /* SheePost */,
 				B3025B2B28EC625200439BB7 /* SheeMenuProfile */,
 				B3025B4A28ECD2D300439BB7 /* UploadPost */,
+				B3A21B5A2948CB1600EB7ECB /* Chat */,
+				B3A21B762948D86700EB7ECB /* SheeContactsChat */,
+				B3A21B92294CAAD400EB7ECB /* NewMessage */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -1723,6 +2344,280 @@
 				B3EF853E279FEDEC0076D443 /* SearchResultViewTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		B3F8246728F4350C000EDC11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B355944B28F423250010EC3D /* UsernameView.swift */,
+				B3F8247028F43563000EDC11 /* Ui */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3F8246828F43511000EDC11 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B355944A28F423250010EC3D /* UsernameInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3F8246928F43516000EDC11 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B355944928F423250010EC3D /* UsernameProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3F8246A28F4351C000EDC11 /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B355944828F423250010EC3D /* UsernameLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B3F8246B28F43523000EDC11 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B355944728F423250010EC3D /* UsernamePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3F8246C28F43528000EDC11 /* Remote Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B355944C28F423250010EC3D /* UsernameRemoteDataManager.swift */,
+			);
+			path = "Remote Manager";
+			sourceTree = "<group>";
+		};
+		B3F8246D28F4353D000EDC11 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B355944D28F423250010EC3D /* UsernameWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3F8247028F43563000EDC11 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8246E28F4355E000EDC11 /* UsernameUI.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		B3F8247128F46469000EDC11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B355945A28F423C10010EC3D /* BirthdayView.swift */,
+				B3F8248528F46B7B000EDC11 /* Ui */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3F8247228F4646E000EDC11 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B355945928F423C10010EC3D /* BirthdayInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3F8247328F46474000EDC11 /* Prtocols */ = {
+			isa = PBXGroup;
+			children = (
+				B355945828F423C10010EC3D /* BirthdayProtocols.swift */,
+			);
+			path = Prtocols;
+			sourceTree = "<group>";
+		};
+		B3F8247428F4647B000EDC11 /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B355945728F423C10010EC3D /* BirthdayLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B3F8247628F4648D000EDC11 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B355945628F423C10010EC3D /* BirthdayPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3F8247728F46494000EDC11 /* Remote Maneger */ = {
+			isa = PBXGroup;
+			children = (
+				B355945B28F423C10010EC3D /* BirthdayRemoteDataManager.swift */,
+			);
+			path = "Remote Maneger";
+			sourceTree = "<group>";
+		};
+		B3F8247828F4649D000EDC11 /* Route */ = {
+			isa = PBXGroup;
+			children = (
+				B355945C28F423C10010EC3D /* BirthdayWireFrame.swift */,
+			);
+			path = Route;
+			sourceTree = "<group>";
+		};
+		B3F8247B28F4683B000EDC11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B355946928F4240C0010EC3D /* PasswordView.swift */,
+				B3F8248428F468D0000EDC11 /* Ui */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3F8247C28F46840000EDC11 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B355946828F4240C0010EC3D /* PasswordInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3F8247D28F46845000EDC11 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B355946728F4240C0010EC3D /* PasswordProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3F8247E28F4684A000EDC11 /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B355946628F4240C0010EC3D /* PasswordLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B3F8247F28F46865000EDC11 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B355946528F4240C0010EC3D /* PasswordPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3F8248028F46870000EDC11 /* Remote Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B355946A28F4240C0010EC3D /* PasswordRemoteDataManager.swift */,
+			);
+			path = "Remote Manager";
+			sourceTree = "<group>";
+		};
+		B3F8248128F46877000EDC11 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B355946B28F4240C0010EC3D /* PasswordWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3F8248428F468D0000EDC11 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248228F468AE000EDC11 /* PasswordUI.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		B3F8248528F46B7B000EDC11 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8247928F4650C000EDC11 /* BirthdayUI.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		B3F8249428F4846E000EDC11 /* Pic */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8249B28F484AE000EDC11 /* Presenter */,
+				B3F8249A28F484A7000EDC11 /* Local Manager */,
+				B3F8249928F484A0000EDC11 /* Protocols */,
+				B3F8249828F4849A000EDC11 /* Interactor */,
+				B3F8249728F4848C000EDC11 /* View */,
+				B3F8249628F48483000EDC11 /* Remote Manager */,
+				B3F8249528F4847C000EDC11 /* Router */,
+			);
+			path = Pic;
+			sourceTree = "<group>";
+		};
+		B3F8249528F4847C000EDC11 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248C28F48466000EDC11 /* PicWireFrame.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B3F8249628F48483000EDC11 /* Remote Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248B28F48466000EDC11 /* PicRemoteDataManager.swift */,
+			);
+			path = "Remote Manager";
+			sourceTree = "<group>";
+		};
+		B3F8249728F4848C000EDC11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248A28F48466000EDC11 /* PicView.swift */,
+				B3F8249E28F4851E000EDC11 /* Ui */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3F8249828F4849A000EDC11 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248928F48466000EDC11 /* PicInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B3F8249928F484A0000EDC11 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248828F48466000EDC11 /* PicProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B3F8249A28F484A7000EDC11 /* Local Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248728F48466000EDC11 /* PicLocalDataManager.swift */,
+			);
+			path = "Local Manager";
+			sourceTree = "<group>";
+		};
+		B3F8249B28F484AE000EDC11 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8248628F48466000EDC11 /* PicPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B3F8249E28F4851E000EDC11 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				B3F8249C28F484CF000EDC11 /* PicUI.swift */,
+			);
+			path = Ui;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1964,26 +2859,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3025B2728EC624000439BB7 /* SheeMenuProfileInteractor.swift in Sources */,
+				B3A21B552948CB1000EB7ECB /* ChatProtocols.swift in Sources */,
 				B3A4D4522792C203006B4CCA /* LoginRemoteDataManager.swift in Sources */,
+				B3A21B4929486B5700EB7ECB /* EmailCollectionsViews.swift in Sources */,
 				B3025B2628EC624000439BB7 /* SheeMenuProfileProtocols.swift in Sources */,
+				B3A21B9D294CAB7900EB7ECB /* NewMessageUI.swift in Sources */,
 				B3EF851B279F15050076D443 /* SearchPresenter.swift in Sources */,
 				B3AB373C28E3154C00C2BDB5 /* LoginViewData.swift in Sources */,
 				B34804EE27AD4B61006EFACD /* PostProtocols.swift in Sources */,
+				B355946228F423C10010EC3D /* BirthdayRemoteDataManager.swift in Sources */,
 				B3A4D48C279464A9006B4CCA /* ProfileInteractor.swift in Sources */,
 				B3EA7A6B28BE78D000C78FC6 /* EditProfileLocalDataManager.swift in Sources */,
 				B3A0668A27919A0B00271073 /* AppDelegate.swift in Sources */,
 				B341B00628208EFD009FA4A9 /* Alert.swift in Sources */,
+				B355942C28F3F6AF0010EC3D /* WelcomeRemoteDataManager.swift in Sources */,
+				B3A21B3B2947887F00EB7ECB /* EmailWireFrame.swift in Sources */,
 				B34B130228D5F71F00172986 /* SheePostRemoteDataManager.swift in Sources */,
 				B3EF8537279FEADF0076D443 /* SearchResultRemoteDataManager.swift in Sources */,
+				B3A21B812948D93C00EB7ECB /* SheeContactsChatUI.swift in Sources */,
 				B3AB36FF28E1DC8400C2BDB5 /* HomeViewData.swift in Sources */,
 				B31963DA2796D6E100A23628 /* ProfileCollectionsViews.swift in Sources */,
 				B3A4D4502792C203006B4CCA /* LoginInteractor.swift in Sources */,
+				B3A21B372947887F00EB7ECB /* EmailProtocols.swift in Sources */,
 				B3A4D48B279464A9006B4CCA /* ProfileProtocols.swift in Sources */,
 				B3025B2928EC624000439BB7 /* SheeMenuProfileRemoteDataManager.swift in Sources */,
+				B3A21B582948CB1000EB7ECB /* ChatRemoteDataManager.swift in Sources */,
 				B3B5677527B255E000CC123A /* WSApiRest.swift in Sources */,
 				B3EF8510279EE66A0076D443 /* PostCommentsListTableViewCell.swift in Sources */,
 				B3EF8521279F15050076D443 /* SearchWireFrame.swift in Sources */,
 				B34B130128D5F71F00172986 /* SheePostView.swift in Sources */,
+				B3A21B592948CB1000EB7ECB /* ChatWireFrame.swift in Sources */,
 				B31963BB279630E200A23628 /* HomeUI.swift in Sources */,
 				B3025B2A28EC624000439BB7 /* SheeMenuProfileWireFrame.swift in Sources */,
 				B3025B4328ECD2CB00439BB7 /* uploadPostPresenter.swift in Sources */,
@@ -1992,19 +2897,29 @@
 				B3EF853C279FEBFF0076D443 /* SearchResultUI.swift in Sources */,
 				B3EA7A7028BE78D000C78FC6 /* EditProfileWireFrame.swift in Sources */,
 				B3A4D489279464A9006B4CCA /* ProfilePresenter.swift in Sources */,
+				B3A21B3A2947887F00EB7ECB /* EmailRemoteDataManager.swift in Sources */,
 				B3EF850C279ED24D0076D443 /* CommentsExtension.swift in Sources */,
+				B3F8248D28F48466000EDC11 /* PicPresenter.swift in Sources */,
 				B3A4D49227958A32006B4CCA /* Extensions.swift in Sources */,
+				B355946F28F4240C0010EC3D /* PasswordInteractor.swift in Sources */,
 				B3EF853F279FEDEC0076D443 /* SearchResultViewTableViewCell.swift in Sources */,
 				B3A4D48E279464A9006B4CCA /* ProfileRemoteDataManager.swift in Sources */,
 				B319715328D36F7500FDB342 /* SheetHomePostsLocalDataManager.swift in Sources */,
 				B3A4D48F279464A9006B4CCA /* ProfileWireFrame.swift in Sources */,
 				B3EF8504279ED1D70076D443 /* CommentsInteractor.swift in Sources */,
+				B355946028F423C10010EC3D /* BirthdayInteractor.swift in Sources */,
 				B3EF8528279F54A80076D443 /* SearchCollectionsViews.swift in Sources */,
+				B3F8249228F48466000EDC11 /* PicRemoteDataManager.swift in Sources */,
 				B3B5678127B299BA00CC123A /* HeadersRequest.swift in Sources */,
+				B3A21B90294CAACC00EB7ECB /* NewMessageRemoteDataManager.swift in Sources */,
 				B3EF8532279FEADF0076D443 /* SearchResultPresenter.swift in Sources */,
 				B34804EF27AD4B61006EFACD /* PostInteractor.swift in Sources */,
+				B3A21B9B294CAB6100EB7ECB /* NewMessageViewCell.swift in Sources */,
+				B3F8248328F468AE000EDC11 /* PasswordUI.swift in Sources */,
+				B3A21B542948CB1000EB7ECB /* ChatLocalDataManager.swift in Sources */,
 				B3AB371328E1E68000C2BDB5 /* ProfileViewData.swift in Sources */,
 				B3025B4828ECD2CB00439BB7 /* uploadPostRemoteDataManager.swift in Sources */,
+				B3A21B672948CBC300EB7ECB /* ChatTableViewCell.swift in Sources */,
 				B3EF8538279FEADF0076D443 /* SearchResultWireFrame.swift in Sources */,
 				B31963DF2796FD2A00A23628 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
 				B3EF8502279ED1D70076D443 /* CommentsLocalDataManager.swift in Sources */,
@@ -2016,22 +2931,33 @@
 				B3AB374628E7023D00C2BDB5 /* ApiErrorHandling.swift in Sources */,
 				B3EA7A7628BE7A3200C78FC6 /* EditProfileUI.swift in Sources */,
 				B3A4D47C27941201006B4CCA /* TabBarViewController.swift in Sources */,
+				B3A21B8F294CAACC00EB7ECB /* NewMessageView.swift in Sources */,
 				B31963C727963E0700A23628 /* IGFeedPostFooterTableViewCell.swift in Sources */,
+				B3A21B652948CBA900EB7ECB /* ChatUI.swift in Sources */,
 				B319715828D36F7500FDB342 /* SheetHomePostsWireFrame.swift in Sources */,
+				B3A21B352947887F00EB7ECB /* EmailPresenter.swift in Sources */,
 				B31963D82796D11700A23628 /* ProfileUI.swift in Sources */,
 				B3A4D4512792C203006B4CCA /* LoginView.swift in Sources */,
 				B3EF8520279F15050076D443 /* SearchRemoteDataManager.swift in Sources */,
+				B3A21B832948D95800EB7ECB /* SheeContactsChatTableViewCell.swift in Sources */,
 				B3025B4428ECD2CB00439BB7 /* uploadPostLocalDataManager.swift in Sources */,
 				B34B130328D5F71F00172986 /* SheePostWireFrame.swift in Sources */,
 				B3EA7A6D28BE78D000C78FC6 /* EditProfileInteractor.swift in Sources */,
 				B3A4D46B2792C618006B4CCA /* Constants.swift in Sources */,
 				B3EA7A6C28BE78D000C78FC6 /* EditProfileProtocols.swift in Sources */,
 				B36C2A7A28C0B79A00624B8E /* UserFollowTableViewCell.swift in Sources */,
+				B355942928F3F6AF0010EC3D /* WelcomeProtocols.swift in Sources */,
+				B3A21B452947896D00EB7ECB /* EmailUI.swift in Sources */,
+				B355946E28F4240C0010EC3D /* PasswordProtocols.swift in Sources */,
+				B355947128F4240C0010EC3D /* PasswordRemoteDataManager.swift in Sources */,
+				B355946D28F4240C0010EC3D /* PasswordLocalDataManager.swift in Sources */,
 				B34B12FD28D5F71F00172986 /* SheePostPresenter.swift in Sources */,
 				B3A4D48A279464A9006B4CCA /* ProfileLocalDataManager.swift in Sources */,
 				B31963F42799801000A23628 /* LoadingButton.swift in Sources */,
 				B31963E12796FD8200A23628 /* StoryFeaturedCollectionTableViewCell.swift in Sources */,
 				B3025B2528EC624000439BB7 /* SheeMenuProfileLocalDataManager.swift in Sources */,
+				B3F8249D28F484CF000EDC11 /* PicUI.swift in Sources */,
+				B3A21B91294CAACC00EB7ECB /* NewMessageWireFrame.swift in Sources */,
 				B3EA7A6E28BE78D000C78FC6 /* EditProfileView.swift in Sources */,
 				B31963E32796FDAB00A23628 /* StoryCollectionViewCell.swift in Sources */,
 				B3A4D48D279464A9006B4CCA /* ProfileView.swift in Sources */,
@@ -2039,6 +2965,8 @@
 				B3A4D4372791A5FF006B4CCA /* HomeLocalDataManager.swift in Sources */,
 				B34B12FF28D5F71F00172986 /* SheePostProtocols.swift in Sources */,
 				B3A4D47627937092006B4CCA /* Token.swift in Sources */,
+				B3F8249328F48466000EDC11 /* PicWireFrame.swift in Sources */,
+				B3A21B572948CB1000EB7ECB /* ChatView.swift in Sources */,
 				B3025B4628ECD2CB00439BB7 /* uploadPostInteractor.swift in Sources */,
 				B3EF851F279F15050076D443 /* SearchView.swift in Sources */,
 				B3025B4728ECD2CB00439BB7 /* uploadPostView.swift in Sources */,
@@ -2048,20 +2976,29 @@
 				B3A4D47E27945D37006B4CCA /* TabBarModuleBuilder.swift in Sources */,
 				B3A4D48027945DA7006B4CCA /* TabBarWireFrame.swift in Sources */,
 				B3A0668C27919A0B00271073 /* SceneDelegate.swift in Sources */,
+				B3A21B532948CB1000EB7ECB /* ChatPresenter.swift in Sources */,
+				B3F8248F28F48466000EDC11 /* PicProtocols.swift in Sources */,
 				B3A4D44D2792C203006B4CCA /* LoginPresenter.swift in Sources */,
 				B319715728D36F7500FDB342 /* SheetHomePostsRemoteDataManager.swift in Sources */,
+				B355945E28F423C10010EC3D /* BirthdayLocalDataManager.swift in Sources */,
+				B355944F28F423250010EC3D /* UsernameLocalDataManager.swift in Sources */,
 				B3025B2828EC624000439BB7 /* SheeMenuProfileView.swift in Sources */,
 				B31963CA2796CCCC00A23628 /* HomeExtension.swift in Sources */,
+				B3A21B712948D85D00EB7ECB /* SheeContactsChatProtocols.swift in Sources */,
+				B3A21B752948D85D00EB7ECB /* SheeContactsChatWireFrame.swift in Sources */,
 				B3B5677D27B2960800CC123A /* WSenderToken.swift in Sources */,
+				B355947228F4240C0010EC3D /* PasswordWireFrame.swift in Sources */,
 				B3EF8525279F15940076D443 /* SearchUI.swift in Sources */,
 				B3EF8512279EE6DE0076D443 /* CustomHeaderTableViewCell.swift in Sources */,
 				B31963C527963DEC00A23628 /* IGFeedPostGeneralTableViewCell.swift in Sources */,
+				B355942B28F3F6AF0010EC3D /* WelcomeView.swift in Sources */,
 				B3AB372128E1F68D00C2BDB5 /* SearchViewData.swift in Sources */,
 				B3A4D4382791A5FF006B4CCA /* HomeProtocols.swift in Sources */,
 				B3EF8535279FEADF0076D443 /* SearchResultInteractor.swift in Sources */,
 				B3B5677B27B295E900CC123A /* WSenderCookie.swift in Sources */,
 				B3ABB33928D3B67E00B44EF3 /* SheeHomePostsTableViewCell.swift in Sources */,
 				B37AD64628BF5F060019167E /* EditProfileAdapter.swift in Sources */,
+				B355945D28F423C10010EC3D /* BirthdayPresenter.swift in Sources */,
 				B31963D62796D10600A23628 /* ProfileExtension.swift in Sources */,
 				B3AB374128E5DE0700C2BDB5 /* APIRemote.swift in Sources */,
 				B3A4D45E2792C525006B4CCA /* Model.swift in Sources */,
@@ -2070,65 +3007,100 @@
 				B3B5677F27B298B600CC123A /* ResponseInJSONWithData.swift in Sources */,
 				B34804F027AD4B61006EFACD /* PostView.swift in Sources */,
 				B3B5677927B2561800CC123A /* WSenderSimple.swift in Sources */,
+				B355943728F3F9130010EC3D /* WelcomeUI.swift in Sources */,
 				B37AD65028BF8CA30019167E /* ListPeopleLocalDataManager.swift in Sources */,
+				B355942A28F3F6AF0010EC3D /* WelcomeInteractor.swift in Sources */,
+				B3F8247A28F4650C000EDC11 /* BirthdayUI.swift in Sources */,
 				B3AB372628E2040D00C2BDB5 /* CommentViewData.swift in Sources */,
+				B3A21B392947887F00EB7ECB /* EmailView.swift in Sources */,
+				B355946328F423C10010EC3D /* BirthdayWireFrame.swift in Sources */,
+				B3A21B562948CB1000EB7ECB /* ChatInteractor.swift in Sources */,
 				B3A4D43A2791A5FF006B4CCA /* HomeView.swift in Sources */,
 				B3A4D43B2791A5FF006B4CCA /* HomeRemoteDataManager.swift in Sources */,
 				B31963DC2796D91300A23628 /* PhotoCollectionViewCell.swift in Sources */,
 				B3EF8503279ED1D70076D443 /* CommentsProtocols.swift in Sources */,
 				B37AD65128BF8CA30019167E /* ListPeopleProtocols.swift in Sources */,
+				B355945228F423250010EC3D /* UsernameView.swift in Sources */,
 				B34B130628D5F75B00172986 /* SheePostTableViewCell.swift in Sources */,
 				B3AB371628E1E78100C2BDB5 /* UserViewData.swift in Sources */,
 				B3A4D4362791A5FF006B4CCA /* HomePresenter.swift in Sources */,
 				B3A4D46E2793675B006B4CCA /* Closures.swift in Sources */,
 				B34804ED27AD4B61006EFACD /* PostLocalDataManager.swift in Sources */,
 				B3A4D44F2792C203006B4CCA /* LoginProtocols.swift in Sources */,
+				B355945128F423250010EC3D /* UsernameInteractor.swift in Sources */,
 				B319715428D36F7500FDB342 /* SheetHomePostsProtocols.swift in Sources */,
 				B3A4D4392791A5FF006B4CCA /* HomeInteractor.swift in Sources */,
 				B3EF8534279FEADF0076D443 /* SearchResultProtocols.swift in Sources */,
 				B34804EC27AD4B61006EFACD /* PostPresenter.swift in Sources */,
+				B355942828F3F6AF0010EC3D /* WelcomeLocalDataManager.swift in Sources */,
 				B3025B3A28EC702200439BB7 /* SheeMenuTableViewCell.swift in Sources */,
 				B3EF851D279F15050076D443 /* SearchProtocols.swift in Sources */,
 				B37AD65328BF8CA30019167E /* ListPeopleView.swift in Sources */,
 				B319715228D36F7500FDB342 /* SheetHomePostsPresenter.swift in Sources */,
+				B3A21B6F2948D85D00EB7ECB /* SheeContactsChatPresenter.swift in Sources */,
 				B34804F227AD4B61006EFACD /* PostWireFrame.swift in Sources */,
+				B3A21B8C294CAACC00EB7ECB /* NewMessageLocalDataManager.swift in Sources */,
 				B3A4D43C2791A5FF006B4CCA /* HomeWireFrame.swift in Sources */,
 				B3025B2428EC624000439BB7 /* SheeMenuProfilePresenter.swift in Sources */,
 				B31963F227995BD500A23628 /* TextFieldWithPadding.swift in Sources */,
 				B31963E52796FDD800A23628 /* ProfileTabsCollectionReusableView.swift in Sources */,
+				B3A21B702948D85D00EB7ECB /* SheeContactsChatLocalDataManager.swift in Sources */,
+				B355942D28F3F6AF0010EC3D /* WelcomeWireFrame.swift in Sources */,
 				B3025B4528ECD2CB00439BB7 /* uploadPostProtocols.swift in Sources */,
+				B355946128F423C10010EC3D /* BirthdayView.swift in Sources */,
 				B37AD65228BF8CA30019167E /* ListPeopleInteractor.swift in Sources */,
 				B34B130A28D5F7B300172986 /* SheePostUI.swift in Sources */,
 				B3EF8533279FEADF0076D443 /* SearchResultLocalDataManager.swift in Sources */,
 				B31963BD279638BF00A23628 /* IGFeedPostActionsTableViewCell.swift in Sources */,
+				B355942728F3F6AF0010EC3D /* WelcomePresenter.swift in Sources */,
 				B3AB373128E2F9D300C2BDB5 /* APIManager.swift in Sources */,
 				B36C2A7728C0B56200624B8E /* ListPeopleUI.swift in Sources */,
 				B3EF851C279F15050076D443 /* SearchLocalDataManager.swift in Sources */,
 				B3EF8507279ED1D70076D443 /* CommentsWireFrame.swift in Sources */,
+				B355944E28F423250010EC3D /* UsernamePresenter.swift in Sources */,
 				B3EA7A6A28BE78D000C78FC6 /* EditProfilePresenter.swift in Sources */,
+				B3A21B382947887F00EB7ECB /* EmailInteractor.swift in Sources */,
+				B3A21B362947887F00EB7ECB /* EmailLocalDataManager.swift in Sources */,
 				B3AB374828E702D500C2BDB5 /* ApiTranslator.swift in Sources */,
+				B355945F28F423C10010EC3D /* BirthdayProtocols.swift in Sources */,
 				B3B5677127B2559600CC123A /* BCApiRest.swift in Sources */,
 				B3B5677727B255FC00CC123A /* WSTranslator.swift in Sources */,
 				B3EF851E279F15050076D443 /* SearchInteractor.swift in Sources */,
 				B31963C327963DB800A23628 /* IGFeedPostDescriptionTableViewCell.swift in Sources */,
+				B355945428F423250010EC3D /* UsernameWireFrame.swift in Sources */,
+				B3F8246F28F4355E000EDC11 /* UsernameUI.swift in Sources */,
+				B3A21B732948D85D00EB7ECB /* SheeContactsChatView.swift in Sources */,
 				B37AD64328BF42CB0019167E /* FormTableViewCell.swift in Sources */,
+				B355946C28F4240C0010EC3D /* PasswordPresenter.swift in Sources */,
 				B3A4D495279596F5006B4CCA /* LoginUI.swift in Sources */,
 				B3EA7A6F28BE78D000C78FC6 /* EditProfileRemoteDataManager.swift in Sources */,
 				B3A4D44E2792C203006B4CCA /* LoginLocalDataManager.swift in Sources */,
+				B3A21B742948D85D00EB7ECB /* SheeContactsChatRemoteDataManager.swift in Sources */,
 				B37AD65428BF8CA30019167E /* ListPeopleRemoteDataManager.swift in Sources */,
 				B34B12FE28D5F71F00172986 /* SheePostLocalDataManager.swift in Sources */,
 				B34804F127AD4B61006EFACD /* PostRemoteDataManager.swift in Sources */,
+				B3A21B4B29489CE900EB7ECB /* EmailTableViewCell.swift in Sources */,
 				B3025B4928ECD2CB00439BB7 /* uploadPostWireFrame.swift in Sources */,
 				B37AD64F28BF8CA30019167E /* ListPeoplePresenter.swift in Sources */,
+				B3A21B8E294CAACC00EB7ECB /* NewMessageInteractor.swift in Sources */,
 				B319715628D36F7500FDB342 /* SheetHomePostsView.swift in Sources */,
+				B3F8249028F48466000EDC11 /* PicInteractor.swift in Sources */,
 				B37AD65528BF8CA30019167E /* ListPeopleWireFrame.swift in Sources */,
+				B3A21B8D294CAACC00EB7ECB /* NewMessageProtocols.swift in Sources */,
 				B3A4D4532792C203006B4CCA /* LoginWireFrame.swift in Sources */,
 				B34B130028D5F71F00172986 /* SheePostInteractor.swift in Sources */,
 				B3025B3428EC647800439BB7 /* SheeMenuProfileUI.swift in Sources */,
+				B3A21B722948D85D00EB7ECB /* SheeContactsChatInteractor.swift in Sources */,
+				B3F8249128F48466000EDC11 /* PicView.swift in Sources */,
+				B3F8248E28F48466000EDC11 /* PicLocalDataManager.swift in Sources */,
 				B3AB371828E1F1E200C2BDB5 /* PostViewData.swift in Sources */,
+				B355947028F4240C0010EC3D /* PasswordView.swift in Sources */,
 				B3AB372428E201C100C2BDB5 /* PostRenderViewData.swift in Sources */,
 				B3EF8506279ED1D70076D443 /* CommentsRemoteDataManager.swift in Sources */,
+				B355945028F423250010EC3D /* UsernameProtocols.swift in Sources */,
+				B3A21B8B294CAACC00EB7ECB /* NewMessagePresenter.swift in Sources */,
 				B3025B3728EC6EDB00439BB7 /* ExtensionsSheeMenu.swift in Sources */,
+				B355945328F423250010EC3D /* UsernameRemoteDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,23 +1,17 @@
 import Foundation
 import UIKit
 
-
 class SearchView: UIViewController {
-    // MARK: PROPERTIES
     
+    // MARK: PROPERTIES
     var presenter: SearchPresenterProtocol?
     var searchUI = SearchUI()
     var searchController = SearchCollectionsViews.searchControllerView()
     var page: Int! = 0
-    
     var totalPages:Int!
     var postsQuantity:Int!
-    
     var lastContentOffset: CGFloat = 0
-    
     var isLoading: Bool = false
-    
-
 
     // MARK: LIFECYCLE
     
@@ -29,7 +23,6 @@ class SearchView: UIViewController {
         configureActivity()
         registerCollection()
         delegates()
-        
     }
     
     // LOAD DATA
@@ -45,7 +38,6 @@ class SearchView: UIViewController {
     
     // ACTIVITY
     func configureActivity() {
-        
         self.searchUI.activityIndicator.center = view.center
         self.searchUI.activityIndicator.hidesWhenStopped = false
     }
@@ -56,7 +48,6 @@ class SearchView: UIViewController {
         self.searchUI.collectionView.frame = view.bounds
         self.searchUI.frame = view.bounds
         self.searchUI.frame = CGRect(x: 0, y: 0, width: view.width , height: view.height)
-        
     }
     
     // REGISTER COLLECTION
@@ -69,12 +60,10 @@ class SearchView: UIViewController {
     func delegates() {
         self.searchUI.collectionView.delegate = self
         self.searchUI.collectionView.dataSource = self
-        
         self.searchController.searchResultsUpdater =  self
         //self.searchController.hidesNavigationBarDuringPresentation = false
         //self.searchController.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = self.searchController
-        
     }
 }
 
@@ -83,13 +72,11 @@ class SearchView: UIViewController {
 extension SearchView: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        
         guard let resultsComtroller = searchController.searchResultsController as? SearchResultView,
               let filter = searchController.searchBar.text, !filter.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
         self.presenter?.searchResultsUpdating(resultsComtroller: resultsComtroller, filter: filter)
-        
     }
 }
 

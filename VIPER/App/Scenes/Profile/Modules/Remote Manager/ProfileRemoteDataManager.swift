@@ -17,6 +17,7 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
         self.apiManager = apiManager
     }
     
+    
     // PROFILE.
     func remoteGetData(id: Int, token: String) {
         self.apiManager.fetchProfile(id: id, token: token) { [weak self] result in

@@ -4,8 +4,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
         // MARK: PROPERTIES
@@ -17,25 +15,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let token = obj?.success
 
         if token != nil {
-            let submodules = (home: HomeWireFrame.createHomeModule(),
-                              profile: ProfileWireFrame.createProfileModule(id: 0, name: "", token: "", indexPath: []),
-                              search: SearchWireFrame.createSearchModule(),
-                              bell: UIViewController(),
-                              messages: UIViewController()
-            )
+            let submodules = (
+                
+                messages: EmailWireFrame.createEmailModule(),
+                home: HomeWireFrame.createHomeModule(),
+                profile: ProfileWireFrame.createProfileModule(id: 0, name: "", token: "", indexPath: []),
+                search: SearchWireFrame.createSearchModule(),
+                bell: UIViewController())
 
             let window                  = UIWindow(windowScene: windowScene)
             let tabBarController        = TabBarModuleBuilder.build(usingSubmodules: submodules)
-            window.rootViewController   =  tabBarController
+            window.rootViewController   = tabBarController
             self.window                 = window
             window.makeKeyAndVisible()
         } else {
-            let window                  = UIWindow(windowScene: windowScene)
-            let loginViewController     = LoginWireFrame.createLoginModule()
-            loginViewController.modalPresentationStyle = .fullScreen
-            self.window                 = window
+            let window = UIWindow(windowScene: windowScene)
+            let welcomeViewController = WelcomeWireFrame.createWelcomeModule()
+            welcomeViewController.modalPresentationStyle = .fullScreen
+            self.window = window
             window.makeKeyAndVisible()
-            window.rootViewController   = loginViewController
+            window.rootViewController = welcomeViewController
         }
     }
 

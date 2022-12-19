@@ -20,6 +20,28 @@ class APIInteractor: NSObject  {
     static let _URL_comment_delete = "api/comments/delete/"
     static let _UR_comment_update = "api/comments/update"
     static let _URL_search_user = "api/users/get-user-filter/"
+    static let _URL_follows = "api/follows/getMyfollows/true/"
+    
+    @discardableResult class
+    func fetchUsers(token: String?, completion: @escaping Closures.Follows, processIncorrect: @escaping Closures.MessageError) -> URLSessionDataTask? {
+        guard let token = token else {
+            return nil
+        }
+        let params : [Any]? = nil
+        let task = APIRemote.doGETTokenToURL(url: APIInteractor.urlBase, path: self._URL_follows, params: params, token: token) { response in
+            if let data = response.respuestaNSData {
+                // LLAMAR AL API TRANSLATAROR.
+                ApiTranslator.translate(data: data, modelToDecode: ResMessagesFollows.self) { result in
+                    switch result {
+                    case .success(let response): completion(response)
+                    case .failure(let error): processIncorrect(error.localizedDescription)
+                    }
+                }
+            }
+        }
+        return task
+    }
+    
     
     /* TODO: SE APLICA LA LOGICA DE OBTENER LOS DATOS "LOGIN"
      * LLAMAR AL APIREMOTE

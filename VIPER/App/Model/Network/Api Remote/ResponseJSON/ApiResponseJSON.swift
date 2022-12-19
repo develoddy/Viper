@@ -29,6 +29,7 @@ class ApiResponseJSON: NSObject {
             let urlResponse = response as? HTTPURLResponse
             let headerFields : NSDictionary? = urlResponse?.allHeaderFields as NSDictionary?
             let objResponse = WebResponse()
+        
             objResponse.respuestaJSON      = respuesta
             objResponse.statusCode         = urlResponse?.statusCode
             objResponse.respuestaNSData    = data

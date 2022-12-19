@@ -133,10 +133,31 @@ struct ResFollows: Codable {
 
 // MARK: - Follow
 struct Follow: Codable {
-    let id: Int?
+    /*let id: Int?
+    let user_id: Int?
+    let followed_id: Int?
     let name, username: String?
-    let profile: Profile?
+    let profile: Profile?*/
+    
+    let id, userID, followedID: Int?
+    let createdAt, updatedAt: String?
+    let user: User?
+
+        enum CodingKeys: String, CodingKey {
+            case id
+            case userID = "user_id"
+            case followedID = "followed_id"
+            case createdAt = "created_at"
+            case updatedAt = "updated_at"
+            case user
+        }
 }
+
+// MARK: -
+struct ResMessagesFollows: Codable {
+    let follows: [Follow]?
+}
+
 
 // MARK: - Like
 struct Heart: Codable {

@@ -1,11 +1,3 @@
-//
-//  ListPeoplePresenter.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 31/8/22.
-//  
-//
-
 import Foundation
 
 class ListPeoplePresenter: ListPeoplePresenterProtocol  {
@@ -26,9 +18,9 @@ class ListPeoplePresenter: ListPeoplePresenterProtocol  {
     func viewDidLoad() {
         for ( index, item ) in self.followingReceivedFromProfile.enumerated() {
             self.viewModelUserRelationship.append(UserRelationship(
-                username: item.username ?? "",
-                name: item.name ?? "",
-                image: item.profile?.imageHeader ?? "",
+                username: item.user?.username ?? "", // username ?? "",
+                name: item.user?.name ?? "",
+                image: item.user?.profile?.imageHeader ?? "",
                 type: index % 2 == 0 ? .following: .not_following ) )
         }
     }

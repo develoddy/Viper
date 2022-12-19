@@ -50,7 +50,7 @@ class LoginUI: UIView {
     public let emailText : TextFieldWithPadding = {
         let emailText = TextFieldWithPadding()
         //emailText.placeholder = "Username or Email"
-        //emailText.text = Constants.LoginData.username
+        emailText.text = Constants.LoginData.username
         emailText.returnKeyType = .next
         emailText.leftViewMode = .always
         emailText.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -66,7 +66,7 @@ class LoginUI: UIView {
         let passwordText = TextFieldWithPadding()
         passwordText.isSecureTextEntry = true
        // passwordText.placeholder = "Password"
-        //passwordText.text = Constants.LoginData.password
+        passwordText.text = Constants.LoginData.password
         passwordText.returnKeyType = .continue
         passwordText.leftViewMode = .always
         passwordText.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -133,7 +133,6 @@ class LoginUI: UIView {
         label.textColor = Constants.Color.danger
         return label
     }()
-    
     
     let containerView: UIView = {
         let view = UIView()

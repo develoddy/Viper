@@ -1,9 +1,3 @@
-//
-//  SearchUI.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 24/1/22.
-//
 
 import UIKit
 
@@ -20,7 +14,7 @@ class SearchUI: UIView {
     
     //let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 50, width: view.width, height: 100))
     
-    // MARK: - INIT
+    // INIT
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemBackground
@@ -31,8 +25,6 @@ class SearchUI: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    // MARK: - FUNCTIONS
     override func layoutSubviews() {
         super.layoutSubviews()
         self.collectionView.frame = self.bounds

@@ -1,6 +1,7 @@
 import UIKit
 
 class Closures: NSObject {
+    typealias Follows  = ( _ response: ResMessagesFollows?) -> Void
     typealias Login = (_ response: LoginToken?) -> Void
     typealias Posts = (_ response: ResPosts?) -> Void
     typealias heart = (_ response: Heart?) -> Void

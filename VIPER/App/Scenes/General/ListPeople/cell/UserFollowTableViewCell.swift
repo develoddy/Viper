@@ -138,8 +138,6 @@ class UserFollowTableViewCell: UITableViewCell {
     public func setCellWithValuesOf( with model: UserRelationship ) {
         self.model = model
         
-        
-        
         let url = Constants.ApiRoutes.domain + "/api/users/get-image-user/" + model.image
         profileImageView.sd_setImage(with: URL(string: url), completed: nil)
         

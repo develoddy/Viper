@@ -1,11 +1,3 @@
-//
-//  LoginWireFrame.swift
-//  VIPER
-//
-//  Created by Eddy Donald Chinchay Lujan on 15/1/22.
-//  
-//
-
 import Foundation
 import UIKit
 
@@ -36,11 +28,12 @@ class LoginWireFrame: LoginWireFrameProtocol {
     func presentNewTabBarController() {
         
         let submodules = (
+            messages: EmailWireFrame.createEmailModule(),
             home: HomeWireFrame.createHomeModule(),
             profile: ProfileWireFrame.createProfileModule( id: 0, name: "", token: "", indexPath: []),
             search: SearchWireFrame.createSearchModule(),
-            bell: UIViewController(),
-            messages: UIViewController()
+            bell: UIViewController()
+            
         )
         
         let tabBarController = TabBarModuleBuilder.build( usingSubmodules: submodules )

@@ -5,11 +5,11 @@ class TabBarWireFrame {
     var viewController : UIViewController
     
     typealias Submodules = (
+        messages: UIViewController,
         home: UIViewController,
         profile: UIViewController,
         search: UIViewController,
-        bell: UIViewController,
-        messages: UIViewController
+        bell: UIViewController
     )
     
     init( viewController: UIViewController ) {
@@ -41,11 +41,12 @@ extension TabBarWireFrame {
         submodules.bell.tabBarItem = bellTabBarItem
         submodules.messages.tabBarItem = messagesTabBarItem
         
-        return (home: submodules.home,
-                profile: submodules.profile,
-                search: submodules.search,
-                bell: submodules.bell,
-                messages: submodules.messages
+        return (
+            home: submodules.home,
+            profile: submodules.profile,
+            search: submodules.search,
+            bell: submodules.bell,
+            messages: submodules.messages
         )
     }
 }

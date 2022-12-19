@@ -12,7 +12,6 @@ protocol SheePostWireFrameProtocol: AnyObject {
     static func createSheePostModule(post: /*Post?*/ PostViewData?, indexPath: IndexPath) -> UIViewController
     func sendDataPost(from viewController: UIViewController, userId: Int, token: String, indexPath: IndexPath)
     func gotoPost(from viewController: UIViewController, post: /*Post?*/ PostViewData?)
-   
 }
 
 protocol SheePostPresenterProtocol: AnyObject {
@@ -31,8 +30,6 @@ protocol SheePostPresenterProtocol: AnyObject {
     func currentTopViewController() -> UIViewController
     func present(in viewController: UIViewController, indexPath: IndexPath)
     func presentKeyboard(in viewController: UIViewController)
-    
-    
 }
 
 protocol SheePostInteractorOutputProtocol: AnyObject {

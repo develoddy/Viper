@@ -16,10 +16,32 @@ protocol ProAPIManagerProtocol: AnyObject {
     func deleteComment(id:Int?, token:String?, completion: @escaping (Result<ResMessage?, Error>) -> ())
     func updateComment(postId: Int?, commentId: Int?, content: String?, token: String?, completion: @escaping (Result<[Int]?, Error>) -> ())
     func filterSearch(token: String?, filter: String? , completion: @escaping (Result<[User]?, Error>) -> ())
+    func fetchUsers(token: String?, completion: @escaping (Result<ResMessagesFollows?, Error>) -> ())
+    
+    /*
+     public getMyFollows() {
+             const response = { error: false, msg: "", data: null };
+             return this.http.get<ResMessagesFollows>(this.url + "follows/getMyfollows/true").pipe(
+                   map((r) => {
+                         return (response.data = r);
+                   })
+             );
+         }
+     */
 }
 
 // MARK: API MANAGER
 class APIManager: NSObject, ProAPIManagerProtocol {
+    
+    func fetchUsers(token: String?, completion: @escaping (Result<ResMessagesFollows?, Error>) -> ()) {
+        APIInteractor.fetchUsers(token: token) { response in
+            completion(.success(response))
+        } processIncorrect: { messageError in
+            completion(.failure(messageError as! Error))
+        }
+
+    }
+    
 
     // MARK: SHARED
     static let shared = APIManager()
@@ -160,4 +182,6 @@ class APIManager: NSObject, ProAPIManagerProtocol {
             completion(.failure(messageError as! Error))
         }
     }
+    
+    
 }

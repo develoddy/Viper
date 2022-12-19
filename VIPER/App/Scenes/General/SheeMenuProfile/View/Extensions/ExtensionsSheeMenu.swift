@@ -33,4 +33,3 @@ extension SheeMenuProfileView: UITableViewDelegate {
         presenter?.chooseOptions(indexPath: indexPath, in: self)
     }
 }
-
